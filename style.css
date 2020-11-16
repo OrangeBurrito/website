@@ -1,0 +1,149 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code&family=Piazzolla:wght@700&display=swap');
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: Fira Code, sans-serif;
+	background: #292B2E;
+	color: #BABABA;
+}
+
+.wrap {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: 100px 1fr 50px;
+	grid-gap: 0.5rem;
+	padding: 0.5rem;
+}
+
+.box, header > * {
+	background: #43494D;
+	border-radius: 5px;
+	padding: 1rem;
+}
+
+header, main, footer {
+	grid-column: 1 / 3;
+}
+
+header {
+	display: grid;
+	grid-gap: 0.5rem;
+	grid-template-rows: 1fr 1fr;
+}
+
+header > * {
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+}
+
+header h1 {
+	font-family: Piazzolla;
+	font-size: 2.8rem;
+}
+
+main {
+	display: grid;
+	grid-gap: 0.5rem;
+}
+
+footer {
+	font-size: 1.2rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.box {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.box > * {
+	padding: 0.2rem 0em;
+}
+
+.box > pre {
+	font-size: 2rem;
+	padding: 0.8rem 1rem !important;
+	font-family: Fira Code;
+	border-radius: 5px;
+	background: #292B2E;
+}
+
+pre:hover {
+	cursor: pointer;
+	background: #2B343D;
+	color: #D6D6D6;
+	/* font-weight: bold; */
+	transition: 0.3s ease-in;
+}
+
+@media (min-width: 750px) {
+	.wrap {
+		height: 100vh;
+	}
+
+	header {
+		grid-template-columns: 1fr 1fr;
+		grid-template-rows: 1fr;
+		grid-gap: 0.5rem;
+	}
+
+	main {
+		grid-template-columns: 1fr 1fr;
+		grid-template-rows: 1fr 1fr;
+	}
+	
+	.grid-image:nth-of-type(2) {
+		grid-row: 2 / 2;
+	}
+}
+
+.grid-image {
+	border-radius: 5px;
+	background-position: center;
+	background-size: cover;
+}
+
+header ul li, a {
+	text-decoration: none;
+	list-style-type: none;
+	font-size: 1.5rem;
+	color: #4A8DDE;
+}
+
+ul li {
+	list-style-type: none;
+	font-size: 1.1rem;
+}
+
+a:hover {
+	border-bottom: 2px solid #68A6ED;
+	font-weight: bold;
+	color: #68A6ED;
+}
+
+.selected {
+	font-weight: bolder;
+	font-size: 1.8rem;
+	color: #68A6ED;
+}
+
+#hidden {
+	display: none;
+	background: #56616D;
+	padding: 10px 20px;
+	border-radius: 5px;
+	font-size: 1.5rem;
+}
+
+pre:checked {
+}

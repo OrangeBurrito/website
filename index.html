@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+	<script>
+		// let copied = document.getElementById("hidden")
+		function copyMcServerUrl() {
+			let serverUrl = 'mc.radrealms.com'
+			const listener = function (e) {
+				e.preventDefault()
+				e.clipboardData.setData('text/plain', serverUrl)
+				// copied.innerText = "Copied!"
+			}
+
+			document.addEventListener('copy', listener)
+			document.execCommand('copy')
+			document.removeEventListener('copy', listener)
+		}
+
+	</script>
+	<div class="wrap">
+		<header>
+			<h1>RadRealms</h1>
+			<ul>
+				<li><a href="/" class="selected">Home</a></li>
+				<li><a href="./gallery.html">Gallery</a></li>
+				<li><a href="./about.html">About</a></li>
+			</ul>
+		</header>
+		<main>
+			<div class="box">
+				<h2>The first Minecraft Server<br> by, and for radfems.</h2>
+				<pre onclick="copyMcServerUrl()">mc.radrealms.com</pre>
+				<div id="hidden">Copied!</div>
+				<h2 style="color: #FF7F51">Please read the Installation Guide first!</h2>
+			</div>
+
+			<div class="grid-image" style="background-image: url('images/img2.png')"></div>
+			<div class="grid-image" style="background-image: url('images/img1.png')"></div>
+
+			<div class="box">
+				<h2 style="text-decoration: underline">Installation Guide</h2>
+				<ul>
+					<li>1. Download and install the <a href="https://www.technicpack.net/download">Technic Launcher</a></li>
+					<li>2. Launch TechnicLauncher and login to your Minecraft account</li>
+					<li>3. Go to Launcher Options (top right corner) > Java Settings</li>
+					<li>4. Set memory to 5GB</li>
+					<li>5. Search for "RadRealms Server Pack" in the modpack search menu</li>
+					<li>6. Install the modpack and press play (avg. loading time is about ten minutes)</li>
+					<li>7. Join mc.radrealms.com and start playing!</li>
+				</ul>
+				<h3>Performance Tips: Once in-game, go to Video Settings > Performance, and set Fast Render, Fast Math, Smooth FPS and Smart Animations to ON.</h3>
+			</div>
+		</main>
+		<footer class="box">Copyright © OrangeBurrito 2020</footer>
+	</div>
+</body>
+
+</html>
