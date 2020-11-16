@@ -1,39 +1,97 @@
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code&family=Piazzolla:wght@700&display=swap');
 
 * {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  position: relative;
 }
 
 body {
-	font-family: Fira Code, sans-serif;
+	font-family: Fira Code, arial;
 	background: #292B2E;
 	color: #BABABA;
 }
 
-.wrap {
-	display: grid;
-	grid-template-columns: 1fr 1fr;
-	grid-template-rows: 100px 1fr 50px;
-	grid-gap: 0.5rem;
-	padding: 0.5rem;
+* {
+  box-sizing: border-box;
 }
 
-.box, header > * {
+.wrap {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 100px 1fr 50px;
+  grid-gap: 0.5rem;
+  padding: 0.5rem;
+}
+
+.wrap > * {
+  grid-column: 1 / 3;
+}
+
+.box {
 	background: #43494D;
 	border-radius: 5px;
-	padding: 1rem;
 }
 
-header, main, footer {
-	grid-column: 1 / 3;
+.box1 {
+	justify-content: center;
+}
+
+.box1, .box2 {
+	display: flex;
+	flex-direction: column;
+	/* padding: 5rem; */
+	align-items: center;
+}
+
+.box > pre {
+	font-size: 2rem;
+	padding: 0.8rem 1rem;
+	margin: 2rem;
+	font-family: Fira Code;
+	border-radius: 5px;
+	background: #292B2E;
+}
+
+pre:hover {
+	cursor: pointer;
+	background: #2B343D;
+	color: #D6D6D6;
+	transition: 0.3s ease-in;
+}
+
+ol {
+  padding: 1rem;
+}
+
+@media (max-width: 750px) {
+	.img2 {
+		grid-row: 4 / 4;
+	}
+}
+
+
+ol {
+	padding-left: 35px;
+}
+
+img {
+  width: 100px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+.grid-image {
+  background-size: cover;
+	background-position: center;
+	border-radius: 5px;
 }
 
 header {
-	display: grid;
-	grid-gap: 0.5rem;
-	grid-template-rows: 1fr 1fr;
+  display: grid;
+  grid-gap: 0.5rem;
 }
 
 header > * {
@@ -48,8 +106,10 @@ header h1 {
 }
 
 main {
-	display: grid;
-	grid-gap: 0.5rem;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-gap: 0.5rem;
+  max-width: inherit;
 }
 
 footer {
@@ -59,33 +119,6 @@ footer {
 	justify-content: center;
 }
 
-.box {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-}
-
-.box > * {
-	padding: 0.2rem 0em;
-}
-
-.box > pre {
-	font-size: 2rem;
-	padding: 0.8rem 1rem !important;
-	font-family: Fira Code;
-	border-radius: 5px;
-	background: #292B2E;
-}
-
-pre:hover {
-	cursor: pointer;
-	background: #2B343D;
-	color: #D6D6D6;
-	/* font-weight: bold; */
-	transition: 0.3s ease-in;
-}
-
 @media (min-width: 750px) {
 	.wrap {
 		height: 100vh;
@@ -93,24 +126,11 @@ pre:hover {
 
 	header {
 		grid-template-columns: 1fr 1fr;
-		grid-template-rows: 1fr;
-		grid-gap: 0.5rem;
 	}
 
 	main {
 		grid-template-columns: 1fr 1fr;
-		grid-template-rows: 1fr 1fr;
 	}
-	
-	.grid-image:nth-of-type(2) {
-		grid-row: 2 / 2;
-	}
-}
-
-.grid-image {
-	border-radius: 5px;
-	background-position: center;
-	background-size: cover;
 }
 
 header ul li, a {
@@ -120,9 +140,12 @@ header ul li, a {
 	color: #4A8DDE;
 }
 
+li {
+	font-size: 1.1rem;
+}
+
 ul li {
 	list-style-type: none;
-	font-size: 1.1rem;
 }
 
 a:hover {
@@ -135,15 +158,4 @@ a:hover {
 	font-weight: bolder;
 	font-size: 1.8rem;
 	color: #68A6ED;
-}
-
-#hidden {
-	display: none;
-	background: #56616D;
-	padding: 10px 20px;
-	border-radius: 5px;
-	font-size: 1.5rem;
-}
-
-pre:checked {
 }
