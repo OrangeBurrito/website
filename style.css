@@ -45,16 +45,18 @@ body {
 	align-items: center;
 }
 
-.box > pre {
+button {
 	font-size: 2rem;
 	padding: 0.8rem 1rem;
 	margin: 2rem;
 	font-family: Fira Code;
 	border-radius: 5px;
+	border: none;
+	color: #BABABA;
 	background: #292B2E;
 }
 
-pre:hover {
+button:hover {
 	cursor: pointer;
 	background: #2B343D;
 	color: #D6D6D6;
@@ -81,6 +83,20 @@ img {
   display: flex;
   align-items: flex-end;
   justify-content: flex-end;
+}
+
+.grid-image {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	color: rgba(0, 0, 0, 0.0);
+	font-size: 2rem;
+}
+
+.grid-image:hover {
+	transition: 0.2s ease-in;
+	color: #BABABA;
 }
 
 .grid-image {
@@ -158,4 +174,26 @@ a:hover {
 	font-weight: bolder;
 	font-size: 1.8rem;
 	color: #68A6ED;
+}
+
+#copied {
+  display: none;
+	position: absolute;
+  z-index: 1;
+  height: 100%;
+  width: 100%;
+  background: transparent;
+  opacity: 0;
+  font-size: 2rem;
+  place-items: center;
+  
+  transition: opacity 0.3s ease-out;
+}
+
+#copied.show {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  opacity: 1;
+  transition: opacity 0.3s ease-in;
 }

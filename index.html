@@ -5,22 +5,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>RadRealms</title>
 	<link rel="stylesheet" href="style.css">
+	<script src="app.js" defer></script>
 </head>
 <body>
-	<script>
-		function copyMcServerUrl() {
-			let serverUrl = 'mc.radrealms.com'
-			const listener = function (e) {
-				e.preventDefault()
-				e.clipboardData.setData('text/plain', serverUrl)
-			}
-
-			document.addEventListener('copy', listener)
-			document.execCommand('copy')
-			document.removeEventListener('copy', listener)
-		}
-
-	</script>
 	<div class="wrap">
 		<header>
 			<h1 class="box">RadRealms</h1>
@@ -32,14 +19,16 @@
 		</header>
 		<main>
 			<div class="box box1">
+
 				<h2>The first Minecraft Server<br> by, and for radfems.</h2>
-				<!-- <div id="clicked">Clicked!</div> -->
-				<pre onclick="copyMcServerUrl()">mc.radrealms.com</pre>
+				<div id="copied">Copied!</div>
+				<button onclick="copyMcServerUrl()">mc.radrealms.com</button>
 				<h2 style="color: #FF7F51">Please read the Installation Guide first!</h2>
+
 			</div>
 
-			<div class="grid-image" style="background-image: url('images/img2.jpg')"></div>
-			<div class="grid-image img2" style="background-image: url('images/img1.jpg')"></div>
+			<div class="grid-image img1" style="background-image: url('images/img2.jpg')" id="galleryButton">Click to view Gallery</div>
+			<div class="grid-image img2" style="background-image: url('images/img1.jpg')" id="galleryButton">Click to view Gallery</div>
 
 			<div class="box box2">
 				<h2 style="text-decoration: underline; padding-top: 2rem">Installation Guide</h2>
