@@ -15,15 +15,17 @@ function copyMcServerUrl() {
 
 const button = document.querySelector('button')
 const copyResult = document.getElementById('copied')
-
+const copyTriangle = document.getElementById('triangle')
 
 button.addEventListener('click', showHide)
 
 function showHide() {
-	console.log('tada!')
+	copyMcServerUrl()
 	copyResult.classList.add('show')
+	copyTriangle.classList.add('show')
 	setTimeout(() => {
 		console.log('timeout!')
 		copyResult.classList.remove('show')
-	}, 2000)
+		copyTriangle.classList.remove('show')
+	}, 1000)
 }

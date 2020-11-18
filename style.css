@@ -4,7 +4,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  position: relative;
+  /* position: relative; */
 }
 
 body {
@@ -177,23 +177,32 @@ a:hover {
 }
 
 #copied {
-  display: none;
 	position: absolute;
   z-index: 1;
-  height: 100%;
-  width: 100%;
-  background: transparent;
-  opacity: 0;
-  font-size: 2rem;
-  place-items: center;
-  
+	background: #7C808A;
+	color: #fff;
+	border-radius: 5px;
+	padding: 0.25rem 0.5rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-bottom: 7rem;
+	opacity: 0;
+	font-size: 2rem;
   transition: opacity 0.3s ease-out;
 }
 
-#copied.show {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  opacity: 1;
+#copied.show, #triangle.show {
+	opacity: 0.8;
   transition: opacity 0.3s ease-in;
+}
+
+#triangle {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+	border-top: 30px solid #7C808A;
+	margin-left: 50px;
 }
