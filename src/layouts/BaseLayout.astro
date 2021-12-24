@@ -1,0 +1,50 @@
+---
+import LogoHeader from '../components/LogoHeader.astro'
+import NavBar from '../components/NavBar.astro'
+
+let {title} = Astro.props
+---
+
+<html>
+<head>
+	<title>{title}</title>
+	<link rel="stylesheet" href={Astro.resolve('../styles/global.css')}>
+</head>
+<body>
+	<div class="layout">
+		<aside>
+			<LogoHeader/>
+			<NavBar/>
+		</aside>
+		<main>
+			<slot/>
+		</main>
+	</div>
+</body>
+</html>
+
+<style>
+	.layout {
+		width: 100%;
+		height: 100vh;
+		display: flex;
+	}
+
+	aside, main {
+		flex-basis: 20%;
+		border: 1px solid black;
+		padding: var(--space-2);
+	}
+
+	aside {
+		flex-grow: 1;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+	}
+
+	main {
+		flex-grow: 2;
+		text-align: right;
+	}
+</style>

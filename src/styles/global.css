@@ -1,0 +1,17 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+}
+
+:root {
+	--accent: cornflowerblue;
+
+	--space-1: 1rem;
+	--space-15: 1.5rem;
+	--space-2: 2rem;
+	--space-25: 2.5rem;
+}
+
+body {
+	font-family: Archive Garamond Pro, serif;
+}
