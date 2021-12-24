@@ -2,7 +2,7 @@
 let active = ''
 ---
 
-<nav>
+<nav class="navbar">
 	<a id="index" href="/">Homepage</a>
 	<a id="projects" href="/a">Projects</a>
 	<a id="resources" href="">Resources</a>
@@ -10,7 +10,26 @@ let active = ''
 </nav>
 
 <style>
+	.navbar {
+		display: flex;
+		flex-direction: column;
+		gap: var(--pd05);
+	}
 	a {
-		display: block;
+		font-family: var(--header-font);
+		font-size: clamp(var(--pd125), 4vw, var(--pd175));
+	}
+
+	@media screen and (max-width: 600px) {
+		.navbar {
+			flex-direction: row;
+			flex-wrap: wrap;
+			gap: var(--pd075);
+			margin-top: var(--pd1);
+		}
+
+		.navbar a {
+			color: var(--code-shade);
+		}
 	}
 </style>

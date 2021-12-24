@@ -1,17 +1,103 @@
 * {
-	box-sizing: border-box;
-	margin: 0;
+  box-sizing: border-box;
+  margin: 0;
 }
 
 :root {
-	--accent: cornflowerblue;
+	--black: #0b0d12;
+	--darker: #101319;
+	--dark: #141a21;
+	--dark-light: #182028;
+	--dark-lighter: #1c262e;
+  --header-shade: #fbfafb;
+	--text-shade: #cdcddc;
+	--code-shade: #b6b6ce;
+  --accent: #cc9dfa;
+	--accent-dark: #9063b8;
 
-	--space-1: 1rem;
-	--space-15: 1.5rem;
-	--space-2: 2rem;
-	--space-25: 2.5rem;
+	--pd025: 0.25rem;
+	--pd05: 0.5rem;
+	--pd075: 0.75rem;
+  --pd1: 1rem;
+	--pd125: 1.25rem;
+	--pd15: 1.5rem;
+	--pd175: 1.75rem;
+  --pd15: 1.5rem;
+  --pd2: 2rem;
+	--pd225: 2.25rem;
+	--pd25: 2.5rem;
+	--pd3: 3rem;
+
+	--text-font: Pixelva, Menlo, Consolas, monospace;
+	--header-font: glisp;
+	--logo-font: EagleSpCGA;
+	--bold-font: ChiKareGo2;
 }
 
+@font-face {
+  font-family: "glisp";
+  src: url("/fonts/OhSnap.ttf");
+}
+
+@font-face {
+  font-family: "EagleSpCGA";
+  src: url("/fonts/EagleSpCGA_Alt2.ttf");
+}
+
+@font-face {
+	font-family: "Pixelva";
+	src: url('/fonts/Pixelva.woff2');
+}
+
+@font-face {
+	font-family: "ChiKareGo2";
+	src: url('/fonts/ChiKareGo2.ttf');
+}
+
+
 body {
-	font-family: Archive Garamond Pro, serif;
+  height: 100%;
+
+	font-size: clamp(var(--pd075), 4vw, var(--pd125));
+  font-family: var(--text-font);
+
+  color: var(--text-shade);
+
+  background-image: linear-gradient(var(--darker), var(--black));
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+h1, h2, h3, h4 {
+	font-family: var(--header-font);
+	color: var(--header-shade);
+}
+
+a {
+	color: var(--accent);
+	text-decoration: none;
+}
+
+a.active {
+	text-decoration: underline;
+	color: var(--accent) !important;
+}
+
+.flex-container > * {
+  flex-grow: 1;
+}
+
+.flex-vertical {
+  display: flex;
+  flex-direction: column;
+}
+
+.date {
+	font-family: var(--header-font);
+}
+
+.date-icon {
+	width: 20px;
+	image-rendering: crisp-edges;
+	vertical-align: bottom;
 }

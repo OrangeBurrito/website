@@ -1,0 +1,32 @@
+---
+import LogoHeader from '../components/LogoHeader.astro'
+const { content } = Astro.props
+---
+
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>{content.title}</title>
+	<link rel="stylesheet" href={Astro.resolve('../styles/global.css')}>
+	<link rel="stylesheet" href={Astro.resolve('../styles/post.css')}>
+</head>
+<body>
+	<LogoHeader/>
+	<article>
+		<header class="post-header">
+			<img class="hero-image" src={content.coverImage}/>
+			<div class="text-block">
+				<h1 class="title">{content.title}</h1>
+				<p class="description">{content.description}</p>
+				<div class="date">
+					<time datetime={content.publishedDate}>{content.publishedDate}</time>
+					<img class="date-icon" src="/images/clock_icon.png" alt="">
+				</div>
+			</div>
+		</header>
+		<div class="content">
+			<slot/>
+		</div>
+	</article>
+</body>
+</html>

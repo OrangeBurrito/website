@@ -1,0 +1,58 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+
+
+export function getStaticPaths({paginate}) {
+	const allPosts = Astro.fetchContent('./posts/*.md')
+	const sortedPosts = allPosts.sort((a, b) => new Date(b.publishedDate).valueOf() - new Date(a.publishedDate).valueOf());
+  return paginate(sortedPosts, {pageSize: 5});
+}
+
+const {page} = Astro.props
+---
+
+<BaseLayout>
+<div class="post-list">
+{page.data.map((post) => (
+	<a class="post" href={post.url}>
+		<img class="post-icon" src={post.coverImage}/>
+		<div class="text-block">
+			<h2>{post.title}</h2>
+			<p>{post.description}</p>
+			<div class="date">
+				<time datetime={post.publishedDate}>{post.publishedDate}</time>
+				<img class="date-icon" src="/images/clock_icon.png" alt="">
+			</div>
+		</div>
+	</a>
+))}
+</div>
+</BaseLayout>
+
+<style>
+	.post {
+		position: relative;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: flex-end;
+		gap: var(--pd1);
+		padding-bottom: var(--pd2);
+	}
+	
+	.post p {
+		color: var(--text-shade);
+		font-size: var(--pd175);
+	}
+
+	.post-icon {
+		width: 70px;
+	}
+
+	@media screen and (max-width: 600px) {
+		.post-icon {
+			position: absolute;
+			left: 0;
+			z-index: -1;
+		}
+	}
+</style>

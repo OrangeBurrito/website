@@ -1,5 +1,19 @@
-<header>
-	<h1 class="title">OrangeBurrito</h1>
-	<h2 class="slogan">the spice must flow</h2>
+<header class="logo-header">
+	<a href="/">
+		<h1 class="logo-title">OrangeBurrito</h1>
+		<h2 class="slogan">the spice must flow</h2>
+	</a>
 </header>
 
+<style>
+	.logo-title {
+		font-family: var(--logo-font);
+		font-size: clamp(var(--pd15), 4vw, var(--pd25));
+		text-transform: uppercase;
+	}
+
+	.slogan {
+		color: var(--accent);
+		font-size: clamp(var(--pd125), 4vw, var(--pd2));
+	}
+</style>

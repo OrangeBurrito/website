@@ -7,6 +7,7 @@ let {title} = Astro.props
 
 <html>
 <head>
+	<meta charset="UTF-8">
 	<title>{title}</title>
 	<link rel="stylesheet" href={Astro.resolve('../styles/global.css')}>
 </head>
@@ -25,15 +26,20 @@ let {title} = Astro.props
 
 <style>
 	.layout {
+		display: flex;
 		width: 100%;
 		height: 100vh;
-		display: flex;
+	}
+
+	@media screen and (max-width: 600px) {
+		.layout {
+			flex-wrap: wrap;
+		}
 	}
 
 	aside, main {
 		flex-basis: 20%;
-		border: 1px solid black;
-		padding: var(--space-2);
+		padding: clamp(var(--pd15), 4vw, var(--pd2));
 	}
 
 	aside {

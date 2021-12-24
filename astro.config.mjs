@@ -14,7 +14,10 @@ export default {
   renderers: [],
 	markdownOptions: {
 		render: [
-			'@astrojs/markdown-remark'
+			'@astrojs/markdown-remark',
+			{
+				remarkPlugins: ['remark-breaks']
+			}
 		]
 	}
 };
