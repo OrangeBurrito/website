@@ -29,15 +29,22 @@
 	--pd3: 3rem;
 
 	--text-font: Pixelva, Menlo, Consolas, monospace;
-	--header-font: glisp;
+	--header-font: glispe;
 	--logo-font: EagleSpCGA;
 	--bold-font: ChiKareGo2;
 }
 
 @font-face {
   font-family: "glisp";
-  src: url("/fonts/OhSnap.ttf");
+  src: url("/fonts/glisp.ttf");
 }
+
+@font-face {
+  font-family: "glisp";
+	font-weight: bold;
+  src: url("/fonts/glisp_bold.ttf");
+}
+
 
 @font-face {
   font-family: "EagleSpCGA";
