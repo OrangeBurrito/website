@@ -28,8 +28,9 @@
 	--pd25: 2.5rem;
 	--pd3: 3rem;
 
-	--text-font: Pixelva, Menlo, Consolas, monospace;
-	--header-font: glispe;
+	--text-font: Pixelva, Roboto, BlinkMacSystemFont, -apple-system, sans-serif;
+	--header-font: glisp, Menlo, Consolas, monospace;
+	--code-font: Menlo, Consolas, monospace;
 	--logo-font: EagleSpCGA;
 	--bold-font: ChiKareGo2;
 }
