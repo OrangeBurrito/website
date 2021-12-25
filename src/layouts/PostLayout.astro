@@ -1,5 +1,6 @@
 ---
 import LogoHeader from '../components/LogoHeader.astro'
+import Date from '../components/Date.astro'
 const { content } = Astro.props
 ---
 
@@ -21,7 +22,7 @@ const { content } = Astro.props
 				<h1 class="title">{content.title}</h1>
 				<p class="description">{content.description}</p>
 				<div class="date">
-					<time datetime={content.publishedDate}>{content.publishedDate}</time>
+					<Date date={content.publishedDate} />
 					<img class="date-icon" src="/images/clock_icon.png" alt="">
 				</div>
 			</div>

@@ -1,6 +1,6 @@
 ---
 title: "Obscure Websites v.1"
-publishedDate: "2021-08-12"
+publishedDate: 2021-08-12
 coverImage: "https://i.redd.it/5usigl8mfyl21.jpg"
 description: "Google Search results not good enough for you? Come in!"
 layout: '../../layouts/PostLayout.astro'

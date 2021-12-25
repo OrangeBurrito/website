@@ -85,6 +85,10 @@ h3, h4 {
 	font-weight: normal;
 }
 
+p {
+	color: var(--text-shade);
+}
+
 a {
 	color: var(--accent);
 	text-decoration: none;

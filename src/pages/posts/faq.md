@@ -1,6 +1,6 @@
 ---
 title: "The Notorious F.A.Q"
-publishedDate: "2021-07-01"
+publishedDate: 2021-07-01
 coverImage: "/images/notoriousfaq.jpg"
 description: "Includes answers to the Ultimate Question of Life, the Universe, and Everything!"
 layout: '../../layouts/PostLayout.astro'
