@@ -8,7 +8,9 @@ let {title} = Astro.props
 <html>
 <head>
 	<meta charset="UTF-8">
+	<meta content="width=device-width, initial-scale=1" name="viewport" />
 	<title>{title}</title>
+	<link rel="shortcut icon" href="favicon.png" type="image/x-icon">
 	<link rel="stylesheet" href={Astro.resolve('../styles/global.css')}>
 </head>
 <body>
@@ -38,7 +40,6 @@ let {title} = Astro.props
 	}
 
 	aside, main {
-		flex-basis: 20%;
 		padding: clamp(var(--pd15), 4vw, var(--pd2));
 	}
 
@@ -46,11 +47,21 @@ let {title} = Astro.props
 		flex-grow: 1;
 		display: flex;
 		flex-direction: column;
-		justify-content: space-between;
 	}
 
 	main {
 		flex-grow: 2;
 		text-align: right;
+	}
+
+	@media screen and (min-width: 601px) {
+		aside {
+			justify-content: space-between;
+			flex-basis: 20%;
+		}
+
+		main {
+			flex-basis: 20%;
+		}
 	}
 </style>

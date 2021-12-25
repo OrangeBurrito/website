@@ -77,6 +77,10 @@ article {
 	font-size: clamp(var(--pd125), 2vw, var(--pd15));
 }
 
+.content a:hover {
+	text-decoration: underline;
+}
+
 .content p {
 	padding-bottom: var(--pd1);
 }

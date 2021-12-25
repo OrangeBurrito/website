@@ -11,13 +11,14 @@ export function getStaticPaths({paginate}) {
 const {page} = Astro.props
 ---
 
-<BaseLayout>
+<BaseLayout title="OrangeBurrito">
 <div class="post-list">
+<h1 class="posts-header">The Sacred Texts</h1>
 {page.data.map((post) => (
 	<a class="post" href={post.url}>
 		<img class="post-icon" src={post.coverImage}/>
 		<div class="text-block">
-			<h2>{post.title}</h2>
+			<h2 class="post-title">{post.title}</h2>
 			<p>{post.description}</p>
 			<div class="date">
 				<time datetime={post.publishedDate}>{post.publishedDate}</time>
@@ -30,18 +31,52 @@ const {page} = Astro.props
 </BaseLayout>
 
 <style>
+	.posts-header {
+		position: relative;
+		display: inline-block;
+		font-weight: normal;
+		font-size: clamp(var(--pd15), 4vw, var(--pd2));
+		color: var(--accent);
+		margin-bottom: clamp(var(--pd2), 4vw, var(--pd3));
+	}
+
+	.posts-header::after {
+		position: absolute;
+		right: 0;
+		top: var(--pd025);
+		content: '____';
+		color: rgba(0,0,0,0);
+		border-bottom: 3.5px solid var(--accent);
+	}
+
 	.post {
 		position: relative;
-		display: flex;
+		display: inline-flex;
 		flex-wrap: wrap;
 		justify-content: flex-end;
 		gap: var(--pd1);
-		padding-bottom: var(--pd2);
+		margin-bottom: clamp(var(--pd15), 4vw, var(--pd25));
+		transition: 0.08s ease-in;
+	}
+
+	.post:hover {
+		padding: 0 var(--pd15) var(--pd15) 0;
+		border-right: 4px solid var(--accent);
+		border-bottom: 4px solid var(--accent);
+		margin-bottom: var(--pd05);
+	}
+
+	.post:hover .post-title {
+		color: var(--accent);
+	}
+
+	.post-title, .post p {
+		filter: drop-shadow(-2px 2px var(--black));
 	}
 	
 	.post p {
 		color: var(--text-shade);
-		font-size: var(--pd175);
+		font-size: clamp(var(--pd125), 4vw, var(--pd175));
 	}
 
 	.post-icon {
@@ -49,6 +84,10 @@ const {page} = Astro.props
 	}
 
 	@media screen and (max-width: 600px) {
+		.posts-header::after {
+			border-bottom: 2.5px solid var(--accent);
+		}
+
 		.post-icon {
 			position: absolute;
 			left: 0;

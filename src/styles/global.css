@@ -29,21 +29,21 @@
 	--pd3: 3rem;
 
 	--text-font: Pixelva, Roboto, BlinkMacSystemFont, -apple-system, sans-serif;
-	--header-font: glisp, Menlo, Consolas, monospace;
+	--header-font: OhSnap, Menlo, Consolas, monospace;
 	--code-font: Menlo, Consolas, monospace;
 	--logo-font: EagleSpCGA;
 	--bold-font: ChiKareGo2;
 }
 
 @font-face {
-  font-family: "glisp";
-  src: url("/fonts/glisp.ttf");
+  font-family: "OhSnap";
+  src: url("/fonts/Ohsnap.ttf");
 }
 
 @font-face {
-  font-family: "glisp";
+  font-family: "OhSnap";
 	font-weight: bold;
-  src: url("/fonts/glisp_bold.ttf");
+  src: url("/fonts/OhsnapBold.ttf");
 }
 
 
@@ -81,6 +81,10 @@ h1, h2, h3, h4 {
 	color: var(--header-shade);
 }
 
+h3, h4 {
+	font-weight: normal;
+}
+
 a {
 	color: var(--accent);
 	text-decoration: none;
@@ -90,6 +94,7 @@ a.active {
 	text-decoration: underline;
 	color: var(--accent) !important;
 }
+
 
 .flex-container > * {
   flex-grow: 1;

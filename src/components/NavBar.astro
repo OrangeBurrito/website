@@ -4,8 +4,8 @@ let active = ''
 
 <nav class="navbar">
 	<a id="index" href="/">Homepage</a>
-	<a id="projects" href="/a">Projects</a>
-	<a id="resources" href="">Resources</a>
+	<a id="projects" href="/projects">Projects</a>
+	<a id="resources" href="/resources">Resources</a>
 	<a id="about" href="/about">About</a>
 </nav>
 
@@ -18,6 +18,10 @@ let active = ''
 	a {
 		font-family: var(--header-font);
 		font-size: clamp(var(--pd125), 4vw, var(--pd175));
+	}
+
+	a:hover {
+		text-decoration: underline;
 	}
 
 	@media screen and (max-width: 600px) {
