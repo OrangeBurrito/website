@@ -19,6 +19,7 @@
 	--pd05: 0.5rem;
 	--pd075: 0.75rem;
   --pd1: 1rem;
+	--pd115: 1.125rem;
 	--pd125: 1.25rem;
 	--pd15: 1.5rem;
 	--pd175: 1.75rem;
@@ -28,11 +29,16 @@
 	--pd25: 2.5rem;
 	--pd3: 3rem;
 
-	--text-font: Pixelva, Roboto, BlinkMacSystemFont, -apple-system, sans-serif;
+	--text-font: Menlo, SFMono-Regular, Monaco, Consolas, "Liberation Mono", monospace;
 	--header-font: OhSnap, Menlo, Consolas, monospace;
-	--code-font: Menlo, Consolas, monospace;
+	--code-font: var(--text-font);
 	--logo-font: EagleSpCGA;
 	--bold-font: ChiKareGo2;
+}
+
+@font-face {
+  font-family: "Menlo";
+  src: url("/fonts/Menlo.woff2");
 }
 
 @font-face {
@@ -46,15 +52,9 @@
   src: url("/fonts/OhsnapBold.ttf");
 }
 
-
 @font-face {
   font-family: "EagleSpCGA";
   src: url("/fonts/EagleSpCGA_Alt2.ttf");
-}
-
-@font-face {
-	font-family: "Pixelva";
-	src: url('/fonts/Pixelva.woff2');
 }
 
 @font-face {
@@ -111,10 +111,20 @@ a.active {
 
 .date {
 	font-family: var(--header-font);
+	margin-top: var(--pd1);
 }
 
 .date-icon {
 	width: 20px;
+	image-rendering: pixelated;
 	image-rendering: crisp-edges;
-	vertical-align: bottom;
+	vertical-align: top;
+}
+
+.title {
+	margin-bottom: clamp(var(--pd025), 2vw, var(--pd05));
+}
+
+.description {
+	max-width: 55ch;
 }

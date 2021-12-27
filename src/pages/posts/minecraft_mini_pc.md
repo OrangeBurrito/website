@@ -1,5 +1,5 @@
 ---
-title: "Of Mini PCs and Minecraft"
+title: "Minecraft on a Mini PC"
 publishedDate: 2021-10-20
 coverImage: "/images/nuc_craft.png"
 description: "How to setup an Intel NUC to run a Minecraft Server"

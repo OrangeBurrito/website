@@ -20,16 +20,12 @@
 }
 
 .post-header .description {
-	font-size: var(--pd15);
+	font-size: var(--pd125);
 }
 
 .post-header .hero-image {
 	width: 100px;
 	object-fit: contain;
-}
-
-.post-header .date {
-	margin-top: var(--pd1);
 }
 
 .content h2, .content h3, .content h4, .content h5 {
@@ -41,13 +37,13 @@ article {
 	width: 60%;
 	display: flex;
 	flex-direction: column;
-	background-image: linear-gradient(var(--dark-light), var(--dark));
 	padding: clamp(var(--pd125), 2vw, var(--pd2));
 	margin: 0 auto;
 }
 
 .content {
 	width: 100%;
+	line-height: 1.5;
 }
 
 @media (max-width: 600px) {
@@ -74,7 +70,7 @@ article {
 }
 
 .content p, .content li, .content a {
-	font-size: clamp(var(--pd125), 2vw, var(--pd15));
+	font-size: clamp(var(--pd1), 2vw, var(--pd115));
 }
 
 .content a:hover {
@@ -106,12 +102,11 @@ article {
 
 
 .content blockquote {
-	background: var(--dark-lighter);
+	background: var(--dark);
 	padding: var(--pd1);
-	border-left: var(--pd05) solid var(--dark-light);
+	border-left: var(--pd05) solid var(--dark-lighter);
 	margin-bottom: var(--pd15);
 }
 .content blockquote p {
 	padding: 0;
-	color: var(--code-shade);
 }

@@ -7,8 +7,8 @@ const options = { year: 'numeric', month: 'long', day: 'numeric' }
 <a class="post" href={post.url}>
 		<img class="post-icon" src={post.coverImage}/>
 		<div class="text-block">
-			<h2 class="post-title">{post.title}</h2>
-			<p>{post.description}</p>
+			<h2 class="post-title title">{post.title}</h2>
+			<p class="description">{post.description}</p>
 			<div class="date">
 				<Date date={post.publishedDate}/>
 				<img class="date-icon" src="/images/clock_icon.png" alt="">
@@ -39,49 +39,4 @@ const options = { year: 'numeric', month: 'long', day: 'numeric' }
 		width: 60px;
 		object-fit: contain;
 	}
-/* .post {
-		position: relative;
-		display: inline-flex;
-		flex-wrap: wrap;
-		justify-content: flex-end;
-		gap: var(--pd1);
-		margin-bottom: clamp(var(--pd15), 4vw, var(--pd25));
-		transition: 0.08s ease-in;
-	}
-
-	.post:hover {
-		padding: 0 var(--pd15) var(--pd15) 0;
-		border-right: 4px solid var(--accent);
-		border-bottom: 4px solid var(--accent);
-		margin-bottom: var(--pd05);
-	}
-
-	.post:hover .post-title {
-		color: var(--accent);
-	}
-
-	.post-title, .post p {
-		filter: drop-shadow(-2px 2px var(--black));
-	}
-	
-	.post p {
-		color: var(--text-shade);
-		font-size: clamp(var(--pd125), 4vw, var(--pd175));
-	}
-
-	.post-icon {
-		width: 70px;
-	}
-
-	@media screen and (max-width: 600px) {
-		.posts-header::after {
-			border-bottom: 2.5px solid var(--accent);
-		}
-
-		.post-icon {
-			position: absolute;
-			left: 0;
-			z-index: -1;
-		}
-	} */
 </style>
