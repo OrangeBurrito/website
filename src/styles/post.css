@@ -1,5 +1,5 @@
 .logo-header {
-	padding: clamp(var(--space-mlg), 4vw, var(--space-md));
+	padding: var(--space-md);
 }
 
 .post-header {
@@ -30,15 +30,14 @@
 	font-size: var(--space-xl);
 }
 
-.post-header .description {
-	font-size: var(--space-md);
-}
-
 .post-header .hero-image {
 	width: 100px;
 	object-fit: contain;
 }
 
+.content p, .content li, .content a {
+	font-size: var(--space-bsm);
+}
 
 .content h2, .content h3, .content h4, .content h5 {
 	margin-top: var(--space-md);
@@ -50,7 +49,7 @@ article {
 	width: 60%;
 	display: flex;
 	flex-direction: column;
-	padding: clamp(var(--space-md), 2vw, var(--space-md));
+	padding: var(--space-md);
 	margin: 0 auto;
 }
 
@@ -78,10 +77,6 @@ img + em {
 	margin-top: -1rem;
 	padding-bottom: var(--space-mlg);
 	text-align: center;
-}
-
-p, li, a {
-	font-size: clamp(var(--space-sm), 2vw, var(--space-md));
 }
 
 a {
@@ -116,7 +111,7 @@ pre {
 }
 
 code {
-	font-size: clamp(14px, 2vw, 17px);
+	font-size: var(--space-base);
 	letter-spacing: -0.3px;
 	line-height: 1.5;
 	padding: var(--space-xxs) var(--space-xs);
