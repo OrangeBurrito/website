@@ -3,10 +3,21 @@
 }
 
 .post-header {
+	position: relative;
 	display: flex;
 	justify-content: center;
 	gap: var(--pd2);
-	padding: clamp(var(--pd1), 2vw, var(--pd2));
+	padding: var(--pd2);
+	margin-bottom: var(--pd2);
+}
+
+.post-header::after {
+	position: absolute;
+	bottom: -1rem;
+	left: 0;
+	content: '_________';
+	color: rgba(0,0,0,0);
+	border-top: 3.5px solid var(--accent);
 }
 
 @media screen and (max-width: 600px) {
@@ -28,11 +39,13 @@
 	object-fit: contain;
 }
 
+
 .content h2, .content h3, .content h4, .content h5 {
 	margin-top: var(--pd2);
 	padding-bottom: var(--pd075);
 }
 
+.content h1:first-of-type , .content h2:first-of-type  { margin-top: 0;}
 article {
 	width: 60%;
 	display: flex;
@@ -60,53 +73,61 @@ article {
 	margin: 0 auto;
 }
 
-.content img + em {
-	font-family: var(--bold-font);
-	font-style: normal;
+img + em {
 	display: block;
 	margin-top: -1rem;
 	padding-bottom: var(--pd15);
 	text-align: center;
 }
 
-.content p, .content li, .content a {
+p, li, a {
 	font-size: clamp(var(--pd1), 2vw, var(--pd115));
 }
 
-.content a:hover {
-	text-decoration: underline;
+a {
+	background: linear-gradient(to bottom, var(--accent) 0%, var(--accent) 100%);
+	padding-bottom: 3px;
+	background-position: 0 100%;
+	background-repeat: repeat-x;
+	background-size: 4px 2px;
+	text-decoration: none;
+	transition: all 0.125s ease-in;
 }
 
-.content p {
-	padding-bottom: var(--pd1);
+a:hover{
+	color: var(--black);
+	background-size: 4px 50px;
 }
 
-.content pre, .content code {
+.content > p {padding-bottom: var(--pd1);}
+li { padding-bottom: var(--pd05); }
+li p { padding-bottom: var(--pd025);}
+
+pre, code {
 	background: var(--darker);
 	color: var(--code-shade);
 }
 
-.content pre {
+pre {
 	padding: var(--pd1);
 	margin: var(--pd1) 0 var(--pd175) 0;
 	overflow-x: scroll;
 	font-family: var(--code-font);
 }
 
-.content code {
+code {
 	font-size: clamp(14px, 2vw, 17px);
 	letter-spacing: -0.3px;
 	line-height: 1.5;
 	padding: var(--pd025) var(--pd05);
 }
 
-
-.content blockquote {
+blockquote {
 	background: var(--dark);
 	padding: var(--pd1);
 	border-left: var(--pd05) solid var(--dark-lighter);
 	margin-bottom: var(--pd15);
 }
-.content blockquote p {
+blockquote p {
 	padding: 0;
 }

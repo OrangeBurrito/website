@@ -55,7 +55,7 @@ But in a serendipitous turn of events, something rather big happened 66 million 
 Unfortunately, dried old bones can't tell us everything.  There's a fair amount of guesswork at play here, so we can't be certain what pterosaurs and Archaeopteryx looked like unless we invent a time machine.
 Pterosaurs may have been a startling shade of hot pink for all we know.
 
-## On the Origin of S̶p̶e̶c̶i̶e̶s̶ Birds
+## On the Origin of Bords
 
 About 73,000 days ago, a twenty-something university graduate preparing for a mundane career as a clergyman recieved an invite from the ship's captain to join the 10-gun warship-turned survey ship the SMH Beagle (supposedly the ship's captain was in need of a geologist).
 

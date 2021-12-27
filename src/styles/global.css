@@ -24,21 +24,44 @@
 	--pd15: 1.5rem;
 	--pd175: 1.75rem;
   --pd15: 1.5rem;
-  --pd2: 2rem;
+  --pd2: clamp(var(--pd1), 4vw, 2rem);
 	--pd225: 2.25rem;
 	--pd25: 2.5rem;
 	--pd3: 3rem;
 
 	--text-font: Menlo, SFMono-Regular, Monaco, Consolas, "Liberation Mono", monospace;
-	--header-font: OhSnap, Menlo, Consolas, monospace;
+	--header-font: OhSnap, Futura, 'Century Gothic', AppleGothic, sans-serif;
 	--code-font: var(--text-font);
 	--logo-font: EagleSpCGA;
 	--bold-font: ChiKareGo2;
 }
 
 @font-face {
-  font-family: "Menlo";
-  src: url("/fonts/Menlo.woff2");
+	font-family: 'Menlo';
+	font-style: normal;
+	font-weight: 400;
+	src: local('Menlo Regular'), local('Menlo-Regular'), url('Menlo.woff2') format('woff2');
+}
+
+@font-face {
+	font-family: 'Menlo';
+	font-style: normal;
+	font-weight: bold;
+	src: local('Menlo Bold'), local('Menlo-Bold'), url('MenloBold.woff2') format('woff2');
+}
+
+@font-face {
+	font-family: 'Menlo';
+	font-style: italic;
+	font-weight: 400;
+	src: local('Menlo Italic'), local('Menlo-Italic'), url('MenloItalic.woff2') format('woff2');
+}
+
+@font-face {
+	font-family: 'Menlo';
+	font-style: italic;
+	font-weight: bold;
+	src: local('Menlo Bold Italic'), local('Menlo-BoldItalic'), url('MenloBoldItalic.woff2') format('woff2');
 }
 
 @font-face {
@@ -57,12 +80,6 @@
   src: url("/fonts/EagleSpCGA_Alt2.ttf");
 }
 
-@font-face {
-	font-family: "ChiKareGo2";
-	src: url('/fonts/ChiKareGo2.ttf');
-}
-
-
 body {
   height: 100%;
 
@@ -71,6 +88,7 @@ body {
 
   color: var(--text-shade);
 
+	background: var(--black);
   background-image: linear-gradient(var(--darker), var(--black));
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -95,7 +113,6 @@ a {
 }
 
 a.active {
-	text-decoration: underline;
 	color: var(--accent) !important;
 }
 
@@ -110,6 +127,7 @@ a.active {
 }
 
 .date {
+	font-size: clamp(var(--pd115), 4vw, var(--pd15));
 	font-family: var(--header-font);
 	margin-top: var(--pd1);
 }

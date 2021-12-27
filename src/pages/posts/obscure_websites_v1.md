@@ -17,7 +17,8 @@ The listed sites may or may not be obscure depending on how senile you are (obsc
 	- Wikipedia with a more modern user interface.
 
 1. [TypeRip](https://badnoise.net/typerip)
-	- For "borrowing" fonts from Adobe Fonts, free of charge! (my personal favorite is JAF Johannes)
+	- For "borrowing" fonts from Adobe Fonts, free of charge!
+	(my personal favorite is **JAF Johannes**)
 
 1. [Coolors](https://coolors.co)
 	- An easy-to-use color palette generator, with names like "Radical Red" and "Purple Mountain Majesty"
