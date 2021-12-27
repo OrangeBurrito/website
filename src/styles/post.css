@@ -1,14 +1,14 @@
 .logo-header {
-	padding: clamp(var(--pd15), 4vw, var(--pd2));
+	padding: clamp(var(--space-mlg), 4vw, var(--space-md));
 }
 
 .post-header {
 	position: relative;
 	display: flex;
 	justify-content: center;
-	gap: var(--pd2);
-	padding: var(--pd2);
-	margin-bottom: var(--pd2);
+	gap: var(--space-md);
+	padding: var(--space-md);
+	margin-bottom: var(--space-md);
 }
 
 .post-header::after {
@@ -27,11 +27,11 @@
 }
 
 .post-header .title {
-	font-size: var(--pd225);
+	font-size: var(--space-xl);
 }
 
 .post-header .description {
-	font-size: var(--pd125);
+	font-size: var(--space-md);
 }
 
 .post-header .hero-image {
@@ -41,8 +41,8 @@
 
 
 .content h2, .content h3, .content h4, .content h5 {
-	margin-top: var(--pd2);
-	padding-bottom: var(--pd075);
+	margin-top: var(--space-md);
+	padding-bottom: var(--space-sm);
 }
 
 .content h1:first-of-type , .content h2:first-of-type  { margin-top: 0;}
@@ -50,7 +50,7 @@ article {
 	width: 60%;
 	display: flex;
 	flex-direction: column;
-	padding: clamp(var(--pd125), 2vw, var(--pd2));
+	padding: clamp(var(--space-md), 2vw, var(--space-md));
 	margin: 0 auto;
 }
 
@@ -69,19 +69,19 @@ article {
 .content img {
 	display: block;
 	max-width: 100%;
-	padding: var(--pd2);
+	padding: var(--space-md);
 	margin: 0 auto;
 }
 
 img + em {
 	display: block;
 	margin-top: -1rem;
-	padding-bottom: var(--pd15);
+	padding-bottom: var(--space-mlg);
 	text-align: center;
 }
 
 p, li, a {
-	font-size: clamp(var(--pd1), 2vw, var(--pd115));
+	font-size: clamp(var(--space-sm), 2vw, var(--space-md));
 }
 
 a {
@@ -99,9 +99,9 @@ a:hover{
 	background-size: 4px 50px;
 }
 
-.content > p {padding-bottom: var(--pd1);}
-li { padding-bottom: var(--pd05); }
-li p { padding-bottom: var(--pd025);}
+.content > p {padding-bottom: var(--space-base);}
+li { padding-bottom: var(--space-xs); }
+li p { padding-bottom: var(--space-xxs);}
 
 pre, code {
 	background: var(--darker);
@@ -109,8 +109,8 @@ pre, code {
 }
 
 pre {
-	padding: var(--pd1);
-	margin: var(--pd1) 0 var(--pd175) 0;
+	padding: var(--space-base);
+	margin: var(--space-base) 0 var(--space-lg) 0;
 	overflow-x: scroll;
 	font-family: var(--code-font);
 }
@@ -119,14 +119,14 @@ code {
 	font-size: clamp(14px, 2vw, 17px);
 	letter-spacing: -0.3px;
 	line-height: 1.5;
-	padding: var(--pd025) var(--pd05);
+	padding: var(--space-xxs) var(--space-xs);
 }
 
 blockquote {
 	background: var(--dark);
-	padding: var(--pd1);
-	border-left: var(--pd05) solid var(--dark-lighter);
-	margin-bottom: var(--pd15);
+	padding: var(--space-base);
+	border-left: var(--space-xs) solid var(--dark-lighter);
+	margin-bottom: var(--space-mlg);
 }
 blockquote p {
 	padding: 0;

@@ -18,10 +18,13 @@ const options = { year: 'numeric', month: 'long', day: 'numeric' }
 
 <style>
 	.post {
+		position: relative;
 		display: inline-flex;
-		gap: clamp(var(--pd025), 4vw, var(--pd1));
+		gap: clamp(var(--space-xxs), 4vw, var(--space-base));
 		transition: 0.08s ease-in;
-		margin-bottom: clamp(var(--pd15), 4vw, var(--pd25));
+		margin-bottom: clamp(var(--space-mlg), 4vw, var(--space-xl));
+		top: 0;
+		left: 0;
 	}
 
 	.post-title {
@@ -29,10 +32,11 @@ const options = { year: 'numeric', month: 'long', day: 'numeric' }
 	}
 
 	.post:hover {
+		top: -4px;
+		left: -4px;
 		border-right: 4px solid var(--accent);
 		border-bottom: 4px solid var(--accent);
-		padding: 0 var(--pd1) var(--pd1) 0;
-		margin-bottom: clamp(var(--pd025), 4vw, var(--pd15));
+		padding: 0 var(--space-base) var(--space-base) 0;
 	}
 
 	.post-icon {

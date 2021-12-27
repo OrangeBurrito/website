@@ -15,19 +15,17 @@
   --accent: #cc9dfa;
 	--accent-dark: #9063b8;
 
-	--pd025: 0.25rem;
-	--pd05: 0.5rem;
-	--pd075: 0.75rem;
-  --pd1: 1rem;
-	--pd115: 1.125rem;
-	--pd125: 1.25rem;
-	--pd15: 1.5rem;
-	--pd175: 1.75rem;
-  --pd15: 1.5rem;
-  --pd2: clamp(var(--pd1), 4vw, 2rem);
-	--pd225: 2.25rem;
-	--pd25: 2.5rem;
-	--pd3: 3rem;
+	--base-unit: 16px;
+  --space-xxs:  calc(0.25 * var(--base-unit)); /* 4px */
+  --space-xs:   calc(0.5 * var(--base-unit));  /* 8px */
+  --space-sm:   calc(0.75 * var(--base-unit)); /* 12px */
+	--space-base: calc(1 * var(--base-unit)); /* 16px */
+  --space-md:   calc(1.25 * var(--base-unit)); /* 20px */
+  --space-mlg:   calc(1.5 * var(--base-unit)); /* 24px */
+  --space-lg:   calc(2 * var(--base-unit));    /* 32px */
+  --space-xl:   calc(2.5 * var(--base-unit));    /* 40px */
+  --space-xxl:   calc(3.25 * var(--base-unit)); /* 52px */
+  --space-xxxl:  calc(5.25 * var(--base-unit)); /* 84px */
 
 	--text-font: Menlo, SFMono-Regular, Monaco, Consolas, "Liberation Mono", monospace;
 	--header-font: OhSnap, Futura, 'Century Gothic', AppleGothic, sans-serif;
@@ -83,7 +81,7 @@
 body {
   height: 100%;
 
-	font-size: clamp(var(--pd075), 4vw, var(--pd125));
+	font-size: clamp(var(--space-sm), 4vw, var(--space-md));
   font-family: var(--text-font);
 
   color: var(--text-shade);
@@ -116,7 +114,6 @@ a.active {
 	color: var(--accent) !important;
 }
 
-
 .flex-container > * {
   flex-grow: 1;
 }
@@ -127,9 +124,9 @@ a.active {
 }
 
 .date {
-	font-size: clamp(var(--pd115), 4vw, var(--pd15));
+	font-size: clamp(var(--space-mlg), 4vw, var(--space-mlg));
 	font-family: var(--header-font);
-	margin-top: var(--pd1);
+	margin-top: var(--space-base);
 }
 
 .date-icon {
@@ -140,7 +137,7 @@ a.active {
 }
 
 .title {
-	margin-bottom: clamp(var(--pd025), 2vw, var(--pd05));
+	margin-bottom: clamp(var(--space-xxs), 2vw, var(--space-xs));
 }
 
 .description {
