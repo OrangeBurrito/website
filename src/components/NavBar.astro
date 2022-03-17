@@ -4,8 +4,8 @@ let active = ''
 
 <nav class="navbar">
 	<a id="index" href="/">Home</a>
-	<a id="projects" href="/projects">Projects</a>
-	<a id="resources" href="/resources">Resources</a>
+	<a id="projects" href="/projects" class="deactivated">Projects</a>
+	<a id="resources" href="/resources" class="deactivated">Resources</a>
 	<a id="about" href="/about">About</a>
 </nav>
 
@@ -22,6 +22,12 @@ let active = ''
 
 	a:hover {
 		text-decoration: underline;
+	}
+
+	a.deactivated {
+		color: var(--code-shade);
+		text-decoration: line-through;
+		pointer-events: none;
 	}
 
 	@media screen and (max-width: 600px) {
