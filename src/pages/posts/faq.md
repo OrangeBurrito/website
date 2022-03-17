@@ -1,5 +1,5 @@
 ---
-title: "The Notorious F.A.Q"
+title: "F.A.Q"
 publishedDate: 2021-07-01
 coverImage: "/images/notoriousfaq.jpg"
 description: "The Official OrangeBurrito FAQ page™"
@@ -32,11 +32,10 @@ Through my [GitHub](https://github.com/orangeburrito).
 ***A:*** This site is powered by [Astro](https://astro.build/) and hosted on [Netlify](https://netlify.com).
 
 ### *Q*: What's the main topic of this blog?
-***A:*** Frontend programming, UNIX and miscellaneous humor.
+***A:*** Adventures in linuxland, fonts and miscellaneous tchotchkes.
 
 ### *Q*: Is this website a glorified resume?
 ***A:*** Aren't all personal websites glorified resumes? (please hire me)
-
 ___ 
 
 This concludes the FAQ. Here is one last parting gift:

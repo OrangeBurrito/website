@@ -152,6 +152,16 @@ a.active {
 	max-width: 55ch;
 }
 
+.page-main-header {
+	position: relative;
+	display: inline-block;
+	font-weight: normal;
+	font-size: var(--space-lg);
+	color: var(--accent);
+	padding-bottom: var(--space-xxs);
+	margin-bottom: var(--space-xxl);
+	border-bottom: 3.5px solid var(--accent);
+}
 
 @media screen and (min-width: 600px) {
   :root {
