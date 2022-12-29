@@ -15,10 +15,10 @@ If you get permission errors when attempting to install, allow unidentified apps
 ## Topaz Gigapixel AI
 The app is an image upscaler that uses AI to increase the resolution of images.  It can be performance heavy due to the mysterious computational contortions required to intelligently resize said images.
 
-- Download .dmg from (https://www.123pan.com/s/l2tA-D0Y23)
+- Download .dmg from [here](https://www.123pan.com/s/l2tA-D0Y23)
 - Mount said dmg.  Inside, mount the *other* dmg called something like Topaz Giga.dmg
-- Inside the nested dmg, copy the .plist config file to the Preferences file shortcut (~/Library/Preferences)
+- Inside the nested dmg, copy the .plist config file to the Preferences file shortcut (`~/Library/Preferences`)
 - Returning to the original mounted drive, copy Topaz Gigapixel AI.app to Applications
-- Launch the app and install the required datasets.  If there is no Free Trial popup, you're done.
+- Launch the app and install the required datasets.  If there is no Free Trial popup, you're done
 
-![Upscaled Normandy SR-2](/images/upscaled_normandy.jpg)*The Bord, all-mighty deity, has known many forms, the ancient egyptian Horus being one of them*
+![Upscaled Normandy SR-2](/images/upscaled_normandy.jpg)*An upscaled picture of a franchise's spaceship (from 1080x to 3840x), compressed to appease the Lighthouse*

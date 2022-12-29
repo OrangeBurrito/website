@@ -33,6 +33,7 @@
 
 .text-block::after {
 	position: absolute;
+	bottom: 0px;
 	content: '_________';
 	color: rgba(0,0,0,0);
 	border-top: 3.5px solid var(--accent);
