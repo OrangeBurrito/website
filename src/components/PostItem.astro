@@ -4,8 +4,11 @@ const { post } = Astro.props
 const options = { year: 'numeric', month: 'long', day: 'numeric' }
 ---
 
-<a class="post" href={post.url}>
-		<img class="post-icon" src={post.coverImage}/>
+<div class="post">
+<a href={post.url}>
+	<div class="post-icon">
+		<img src={post.coverImage}/>
+	</div>
 		<div class="text-block">
 			<h2 class="post-title title">{post.title}</h2>
 			<p class="description">{post.description}</p>
@@ -15,20 +18,24 @@ const options = { year: 'numeric', month: 'long', day: 'numeric' }
 			</div>
 		</div>
 	</a>
-
+</div>
 <style>
 	.post {
-		position: relative;
-		display: inline-flex;
+		display: flex;
+		justify-content: flex-end;
 		gap: var(--space-base);
-		transition: 0.08s ease-in;
-		margin-bottom: var(--space-xl);
+		position: relative;
 		top: 0;
 		left: 0;
-	}
+		width: 100%;
 
+		transition: 0.08s ease-in;
+		margin-bottom: var(--space-xl);
+	}
+	
 	.post-title {
 		display: inline-block;
+		font-size: var(--space-mlg);
 	}
 
 	.post:hover {
@@ -44,7 +51,23 @@ const options = { year: 'numeric', month: 'long', day: 'numeric' }
 	}
 
 	.post-icon {
-		width: 60px;
-		object-fit: contain;
+		position: absolute;
+		height: 80%;
+		width: 20%;
+		left: 30%;
+		z-index: -1;
+	}
+	
+	.post-icon img {
+		max-width: 100%;
+		max-height: 100%;
+		object-fit: cover;
+	}
+
+	@media (max-width: 600px) {
+		.post-icon {
+		width: 50%;
+		left: 0;
+		}
 	}
 </style>

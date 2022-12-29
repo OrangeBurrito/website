@@ -4,11 +4,6 @@
 }
 
 :root {
-	/* --black: #0b0d12;
-	--darker: #101319;
-	--dark: #141a21;
-	--dark-light: #182028;
-	--dark-lighter: #1c262e; */
 	--black: #000920;
 	--darker: #11192A;
 	--dark: #233357;
@@ -21,6 +16,7 @@
 	--accent-dark: #9063b8;
 
 	--accent: #6189f6;
+	--accent-light: #8aa7fc;
 	--base-unit: 12px;
   --space-xxs:  calc(0.25 * var(--base-unit)); /* 4px */
   --space-xs:   calc(0.5 * var(--base-unit));  /* 8px */
@@ -28,7 +24,8 @@
 	--space-base: calc(1 * var(--base-unit)); /* 16px */
 	--space-bsm: calc(1.125 * var(--base-unit)); /* 18px */
   --space-md:   calc(1.25 * var(--base-unit)); /* 20px */
-  --space-mlg:   calc(1.5 * var(--base-unit)); /* 24px */
+  --space-dlg:   calc(1.5 * var(--base-unit)); /* 24px */
+  --space-mlg:   calc(1.75 * var(--base-unit)); /* 28px */
   --space-lg:   calc(2 * var(--base-unit));    /* 32px */
   --space-xl:   calc(2.5 * var(--base-unit));    /* 40px */
   --space-xxl:   calc(3.25 * var(--base-unit)); /* 52px */
@@ -104,10 +101,6 @@ h1, h2, h3, h4 {
 	color: var(--header-shade);
 }
 
-h3, h4 {
-	font-weight: normal;
-}
-
 p {
 	font-size: var(--space-md);
 	color: var(--text-shade);
@@ -132,7 +125,7 @@ a.active {
 }
 
 .date {
-	font-size: var(--space-mlg);
+	font-size: var(--space-dlg);
 	font-family: var(--header-font);
 	margin-top: var(--space-base);
 }
@@ -149,7 +142,7 @@ a.active {
 }
 
 .description {
-	max-width: 55ch;
+	max-width: 40ch;
 }
 
 .page-main-header {

@@ -32,18 +32,18 @@ You can use asterixes for the time fields to select every hour/minute/etc.
 ## Cron examples:
 
 1. This runs a shell script located at an absolute path every five minutes.
-```bash=
+```
 */5 * * * * /home/orangeburrito/Documents/scripts/script.sh 
 ```
 
 Inside the aforementioned shell script:
-```shell=
+```
 #!/bin/sh
 date "+Date: %D%nTime: %r" >> /home/orangeburrito/Documents/output.txt
 ```
 
 2. This runs a command that outputs the current date to a file located at an absolute path, once a day at 6 AM.
-```bash=
+```
 0 6 * * * date "+Date: %D%nTime: %r" >> /home/orangeburrito/Documents/output.txt
 ```
 
@@ -56,7 +56,7 @@ The location of the script file should be determined using `pwd`
 
 > If running folder-specific commands inside your script file, navigate to that folder beforehand.
 > e.g. running a compose script:
-> ```bash=
+> ```
 > #!/bin/sh
 > cd /path/to/folder
 > docker-compose up -d
@@ -82,8 +82,8 @@ You can insert environment variables into the cron config file at the top.
 
 For example:
 
-```bash=
+```
 PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
-SHELL=/bin/sh
+/bin/sh
 */2 * * * * /home/orangeburrito/Documents/scripts/script.sh > /home/orangeburrito/Documents/cronlog.log
 ```

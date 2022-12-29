@@ -3,22 +3,46 @@ import BaseLayout from '../layouts/BaseLayout.astro'
 ---
 
 <BaseLayout title="About">
-	<h1>About:</h1>
-	<p>
-		Nothing much to note here.
-	</p>
+	<h1 class="page-main-header">Confidentiality Agreement: Void</h1>
+	<h1 class="title">Dossier: OrangeBurrito</h1>
+	<p>Typography enthusiast, full of bees.</p>
+	<p>This blog is a TERF.</p>
 	<div class="coolbg"/>
-	<a href="https://github.com/OrangeBurrito">My GitHub</a>
+	<div class="links">
+		<a href="https://github.com/OrangeBurrito" target="_blank"><span>GitHub</span> (Fountain of truth)</a>
+		<a href="https://app.thestorygraph.com/profile/orangeburrito" target="_blank"><span>Storygraph</span> (Goodreads clone account)</a>
+	</div>
 </BaseLayout>
 
 <style>
-	p {
-		font-size: var(--space-mlg);
+	.page-main-header {
+		margin-bottom: var(--space-base);
 	}
 
-	.coolbg {
-		width: 250px;
-		height: 200px;
-		background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAHCAYAAADEUlfTAAAAG0lEQVQIW2NMKL/ty4ADMIIkF3SqbsYmP+gkAayXGgf/OWOiAAAAAElFTkSuQmCC')
+	.title {
+		font-size: var(--space-xl);
+		margin-bottom: var(--space-dlg);
+	}
+
+	p {
+		font-size: var(--space-dlg);
+		margin-bottom: var(--space-xxs);
+	}
+
+	.links {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-end;
+		gap: var(--space-xs);
+		margin-top: var(--space-xxl);
+	}
+
+	a {
+		font-size: var(--space-dlg);
+		border-bottom: 2px solid var(--accent);
+	}
+
+	span {
+		color: var(--accent-light);
 	}
 </style>

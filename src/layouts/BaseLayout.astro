@@ -37,6 +37,7 @@ let {title} = Astro.props
 	@media screen and (max-width: 600px) {
 		.layout {
 			flex-wrap: wrap;
+			height: auto;
 		}
 	}
 
@@ -53,12 +54,14 @@ let {title} = Astro.props
 	main {
 		flex-grow: 2;
 		text-align: right;
+		overflow: scroll;
 	}
 
 	.main-image {
 		position: absolute;
 		image-rendering: pixelated;
 		image-rendering: crisp-edges;
+		z-index: -3;
 		bottom: 15%;
 		left: 15%;
 		width: 400px;
@@ -66,9 +69,8 @@ let {title} = Astro.props
 
 	@media screen and (max-width: 600px) {
 		.main-image {
-			width: 100px;
-			z-index: -1;
-			bottom: 0;
+			width: 200px;
+			opacity: 0.5;
 		}
 	}
 
