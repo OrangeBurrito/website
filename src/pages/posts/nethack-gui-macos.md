@@ -1,5 +1,5 @@
 ---
-title: 'Compiling Nethack with Tiles on MacOS'
+title: 'Compiling Nethack with Tiles (MacOS)'
 publishedDate: 2024-01-12
 coverImage: "/images/successful.jpg"
 description: "How to compile/install Nethack with tiles on newer versions of Mac"
@@ -68,7 +68,7 @@ You can find your QT path by running `brew info qt5`, it'll look something like 
 make WANT_WIN_QT=1 QTDIR=[QT Path]
 ```
 
-After it finishes building, run `make install` to create your executable. If you've built successfully it should output a short blurb about the game version and what platform it was built for. 
+After it finishes building, run `make install` to create your executable. If you've built successfully, it should output a short blurb about the game version and what platform it was built for (darwin...)
 
 By default, your nethack installation is located at your home directory, at `~/nethackdir`.
 
@@ -95,7 +95,7 @@ OPTIONS=tile_file:SharperTileset.bmp,tile_width:32,tile_height:32
 
 Finally, run the `nethack` executable inside `nethackdir`, and enjoy. If your paths and filenames are correct you should be dungeon-crawling with gloriously colored pixels.
 
-If the map interface is too small, you can adjust the tile width/height in Game > Qt Settings, increasing or decreasing by orders of magnitude.
+If the map interface is too small, you can adjust the tile width/height in `Game > Qt Settings`, increasing or decreasing the resolution in pixels by orders of magnitude.
 
 ![Screenshot of a session of Nethack Qt](/images/successful.png)_A barbarian wanderers around a pixel-painted dungeon, on a freshly compiled version of Nethack Qt_
 
