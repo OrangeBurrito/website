@@ -1,6 +1,7 @@
 ---
 title: "Minecraft on a Mini PC"
 publishedDate: 2021-10-20
+updatedDate: 2025-09-01
 coverImage: "/images/nuc_craft.png"
 description: "How to setup an Intel NUC to run a Minecraft Server"
 layout: '../../layouts/PostLayout.astro'
@@ -31,16 +32,16 @@ The most important thing that's missing is a tangible interface. Without periphe
 
 This makes mini PCs inefficient for use as a laptop, but but more suited to use as an unobtrusive home server or desktop computer.
 
-![hh](/images/posture.png)_The right way to use a mini PC_
+![GIF of a shrimp using a computer by @tinysoulgame on Twitter](/images/posture.gif)_The right way to use a mini PC_
 
 A mini PC is a good choice for a home server because of its small size, and general noiselessness. You can stash it away in a corner with a power source and it'll run fine.
 
 [](sdl)
 
-Due to the ultra compact size, some models may whirr at annoying volumes. You can either tune the BIOS settings for less power consumption or let the device bask in its birthday suit.
+Due to their diminuitive size, some models may whirr at annoying volumes. You can either tune the BIOS settings for less power consumption or, unlike people, let the device bask in its birthday suit in an open space.
 As a last ditch resort you can turn to a noise-reducing case, but they're usually so large they defeat the point of having a mini PC.
 
-![Akasa Turing Fanless Case next to Intel NUC](https://www.akasa.com.tw/img/product/common/feature/00/A-NUC45-M1B_f0A.jpg)_This particular case doubles the size of an Intel NUC_
+![Akasa Turing Fanless Case next to Intel NUC](https://external-preview.redd.it/xHEJ62j_YAbUTxySpPyqVamo9g-Yo8SNCHzgF8446zM.jpg?width=640&crop=smart&auto=webp&s=615b6c3d8f64cc636ddf94481e8f2bdbb084ed18)_Apart from looking like an ominous monolith, this case cools down energetic NUCs via heat dispersion_
 
 ## Choose Your Fighter!
 
@@ -55,7 +56,7 @@ The top-of-the-line models will make your bank balance appear even more lugubrio
 Models are identified by a unique long string of gibberish that starts with NUC.
 I personally am using the [NUC10i3FNH](https://ark.intel.com/content/www/us/en/ark/products/195506/intel-nuc-10-performance-kit-nuc10i3fnh.html) model, which is a pick-your-parts kit (requires assembly)
 
-![hmm](https://simplynuc.com/wp-content/uploads/2021/07/nuc10-i7i5i3-fnhn-front-angle-rgb-72dpi.png)_The `NUC10i3FNH` in all its glory (now in full color!)_
+![hmm](https://c1.neweggimages.com/productimage/nb1280/56-102-304-V04.jpg)_The `NUC10i3FNH` in all its glory (now in full color!)_
 
 ## Build-A-Brick
 
@@ -71,11 +72,9 @@ If you're like me and belong in a Gary Larson comic, heed common sense and remem
 
 ![School For The Mechanically Declined](https://www.fredwehner.de/buggsold/fs7.gif)
 
-Once it's unscrewed, gently lift the cover off. There'll be a magnetic tape umbilical cord shackling it to the motherboard, so lay it down next to the freshly peeled computer.
+Once it's unscrewed, gently lift the cover off. There'll be a magnetic tape umbilical cord shackling it to the motherboard, so lay it down next to the freshly skinned computer.
 
-A diagram of the inside of the mini PC:
-
-![Diagram of Inside of Mini PC](/images/inside_nuc.png)
+![Diagram of Inside of Mini PC](/images/inside_nuc.png)_A diagram of the inside of the mini PC, which is unfinished. You'll have to use your imagination._
 
 There are two slots for RAM and one for the SSD as pictured above.
 After you've finished (gently) plugging in the sticks, you can screw the cover back on and plug it in with the included cable.
@@ -93,7 +92,7 @@ I used [balenaEtcher](https://www.balena.io/etcher/) for its ease of use and int
 
 > Remember to plug in your thumb drive first
 
-![Process of Flashing to a Thumb Drive](/images/etcher.png)_the process of etching_
+![Process of Flashing to a Thumb Drive](https://universityofglasgowlibrary.wordpress.com/wp-content/uploads/2012/08/diderot_graver.jpg)_the process of etching_
 
 ### To Raise The Dead
 

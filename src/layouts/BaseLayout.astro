@@ -1,6 +1,7 @@
 ---
 import LogoHeader from '../components/LogoHeader.astro'
-import NavBar from '../components/NavBar.astro'
+import NavBar from '../components/NavBar.svelte'
+import '../styles/global.css'
 
 let {title} = Astro.props
 ---
@@ -9,15 +10,14 @@ let {title} = Astro.props
 <head>
 	<meta charset="UTF-8">
 	<meta content="width=device-width, initial-scale=1" name="viewport" />
-	<title>{title}</title>
 	<link rel="shortcut icon" href="favicon.png" type="image/x-icon">
-	<link rel="stylesheet" href={Astro.resolve('../styles/global.css')}>
+	<title>{title}</title>
 </head>
 <body>
 	<div class="layout">
 		<aside>
 			<LogoHeader/>
-			<NavBar/>
+			<NavBar currentPath={Astro.url.pathname} />
 		</aside>
 		<main>
 			<slot/>
@@ -62,8 +62,8 @@ let {title} = Astro.props
 		image-rendering: pixelated;
 		image-rendering: crisp-edges;
 		z-index: -3;
-		bottom: 15%;
-		left: 15%;
+		bottom: 10%;
+		left: 10%;
 		width: 400px;
 	}
 
@@ -74,10 +74,9 @@ let {title} = Astro.props
 		}
 	}
 
-
 	@media screen and (min-width: 601px) {
 		aside {
-			justify-content: space-between;
+			gap: var(--space-md);
 			flex-basis: 20%;
 		}
 

@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+import PostItem from '../components/PostItem.astro'
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('posts')).sort(
+	(a, b) => new Date(b.data.publishedDate).valueOf() - new Date(a.data.publishedDate).valueOf()
+)
+---
+
+<BaseLayout title="OrangeBurrito">
+<h1 class="page-header">The Sacred Texts</h1>
+<div class="post-list">
+	{posts.map((post) => (
+		<PostItem {post}/>
+	))}
+</div>
+</BaseLayout>
+
+<style>
+	.post-list {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-end;
+	}
+</style>

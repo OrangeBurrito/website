@@ -7,7 +7,7 @@
 
 <style>
 	.logo-title {
-		font-family: var(--logo-font);
+		font-family: var(--font-logo);
 		font-size: var(--space-xl);
 		text-transform: uppercase;
 	}
@@ -16,4 +16,14 @@
 		color: var(--accent);
 		font-size: var(--space-lg);
 	}
+
+	@media screen and (max-width: 600px) {
+		.logo-title {
+			font-size: var(--space-mlg);
+		}
+
+		.slogan {
+			font-size: var(--space-dlg);
+		}
+	} 
 </style>

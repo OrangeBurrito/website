@@ -5,15 +5,15 @@ const options = { year: 'numeric', month: 'long', day: 'numeric' }
 ---
 
 <div class="post">
-<a href={post.url}>
+<a href={`/posts/${post.id}`}>
 	<div class="post-icon">
-		<img src={post.coverImage}/>
+		<img src={post.data.coverImage}/>
 	</div>
 		<div class="text-block">
-			<h2 class="post-title title">{post.title}</h2>
-			<p class="description">{post.description}</p>
+			<h3 class="post-title title">{post.data.title}</h3>
+			<p class="description">{post.data.description}</p>
 			<div class="date">
-				<Date date={post.publishedDate}/>
+				<Date date={post.data.publishedDate}/>
 				<img class="date-icon" src="/images/clock_icon.png" alt="">
 			</div>
 		</div>
@@ -21,41 +21,45 @@ const options = { year: 'numeric', month: 'long', day: 'numeric' }
 </div>
 <style>
 	.post {
-		display: flex;
-		justify-content: flex-end;
-		gap: var(--space-base);
 		position: relative;
-		top: 0;
-		left: 0;
-		width: 100%;
-
-		transition: 0.08s ease-in;
+		width: fit-content;
 		margin-bottom: var(--space-xl);
+		transition: all 0.08s ease-in-out;
+	}
+
+	.text-block {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-end;
 	}
 	
 	.post-title {
 		display: inline-block;
-		font-size: var(--space-mlg);
+		transition: color 0.08s ease-in-out;
 	}
 
 	.post:hover {
-		top: -4px;
-		left: -4px;
 		border-right: 4px solid var(--accent);
 		border-bottom: 4px solid var(--accent);
 		padding: 0 var(--space-base) var(--space-base) 0;
+		margin-bottom: calc(var(--space-xl) - var(--space-md));
+
+		.post-title {
+			color: var(--accent);
+		}
+
+		.post-icon {
+			bottom: var(--space-base);
+		}
 	}
 
-	.post:hover .post-title {
-		color: var(--accent);
-	}
 
 	.post-icon {
 		position: absolute;
-		height: 80%;
-		width: 20%;
-		left: 30%;
+		width: 30%;
+		bottom: 0;
 		z-index: -1;
+		transition: bottom 0.08s ease-in-out;
 	}
 	
 	.post-icon img {
@@ -64,10 +68,14 @@ const options = { year: 'numeric', month: 'long', day: 'numeric' }
 		object-fit: cover;
 	}
 
+	.description {
+		max-width: 40ch;
+	}
+
 	@media (max-width: 600px) {
 		.post-icon {
-		width: 50%;
-		left: 0;
+			width: 50%;
+			left: 0;
 		}
 	}
 </style>

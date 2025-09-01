@@ -4,66 +4,77 @@
 }
 
 :root {
-	--black: #000920;
-	--darker: #11192A;
-	--dark: #233357;
-	--dark-light: #182028;
-	--dark-lighter: #1c262e;
+  --black: #000920;
+  --darker: #11192a;
+  --dark: #233357;
+  --dark-light: #182028;
+  --dark-lighter: #172042;
   --header-shade: #fbfafb;
-	--text-shade: #cdcddc;
-	--code-shade: #b6b6ce;
+  --text-shade: #cdcddc;
+  --code-shade: #b6b6ce;
   --accent: #cc9dfa;
-	--accent-dark: #9063b8;
+  --accent-dark: #9063b8;
 
-	--accent: #6189f6;
-	--accent-light: #8aa7fc;
-	--base-unit: 12px;
-  --space-xxs:  calc(0.25 * var(--base-unit)); /* 4px */
-  --space-xs:   calc(0.5 * var(--base-unit));  /* 8px */
-  --space-sm:   calc(0.75 * var(--base-unit)); /* 12px */
-	--space-base: calc(1 * var(--base-unit)); /* 16px */
-	--space-bsm: calc(1.125 * var(--base-unit)); /* 18px */
-  --space-md:   calc(1.25 * var(--base-unit)); /* 20px */
-  --space-dlg:   calc(1.5 * var(--base-unit)); /* 24px */
-  --space-mlg:   calc(1.75 * var(--base-unit)); /* 28px */
-  --space-lg:   calc(2 * var(--base-unit));    /* 32px */
-  --space-xl:   calc(2.5 * var(--base-unit));    /* 40px */
-  --space-xxl:   calc(3.25 * var(--base-unit)); /* 52px */
-  --space-xxxl:  calc(5.25 * var(--base-unit)); /* 84px */
+  --accent: #6189f6;
+  --accent-light: #8aa7fc;
 
-	--text-font: Menlo, SFMono-Regular, Monaco, Consolas, "Liberation Mono", monospace;
-	--header-font: OhSnap, Futura, 'Century Gothic', AppleGothic, sans-serif;
-	--code-font: var(--text-font);
-	--logo-font: EagleSpCGA;
-	--bold-font: ChiKareGo2;
+  --base-unit: 12px;
+  --space-xxs: calc(0.25 * var(--base-unit)); /* 4px */
+  --space-xs: calc(0.5 * var(--base-unit)); /* 8px */
+  --space-sm: calc(0.75 * var(--base-unit)); /* 12px */
+  --space-base: calc(1 * var(--base-unit)); /* 16px */
+  --space-bsm: calc(1.125 * var(--base-unit)); /* 18px */
+  --space-md: calc(1.25 * var(--base-unit)); /* 20px */
+  --space-dlg: calc(1.5 * var(--base-unit)); /* 24px */
+  --space-mlg: calc(1.75 * var(--base-unit)); /* 28px */
+  --space-lg: calc(2 * var(--base-unit)); /* 32px */
+  --space-xl: calc(2.5 * var(--base-unit)); /* 40px */
+  --space-xxl: calc(3.25 * var(--base-unit)); /* 52px */
+  --space-xxxl: calc(5.25 * var(--base-unit)); /* 84px */
+
+  --font-size-body: var(--space-base);
+  --font-size-subheading: var(--space-md);
+  --font-size-heading: var(--space-dlg);
+  --font-size-subtitle: var(--space-lg);
+  --font-size-title: var(--space-xl);
+
+  --font-body: Menlo, "SF Mono", Monaco, Consolas, "Liberation Mono", monospace;
+  --font-header: OhSnap, Futura, "Century Gothic", AppleGothic, sans-serif;
+  --font-code: var(--font-body);
+  --font-logo: EagleSpCGA;
+  --font-bold: ChiKareGo2;
 }
 
 @font-face {
-	font-family: 'Menlo';
-	font-style: normal;
-	font-weight: 400;
-	src: local('Menlo Regular'), local('Menlo-Regular'), url('Menlo.woff2') format('woff2');
+  font-family: "Menlo";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Menlo Regular"), local("Menlo-Regular"),
+    url("Menlo.woff2") format("woff2");
 }
 
 @font-face {
-	font-family: 'Menlo';
-	font-style: normal;
-	font-weight: bold;
-	src: local('Menlo Bold'), local('Menlo-Bold'), url('MenloBold.woff2') format('woff2');
+  font-family: "Menlo";
+  font-style: normal;
+  font-weight: bold;
+  src: local("Menlo Bold"), local("Menlo-Bold"),
+    url("MenloBold.woff2") format("woff2");
 }
 
 @font-face {
-	font-family: 'Menlo';
-	font-style: italic;
-	font-weight: 400;
-	src: local('Menlo Italic'), local('Menlo-Italic'), url('MenloItalic.woff2') format('woff2');
+  font-family: "Menlo";
+  font-style: italic;
+  font-weight: 400;
+  src: local("Menlo Italic"), local("Menlo-Italic"),
+    url("MenloItalic.woff2") format("woff2");
 }
 
 @font-face {
-	font-family: 'Menlo';
-	font-style: italic;
-	font-weight: bold;
-	src: local('Menlo Bold Italic'), local('Menlo-BoldItalic'), url('MenloBoldItalic.woff2') format('woff2');
+  font-family: "Menlo";
+  font-style: italic;
+  font-weight: bold;
+  src: local("Menlo Bold Italic"), local("Menlo-BoldItalic"),
+    url("MenloBoldItalic.woff2") format("woff2");
 }
 
 @font-face {
@@ -73,7 +84,7 @@
 
 @font-face {
   font-family: "OhSnap";
-	font-weight: bold;
+  font-weight: bold;
   src: url("/fonts/OhsnapBold.ttf");
 }
 
@@ -85,34 +96,51 @@
 body {
   height: 100%;
 
-	font-size: var(--space-base);
-  font-family: var(--text-font);
+  font-size: var(--font-size-body);
+  font-family: var(--font-body);
 
   color: var(--text-shade);
 
-	background: var(--black);
+  background: var(--black);
   background-image: linear-gradient(var(--darker), var(--black));
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
 
 h1, h2, h3, h4 {
-	font-family: var(--header-font);
-	color: var(--header-shade);
+  font-family: var(--font-header);
+  color: var(--header-shade);
+}
+
+h1 {
+	font-size: var(--font-size-title);
+}
+
+h2 {
+	font-size: var(--font-size-subtitle);
+	margin-bottom: var(--space-xs);
+}
+
+h3 {
+	font-size: var(--font-size-heading)
+}
+
+h4 {
+  font-size: var(--font-size-subheading);
 }
 
 p {
-	font-size: var(--space-md);
-	color: var(--text-shade);
+  color: var(--text-shade);
+  line-height: 1.45;
 }
 
 a {
-	color: var(--accent);
-	text-decoration: none;
+  color: var(--accent);
+  text-decoration: none;
 }
 
 a.active {
-	color: var(--accent) !important;
+  color: var(--accent);
 }
 
 .flex-container > * {
@@ -125,40 +153,39 @@ a.active {
 }
 
 .date {
-	font-size: var(--space-dlg);
-	font-family: var(--header-font);
-	margin-top: var(--space-base);
+  font-size: var(--space-dlg);
+  font-family: var(--font-header);
+  margin-top: var(--space-base);
 }
 
 .date-icon {
-	width: 20px;
-	image-rendering: pixelated;
-	image-rendering: crisp-edges;
-	vertical-align: top;
+  width: 20px;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  vertical-align: top;
 }
 
 .title {
-	margin-bottom: var(--space-xs);
+  margin-bottom: var(--space-xs);
 }
 
-.description {
-	max-width: 40ch;
-}
-
-.page-main-header {
-	position: relative;
-	display: inline-block;
-	font-weight: normal;
-	font-size: var(--space-lg);
-	color: var(--accent);
-	padding-bottom: var(--space-xxs);
-	margin-bottom: var(--space-xxl);
-	border-bottom: 3.5px solid var(--accent);
+.page-header {
+  position: relative;
+  display: inline-block;
+  font-weight: normal;
+  font-size: var(--space-lg);
+  color: var(--accent);
+  margin-bottom: var(--space-md);
+  border-bottom: 3.5px solid var(--accent);
 }
 
 @media screen and (min-width: 600px) {
   :root {
     --base-unit: 14px;
+  }
+
+  .page-header {
+    margin-bottom: var(--space-xl);
   }
 }
 

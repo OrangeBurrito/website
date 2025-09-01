@@ -1,7 +1,7 @@
 ---
 title: 'Compiling Nethack with Tiles (MacOS)'
 publishedDate: 2024-01-12
-coverImage: "/images/successful.jpg"
+coverImage: "/images/successful.png"
 description: "How to compile/install Nethack with tiles on newer versions of Mac"
 layout: '../../layouts/PostLayout.astro'
 ---

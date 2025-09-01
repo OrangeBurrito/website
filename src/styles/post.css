@@ -1,5 +1,5 @@
 .logo-header {
-	padding: var(--space-md);
+	padding: var(--space-lg);
 }
 
 .post-header {
@@ -7,7 +7,7 @@
 	display: flex;
 	justify-content: flex-start;
 	gap: var(--space-md);
-	padding: var(--space-md);
+	padding: var(--space-md) 0;
 	margin-bottom: var(--space-md);
 }
 
@@ -27,9 +27,9 @@
 .text-block {
 	background: linear-gradient(180deg, var(--darker) 50%, rgba(0,0,0,0) 100%);
 	opacity: 0.9;
-	padding: var(--space-lg) var(--space-base) 0 var(--space-lg);
+	padding-top: var(--space-lg);
 	margin-top: 50%;
-	margin-bottom: var(--space-base);
+	margin-bottom: var(--space-dlg);
 }
 
 .text-block::after {
@@ -72,9 +72,10 @@ article {
 
 img + em {
 	display: block;
-	margin-top: -1rem;
-	padding-bottom: var(--space-dlg);
 	text-align: center;
+	color: var(--code-shade);
+	padding-bottom: var(--space-dlg);
+	margin-top: -0.5rem;
 }
 
 a {
@@ -92,6 +93,19 @@ a:hover{
 	background-size: 4px 50px;
 }
 
+.description {
+	font-size: var(--space-bsm);
+}
+
+.date {
+	color: var(--accent);
+}
+
+.date.updated {
+	margin-top: var(--space-xs);
+	font-style: italic;
+}
+
 .content > p {padding-bottom: var(--space-base);}
 li { padding-bottom: var(--space-xs); }
 li p { padding-bottom: var(--space-xxs);}
@@ -105,7 +119,7 @@ pre {
 	padding: var(--space-base);
 	margin: var(--space-base) 0 var(--space-lg) 0;
 	overflow-x: scroll;
-	font-family: var(--code-font);
+	font-family: var(--font-code);
 }
 
 code {
@@ -133,5 +147,6 @@ blockquote p {
 
 	.post-header {
 		flex-wrap: wrap;
+		padding: 0;
 	}
 }
