@@ -1,6 +1,8 @@
 import { defineConfig } from 'astro/config'
 import svelte from '@astrojs/svelte'
 
+import netlify from '@astrojs/netlify';
+
 export default defineConfig({
   // projectRoot: '.',     // Where to resolve all URLs relative to. Useful if you have a monorepo project.
   // pages: './src/pages', // Path to Astro components, pages, and data
@@ -10,18 +12,30 @@ export default defineConfig({
     site: 'https://orangeburrito.com',           // Your public domain, e.g.: https://my-site.dev/. Used to generate sitemaps and canonical URLs.
     sitemap: true,         // Generate sitemap (set to "false" to disable)
   },
+
   devOptions: {
     // hostname: 'localhost',  // The hostname to run the dev server on.
     // port: 3000,             // The port to run the dev server on.
   },
+
   renderers: [],
-	markdownOptions: {
-		render: [
-			'@astrojs/markdown-remark',
-			{
-				remarkPlugins: ['remark-breaks']
-			}
-		]
+
+  markdownOptions: {
+      render: [
+          '@astrojs/markdown-remark',
+          {
+              remarkPlugins: ['remark-breaks']
+          }
+]
 	},
-  integrations: [svelte()]
+
+  markdown: {
+    shikiConfig: {
+      theme: 'github-dark-default'
+    }
+  },
+
+  integrations: [svelte()],
+  output: 'server',
+  adapter: netlify()
 })

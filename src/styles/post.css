@@ -110,11 +110,6 @@ a:hover{
 li { padding-bottom: var(--space-xs); }
 li p { padding-bottom: var(--space-xxs);}
 
-pre, code {
-	background: var(--darker);
-	color: var(--code-shade);
-}
-
 pre {
 	padding: var(--space-base);
 	margin: var(--space-base) 0 var(--space-lg) 0;
@@ -130,9 +125,9 @@ code {
 }
 
 blockquote {
-	background: var(--dark);
+	background: var(--dark-lighter);
 	padding: var(--space-base);
-	border-left: var(--space-xs) solid var(--dark-lighter);
+	border-left: var(--space-xs) solid var(--dark);
 	margin-bottom: var(--space-dlg);
 }
 blockquote p {

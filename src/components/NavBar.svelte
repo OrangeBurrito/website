@@ -3,7 +3,7 @@
 		currentPath: string;
 	}
 
-	let { currentPath}: Props = $props()
+	let { currentPath }: Props = $props()
 </script>
 
 <nav class="navbar">
