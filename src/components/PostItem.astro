@@ -1,30 +1,33 @@
 ---
 import Date from '../components/Date.astro'
 const { post } = Astro.props
-const options = { year: 'numeric', month: 'long', day: 'numeric' }
 ---
 
-<div class="post">
+<div class="post hover-slide">
 <a href={`/posts/${post.id}`}>
 	<div class="post-icon">
 		<img src={post.data.coverImage}/>
 	</div>
 		<div class="text-block">
-			<h3 class="post-title title">{post.data.title}</h3>
+			<h3 class="title">{post.data.title}</h3>
 			<p class="description">{post.data.description}</p>
 			<div class="date">
-				<Date date={post.data.publishedDate}/>
+				<div class="text">
+					<Date date={post.data.publishedDate}/>
+				</div>
 				<img class="date-icon" src="/images/clock_icon.png" alt="">
 			</div>
 		</div>
 	</a>
 </div>
+
 <style>
 	.post {
+		--gap-item: var(--space-lg);
 		position: relative;
+		min-width: 400px;
 		width: fit-content;
-		margin-bottom: var(--space-xl);
-		transition: all 0.08s ease-in-out;
+		margin-bottom: var(--gap-item);
 	}
 
 	.text-block {
@@ -32,22 +35,18 @@ const options = { year: 'numeric', month: 'long', day: 'numeric' }
 		flex-direction: column;
 		align-items: flex-end;
 	}
+
+	.date {
+		display: flex;
+		gap: var(--space-xs);
+	}
 	
-	.post-title {
+	.title {
 		display: inline-block;
 		transition: color 0.08s ease-in-out;
 	}
 
 	.post:hover {
-		border-right: 4px solid var(--accent);
-		border-bottom: 4px solid var(--accent);
-		padding: 0 var(--space-base) var(--space-base) 0;
-		margin-bottom: calc(var(--space-xl) - var(--space-md));
-
-		.post-title {
-			color: var(--accent);
-		}
-
 		.post-icon {
 			bottom: var(--space-base);
 		}
@@ -73,9 +72,24 @@ const options = { year: 'numeric', month: 'long', day: 'numeric' }
 	}
 
 	@media (max-width: 600px) {
+		.post {
+			min-width: 100%;
+		}
 		.post-icon {
-			width: 50%;
-			left: 0;
+			width: 30%;
+			right: 0;
+		}
+
+		.date .text {
+			order: 2;
+		}
+
+		.date-icon {
+			order: 1;
+		}
+
+		.text-block {
+			align-items: flex-start;
 		}
 	}
 </style>

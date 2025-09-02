@@ -4,32 +4,32 @@ import '../styles/post.css'
 
 import LogoHeader from '../components/LogoHeader.astro'
 import Date from '../components/Date.astro'
-const { content } = Astro.props
+const { frontmatter } = Astro.props
 ---
 
 <html>
 <head>
 	<meta charset="UTF-8">
 	<meta content="width=device-width, initial-scale=1" name="viewport" />
-	<title>{content.title}</title>
+	<title>{frontmatter.title}</title>
 	<link rel="shortcut icon" href="/favicon.png" type="image/x-icon">
 </head>
 <body>
 	<LogoHeader/>
 	<article>
 		<header class="post-header">
-			<img class="hero-image" src={content.coverImage}/>
+			<img class="hero-image" src={frontmatter.coverImage}/>
 			<div class="text-block">
-				<h1 class="title">{content.title}</h1>
-				<p class="description">{content.description}</p>
+				<h1 class="title">{frontmatter.title}</h1>
+				<p class="description">{frontmatter.description}</p>
 				<div class="date">
-					<Date date={content.publishedDate} />
+					<Date date={frontmatter.publishedDate} />
 					<img class="date-icon" src="/images/clock_icon.png" alt="">
 				</div>
-				{content.updatedDate != null && (
+				{frontmatter.updatedDate != null && (
 					<div class="date updated">
 						Last Updated:
-						<Date date={content.updatedDate} />
+						<Date date={frontmatter.updatedDate} />
 					</div>
 				)}
 			</div>

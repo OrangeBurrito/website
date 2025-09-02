@@ -9,6 +9,7 @@
   --dark: #233357;
   --dark-light: #182028;
   --dark-lighter: #172042;
+  --dark-lightest: #3e5e88;
   --header-shade: #fbfafb;
   --text-shade: #cdcddc;
   --code-shade: #b6b6ce;
@@ -37,6 +38,8 @@
   --font-size-heading: var(--space-dlg);
   --font-size-subtitle: var(--space-lg);
   --font-size-title: var(--space-xl);
+
+  --size-icon: 16px;
 
   --font-body: Menlo, "SF Mono", Monaco, Consolas, "Liberation Mono", monospace;
   --font-header: OhSnap, Futura, "Century Gothic", AppleGothic, sans-serif;
@@ -107,22 +110,25 @@ body {
   background-attachment: fixed;
 }
 
-h1, h2, h3, h4 {
+h1,
+h2,
+h3,
+h4 {
   font-family: var(--font-header);
   color: var(--header-shade);
 }
 
 h1 {
-	font-size: var(--font-size-title);
+  font-size: var(--font-size-title);
 }
 
 h2 {
-	font-size: var(--font-size-subtitle);
-	margin-bottom: var(--space-xs);
+  font-size: var(--font-size-subtitle);
+  margin-bottom: var(--space-xs);
 }
 
 h3 {
-	font-size: var(--font-size-heading)
+  font-size: var(--font-size-heading);
 }
 
 h4 {
@@ -155,11 +161,11 @@ a.active {
 .date {
   font-size: var(--space-dlg);
   font-family: var(--font-header);
-  margin-top: var(--space-base);
+  margin-top: var(--space-sm);
 }
 
 .date-icon {
-  width: 20px;
+  width: var(--size-icon);
   image-rendering: pixelated;
   image-rendering: crisp-edges;
   vertical-align: top;
@@ -175,17 +181,50 @@ a.active {
   font-weight: normal;
   font-size: var(--space-lg);
   color: var(--accent);
-  margin-bottom: var(--space-md);
-  border-bottom: 3.5px solid var(--accent);
+  text-decoration-line: underline;
+  text-underline-offset: 6px;
+  margin-bottom: var(--space-mlg);
+}
+
+.flex {
+  display: flex;
+  gap: var(--space-sm);
+}
+
+.item-list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.hover-slide {
+  cursor: pointer;
+  transition: all 0.08s ease-in-out;
+
+  &:hover {
+    border-right: 4px solid var(--accent);
+    border-bottom: 4px solid var(--accent);
+    padding: 0 var(--space-base) var(--space-base) 0;
+    margin-bottom: calc(var(--gap-item) - var(--space-md));
+
+    .title {
+      color: var(--accent);
+    }
+  }
 }
 
 @media screen and (min-width: 600px) {
   :root {
     --base-unit: 14px;
+    --size-icon: 20px;
   }
 
   .page-header {
-    margin-bottom: var(--space-xl);
+    margin-bottom: var(--space-lg);
+  }
+
+  .item-list {
+    align-items: flex-end;
   }
 }
 

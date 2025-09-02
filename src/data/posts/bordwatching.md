@@ -3,7 +3,6 @@ title: 'The Comprehensive Guide to Birds'
 publishedDate: 2021-08-12
 coverImage: 'https://i.pinimg.com/736x/7b/fa/a7/7bfaa744602122753529a30e31131ffd.jpg'
 description: "The only article you'll ever need to read about birds!"
-layout: '../../layouts/PostLayout.astro'
 ---
 
 ## Preface

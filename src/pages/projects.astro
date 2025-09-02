@@ -1,21 +1,18 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'
+import ProjectItem from '../components/ProjectItem.svelte'
+import { getCollection } from 'astro:content'
+
+const projects = (await getCollection('projects')).sort(
+	(a, b) => new Date(a.data.endDate).valueOf() - new Date(b.data.endDate).valueOf()
+)
 ---
 
 <BaseLayout title="Projects">
     <h1 class="page-header">Projects</h1>
-    <div class="projects">
-        <div class="project">
-            <div class="cover-image">
-                <img src="/images/arabonito.png" alt="">
-            </div>
-            <h3>Arabonito</h3>
-            <p class="sub">for Arajet under <a href="https://huagati.com" target="_blank">Huagati Systems</a></p>
-            <p>Figma Design and implementation in Blazor (Frontend)</p>
-            <div class="links">
-                <a href="">Figma Design</a>
-                <a href="https://arabonito.arajet.com/"  target="_blank">Live Site</a>
-            </div>
+    <div class="projects item-list">
+        {projects.map((project) => (
+            <ProjectItem {project} />
+        ))}
         </div>
-    </div>
 </BaseLayout>

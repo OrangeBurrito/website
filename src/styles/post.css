@@ -25,9 +25,11 @@
 }
 
 .text-block {
+	width: 100%;
 	background: linear-gradient(180deg, var(--darker) 50%, rgba(0,0,0,0) 100%);
 	opacity: 0.9;
 	padding-top: var(--space-lg);
+	padding-bottom: var(--space-base);
 	margin-top: 50%;
 	margin-bottom: var(--space-dlg);
 }
