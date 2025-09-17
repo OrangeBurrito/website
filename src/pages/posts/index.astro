@@ -1,7 +1,29 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { render } from "astro:content"
+import { getCollection } from "astro:content"
+import PostLayout from "../../layouts/PostLayout.astro"
+import PostItem from '../../components/PostItem.astro';
+
+export const prerender = true
+
+  const posts = await getCollection("posts")
 ---
+
 
 <BaseLayout title="Blogposts">
     <h2>All Blogposts</h2>
+    <div class="posts">
+        {posts.map((post) => (
+            <PostItem {post}/>
+        ))}
+    </div>
 </BaseLayout>
+
+<style>
+    .posts {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+    }
+</style>
