@@ -4,17 +4,26 @@ import BaseLayout from '../layouts/BaseLayout.astro'
 
 <BaseLayout title="About">
 	<h1 class="page-header">About</h1>
-	<h2>Dossier: OrangeBurrito</h2>
-	<p>Typography enthusiast, full of bees.</p>
-	<p>Under active construction: be wary of falling beams.</p>
-	<div class="links">
-		<h3>Other URLs</h3>
-		<a href="https://github.com/OrangeBurrito" target="_blank"><span>GitHub</span> (Fountain of truth)</a>
-		<a href="https://app.thestorygraph.com/profile/orangeburrito" target="_blank"><span>Storygraph</span> (Goodreads clone account)</a>
+	<div class="about-strip">
+		<div class="content">
+			<h2>OrangeBurrito</h2>
+			<img class="profile" src="/images/pfp.jpg" alt="unicorn with the hash of this website url">
+			<em>The seldom-seen visage of the website's eclectic proprietor</em>
+			<p>This website is under active construction: be wary of falling beams.</p>
+			<div class="links">
+				<h3>Links of Interest</h3>
+				<a href="https://github.com/OrangeBurrito" target="_blank"><span>GitHub</span> (Fountain of truth)</a>
+				<a href="https://app.thestorygraph.com/profile/orangeburrito" target="_blank"><span>Storygraph</span> (Goodreads clone account)</a>
+			</div>
+		</div>
 	</div>
 </BaseLayout>
 
 <style>
+	p, a {
+		font-size: var(----space-bsm);
+	}
+
 	p {
 		margin-bottom: var(--space-xxs);
 	}
@@ -35,7 +44,34 @@ import BaseLayout from '../layouts/BaseLayout.astro'
 		color: var(--accent-light);
 	}
 
+	.about-strip {
+		display: flex;
+  		justify-content: flex-end;
+	}
+
+	.about-strip .content {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-end;
+		gap: var(--space-sm);
+		width: 30ch;
+
+		.profile {
+			width: 18ch;
+			height: 18ch;
+		}
+	}
+
 	@media screen and (max-width: 600px) {
+		.about-strip {
+			width: 100%;
+			justify-content: flex-start;
+			
+		}
+		
+		.about-strip .content {
+			align-items: flex-start;
+		}
 		.links {
 			align-items: flex-start;
 		}

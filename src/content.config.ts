@@ -17,7 +17,9 @@ const projects = defineCollection({
     schema: z.object({
         title: z.string(),
         description: z.string(),
-        url: z.string(),
+        shortDesc: z.string().optional(),
+        url: z.string().optional(),
+        coverImage: z.string(),
         client: z.string().optional(),
         clientUrl: z.string().optional(),
         contractor: z.string().optional(),

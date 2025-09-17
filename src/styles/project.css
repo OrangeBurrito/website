@@ -1,0 +1,34 @@
+.project-article {
+    p {
+        font-size: var(--space-bsm);
+    }
+}
+
+.project-header {
+    max-width: 60ch;
+
+    .title {
+        font-size: calc(var(--font-size-title)*1.25);
+    }
+    
+    .description {
+        margin-bottom: var(--space-lg);
+    }
+    
+    .dates {
+        display: flex;
+        align-items: center;
+        gap: var(--space-sm);
+        margin-bottom: var(--space-md);
+
+        .date {
+            margin-top: 0;
+            color: var(--accent);
+        }
+    }
+
+    .hero-image {
+        width: 100%;
+        margin-bottom: var(--space-lg);
+    }
+}

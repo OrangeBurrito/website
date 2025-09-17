@@ -40,6 +40,7 @@
 
         a {
             color: inherit;
+            background: none;
         }
 
         &:hover {

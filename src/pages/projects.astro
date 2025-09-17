@@ -4,7 +4,11 @@ import ProjectItem from '../components/ProjectItem.svelte'
 import { getCollection } from 'astro:content'
 
 const projects = (await getCollection('projects')).sort(
-	(a, b) => new Date(a.data.endDate).valueOf() - new Date(b.data.endDate).valueOf()
+	(a, b) => {
+		if (!a.data.endDate) return 1;
+		if (!b.data.endDate) return -1;
+		return new Date(a.data.endDate).valueOf() - new Date(b.data.endDate).valueOf();
+	}
 )
 ---
 

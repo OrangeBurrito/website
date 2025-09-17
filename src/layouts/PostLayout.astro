@@ -4,6 +4,7 @@ import '../styles/post.css'
 
 import LogoHeader from '../components/LogoHeader.astro'
 import Date from '../components/Date.astro'
+import Button from '../components/Button.svelte'
 const { frontmatter } = Astro.props
 ---
 
@@ -17,6 +18,10 @@ const { frontmatter } = Astro.props
 <body>
 	<LogoHeader/>
 	<article>
+		<div class="back-button">
+			<Button type="secondary" link="/projects">< Back</Button>
+		</div>
+
 		<header class="post-header">
 			<img class="hero-image" src={frontmatter.coverImage}/>
 			<div class="text-block">

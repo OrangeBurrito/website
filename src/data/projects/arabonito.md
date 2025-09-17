@@ -1,13 +1,15 @@
 ---
 title: 'Arabonito'
 url: 'https://arabonito.arajet.com'
+coverImage: "/images/arabonito.png"
 client: 'Arajet Airlines'
 clientUrl: 'https://arajet.com'
 contractor: 'Huagati Systems'
 contractorUrl: 'https://huagati.com/'
 startDate: 2023-12-01
 endDate: 2024-01-31
-description: "Gift-voucher site"
+description: "A hands-on design and implementation of Arajet Airlines' Gift Card Program"
+shortDesc: "Arajet's Gift Card Program"
 ---
 
 

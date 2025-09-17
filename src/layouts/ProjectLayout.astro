@@ -1,0 +1,42 @@
+---
+import '../styles/global.css'
+import '../styles/project.css'
+
+import LogoHeader from '../components/LogoHeader.astro'
+import Button from '../components/Button.svelte'
+const { frontmatter } = Astro.props
+---
+
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta content="width=device-width, initial-scale=1" name="viewport" />
+	<title>{frontmatter.title}</title>
+	<link rel="shortcut icon" href="/favicon.png" type="image/x-icon">
+</head>
+<body>
+	<LogoHeader/>
+	<article class="project-article">
+        <header class="project-header">
+            <div class="back-button">
+                <Button type="secondary" link="/projects">< Back</Button>
+            </div>
+				<h1 class="title">{frontmatter.title}</h1>
+                <div class="dates">
+                    <img class="date-icon" src="/images/clock_icon.png" alt="">
+                    <div class="date">{frontmatter.startDate.toLocaleDateString('en-US', {month: 'short'})} {frontmatter.startDate.getFullYear()}</div>
+                    <span>—</span>
+                    <div class="date">
+                        {frontmatter.endDate ? frontmatter.endDate.toLocaleDateString('en-US', {month: 'short'}) + " " + frontmatter.endDate.getFullYear() : "Present"}
+                    </div>
+                </div>
+				<p class="description">{frontmatter.description}</p>
+			</div>
+            <img class="hero-image" src={frontmatter.coverImage}/>
+		</header>
+		<div class="content">
+			<slot/>
+		</div>
+	</article>
+</body>
+</html>

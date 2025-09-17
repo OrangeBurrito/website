@@ -1,6 +1,7 @@
 ---
 import { render } from "astro:content"
 import { getCollection } from "astro:content"
+import ProjectLayout from "../../layouts/ProjectLayout.astro"
 
 export const prerender = true
 
@@ -16,6 +17,6 @@ const { project } = Astro.props
 const { Content } = await render(project)
 ---
 
-<pre>
-    {JSON.stringify(project, null, 2)}
-</pre>
+<ProjectLayout frontmatter={project.data}>
+  <Content />
+</ProjectLayout>
