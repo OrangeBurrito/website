@@ -7,12 +7,13 @@ import PostItem from '../../components/PostItem.astro';
 
 export const prerender = true
 
-  const posts = await getCollection("posts")
+  let posts = await getCollection("posts")
+  posts = posts.sort((a, b) => b.data.publishedDate.getTime() - a.data.publishedDate.getTime())
 ---
 
 
 <BaseLayout title="Blogposts">
-    <h2>All Blogposts</h2>
+    <h1 class="page-header">Bibliography (Posts)</h1>
     <div class="posts">
         {posts.map((post) => (
             <PostItem {post}/>
