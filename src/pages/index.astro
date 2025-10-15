@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro'
 import PostItem from '../components/PostItem.astro'
 import Button from '../components/Button.svelte'
+import CurrentlyReading from '../components/CurrentlyReading.svelte'
 import { getCollection } from 'astro:content';
 
 const posts = (await getCollection('posts')).sort(
@@ -10,6 +11,10 @@ const posts = (await getCollection('posts')).sort(
 ---
 
 <BaseLayout title="OrangeBurrito">
+<!-- <div class="corner" slot="corner-info">
+	<CurrentlyReading />
+</div> -->
+
 <h1 class="page-header">Contemporary Texts</h1>
 <div class="item-list">
 	{posts.map((post) => (

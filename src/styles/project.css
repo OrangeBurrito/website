@@ -5,13 +5,12 @@
 }
 
 .project-header {
-    max-width: 60ch;
-
     .title {
         font-size: calc(var(--font-size-title)*1.25);
     }
     
     .description {
+        font-style: italic;
         margin-bottom: var(--space-lg);
     }
     
@@ -19,7 +18,7 @@
         display: flex;
         align-items: center;
         gap: var(--space-sm);
-        margin-bottom: var(--space-md);
+        margin-bottom: var(--space-base);
 
         .date {
             margin-top: 0;
@@ -27,8 +26,26 @@
         }
     }
 
+    .tags {
+        display: flex;
+        align-items: center;
+        gap: var(--space-sm);
+        margin-bottom: var(--space-bsm);
+    }
+
     .hero-image {
         width: 100%;
+        margin-bottom: var(--space-sm);
+    }
+
+    .project-url {
+        text-align: center;
         margin-bottom: var(--space-lg);
+    }
+
+    .project-url .unreleased {
+        font-style: italic;
+        color: var(--text-disabled);
+        text-decoration: line-through;
     }
 }

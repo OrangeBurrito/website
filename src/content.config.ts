@@ -25,7 +25,8 @@ const projects = defineCollection({
         contractor: z.string().optional(),
         contractorUrl: z.string().optional(),
         startDate: z.date(),
-        endDate: z.date().optional()
+        endDate: z.date().optional(),
+        tags: z.array(z.string()).optional(),
     })
 })
 

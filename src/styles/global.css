@@ -13,6 +13,7 @@
   --header-shade: #fbfafb;
   --text-shade: #cdcddc;
   --code-shade: #b6b6ce;
+  --text-disabled: #7e7e92;
   --accent: #cc9dfa;
   --accent-dark: #9063b8;
 
@@ -227,6 +228,14 @@ article {
 	flex-direction: column;
 	padding: var(--space-md);
 	margin: 0 auto;
+}
+
+.dual-images {
+  display: flex;
+  flex-direction: row;
+  gap: var(--space-md);
+  overflow-x: auto;
+  margin-bottom: var(--space-lg);
 }
 
 @media screen and (max-width: 600px) {

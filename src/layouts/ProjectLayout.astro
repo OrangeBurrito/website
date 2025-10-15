@@ -1,10 +1,22 @@
 ---
 import '../styles/global.css'
 import '../styles/project.css'
+import '../styles/post.css'
 
 import LogoHeader from '../components/LogoHeader.astro'
 import Button from '../components/Button.svelte'
+import Tag from '../components/Tag.svelte'
 const { frontmatter } = Astro.props
+
+let tagColors = {
+	"javascript": "#755800",
+	"svelte": "#FE5904",
+	"dotnet": "#4B2FD8",
+	"blazor": "#5C2C91",
+	"figma": "#006f5a",
+	"docker": "#2496ED",
+	"postgres": "#336791"
+}
 ---
 
 <html>
@@ -19,7 +31,7 @@ const { frontmatter } = Astro.props
 	<article class="project-article">
         <header class="project-header">
             <div class="back-button">
-                <Button type="secondary" link="/projects">< Back</Button>
+                <Button type="secondary" link="/projects">&lt; Back</Button>
             </div>
 				<h1 class="title">{frontmatter.title}</h1>
                 <div class="dates">
@@ -30,9 +42,23 @@ const { frontmatter } = Astro.props
                         {frontmatter.endDate ? frontmatter.endDate.toLocaleDateString('en-US', {month: 'short'}) + " " + frontmatter.endDate.getFullYear() : "Present"}
                     </div>
                 </div>
+				<div class="tags">
+					{frontmatter.tags.map((tag) => (
+						<Tag color={tagColors[tag]}>{tag}</Tag>
+					))}
+				</div>
 				<p class="description">{frontmatter.description}</p>
 			</div>
             <img class="hero-image" src={frontmatter.coverImage}/>
+			{frontmatter.url && frontmatter.url.length > 0 ? 
+			<div class="project-url">
+				<a href={frontmatter.url} target="_blank" rel="noopener noreferrer">Project Site ↗</a>
+			</div>
+			:
+			<div class="project-url">
+				<span class="unreleased">Project Unreleased ↗</span>
+			</div>
+			}
 		</header>
 		<div class="content">
 			<slot/>

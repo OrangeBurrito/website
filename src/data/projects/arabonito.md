@@ -8,17 +8,20 @@ contractor: 'Huagati Systems'
 contractorUrl: 'https://huagati.com/'
 startDate: 2023-12-01
 endDate: 2024-01-31
-description: "A hands-on design and implementation of Arajet Airlines' Gift Card Program"
+description: "A hands-on design and implementation of Arajet Airlines' Gift Card Program in Blazor Server"
 shortDesc: "Arajet's Gift Card Program"
+tags: ["dotnet", "blazor", "javascript", "figma" ]
 ---
 
+## Overview
 
-Main points:
-Discussion of implementation details (reasoning), along with finished post-mortem and what could be improved.
+I designed and implemented the frontend view for Arajet's in-house gift card program Arabonito, as a subcontractor working on [Huagati Systems](https://huagati.com/)], a company specializing in airline software solutions.
 
-(description of history)
+## Onto the Drawing Board
 
-With this fortuitous opportunity and a diet mission brief (light on details) now in hand, thus began the task.
-From the outset, creating a style guide
-
-(This post has been long overdue)
+<div class="dual-images">
+<img src="">
+<em></em>
+<img src="">
+<em></em>
+</div>

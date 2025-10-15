@@ -17,6 +17,7 @@
     "@astrojs/netlify": "^6.5.9",
     "@astrojs/svelte": "^7.1.0",
     "astro-analytics": "^1.0.1",
+    "playwright": "1.47.2",
     "svelte": "^5.38.6",
     "typescript": "^5.9.2"
   }
