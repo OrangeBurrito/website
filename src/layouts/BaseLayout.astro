@@ -45,7 +45,7 @@ let {title} = Astro.props
 	}
 
 	aside, main {
-		padding: var(--space-lg);
+		padding: var(--space-size-lg);
 	}
 
 	aside {
@@ -58,7 +58,7 @@ let {title} = Astro.props
 	main {
 		flex-grow: 2;
 		text-align: right;
-		overflow: scroll;
+		overflow-y: auto;
 	}
 
 	.main-image {
@@ -84,7 +84,7 @@ let {title} = Astro.props
 
 	@media screen and (min-width: 601px) {
 		aside {
-			gap: var(--space-md);
+			gap: var(--space-size-md);
 			flex-basis: 20%;
 		}
 

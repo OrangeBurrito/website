@@ -1,6 +1,6 @@
 .project-article {
     p {
-        font-size: var(--space-bsm);
+        font-size: var(--space-size-bsm);
     }
 }
 
@@ -11,41 +11,34 @@
     
     .description {
         font-style: italic;
-        margin-bottom: var(--space-lg);
+        margin-bottom: var(--space-size-lg);
     }
     
     .dates {
         display: flex;
         align-items: center;
-        gap: var(--space-sm);
-        margin-bottom: var(--space-base);
+        gap: var(--space-size-sm);
+        margin-bottom: var(--space-size-base);
 
         .date {
             margin-top: 0;
-            color: var(--accent);
+            color: var(--color-primary);
         }
-    }
-
-    .tags {
-        display: flex;
-        align-items: center;
-        gap: var(--space-sm);
-        margin-bottom: var(--space-bsm);
     }
 
     .hero-image {
         width: 100%;
-        margin-bottom: var(--space-sm);
+        margin-bottom: var(--space-size-sm);
     }
 
     .project-url {
         text-align: center;
-        margin-bottom: var(--space-lg);
+        margin-bottom: var(--space-size-lg);
     }
 
     .project-url .unreleased {
         font-style: italic;
-        color: var(--text-disabled);
+        color: var(--color-text-disabled);
         text-decoration: line-through;
     }
 }

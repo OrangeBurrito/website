@@ -15,7 +15,7 @@ const { post } = Astro.props
 				<div class="text">
 					<Date date={post.data.publishedDate}/>
 				</div>
-				<img class="date-icon" src="/images/clock_icon.png" alt="">
+				<img class="img-icon" src="/images/clock_icon.png" alt="">
 			</div>
 		</div>
 	</a>
@@ -23,7 +23,7 @@ const { post } = Astro.props
 
 <style>
 	.post {
-		--gap-item: var(--space-lg);
+		--gap-item: var(--space-size-lg);
 		position: relative;
 		min-width: 400px;
 		width: fit-content;
@@ -38,7 +38,7 @@ const { post } = Astro.props
 
 	.date {
 		display: flex;
-		gap: var(--space-xs);
+		gap: var(--space-size-xs);
 	}
 	
 	.title {
@@ -48,7 +48,7 @@ const { post } = Astro.props
 
 	.post:hover {
 		.post-icon {
-			bottom: var(--space-base);
+			bottom: var(--space-size-base);
 		}
 	}
 

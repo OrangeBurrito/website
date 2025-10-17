@@ -11,3 +11,11 @@
       {JSON.stringify(book,null,2)}
     </pre>
 </div>
+
+<style>
+  .title {
+    font-family: var(--font-family-body-serif);
+    font-size: var(--font-size-subtitle);
+    max-width: 20ch;
+  }
+</style>

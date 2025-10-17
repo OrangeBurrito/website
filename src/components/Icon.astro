@@ -1,0 +1,20 @@
+---
+export interface Props {
+  icon: string
+}
+
+const { icon } = Astro.props as Props
+const { default: innerHTML } = await import(`../../public/icons/${icon}.svg?raw`)
+---
+
+<div class="icon">
+  <Fragment set:html={innerHTML} />
+</div>
+
+<style>
+  .icon {
+    display: inline-block;
+    width: var(----space-size-base);
+    height: var(--space-size-base);
+  }
+</style>

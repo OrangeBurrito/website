@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Snippet } from "svelte";
+  import type { Snippet } from "svelte";
   import type { MouseEventHandler } from "svelte/elements";
 
     type ButtonType = 'primary' | 'secondary' | 'ghost' 
@@ -29,13 +29,13 @@
         border: none;
         outline: none;
         font-size: var(--font-size-heading);
-        font-family: var(--font-header);
-        --background-button: var(--accent);
-        --background-hover-button: var(--accent-light);
-        --color-button: var(--darker);
+        font-family: var(--font-family-header);
+        --background-button: var(--color-primary);
+        --background-hover-button: var(--color-primary-light);
+        --color-button: var(--color-background-alt);
         background-color: var(--background-button);
         color: var(--color-button);
-        padding: var(--space-xs) var(--space-base);
+        padding: var(--space-size-xs) var(--space-size-base);
         transition: all 0.08s ease-in-out;
 
         a {
@@ -53,16 +53,16 @@
         }
 
         &.secondary {
-            --background-button: var(--dark);
-            --background-hover-button: var(--dark-lightest);
-            --color-button: var(--text-shade);
+            --background-button: var(--color-surface-3);
+            --background-hover-button: var(--color-surface-4);
+            --color-button: var(--color-text-body);
         }
 
         &.ghost {
             --background-button: transparent;
             --background-hover-button: transparent;
-            --color-button: var(--header-shade);
-            border: 2px solid var(--header-shade);
+            --color-button: var(--color-text-heading);
+            border: 2px solid var(--color-text-heading);
 
             &:hover {
                 border-width: 4px;
@@ -71,7 +71,7 @@
 
         &.size-small {
             font-size: var(--font-size-subheading);
-            padding: var(--space-xxs) var(--space-xs);
+            padding: var(--space-size-xxs) var(--space-size-xs);
         }
     }
 </style>

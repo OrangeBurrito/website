@@ -6,17 +6,8 @@ import '../styles/post.css'
 import LogoHeader from '../components/LogoHeader.astro'
 import Button from '../components/Button.svelte'
 import Tag from '../components/Tag.svelte'
+import { softwareTagColors } from '../ts/types'
 const { frontmatter } = Astro.props
-
-let tagColors = {
-	"javascript": "#755800",
-	"svelte": "#FE5904",
-	"dotnet": "#4B2FD8",
-	"blazor": "#5C2C91",
-	"figma": "#006f5a",
-	"docker": "#2496ED",
-	"postgres": "#336791"
-}
 ---
 
 <html>
@@ -35,7 +26,7 @@ let tagColors = {
             </div>
 				<h1 class="title">{frontmatter.title}</h1>
                 <div class="dates">
-                    <img class="date-icon" src="/images/clock_icon.png" alt="">
+                    <img class="img-icon" src="/images/clock_icon.png" alt="">
                     <div class="date">{frontmatter.startDate.toLocaleDateString('en-US', {month: 'short'})} {frontmatter.startDate.getFullYear()}</div>
                     <span>—</span>
                     <div class="date">
@@ -44,7 +35,7 @@ let tagColors = {
                 </div>
 				<div class="tags">
 					{frontmatter.tags.map((tag) => (
-						<Tag color={tagColors[tag]}>{tag}</Tag>
+						<Tag color={softwareTagColors[tag]}>{tag}</Tag>
 					))}
 				</div>
 				<p class="description">{frontmatter.description}</p>

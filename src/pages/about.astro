@@ -1,79 +1,149 @@
 ---
+import Icon from '../components/Icon.astro'
 import BaseLayout from '../layouts/BaseLayout.astro'
 ---
 
 <BaseLayout title="About">
-	<h1 class="page-header">About</h1>
 	<div class="about-strip">
 		<div class="content">
-			<h2>OrangeBurrito</h2>
-			<img class="profile" src="/images/pfp.jpg" alt="unicorn with the hash of this website url">
-			<em>The seldom-seen visage of the website's eclectic proprietor</em>
-			<p>This website is under active construction: be wary of falling beams.</p>
-			<div class="links">
-				<h3>Links of Interest</h3>
-				<a href="https://github.com/OrangeBurrito" target="_blank"><span>GitHub</span> (Fountain of truth)</a>
-				<a href="https://app.thestorygraph.com/profile/orangeburrito" target="_blank"><span>Storygraph</span> (Goodreads clone account)</a>
+			<h1 class="page-header">About</h1>
+			<div class="profile">
+				<div class="text">
+					<h2>Orange<br>Burrito</h2>
+					<em>Typography enthusiast</em>
+				</div>
+				<img class="profile" src="/images/pfp.jpg" alt="unicorn with the hash of this website url">
+			</div>
+			<p>I'm a programmer, which, while unfortunate, is slightly abated by an enthusiasm for good visual design.</p>
+			<p>This site is my personal glob of hex-code-complaint paint on the internet. It serves as a blog, job portfolio and—in future—my digital mausoleum.</p>
+			<div class="list">
+				<h3>Correspondence</h3>
+				<div class="icon-text">
+					<Icon icon="mail" />
+					<a href="mailto:root@orangeburrito.com">root@orangeburrito.com</a>
+				</div>
+				<div class="icon-text">
+					<Icon icon="github" />
+					<a href="https://github.com/OrangeBurrito" target="_blank">GitHub <Icon icon="external-link"/></a>
+				</div>
+				<div class="icon-text">
+					<Icon icon="book" />
+					<a href="https://app.thestorygraph.com/profile/orangeburrito" target="_blank">StoryGraph <Icon icon="external-link"/></a>
+				</div>
+				<div class="icon-text">
+					<Icon icon="paint-bucket" />
+					<a href="https://userstyles.world/user/orangeburrito" target="_blank">Userstyles <Icon icon="external-link"/></a>
+				</div>
+			</div>
+			<div class="metadata">
+				<p>Source code hosted on <a href="https://github.com/OrangeBurrito" target="_blank">GitHub</a></p>
+				<p>Deployed with <span style="color: #05bdba">Netlify <img class="img-icon" src="/icons/netlify.png" alt="Netlify Logo"></span></p>
+				<p class="copyright">Copyright © OrangeBurrito {new Date().getFullYear()}</p>
 			</div>
 		</div>
 	</div>
 </BaseLayout>
 
 <style>
-	p, a {
-		font-size: var(----space-bsm);
+	.page-header {
+		margin-bottom: var(--space-size-sm);
 	}
 
-	p {
-		margin-bottom: var(--space-xxs);
-	}
-
-	.links {
+	.list {
 		display: flex;
 		flex-direction: column;
-		align-items: flex-end;
-		gap: var(--space-xs);
-		margin-top: var(--space-xxl);
+		gap: var(--space-size-xs);
+		margin: var(--space-size-sm) 0;
 	}
 
 	a {
-		border-bottom: 2px solid var(--accent);
-	}
-
-	span {
-		color: var(--accent-light);
+		border-bottom: 2px solid var(--color-text-link);
 	}
 
 	.about-strip {
-		display: flex;
-  		justify-content: flex-end;
-	}
+		width: fit-content;
+		height: calc(100% - var(--space-size-lg));
+		float: right;
+		text-align: left;
+		overflow-y: auto;
+		overflow-x: hidden;
+		background-color: var(--color-surface-2);
+		background-clip: padding-box;
+		padding: var(--space-size-base) var(--space-size-dlg);
+		border: 4px solid transparent;
+		outline: 16px solid var(--color-surface-2);
+		margin: var(--space-size-base);
 
-	.about-strip .content {
-		display: flex;
-		flex-direction: column;
-		align-items: flex-end;
-		gap: var(--space-sm);
-		width: 30ch;
+		.content {
+			height: 100%;
+			display: flex;
+			flex-direction: column;
+			gap: var(--space-size-sm);
+			width: 30ch;
+	
+			.profile {
+				display: grid;
+				grid-template-columns: 1fr auto;
+				gap: var(--space-size-base);
+				margin-bottom: var(--space-size-xxs);
+	
+				img {
+					width: 100%;
+					height: 128px;
+				}
+			}
 
-		.profile {
-			width: 18ch;
-			height: 18ch;
+			.metadata {
+				display: flex;
+				flex-direction: column;
+				justify-content: flex-end;
+				flex-grow: 1;
+
+				p {
+					color: var(--color-text-code);
+					margin-bottom: var(--space-size-xxs);
+				}
+			}
+
+			.copyright {
+				margin-top: var(--space-size-xxs);
+				font-style: italic;
+			}
 		}
 	}
 
+	
 	@media screen and (max-width: 600px) {
 		.about-strip {
-			width: 100%;
-			justify-content: flex-start;
+			height: fit-content;
+			width: calc(100% - var(--space-size-lg));
+			float: none;
 			
+			.content {
+				margin-bottom: 0;
+				align-items: flex-start;
+
+				.profile img {
+					width: auto;
+					margin: 0 auto;
+				}
+			}
+			
+			.list {
+				align-items: flex-start;
+			}
 		}
-		
-		.about-strip .content {
-			align-items: flex-start;
-		}
-		.links {
-			align-items: flex-start;
+
+		.about-strip .profile {
+			display: block;
+			width: 100%;
+  			text-align: center;
+
+			br { display: none;}
+
+			.text {
+				margin-bottom: var(--space-size-sm);
+			}
 		}
 	}
 </style>
