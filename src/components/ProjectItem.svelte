@@ -1,12 +1,19 @@
 <script lang="ts">
-  import Tag from "./Tag.svelte";
+    import Tag from "./Tag.svelte";
+    import Image from "./Image.svelte";
     import { softwareTagColors } from '../ts/types'
+
 
     let { project } = $props()
 </script>
 
 <div class="project hover-slide">
 <a href="/projects/{project.id}">
+    {#if project.data.coverIcon}
+    <div class="cover-icon">
+        <Image src={project.data.coverIcon} alt="{project.data.title} Thumbnail" type="pixelated" width={80} />
+    </div>
+    {/if}
     <div class="info">
         <h2 class="title">{project.data.title}</h2>
         <p class="description">{project.data.shortDesc}</p>
@@ -27,6 +34,7 @@
 <style>
     .project {
         width: fit-content;
+        position: relative;
         margin-bottom: var(--space-xl);
     }
 
@@ -47,5 +55,23 @@
 
     .tags {
         margin-bottom: 0;
+    }
+
+    :global(.project .cover-icon) {
+        height: auto;
+        position: absolute;
+        left: 0;
+    }
+
+    @media screen and (max-width: 600px) {
+        .project {
+            width: 100%;
+        }
+
+        .project .cover-icon {
+            width: 72px;
+            left: auto;
+            right: 0;
+        }
     }
 </style>

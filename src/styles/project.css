@@ -5,15 +5,34 @@
 }
 
 .project-header {
+    --project-gradient: #201841;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: var(--space-md);
+
+    .text-block {
+        position: relative;
+        width: 100%;
+        background: linear-gradient(0deg, var(--project-gradient) 40%, rgba(0,0,0,0) 100%);
+        opacity: 0.9;
+        padding: 0;
+        margin: 0;
+    }
+
+    .text-block::after {
+       content: '';
+    }
+
     .title {
         font-size: calc(var(--font-size-title)*1.25);
     }
-    
+
     .description {
         font-style: italic;
         margin-bottom: var(--space-lg);
     }
-    
+
     .dates {
         display: flex;
         align-items: center;
@@ -22,18 +41,14 @@
 
         .date {
             margin-top: 0;
-            color: var(--color-primary);
+            color: var(--color-primary-light);
         }
-    }
-
-    .hero-image {
-        width: 100%;
-        margin-bottom: var(--space-sm);
     }
 
     .project-url {
         display: flex;
         justify-content: center;
+        margin-top: var(--space-sm);
         margin-bottom: var(--space-lg);
     }
 

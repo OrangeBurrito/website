@@ -1,12 +1,28 @@
 <script lang="ts">
-  import { getLatestStorygraphBook } from "../ts/playwright";
+  import { onMount } from "svelte";
   import Link from "./Link.svelte";
 
-  const book = await getLatestStorygraphBook();
+  let book = { title: '', coverImage: '', authors: [] };
+  let loading = true;
+
+  onMount(async () => {
+    try {
+      const response = await fetch('/.netlify/functions/currentlyReading');
+      if (response.ok) {
+        book = await response.json();
+      }
+    } catch (error) {
+      console.error('Failed to fetch book data:', error);
+    } finally {
+      loading = false;
+    }
+  });
 </script>
 
 <div class="currently-reading">
-  {#if book.title && book.coverImage && book.authors}
+  {#if loading}
+    <p>Loading current book...</p>
+  {:else if book.title && book.coverImage && book.authors}
     <h3>Currently Reading</h3>
     <div class="book">
       <img class="cover" src={book.coverImage} alt="" />
@@ -63,7 +79,6 @@
 
     .author:not(:last-child)::after {
       content: ', ';
-      margin-bottom: var(--space-xs);
     }
   }
 </style>

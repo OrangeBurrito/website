@@ -20,6 +20,6 @@ const projects = (await getCollection('projects')).sort(
     <div class="projects item-list">
         {projects.map((project) => (
             <ProjectItem {project} />
-        ))}w
+        ))}
         </div>
 </BaseLayout>

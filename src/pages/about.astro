@@ -5,9 +5,9 @@ import CurrentlyReading from '../components/CurrentlyReading.svelte'
 ---
 
 <BaseLayout title="About">
-	<div class="corner" slot="corner">
+	<Fragment slot="corner">
 		<CurrentlyReading />
-	</div>
+	</Fragment>
 
 	<div class="about-strip">
 		<div class="content">
@@ -125,8 +125,9 @@ import CurrentlyReading from '../components/CurrentlyReading.svelte'
 			float: none;
 			
 			.content {
-				margin-bottom: 0;
+				width: 100%;
 				align-items: flex-start;
+				margin-bottom: 0;
 
 				.profile img {
 					width: auto;

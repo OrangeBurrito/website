@@ -20,8 +20,10 @@ let {title} = Astro.props
 				<LogoHeader/>
 				<NavBar currentPath={Astro.url.pathname} />
 			</header>
-			<slot name="corner"/>
 		</aside>
+		<div class="corner">
+			<slot name="corner"/>
+		</div>
 		<main>
 			<slot/>
 		</main>
@@ -32,16 +34,13 @@ let {title} = Astro.props
 
 <style>
 	.layout {
-		display: flex;
+		position: relative;
+		display: grid;
 		width: 100%;
 		height: 100vh;
-	}
-
-	@media screen and (max-width: 600px) {
-		.layout {
-			flex-wrap: wrap;
-			height: auto;
-		}
+		grid-template-areas: 
+			"aside main"
+			"corner main";
 	}
 
 	aside, main {
@@ -53,12 +52,24 @@ let {title} = Astro.props
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
+		grid-area: aside;
+	}
+
+	.corner {
+		position: absolute;
+		bottom: var(--space-lg);
+		left: var(--space-lg);
+		grid-area: corner;
 	}
 
 	main {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-end;
 		flex-grow: 2;
 		text-align: right;
 		overflow-y: auto;
+		grid-area: main;
 	}
 
 	.main-image {
@@ -70,9 +81,22 @@ let {title} = Astro.props
 		width: 400px;
 	}
 
+		
 	@media screen and (max-width: 600px) {
+		.layout {
+			display: flex;
+			flex-wrap: wrap;
+			height: auto;
+		}
+
+		.corner {
+			position: relative;
+			order: 3;
+			margin-top: var(--space-lg);
+		}
 		main {
 			text-align: left;
+			align-items: flex-start;
 		}
 		
 		.main-image {

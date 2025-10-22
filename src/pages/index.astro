@@ -11,15 +11,15 @@ const posts = (await getCollection('posts')).sort(
 ---
 
 <BaseLayout title="OrangeBurrito">
-<div class="corner" slot="corner">
+<Fragment slot="corner">
 	<CurrentlyReading />
-</div>
+</Fragment>
 
 <h1 class="page-header">Contemporary Texts</h1>
-<div class="item-list">
-	{posts.map((post) => (
-		<PostItem {post}/>
-	))}
-</div>
-<Button link="/posts">See All Posts ></Button>
+	<div class="item-list">
+		{posts.map((post) => (
+			<PostItem {post}/>
+		))}
+	</div>
+	<Button link="/posts">See All Posts ></Button>
 </BaseLayout>

@@ -69,8 +69,6 @@
 		}
 
 		.navbar a {
-			color: var(--color-text-code);
-
 			&.active::after {
 				right: calc(-1 * var(--space-xl));
 			}

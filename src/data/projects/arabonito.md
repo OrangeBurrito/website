@@ -2,6 +2,7 @@
 title: 'Arabonito'
 url: 'https://arabonito.arajet.com'
 coverImage: "/images/arabonito.png"
+coverIcon: "/images/arabonito-thumb.png"
 client: 'Arajet Airlines'
 clientUrl: 'https://arajet.com'
 contractor: 'Huagati Systems'
@@ -15,7 +16,7 @@ tags: ["dotnet", "blazor", "javascript", "figma" ]
 
 ## Overview
 
-I designed and implemented the frontend view for Arajet's in-house gift card program Arabonito, as a subcontractor working on [Huagati Systems](https://huagati.com/)], a company specializing in airline software solutions.
+I designed and implemented the frontend view for Arajet's in-house gift card program Arabonito, as a subcontractor working for [Huagati Systems](https://huagati.com/), a company specializing in airline software solutions.
 
 ## Onto the Drawing Board
 

@@ -20,6 +20,7 @@ const projects = defineCollection({
         shortDesc: z.string().optional(),
         url: z.string().optional(),
         coverImage: z.string(),
+        coverIcon: z.string().optional(),
         client: z.string().optional(),
         clientUrl: z.string().optional(),
         contractor: z.string().optional(),
@@ -27,6 +28,7 @@ const projects = defineCollection({
         startDate: z.date(),
         endDate: z.date().optional(),
         tags: z.array(z.string()).optional(),
+        color: z.string().optional()
     })
 })
 

@@ -11,6 +11,7 @@ endDate: 2024-05-01
 description: "A different kind of design paradigm"
 shortDesc: "Arajet's User Referral Program"
 tags: ["dotnet", "blazor", "javascript", "figma" ]
+color: "#08240D"
 ---
 
 ## Overview

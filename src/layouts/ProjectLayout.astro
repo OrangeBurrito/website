@@ -7,6 +7,7 @@ import LogoHeader from '../components/LogoHeader.astro'
 import Button from '../components/Button.svelte'
 import Tag from '../components/Tag.svelte'
 import Link from '../components/Link.svelte'
+import Image from '../components/Image.svelte'
 import { softwareTagColors } from '../ts/types'
 const { frontmatter } = Astro.props
 ---
@@ -21,19 +22,25 @@ const { frontmatter } = Astro.props
 <body>
 	<LogoHeader/>
 	<article class="project-article">
-        <header class="project-header">
-            <div class="back-button">
-                <Button type="secondary" link="/projects">&lt; Back</Button>
-            </div>
+        <header class="project-header" style={`${frontmatter.color ? `--project-gradient: ${frontmatter.color};`: ""}`}>
+			<div class="back-button">
+				<Button type="secondary" link="/projects">&lt; Back</Button>
+			</div>
+			<div class="text-block">
+				{frontmatter.coverIcon && (
+					<div class="cover-icon">
+						<Image src={frontmatter.coverIcon} alt={frontmatter.title} type="pixelated" width="120" />
+					</div>
+				)}
 				<h1 class="title">{frontmatter.title}</h1>
-                <div class="dates">
-                    <img class="img-icon" src="/images/clock_icon.png" alt="">
-                    <div class="date">{frontmatter.startDate.toLocaleDateString('en-US', {month: 'short'})} {frontmatter.startDate.getFullYear()}</div>
-                    <span>—</span>
-                    <div class="date">
-                        {frontmatter.endDate ? frontmatter.endDate.toLocaleDateString('en-US', {month: 'short'}) + " " + frontmatter.endDate.getFullYear() : "Present"}
-                    </div>
-                </div>
+				<div class="dates">
+					<img class="img-icon" src="/images/clock_icon.png" alt="">
+					<div class="date">{frontmatter.startDate.toLocaleDateString('en-US', {month: 'short'})} {frontmatter.startDate.getFullYear()}</div>
+					<span>—</span>
+					<div class="date">
+						{frontmatter.endDate ? frontmatter.endDate.toLocaleDateString('en-US', {month: 'short'}) + " " + frontmatter.endDate.getFullYear() : "Present"}
+					</div>
+				</div>
 				<div class="tags">
 					{frontmatter.tags.map((tag) => (
 						<Tag color={softwareTagColors[tag]}>{tag}</Tag>
@@ -41,16 +48,16 @@ const { frontmatter } = Astro.props
 				</div>
 				<p class="description">{frontmatter.description}</p>
 			</div>
-            <img class="hero-image" src={frontmatter.coverImage}/>
-			{frontmatter.url && frontmatter.url.length > 0 ? 
-			<div class="project-url">
-				<Link href={frontmatter.url} external={true}>Project Site</Link>
+			<div class="hero-image">
+				<Image src={frontmatter.coverImage} alt={frontmatter.title} expand={true} client:load />
 			</div>
-			:
 			<div class="project-url">
-				<span class="unreleased">Project Unreleased ↗</span>
+				{frontmatter.url && frontmatter.url.length > 0 ? 
+					<Link href={frontmatter.url} external={true}>Project Site</Link>
+				:
+					<span class="unreleased">Project Unreleased ↗</span>
+				}
 			</div>
-			}
 		</header>
 		<div class="content">
 			<slot/>
@@ -58,3 +65,11 @@ const { frontmatter } = Astro.props
 	</article>
 </body>
 </html>
+
+<style>
+	.cover-icon {
+		position: absolute;
+		right: 0;
+		top: 0;
+	}
+</style>

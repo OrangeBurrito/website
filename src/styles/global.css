@@ -6,8 +6,9 @@
 :root {
   --color-primary: #6189f6;
   --color-primary-light: #81a0ff;
-  --color-secondary: #cc9dfa;
+  --color-secondary: #b38ef4;
   --color-secondary-dark: #9063b8;
+  --color-tertiary: #fd8282;
 
   --color-background: #000920;
   --color-background-alt: #11192a;
@@ -103,7 +104,7 @@
 
 @font-face {
   font-family: "EagleSpCGA";
-  src: url("/fonts/Web437_EagleSpCGA_Alt2.woff") format("woff");
+  src: url("/fonts/EagleSpCGA_Alt2.ttf");
 }
 
 body {
@@ -118,6 +119,10 @@ body {
   background-image: linear-gradient(var(--color-background-alt), var(--color-background));
   background-repeat: no-repeat;
   background-attachment: fixed;
+}
+
+body:has(img.expanded) {
+  overflow: hidden;
 }
 
 h1, h2, h3, h4 {
@@ -217,6 +222,7 @@ article a:hover, a.link:hover {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  flex-grow: 1;
 }
 
 .hover-slide {

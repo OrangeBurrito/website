@@ -26,6 +26,7 @@
 
 <style>
     button {
+        width: fit-content;
         border: none;
         outline: none;
         font-size: var(--font-size-heading);
