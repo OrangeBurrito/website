@@ -20,7 +20,7 @@ let {title} = Astro.props
 				<LogoHeader/>
 				<NavBar currentPath={Astro.url.pathname} />
 			</header>
-			<!-- <slot name="corner-info"/> -->
+			<slot name="corner"/>
 		</aside>
 		<main>
 			<slot/>
@@ -45,7 +45,7 @@ let {title} = Astro.props
 	}
 
 	aside, main {
-		padding: var(--space-size-lg);
+		padding: var(--space-lg);
 	}
 
 	aside {
@@ -66,7 +66,7 @@ let {title} = Astro.props
 		image-rendering: pixelated;
 		image-rendering: crisp-edges;
 		z-index: -3;
-		bottom: 10%;
+		bottom: 15%;
 		width: 400px;
 	}
 
@@ -84,7 +84,7 @@ let {title} = Astro.props
 
 	@media screen and (min-width: 601px) {
 		aside {
-			gap: var(--space-size-md);
+			gap: var(--space-md);
 			flex-basis: 20%;
 		}
 
@@ -93,7 +93,7 @@ let {title} = Astro.props
 		}
 
 		.main-image {
-			left: 10%;
+			left: 20%;
 		}
 	}
 </style>

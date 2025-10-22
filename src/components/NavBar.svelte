@@ -17,24 +17,32 @@
 	.navbar {
 		display: flex;
 		flex-direction: column;
-		gap: var(--space-size-xs);
+		gap: var(--space-xs);
 	}
 	a {
 		font-family: var(--font-family-header);
-		font-size: var(--space-size-mlg);
+		font-size: var(--space-mlg);
 		transition: all 0.08s ease-in-out;
 		position: relative;
 		width: fit-content;
 	}
 
-	a:hover, a.active {
+	a:hover, a.active:hover {
+		color: var(--color-text-link-hover);
+		border-left: 3px solid var(--color-text-link);
+		border-bottom: 3px solid var(--color-text-link);
+		padding: 0 0 3px 6px;
+	}
+
+	a.active, a.active:hover {
 		color: var(--color-text-heading);
+		border-color: var(--color-text-link-hover);
 	}
 
 	a.active::after {
 		content: "";
 		position: absolute;
-		right: calc(-1 * var(--space-size-lg));
+		right: calc(-1 * var(--space-lg));
 		top: 50%;
 		transform: translateY(-50%);
 		width: 24px;
@@ -56,15 +64,15 @@
 		.navbar {
 			display: grid;
 			grid-template-columns: 1fr 1fr;
-			margin-top: var(--space-size-base);
-			margin-bottom: calc(-1 *var(--space-size-lg));
+			margin-top: var(--space-base);
+			margin-bottom: calc(-1 *var(--space-lg));
 		}
 
 		.navbar a {
 			color: var(--color-text-code);
 
 			&.active::after {
-				right: calc(-1 * var(--space-size-xl));
+				right: calc(-1 * var(--space-xl));
 			}
 		}
 	}

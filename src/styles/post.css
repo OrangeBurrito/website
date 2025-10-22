@@ -2,13 +2,13 @@
 	position: relative;
 	display: flex;
 	justify-content: flex-start;
-	gap: var(--space-size-md);
-	padding: var(--space-size-md) 0;
-	margin-bottom: var(--space-size-md);
+	gap: var(--space-md);
+	padding: var(--space-md) 0;
+	margin-bottom: var(--space-md);
 }
 
 .post-header .title {
-	font-size: var(--space-size-xl);
+	font-size: var(--space-xl);
 }
 
 .post-header .hero-image {
@@ -24,10 +24,10 @@
 	width: 100%;
 	background: linear-gradient(180deg, var(--color-background-alt) 50%, rgba(0,0,0,0) 100%);
 	opacity: 0.9;
-	padding-top: var(--space-size-lg);
-	padding-bottom: var(--space-size-base);
+	padding-top: var(--space-lg);
+	padding-bottom: var(--space-base);
 	margin-top: 50%;
-	margin-bottom: var(--space-size-dlg);
+	margin-bottom: var(--space-dlg);
 }
 
 .text-block::after {
@@ -39,12 +39,12 @@
 }
 
 .content p, .content li, .content a {
-	font-size: var(--space-size-bsm);
+	font-size: var(--space-bsm);
 }
 
 .content h2, .content h3, .content h4, .content h5 {
-	margin-top: var(--space-size-md);
-	margin-bottom: var(--space-size-sm);
+	margin-top: var(--space-md);
+	margin-bottom: var(--space-sm);
 }
 
 .content h1:first-of-type , .content h2:first-of-type  { margin-top: 0;}
@@ -57,7 +57,7 @@
 .content img {
 	display: block;
 	max-width: 100%;
-	padding: var(--space-size-md);
+	padding: var(--space-md);
 	margin: 0 auto;
 }
 
@@ -65,27 +65,12 @@ img + em {
 	display: block;
 	text-align: center;
 	color: var(--color-text-code);
-	padding-bottom: var(--space-size-dlg);
+	padding-bottom: var(--space-dlg);
 	margin-top: -0.5rem;
 }
 
-a {
-	background: linear-gradient(to bottom, var(--color-primary) 0%, var(--color-primary) 100%);
-	padding-bottom: 3px;
-	background-position: 0 100%;
-	background-repeat: repeat-x;
-	background-size: 4px 2px;
-	text-decoration: none;
-	transition: all 0.125s ease-in;
-}
-
-a:hover{
-	color: var(--color-background);
-	background-size: 4px 50px;
-}
-
 .description {
-	font-size: var(--space-size-bsm);
+	font-size: var(--space-bsm);
 }
 
 .date {
@@ -93,33 +78,33 @@ a:hover{
 }
 
 .date.updated {
-	margin-top: var(--space-size-xs);
+	margin-top: var(--space-xs);
 	font-style: italic;
 }
 
-.content > p {padding-bottom: var(--space-size-base);}
-li { padding-bottom: var(--space-size-xs); }
-li p { padding-bottom: var(--space-size-xxs);}
+.content > p {padding-bottom: var(--space-base);}
+li { padding-bottom: var(--space-xs); }
+li p { padding-bottom: var(--space-xxs);}
 
 pre {
-	padding: var(--space-size-base);
-	margin: var(--space-size-base) 0 var(--space-size-lg) 0;
+	padding: var(--space-base);
+	margin: var(--space-base) 0 var(--space-lg) 0;
 	overflow-x: scroll;
 	font-family: var(--font-family-code);
 }
 
 code {
-	font-size: var(--space-size-base);
+	font-size: var(--space-base);
 	letter-spacing: -0.3px;
 	line-height: 1.5;
-	padding: var(--space-size-xxs) var(--space-size-xs);
+	padding: var(--space-xxs) var(--space-xs);
 }
 
 blockquote {
 	background: var(--color-surface-2);
-	padding: var(--space-size-base);
-	border-left: var(--space-size-xs) solid var(--color-border-light);
-	margin-bottom: var(--space-size-dlg);
+	padding: var(--space-base);
+	border-left: var(--space-xs) solid var(--color-border-light);
+	margin-bottom: var(--space-dlg);
 }
 blockquote p {
 	padding: 0;

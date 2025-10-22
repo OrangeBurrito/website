@@ -15,7 +15,7 @@
     .tag {
         --color-background-tag: gray;
         --color-text-tag: var(--color-text-heading);
-        padding: var(--space-size-xxs) var(--space-size-xs);
+        padding: var(--space-xxs) var(--space-xs);
         background-color: var(--color-background-tag);
         color: var(--color-text-tag);
         font-weight: bold;

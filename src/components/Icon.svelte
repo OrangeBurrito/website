@@ -1,20 +1,18 @@
----
+<script lang="ts">
 export interface Props {
   icon: string
 }
 
-const { icon } = Astro.props as Props
+const { icon }: Props = $props()
 const { default: innerHTML } = await import(`../../public/icons/${icon}.svg?raw`)
----
+</script>
 
-<div class="icon">
-  <Fragment set:html={innerHTML} />
-</div>
+<div class="icon">{@html innerHTML}</div>
 
 <style>
   .icon {
     display: inline-block;
-    width: var(----space-size-base);
-    height: var(--space-size-base);
+    width: var(--space-base);
+    height: var(--space-base);
   }
 </style>

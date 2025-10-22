@@ -35,7 +35,7 @@
         --color-button: var(--color-background-alt);
         background-color: var(--background-button);
         color: var(--color-button);
-        padding: var(--space-size-xs) var(--space-size-base);
+        padding: var(--space-xs) var(--space-base);
         transition: all 0.08s ease-in-out;
 
         a {
@@ -71,7 +71,7 @@
 
         &.size-small {
             font-size: var(--font-size-subheading);
-            padding: var(--space-size-xxs) var(--space-size-xs);
+            padding: var(--space-xxs) var(--space-xs);
         }
     }
 </style>

@@ -27,17 +27,17 @@
 <style>
     .project {
         width: fit-content;
-        margin-bottom: var(--space-size-xl);
+        margin-bottom: var(--space-xl);
     }
 
     .description {
         color: var(--color-text-heading);
-        margin-bottom: var(--space-size-xxs);
+        margin-bottom: var(--space-xxs);
     }
     
     .for {
         font-style: italic;
-        margin-bottom: var(--space-size-sm);
+        margin-bottom: var(--space-sm);
         color: var(--color-text-code);
         
         strong {

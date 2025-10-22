@@ -1,6 +1,6 @@
 .project-article {
     p {
-        font-size: var(--space-size-bsm);
+        font-size: var(--space-bsm);
     }
 }
 
@@ -11,14 +11,14 @@
     
     .description {
         font-style: italic;
-        margin-bottom: var(--space-size-lg);
+        margin-bottom: var(--space-lg);
     }
     
     .dates {
         display: flex;
         align-items: center;
-        gap: var(--space-size-sm);
-        margin-bottom: var(--space-size-base);
+        gap: var(--space-sm);
+        margin-bottom: var(--space-base);
 
         .date {
             margin-top: 0;
@@ -28,12 +28,13 @@
 
     .hero-image {
         width: 100%;
-        margin-bottom: var(--space-size-sm);
+        margin-bottom: var(--space-sm);
     }
 
     .project-url {
-        text-align: center;
-        margin-bottom: var(--space-size-lg);
+        display: flex;
+        justify-content: center;
+        margin-bottom: var(--space-lg);
     }
 
     .project-url .unreleased {

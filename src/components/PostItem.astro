@@ -23,11 +23,21 @@ const { post } = Astro.props
 
 <style>
 	.post {
-		--gap-item: var(--space-size-lg);
+		--gap-item: var(--space-lg);
 		position: relative;
 		min-width: 400px;
 		width: fit-content;
 		margin-bottom: var(--gap-item);
+
+		&:hover {
+			.post-icon {
+				bottom: var(--space-base);
+			}
+
+			.title {
+				color: var(--color-primary-light);
+			}
+		}
 	}
 
 	.text-block {
@@ -38,20 +48,13 @@ const { post } = Astro.props
 
 	.date {
 		display: flex;
-		gap: var(--space-size-xs);
+		gap: var(--space-xs);
 	}
-	
+
 	.title {
 		display: inline-block;
 		transition: color 0.08s ease-in-out;
 	}
-
-	.post:hover {
-		.post-icon {
-			bottom: var(--space-size-base);
-		}
-	}
-
 
 	.post-icon {
 		position: absolute;
@@ -59,12 +62,12 @@ const { post } = Astro.props
 		bottom: 0;
 		z-index: -1;
 		transition: bottom 0.08s ease-in-out;
-	}
-	
-	.post-icon img {
-		max-width: 100%;
-		max-height: 100%;
-		object-fit: cover;
+
+		img {
+			max-width: 100%;
+			max-height: 100%;
+			object-fit: cover;
+		}
 	}
 
 	.description {
@@ -75,6 +78,7 @@ const { post } = Astro.props
 		.post {
 			min-width: 100%;
 		}
+
 		.post-icon {
 			width: 30%;
 			right: 0;
