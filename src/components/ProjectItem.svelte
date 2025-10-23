@@ -3,7 +3,6 @@
     import Image from "./Image.svelte";
     import { softwareTagColors } from '../ts/types'
 
-
     let { project } = $props()
 </script>
 

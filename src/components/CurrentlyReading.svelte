@@ -37,6 +37,7 @@
       </div>
     </div>
   {/if}
+  <pre>{JSON.stringify(book, null, 2)}</pre>
 </div>
 
 <style>

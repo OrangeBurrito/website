@@ -236,7 +236,7 @@ article a:hover, a.link:hover {
     margin-bottom: calc(var(--gap-item) - var(--space-md));
 
     .title {
-      color: var(--color-text-link);
+      color: var(--color-secondary);
     }
   }
 }
