@@ -3,7 +3,16 @@ import BaseLayout from '../layouts/BaseLayout.astro'
 import ProjectItem from '../components/ProjectItem.svelte'
 import { getCollection } from 'astro:content'
 
-const projects = (await getCollection('projects')).sort(
+let currentLang = Astro.cookies.get('language')?.value || 'en';
+
+const allProjects = await getCollection('projects')
+const projects = allProjects.filter(({ id }) => {
+	if (currentLang === 'th') {
+		return id.startsWith('th/')
+	} else {
+		return !id.startsWith('th/')
+	}
+}).sort(
 	(a, b) => {
 		if (!!a.data.client !== !!b.data.client) {
 			return a.data.client ? -1 : 1;

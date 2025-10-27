@@ -27,12 +27,10 @@ const { frontmatter } = Astro.props
 			<div class="text-block">
 				<h1 class="title">{frontmatter.title}</h1>
 				<p class="description">{frontmatter.description}</p>
-				<div class="date">
 					<Date date={frontmatter.publishedDate} />
 					<img class="img-icon" src="/images/clock_icon.png" alt="">
-				</div>
 				{frontmatter.updatedDate != null && (
-					<div class="date updated">
+					<div class="updated">
 						Last Updated:
 						<Date date={frontmatter.updatedDate} />
 					</div>

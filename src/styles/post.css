@@ -73,11 +73,7 @@ img + em {
 	font-size: var(--space-bsm);
 }
 
-.date {
-	color: var(--color-primary);
-}
-
-.date.updated {
+.updated {
 	margin-top: var(--space-xs);
 	font-style: italic;
 }

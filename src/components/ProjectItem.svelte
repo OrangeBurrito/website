@@ -2,15 +2,16 @@
     import Tag from "./Tag.svelte";
     import Image from "./Image.svelte";
     import { softwareTagColors } from '../ts/types'
+  import { getRelativeLocaleUrl } from "astro:i18n";
 
     let { project } = $props()
 </script>
 
 <div class="project hover-slide">
-<a href="/projects/{project.id}">
+<a href={getRelativeLocaleUrl("en", "projects/" + project.id)}>
     {#if project.data.coverIcon}
     <div class="cover-icon">
-        <Image src={project.data.coverIcon} alt="{project.data.title} Thumbnail" type="pixelated" width={80} />
+        <Image src={project.data.coverIcon} alt="{project.data.title} Thumbnail" type="pixelated" width="72px" />
     </div>
     {/if}
     <div class="info">

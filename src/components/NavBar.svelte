@@ -28,7 +28,7 @@
 	}
 
 	a:hover, a.active:hover {
-		color: var(--color-text-link-hover);
+		color: var(--color-secondary);
 		border-left: 3px solid var(--color-text-link);
 		border-bottom: 3px solid var(--color-text-link);
 		padding: 0 0 3px 6px;

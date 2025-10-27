@@ -2,7 +2,7 @@
   import type { Snippet } from "svelte";
   import type { MouseEventHandler } from "svelte/elements";
 
-    type ButtonType = 'primary' | 'secondary' | 'ghost' 
+    type ButtonType = 'primary' | 'secondary' | 'ghost' | 'passthrough'
     type ButtonSize = 'large' | 'default' | 'small'
 
     type Props = {
@@ -11,12 +11,13 @@
         link?: string
         children: Snippet
         onclick?: MouseEventHandler<HTMLButtonElement>
+        attr?: string
     }
 
-    let { type = 'primary', size = 'default', link, children, onclick }: Props = $props()
+    let { type = 'primary', size = 'default', link, children, onclick, attr }: Props = $props()
 </script>
 
-<button class="{type} size-{size}" {onclick}>
+<button class="{type} size-{size}" title={attr} {onclick}>
     {#if link}
         <a href={link}>{@render children()}</a>
     {:else}
@@ -68,6 +69,13 @@
             &:hover {
                 border-width: 4px;
             }
+        }
+
+        &.passthrough {
+            --background-button: transparent;
+            --background-hover-button: transparent;
+            --color-button: inherit;
+            padding: 0;
         }
 
         &.size-small {

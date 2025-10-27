@@ -31,6 +31,7 @@
     .description {
         font-style: italic;
         margin-bottom: var(--space-lg);
+        max-width: 80%;
     }
 
     .dates {
@@ -38,11 +39,6 @@
         align-items: center;
         gap: var(--space-sm);
         margin-bottom: var(--space-base);
-
-        .date {
-            margin-top: 0;
-            color: var(--color-primary-light);
-        }
     }
 
     .project-url {

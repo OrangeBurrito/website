@@ -51,8 +51,8 @@
   --size-icon-small: 16px;
   
   --font-family-body-serif: "Argent Pixel CF", serif;
-  --font-family-body: Menlo, "SF Mono", Monaco, Consolas, "Liberation Mono", monospace;
-  --font-family-header: OhSnap, Futura, "Century Gothic", AppleGothic, sans-serif;
+  --font-family-body: Menlo, "SF Mono", Monaco, Consolas, "Liberation Mono", monospace, "Arundina Mono";
+  --font-family-header: OhSnap, Futura, "Century Gothic", AppleGothic, "B2 Sign April", sans-serif;
   --font-family-code: var(--font-family-body);
   --font-family-logo: EagleSpCGA;
   --font-family-bold: ChiKareGo2;
@@ -62,6 +62,7 @@
   font-family: "Menlo";
   font-style: normal;
   font-weight: 400;
+  font-display: swap;
   src: local("Menlo Regular"), local("Menlo-Regular"),
     url("Menlo.woff2") format("woff2");
 }
@@ -69,6 +70,7 @@
   font-family: "Menlo";
   font-style: normal;
   font-weight: bold;
+  font-display: swap;
   src: local("Menlo Bold"), local("Menlo-Bold"),
     url("MenloBold.woff2") format("woff2");
 }
@@ -76,6 +78,7 @@
   font-family: "Menlo";
   font-style: italic;
   font-weight: 400;
+  font-display: swap;
   src: local("Menlo Italic"), local("Menlo-Italic"),
     url("MenloItalic.woff2") format("woff2");
 }
@@ -83,28 +86,70 @@
   font-family: "Menlo";
   font-style: italic;
   font-weight: bold;
+  font-display: swap;
   src: local("Menlo Bold Italic"), local("Menlo-BoldItalic"),
     url("MenloBoldItalic.woff2") format("woff2");
 }
 
 @font-face {
   font-family: "OhSnap";
+  font-display: swap;
   src: url("/fonts/Ohsnap.ttf");
 }
 @font-face {
   font-family: "OhSnap";
   font-weight: bold;
+  font-display: swap;
   src: url("/fonts/OhsnapBold.ttf");
 }
 
 @font-face {
   font-family: "Argent Pixel CF";
+  font-display: swap;
   src: url("/fonts/ArgentPixelCF-Regular.woff2") format("woff2");
 }
 
 @font-face {
   font-family: "EagleSpCGA";
+  font-display: swap;
   src: url("/fonts/EagleSpCGA_Alt2.ttf");
+}
+
+@font-face {
+  font-family: "Arundina Mono";
+  font-display: swap;
+  src: url("/fonts/Arundinamono.ttf");
+  size-adjust: 155%;
+}
+@font-face {
+  font-family: "Arundina Mono";
+  font-style: italic;
+  font-display: swap;
+  src: url("/fonts/Arundinamoit.ttf");
+  size-adjust: 155%;
+  font-feature-settings: "c2sc", "smcp";
+}
+@font-face {
+  font-family: "Arundina Mono";
+  font-weight: bold;
+  font-display: swap;
+  src: url("/fonts/Arundinamobd.ttf");
+  size-adjust: 155%;
+}
+@font-face {
+  font-family: "Arundina Mono";
+  font-style: italic;
+  font-weight: bold;
+  font-display: swap;
+  src: url("/fonts/Arundinamobi.ttf");
+  size-adjust: 155%;
+}
+
+@font-face {
+  font-family: "B2 Sign April";
+  font-display: swap;
+  src: url("/fonts/B2 SIGN April Thin.ttf");
+  size-adjust: 130%;
 }
 
 body {
@@ -185,17 +230,12 @@ article a:hover, a.link:hover {
   flex-direction: column;
 }
 
-.date {
-  font-size: var(--space-dlg);
-  font-family: var(--font-family-header);
-  margin-top: var(--space-sm);
-}
-
 .img-icon {
   width: var(--size-icon);
   image-rendering: pixelated;
   image-rendering: crisp-edges;
-  vertical-align: top;
+  object-fit: contain;
+  align-self: flex-end;
 }
 
 .title {

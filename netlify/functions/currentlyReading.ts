@@ -1,6 +1,5 @@
 import type { Config } from "@netlify/functions"
 import { chromium } from "playwright"
-import { spawnSync } from "child_process"
 
 async function getLatestStorygraphBook() {
     const browser = await chromium.launch({ headless: true })
@@ -36,7 +35,6 @@ async function getLatestStorygraphBook() {
 }
 
 export default async (req: Request) => {
-    spawnSync("npx", ["playwright", "install", "chromium"])
 
     const { getStore } = await import('@netlify/blobs')
     const store = getStore('currently-reading')
@@ -65,5 +63,5 @@ export default async (req: Request) => {
 }
 
 export const config: Config = {
-    schedule: "@hourly"
+    schedule: "@daily"
 }

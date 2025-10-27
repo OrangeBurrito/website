@@ -18,7 +18,7 @@ const posts = (await getCollection('posts')).sort(
 <h1 class="page-header">Contemporary Texts</h1>
 	<div class="item-list">
 		{posts.map((post) => (
-			<PostItem {post}/>
+			<PostItem {post} client:load />
 		))}
 	</div>
 	<Button link="/posts">See All Posts ></Button>

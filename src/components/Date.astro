@@ -1,7 +1,38 @@
 ---
-const { date } = Astro.props
+type Props = {
+    date: string
+    monthOnly?: boolean 
+}
 
-const options = { year: 'numeric', month: 'long', day: 'numeric' }
+const { date, monthOnly } = Astro.props as Props
+
+const options = monthOnly 
+  ? { month: 'short' }
+  : { year: 'numeric', month: 'long', day: 'numeric' }
+
+const localDate = new Date(date)
+
+let locale = Astro.cookies.get('language')?.value == 'th' ? 'th-TH' : 'en-US'
 ---
 
-<time datetime={date}>{new Date(date).toLocaleDateString('en-US', options)}</time>
+<div class="date">
+{monthOnly ? (
+    <>
+    {localDate.toLocaleDateString(locale, {month: 'short'})} {localDate.getFullYear()}
+    </>
+) : (
+    <time datetime={date}>{localDate.toLocaleDateString(locale, options)}</time>
+)}
+</div>
+
+<style>
+    .date {
+        display: inline-block;
+        font-size: var(--space-dlg);
+        font-family: var(--font-family-header);
+        line-height: 0;
+        color: var(--color-primary);
+        margin-top: var(--space-dlg);
+
+    }
+</style>

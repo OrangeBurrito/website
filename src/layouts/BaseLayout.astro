@@ -1,9 +1,15 @@
 ---
 import LogoHeader from '../components/LogoHeader.astro'
 import NavBar from '../components/NavBar.svelte'
+import SiteSettings from '../components/SiteSettings.svelte'
 import '../styles/global.css'
 
 let {title} = Astro.props
+let initialLang = Astro.cookies.get('language')?.value || 'en';
+
+if (!Astro.cookies.has('language')) {
+	Astro.cookies.set('language', 'en', { path: '/' });
+}3
 ---
 
 <html>
@@ -23,6 +29,7 @@ let {title} = Astro.props
 		</aside>
 		<div class="corner">
 			<slot name="corner"/>
+			<SiteSettings lang={initialLang} dark={true} client:load />
 		</div>
 		<main>
 			<slot/>

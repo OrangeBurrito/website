@@ -8,6 +8,7 @@ import Button from '../components/Button.svelte'
 import Tag from '../components/Tag.svelte'
 import Link from '../components/Link.svelte'
 import Image from '../components/Image.svelte'
+import Date from '../components/Date.astro'
 import { softwareTagColors } from '../ts/types'
 const { frontmatter } = Astro.props
 ---
@@ -29,24 +30,22 @@ const { frontmatter } = Astro.props
 			<div class="text-block">
 				{frontmatter.coverIcon && (
 					<div class="cover-icon">
-						<Image src={frontmatter.coverIcon} alt={frontmatter.title} type="pixelated" width="120" />
+						<Image src={frontmatter.coverIcon} alt={frontmatter.title} type="pixelated" width="var(--size-cover-icon)" />
 					</div>
 				)}
 				<h1 class="title">{frontmatter.title}</h1>
+				<p class="description">{frontmatter.description}</p>
 				<div class="dates">
 					<img class="img-icon" src="/images/clock_icon.png" alt="">
-					<div class="date">{frontmatter.startDate.toLocaleDateString('en-US', {month: 'short'})} {frontmatter.startDate.getFullYear()}</div>
+					<Date date={frontmatter.startDate} monthOnly={true}/>
 					<span>—</span>
-					<div class="date">
-						{frontmatter.endDate ? frontmatter.endDate.toLocaleDateString('en-US', {month: 'short'}) + " " + frontmatter.endDate.getFullYear() : "Present"}
-					</div>
+					<Date date={frontmatter.endDate} monthOnly={true}/>
 				</div>
 				<div class="tags">
 					{frontmatter.tags.map((tag) => (
 						<Tag color={softwareTagColors[tag]}>{tag}</Tag>
 					))}
 				</div>
-				<p class="description">{frontmatter.description}</p>
 			</div>
 			<div class="hero-image">
 				<Image src={frontmatter.coverImage} alt={frontmatter.title} expand={true} client:load />
@@ -71,5 +70,12 @@ const { frontmatter } = Astro.props
 		position: absolute;
 		right: 0;
 		top: 0;
+		--size-cover-icon: 120px;
+	}
+
+	@media (max-width: 600px) {
+		.cover-icon {
+			--size-cover-icon: 80px;
+		}
 	}
 </style>

@@ -7,8 +7,8 @@
     src: string;
     alt: string;
     type?: ImageType
-    width?: number;
-    height?: number;
+    width?: string;
+    height?: string;
     expand?: boolean;
   }
 
@@ -24,14 +24,14 @@
 {#if expand}
   <!-- svelte-ignore a11y_click_events_have_key_events -->
   <!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
-  <img {src} {alt} class="expandable" class:expanded style={`${width ? `width: ${width}px;` : ''}${height ? `height: ${height}px;` : ''}`} onclick={toggleExpand} />
+  <img {src} {alt} class="expandable" class:expanded style={`${width ? `width: ${width};` : ''}${height ? `height: ${height};` : ''}`} onclick={toggleExpand} />
   {#if expanded}
     <!-- svelte-ignore a11y_click_events_have_key_events -->
     <!-- svelte-ignore a11y_no_static_element_interactions -->
     <div class="overlay" transition:fade={{ duration: 400 }} onclick={toggleExpand}></div>
   {/if}
 {:else}
-  <img class={type} style={`${width ? `width: ${width}px;` : ''}${height ? `height: ${height}px;` : ''}`} {src} {alt} />
+  <img class={type} style={`${width ? `width: ${width};` : ''}${height ? `height: ${height};` : ''}`} {src} {alt} />
 {/if}
 
 <style>
