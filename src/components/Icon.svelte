@@ -12,7 +12,7 @@ const { default: innerHTML } = await import(`../../public/icons/${icon}.svg?raw`
 <style>
   .icon {
     display: inline-block;
-    width: var(--space-base);
-    height: var(--space-base);
+    width: var(--size-icon);
+    height: var(--size-icon);
   }
 </style>

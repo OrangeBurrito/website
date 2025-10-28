@@ -1,4 +1,6 @@
 .project-article {
+    margin-top: -2rem;
+    
     p {
         font-size: var(--space-bsm);
     }
@@ -30,7 +32,7 @@
 
     .description {
         font-style: italic;
-        margin-bottom: var(--space-lg);
+        margin-bottom: var(--space-base);
         max-width: 80%;
     }
 
@@ -39,18 +41,26 @@
         align-items: center;
         gap: var(--space-sm);
         margin-bottom: var(--space-base);
+
+        .date {
+            margin-top: 0;
+        }
     }
 
-    .project-url {
-        display: flex;
-        justify-content: center;
-        margin-top: var(--space-sm);
+    .tags {
         margin-bottom: var(--space-lg);
+    }
+
+    .hero-image a {
+        color: var(--color-text-heading);
+        font-size: var(--font-size-subheading);
+        --size-icon: var(--font-size-subheading);
+        z-index: 1;
     }
 
     .project-url .unreleased {
         font-style: italic;
-        color: var(--color-text-disabled);
+        color: var(--color-text-code);
         text-decoration: line-through;
     }
 }

@@ -15,8 +15,9 @@ export async function getStaticPaths() {
 
 const { project } = Astro.props
 const { Content } = await render(project)
+
 ---
 
-<ProjectLayout frontmatter={project.data}>
+<ProjectLayout frontmatter={project.data} lang={project.id.split('/')[0] === 'th' ? 'th' : 'en'}>
   <Content />
 </ProjectLayout>

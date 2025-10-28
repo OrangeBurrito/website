@@ -18,11 +18,11 @@ async function getLatestStorygraphBook() {
 
     const title = await firstBook.locator('.book-title-author-and-series h3 a').first().textContent()
     const coverImage = await firstBook.locator('.book-cover img').getAttribute('src')
-    
+
     const authorLinks = firstBook.locator('.book-title-author-and-series p a')
     const firstAuthor = await authorLinks.nth(0).textContent()
     const secondAuthor = await authorLinks.nth(1).textContent()
-    
+
     const authors = [firstAuthor, secondAuthor].filter(Boolean)
 
     await browser.close()
@@ -38,27 +38,27 @@ export default async (req: Request) => {
 
     const { getStore } = await import('@netlify/blobs')
     const store = getStore('currently-reading')
-    
+
     if (req.method === 'GET') {
         const cachedData = await store.get('book-data', { type: 'json' })
-        
+
         if (cachedData) {
             return new Response(JSON.stringify(cachedData), {
                 headers: { 'Content-Type': 'application/json' }
             })
         }
-        
+
         const data = await getLatestStorygraphBook()
         await store.setJSON('book-data', data)
-        
+
         return new Response(JSON.stringify(data), {
             headers: { 'Content-Type': 'application/json' }
         })
     }
-    
+
     const data = await getLatestStorygraphBook()
     await store.setJSON('book-data', data)
-    
+
     return new Response(JSON.stringify({ success: true, data }))
 }
 

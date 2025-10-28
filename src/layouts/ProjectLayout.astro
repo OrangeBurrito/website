@@ -10,7 +10,7 @@ import Link from '../components/Link.svelte'
 import Image from '../components/Image.svelte'
 import Date from '../components/Date.astro'
 import { softwareTagColors } from '../ts/types'
-const { frontmatter } = Astro.props
+const { frontmatter, lang } = Astro.props
 ---
 
 <html>
@@ -37,9 +37,9 @@ const { frontmatter } = Astro.props
 				<p class="description">{frontmatter.description}</p>
 				<div class="dates">
 					<img class="img-icon" src="/images/clock_icon.png" alt="">
-					<Date date={frontmatter.startDate} monthOnly={true}/>
+					<Date date={frontmatter.startDate} short={true} locale={lang} />
 					<span>—</span>
-					<Date date={frontmatter.endDate} monthOnly={true}/>
+					<Date date={frontmatter.endDate} short={true} locale={lang} />
 				</div>
 				<div class="tags">
 					{frontmatter.tags.map((tag) => (
@@ -48,14 +48,17 @@ const { frontmatter } = Astro.props
 				</div>
 			</div>
 			<div class="hero-image">
-				<Image src={frontmatter.coverImage} alt={frontmatter.title} expand={true} client:load />
+				<div class="hover-overlay">
+					<a id="overlay-link" href={frontmatter.url} target="_blank"></a>
+					{frontmatter.url && frontmatter.url.length > 0 ? 
+						<Link href={frontmatter.url} external={true}>Project Site</Link>
+					:
+						<span class="unreleased">Project Unreleased ↗</span>
+					}
+				</div>
+				<Image src={frontmatter.coverImage} alt={frontmatter.title} />
 			</div>
 			<div class="project-url">
-				{frontmatter.url && frontmatter.url.length > 0 ? 
-					<Link href={frontmatter.url} external={true}>Project Site</Link>
-				:
-					<span class="unreleased">Project Unreleased ↗</span>
-				}
 			</div>
 		</header>
 		<div class="content">
@@ -71,6 +74,52 @@ const { frontmatter } = Astro.props
 		right: 0;
 		top: 0;
 		--size-cover-icon: 120px;
+	}
+
+	.hero-image {
+		position: relative;
+
+		.hover-overlay {
+			position: absolute;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 100%;
+			height: 100%;
+			opacity: 0;
+			transition: all 0.3s ease-in-out;
+
+			#overlay-link {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				z-index: 1;
+				cursor: pointer;
+
+				&:hover {
+					background: none;
+				}
+			}
+
+			&::before {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background-color: var(--project-gradient);
+				opacity: 0.85;
+			}
+		}
+
+		&:hover {
+			.hover-overlay {
+				opacity: 1;
+			}
+		}
 	}
 
 	@media (max-width: 600px) {

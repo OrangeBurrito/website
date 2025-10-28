@@ -2,7 +2,7 @@
     import Tag from "./Tag.svelte";
     import Image from "./Image.svelte";
     import { softwareTagColors } from '../ts/types'
-  import { getRelativeLocaleUrl } from "astro:i18n";
+    import { getRelativeLocaleUrl } from "astro:i18n";
 
     let { project } = $props()
 </script>
@@ -20,6 +20,8 @@
         <div class="for">
             {#if project.data.client}
                 <div class="client">For <strong>{project.data.client}</strong></div>
+            {:else}
+                <div class="side-project">Side Project</div>
             {/if}
         </div>
         <div class="tags">
@@ -51,10 +53,6 @@
         strong {
             color: var(--color-text-link);
         }
-    }
-
-    .tags {
-        margin-bottom: 0;
     }
 
     :global(.project .cover-icon) {

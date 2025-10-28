@@ -8,8 +8,8 @@ contractor: 'Huagati Systems'
 contractorUrl: 'https://huagati.com/'
 startDate: 2024-04-01
 endDate: 2024-05-01
-description: "A different kind of design paradigm"
-shortDesc: "Arajet's User Referral Program"
+description: "Design and implementation of Arajet Airlines' unreleased User Referrals Program in Blazor WASM"
+shortDesc: "User Referral Program"
 tags: ["dotnet", "blazor", "javascript", "figma" ]
 color: "#08240D"
 ---

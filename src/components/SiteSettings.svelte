@@ -24,7 +24,6 @@
     }
 
     function toggleLanguage() {
-        console.log("Toggling language from", currentLang)
         if (currentLang === 'en') {
             document.cookie = 'language=th'
             currentLang = 'th'
