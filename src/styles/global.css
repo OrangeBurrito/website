@@ -285,7 +285,6 @@ article a:hover, a.link:hover {
   display: flex;
   align-items: center;
   gap: var(--space-sm);
-  margin-bottom: var(--space-bsm);
 }
 
 .back-button {

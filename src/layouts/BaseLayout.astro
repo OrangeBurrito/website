@@ -6,10 +6,15 @@ import '../styles/global.css'
 
 let {title} = Astro.props
 let initialLang = Astro.cookies.get('language')?.value || 'en';
+let initialTheme = Astro.cookies.get('theme')?.value || 'dark';
 
 if (!Astro.cookies.has('language')) {
 	Astro.cookies.set('language', 'en', { path: '/' });
-}3
+}
+
+if (!Astro.cookies.has('theme')) {
+	Astro.cookies.set('theme', 'dark', { path: '/' });
+}
 ---
 
 <html>
@@ -29,7 +34,7 @@ if (!Astro.cookies.has('language')) {
 		</aside>
 		<div class="corner">
 			<slot name="corner"/>
-			<SiteSettings lang={initialLang} dark={true} client:load />
+			<SiteSettings lang={initialLang} dark={initialTheme === 'dark'} client:load />
 		</div>
 		<main>
 			<slot/>

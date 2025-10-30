@@ -22,6 +22,7 @@
 <div class="currently-reading">
   {#if loading}
     <p>Loading current book...</p>
+    <!-- <pre>{JSON.stringify(book, null, 2)}</pre> -->
   {:else if book.title && book.coverImage && book.authors}
     <h3>Currently Reading</h3>
     <div class="book">
@@ -37,7 +38,6 @@
       </div>
     </div>
   {/if}
-  <pre>{JSON.stringify(book, null, 2)}</pre>
 </div>
 
 <style>

@@ -10,26 +10,27 @@
 
     let { dark, lang }: Props = $props()
 
-
     let currentLang = $state(lang)
+    let isDark = $state(dark)
 
     function toggleTheme() {
-        if (dark) {
-            document.cookie = 'theme=light'
-            dark = false
+        if (isDark) {
+            isDark = false
+            document.cookie = 'theme=light; path=/; max-age=31536000'
         } else {
-            document.cookie = 'theme=dark'
-            dark = true
+            isDark = true
+            document.cookie = 'theme=dark; path=/; max-age=31536000'
         }
+        window.location.reload()
     }
 
     function toggleLanguage() {
         if (currentLang === 'en') {
-            document.cookie = 'language=th'
+            document.cookie = 'language=th; path=/; max-age=31536000'
             currentLang = 'th'
         } 
         else {
-            document.cookie = 'language=en'
+            document.cookie = 'language=en; path=/; max-age=31536000'
             currentLang = 'en'
         }
         window.location.reload()
@@ -37,27 +38,41 @@
 </script>
 
 <div class="site-settings">
-    <Button type="passthrough" onclick={toggleTheme} attr={dark ? 'Toggle Light Mode' : 'Toggle Dark Mode'}>
-        {#if dark}
-            <Icon icon="moon" />
-        {:else}
-            <Icon icon="sun" />
-        {/if}
-    </Button>
-    <Button type="passthrough" onclick={toggleLanguage} attr={currentLang === 'th' ? 'Change Language' : 'เปลี่ยนภาษา'}>
-        <Image type="pixelated" src={currentLang === 'th' ? '/icons/lang-th.png' : '/icons/lang-en.png'} alt="Language Flag" width="32px" />
-    </Button>
+    <div class="title">Settings</div>
+    <div class="settings">
+        <Button type="passthrough" onclick={toggleTheme} attr={isDark ? 'Toggle Light Mode' : 'Toggle Dark Mode'}>
+                <Icon icon={isDark ? "sun" : "moon"}/>
+        </Button>
+        <Button type="passthrough" onclick={toggleLanguage} attr={currentLang === 'th' ? 'Change Language' : 'เปลี่ยนภาษา'}>
+            <Image type="pixelated" src={currentLang === 'th' ? '/icons/lang-th.png' : '/icons/lang-en.png'} alt="Language Flag" width="32px" />
+        </Button>
+    </div>
 </div>
 
 <style>
-    .site-settings {
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-        gap: var(--space-dlg);
+    .site-settings { 
+        box-shadow: 0px 4px 0px 0px var(--color-border-light);
+        min-width: 128px;
+        padding-bottom: var(--space-xs);
+        margin-top: var(--space-md);
+        
+        .title {
+            font-family: var(--font-family-header);
+            font-size: var(--font-size-subheading);
+            text-transform: uppercase;
+            color: var(--color-text-code);
+        }
+        
+        .settings {      
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: var(--space-dlg);
+        }
     }
 
     :global(.site-settings button svg) {
         --size-icon: var(--space-mlg);
+        fill: var(--color-text-heading);
     }
 </style>

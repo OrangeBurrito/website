@@ -39,7 +39,11 @@ const { frontmatter, lang } = Astro.props
 					<img class="img-icon" src="/images/clock_icon.png" alt="">
 					<Date date={frontmatter.startDate} short={true} locale={lang} />
 					<span>—</span>
-					<Date date={frontmatter.endDate} short={true} locale={lang} />
+					{frontmatter.endDate ? (
+						<Date date={frontmatter.endDate} short={true} locale={lang} />
+					) : (
+						<span class="date-ongoing">Ongoing</span>
+					)}
 				</div>
 				<div class="tags">
 					{frontmatter.tags.map((tag) => (
@@ -49,7 +53,7 @@ const { frontmatter, lang } = Astro.props
 			</div>
 			<div class="hero-image">
 				<div class="hover-overlay">
-					<a id="overlay-link" href={frontmatter.url} target="_blank"></a>
+					<a id="overlay-link" href={frontmatter.url && frontmatter.url.length > 0 ? frontmatter.url : '#'} target="_blank"></a>
 					{frontmatter.url && frontmatter.url.length > 0 ? 
 						<Link href={frontmatter.url} external={true}>Project Site</Link>
 					:
@@ -97,6 +101,7 @@ const { frontmatter, lang } = Astro.props
 				height: 100%;
 				z-index: 1;
 				cursor: pointer;
+				background: none;
 
 				&:hover {
 					background: none;
@@ -113,6 +118,12 @@ const { frontmatter, lang } = Astro.props
 				background-color: var(--project-gradient);
 				opacity: 0.85;
 			}
+
+			&:has(.unreleased) {
+				#overlay-link { 
+					pointer-events: none;
+				}
+			}
 		}
 
 		&:hover {
@@ -120,6 +131,12 @@ const { frontmatter, lang } = Astro.props
 				opacity: 1;
 			}
 		}
+	}
+
+	.date-ongoing {
+		font-family: var(--font-family-header);
+		color: var(--color-text-link);
+		font-size: var(--space-dlg);
 	}
 
 	@media (max-width: 600px) {
