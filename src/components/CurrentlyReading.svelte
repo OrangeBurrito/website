@@ -2,7 +2,7 @@
   import { onMount } from "svelte";
   import Link from "./Link.svelte";
 
-  let book = { title: '', coverImage: '', authors: [] };
+  let book = { title: 'The Mill on the Floss', coverImage: "https://cdn.thestorygraph.com/ihz06oxs3pior4xzyku6fd7dsgka", authors: ['George Eliot'] };
   let loading = true;
 
   onMount(async () => {
@@ -20,10 +20,10 @@
 </script>
 
 <div class="currently-reading">
-  {#if loading}
+  <!-- {#if loading}
     <p>Loading current book...</p>
     <pre>{JSON.stringify(book, null, 2)}</pre>
-  {:else if book.title && book.coverImage && book.authors}
+  {:else if book.title && book.coverImage && book.authors} -->
     <h3>Currently Reading</h3>
     <div class="book">
       <img class="cover" src={book.coverImage} alt="" />
@@ -37,7 +37,7 @@
         <Link href="https://app.thestorygraph.com/profile/orangeburrito" external={true}>Details</Link>
       </div>
     </div>
-  {/if}
+  <!-- {/if} -->
 </div>
 
 <style>

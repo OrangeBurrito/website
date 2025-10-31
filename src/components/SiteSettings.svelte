@@ -51,8 +51,6 @@
 
 <style>
     .site-settings { 
-        box-shadow: 0px 4px 0px 0px var(--color-border-light);
-        min-width: 128px;
         padding-bottom: var(--space-xs);
         margin-top: var(--space-md);
         
@@ -68,11 +66,30 @@
             justify-content: flex-start;
             align-items: center;
             gap: var(--space-dlg);
+            
         }
     }
 
     :global(.site-settings button svg) {
         --size-icon: var(--space-mlg);
         fill: var(--color-text-heading);
+    }
+
+    @media (max-width: 600px) {
+        .site-settings {
+            width: calc(100% - var(--space-lg));
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: var(--space-lg);
+            border-left: 2px solid var(--color-surface-4);
+            border-bottom: 2px solid var(--color-surface-4);
+            padding-left: var(--space-sm);
+            margin-top: var(--space-xxl);
+
+            .title {
+                margin-bottom: 0;
+            }
+        }
     }
 </style>

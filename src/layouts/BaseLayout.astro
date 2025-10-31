@@ -30,11 +30,11 @@ if (!Astro.cookies.has('theme')) {
 			<header>
 				<LogoHeader/>
 				<NavBar currentPath={Astro.url.pathname} lang={lang} />
+				<SiteSettings lang={lang} dark={theme === 'dark'} client:load />
 			</header>
 		</aside>
 		<div class="corner">
 			<slot name="corner"/>
-			<SiteSettings lang={lang} dark={theme === 'dark'} client:load />
 		</div>
 		<main>
 			<slot/>
@@ -67,13 +67,6 @@ if (!Astro.cookies.has('theme')) {
 		grid-area: aside;
 	}
 
-	.corner {
-		position: absolute;
-		bottom: var(--space-lg);
-		left: var(--space-lg);
-		grid-area: corner;
-	}
-
 	main {
 		display: flex;
 		flex-direction: column;
@@ -91,6 +84,13 @@ if (!Astro.cookies.has('theme')) {
 		z-index: -3;
 		bottom: 15%;
 		width: 400px;
+	}
+
+	.corner {
+		position: absolute;
+		bottom: var(--space-lg);
+		left: var(--space-lg);
+		grid-area: corner;
 	}
 
 		
