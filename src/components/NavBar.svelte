@@ -1,16 +1,20 @@
 <script lang="ts">
+	import { useTranslations, type Languages } from '../ts/i18n.ts'
 	type Props = {
 		currentPath: string;
+		lang: Languages;
 	}
 
-	let { currentPath }: Props = $props()
+	let { currentPath, lang }: Props = $props()
+
+	const t = useTranslations(lang)
 </script>
 
 <nav class="navbar">
-	<a id="index" href="/" class:active={currentPath === '/'}>Home</a>
-	<a id="posts" href="/posts" class:active={currentPath === '/posts'}>Blogposts</a>
-	<a id="projects" href="/projects" class:active={currentPath === '/projects'}>Projects</a>
-	<a id="about" href="/about" class:active={currentPath === '/about'}>About</a>
+	<a id="index" href="/" class:active={currentPath === '/'}>{t('nav.home')}</a>
+	<a id="posts" href="/posts" class:active={currentPath === '/posts'}>{t('nav.posts')}</a>
+	<a id="projects" href="/projects" class:active={currentPath === '/projects'}>{t('nav.projects')}</a>
+	<a id="about" href="/about" class:active={currentPath === '/about'}>{t('nav.about')}</a>
 </nav>
 
 <style>

@@ -35,33 +35,26 @@ async function getLatestStorygraphBook() {
 }
 
 export default async (req: Request) => {
-
     const { getStore } = await import('@netlify/blobs')
     const store = getStore('currently-reading')
 
     if (req.method === 'GET') {
         const cachedData = await store.get('book-data', { type: 'json' })
-
         if (cachedData) {
             return new Response(JSON.stringify(cachedData), {
                 headers: { 'Content-Type': 'application/json' }
             })
         }
-
-        const data = await getLatestStorygraphBook()
-        await store.setJSON('book-data', data)
-
-        return new Response(JSON.stringify(data), {
-            headers: { 'Content-Type': 'application/json' }
-        })
     }
 
     const data = await getLatestStorygraphBook()
     await store.setJSON('book-data', data)
 
-    return new Response(JSON.stringify({ success: true, data }))
+    return new Response(JSON.stringify(data), {
+        headers: { 'Content-Type': 'application/json' }
+    })
 }
 
 export const config: Config = {
-    schedule: "@daily"
+    // schedule: "@daily" // Temporarily commented out for testing
 }

@@ -1,13 +1,14 @@
 {
   "name": "@orangeburrito/website",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "type": "module",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro build",
-    "preview": "astro preview"
+    "preview": "astro preview",
+    "postinstall": "pnpm dlx playwright-core install chromium"
   },
   "devDependencies": {
     "astro": "^5.13.4",

@@ -58,7 +58,7 @@
         z-index: 1;
     }
 
-    .project-url .unreleased {
+    .unreleased {
         font-style: italic;
         z-index: 2;
         text-decoration: line-through;

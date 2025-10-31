@@ -5,8 +5,8 @@ import SiteSettings from '../components/SiteSettings.svelte'
 import '../styles/global.css'
 
 let {title} = Astro.props
-let initialLang = Astro.cookies.get('language')?.value || 'en';
-let initialTheme = Astro.cookies.get('theme')?.value || 'dark';
+let lang = Astro.cookies.get('language')?.value || 'en';
+let theme = Astro.cookies.get('theme')?.value || 'dark';
 
 if (!Astro.cookies.has('language')) {
 	Astro.cookies.set('language', 'en', { path: '/' });
@@ -25,16 +25,16 @@ if (!Astro.cookies.has('theme')) {
 	<title>{title}</title>
 </head>
 <body>
-	<div class="layout">
+	<div class={"layout lang-" + lang}>
 		<aside>
 			<header>
 				<LogoHeader/>
-				<NavBar currentPath={Astro.url.pathname} />
+				<NavBar currentPath={Astro.url.pathname} lang={lang} />
 			</header>
 		</aside>
 		<div class="corner">
 			<slot name="corner"/>
-			<SiteSettings lang={initialLang} dark={initialTheme === 'dark'} client:load />
+			<SiteSettings lang={lang} dark={theme === 'dark'} client:load />
 		</div>
 		<main>
 			<slot/>

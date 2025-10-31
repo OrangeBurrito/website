@@ -19,18 +19,18 @@ I designed and developed the frontend for Arajet's Gift Card Program [Arabonito]
 Using a custom-built component library, I reapplied Arajet's existing brand identity to the frontend of their new e-commerce site, while adhering to UI/UX best practices for performance and user retention.
 
 ## Design
-After taking an an overview of the existing (unstyled) application built by Huagati, I began work on the design, drafting out initial designs with pen and paper before building out the official Figma mock-up.
+After taking an overview of the existing (unstyled) application built by Huagati, I began work on the design, drafting out initial designs with pen and paper before creating the official Figma mock-up.
 
-As Arajet had no existing style guide at the time, their website was my main visual reference when building out Arabonito's component library from scratch, as well as establishing the site flow.
+As Arajet had no existing style guide at the time, their website was my main visual reference when building out Arabonito's component library from scratch, as well as wiring up the site flows.
 
 <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://embed.figma.com/proto/QIoeOV2vw0gbdYuk7YEoZn/Arajet-Arabonito-Redesign?node-id=414-1607&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&embed-host=share" allowfullscreen></iframe>
 
 *Final Figma prototype of the Arabonito site*
 
 ## Implementation
-With the initial design approved by Arajet, impelementation was under way, with continual adjustments based on feedback from the Arajet team.
+With the initial design approved by Arajet, implementation was under way, with continual adjustments based on feedback from the Arajet team.
 
-A separate component library was built for use with the Arabonito project, in the form of a Razor Class Library. The benefits of such an approach were in its modularity and consistency, as visuals and functionality retained identical behavior across the application. 
+A separate component library was built for use with the Arabonito project, in the form of a Razor Class Library. The benefits of such an approach lie in its modularity and consistency, as visuals and functionality retain identical behavior across an entire application. 
 
 It also allowed for the reuse of said library in future Arajet projects, namely the as of yet-unreleased [Arajet Referrals](/projects/referrals) site.
 
@@ -39,7 +39,7 @@ One of Blazor's strengths is in its inherent integration with .NET, which allows
 
 As a developer working on the frontend side of Arabonito, when performance issues later became apparent, I addressed them as far as could be accomplished without modification to the preexisting backend system.
 
-This was especially important as Arabonito is a front facing e-commerce site, and thus performance was a critical consideration during the development process (notably regarding loading times and bounce rates).
+This was especially important as Arabonito is a front facing e-commerce site, and thus performance was a critical consideration during the development process, notably in regards to loading times and bounce rates.
 
 To remedy said performance issues, tools such as Chrome DevTools' Lighthouse, Blazor's built-in telemetry and general payload minification strategies were applied, to improved results.
 
