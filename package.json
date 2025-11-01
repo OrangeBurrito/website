@@ -8,10 +8,11 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "postinstall": "pnpm dlx playwright-core install chromium"
+    "prebuild": "npx puppeteer browsers install chrome"
   },
   "devDependencies": {
     "astro": "^5.13.4",
+    "netlify-plugin-chromium": "^1.1.4",
     "remark-breaks": "^3.0.2"
   },
   "dependencies": {
@@ -20,7 +21,7 @@
     "@netlify/blobs": "^10.2.0",
     "@netlify/functions": "^5.0.0",
     "astro-analytics": "^1.0.1",
-    "playwright": "1.47.2",
+    "puppeteer": "^24.27.0",
     "svelte": "^5.38.6",
     "typescript": "^5.9.2"
   }

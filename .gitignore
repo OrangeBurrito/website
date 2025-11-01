@@ -2,6 +2,7 @@ test-results
 # build output
 dist
 .astro/
+chrome/
 
 # dependencies
 node_modules/

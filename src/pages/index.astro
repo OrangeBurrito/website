@@ -12,7 +12,7 @@ const posts = (await getCollection('posts')).sort(
 
 <BaseLayout title="OrangeBurrito">
 <Fragment slot="corner">
-	<CurrentlyReading />
+	<CurrentlyReading client:load />
 </Fragment>
 
 <h1 class="page-header">Contemporary Texts</h1>

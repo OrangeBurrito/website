@@ -2,12 +2,13 @@
   import { onMount } from "svelte";
   import Link from "./Link.svelte";
 
-  let book = { title: 'The Mill on the Floss', coverImage: "https://cdn.thestorygraph.com/ihz06oxs3pior4xzyku6fd7dsgka", authors: ['George Eliot'] };
+  let book = { title: '', coverImage: '', authors: [] };
   let loading = true;
 
   onMount(async () => {
     try {
       const response = await fetch('/.netlify/functions/currentlyReading');
+      console.log('Response status:', response.status);
       if (response.ok) {
         book = await response.json();
       }
@@ -20,11 +21,10 @@
 </script>
 
 <div class="currently-reading">
-  <!-- {#if loading}
+  <h3>Currently Reading</h3>
+  {#if loading}
     <p>Loading current book...</p>
-    <pre>{JSON.stringify(book, null, 2)}</pre>
-  {:else if book.title && book.coverImage && book.authors} -->
-    <h3>Currently Reading</h3>
+  {:else}
     <div class="book">
       <img class="cover" src={book.coverImage} alt="" />
       <div class="text">
@@ -37,7 +37,7 @@
         <Link href="https://app.thestorygraph.com/profile/orangeburrito" external={true}>Details</Link>
       </div>
     </div>
-  <!-- {/if} -->
+  {/if}
 </div>
 
 <style>

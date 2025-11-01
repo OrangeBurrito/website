@@ -1,30 +1,45 @@
 import type { Config } from "@netlify/functions"
-import { chromium } from "playwright"
+import puppeteer from "puppeteer"
 
-async function getLatestStorygraphBook() {
-    const browser = await chromium.launch({ headless: true })
-    const context = await browser.newContext({
-        userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123 Safari/537.36',
-        viewport: { width: 1280, height: 900 },
+export async function getLatestStorygraphBook() {
+    const browser = await puppeteer.launch({ 
+        headless: true,
+        args: ['--no-sandbox', '--disable-setuid-sandbox']
     })
-    const page = await context.newPage()
+
+    const page = await browser.newPage()
+    
+    await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123 Safari/537.36')
+    await page.setViewport({ width: 1280, height: 900 })
 
     await page.goto('https://app.thestorygraph.com/currently-reading/orangeburrito', {
         waitUntil: 'domcontentloaded',
         timeout: 60_000,
     })
+    await page.waitForSelector('.read-books-panes [id^="book"] .book-pane-content')
 
-    const firstBook = page.locator('.read-books-panes [id^="book"] .book-pane-content').first()
+    const title = await page.$eval(
+        '.read-books-panes [id^="book"] .book-pane-content .book-title-author-and-series h3 a',
+        el => el.textContent
+    )
 
-    const title = await firstBook.locator('.book-title-author-and-series h3 a').first().textContent()
-    const coverImage = await firstBook.locator('.book-cover img').getAttribute('src')
+    const coverImage = await page.$eval(
+        '.read-books-panes [id^="book"] .book-pane-content .book-cover img',
+        el => el.getAttribute('src')
+    )
 
-    const authorLinks = firstBook.locator('.book-title-author-and-series p a')
-    const firstAuthor = await authorLinks.nth(0).textContent()
-    const secondAuthor = await authorLinks.nth(1).textContent()
-
-    const authors = [firstAuthor, secondAuthor].filter(Boolean)
-
+    const authorElements = await page.$$('.read-books-panes [id^="book"] .book-pane-content .book-title-author-and-series p a')
+    const authors: string[] = []
+    
+    if (authorElements.length > 0) {
+        const firstAuthor = await authorElements[0].evaluate(el => el.textContent)
+        if (firstAuthor) authors.push(firstAuthor)
+    }
+    
+    if (authorElements.length > 1) {
+        const secondAuthor = await authorElements[1].evaluate(el => el.textContent)
+        if (secondAuthor) authors.push(secondAuthor)
+    }
     await browser.close()
 
     return {
