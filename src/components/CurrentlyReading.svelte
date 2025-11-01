@@ -4,16 +4,15 @@
 
   let book = { title: '', coverImage: '', authors: [] };
   let loading = true;
+  let error = false;
 
   onMount(async () => {
     try {
       const response = await fetch('/.netlify/functions/currentlyReading');
-      console.log('Response status:', response.status);
-      if (response.ok) {
-        book = await response.json();
-      }
-    } catch (error) {
-      console.error('Failed to fetch book data:', error);
+      book = await response.json();
+    } catch (err) {
+      console.error('Failed to fetch book data:', err);
+      error = true;
     } finally {
       loading = false;
     }
@@ -24,6 +23,8 @@
   <h3>Currently Reading</h3>
   {#if loading}
     <p>Loading current book...</p>
+  {:else if error}
+    <p>Book not found</p>
   {:else}
     <div class="book">
       <img class="cover" src={book.coverImage} alt="" />
@@ -31,7 +32,7 @@
         <h2 class="title">{book.title}</h2>
         <div class="authors">
           {#each book.authors as author}
-          <div class="author">{author}</div>
+            <div class="author">{author}</div>
           {/each}
         </div>
         <Link href="https://app.thestorygraph.com/profile/orangeburrito" external={true}>Details</Link>
