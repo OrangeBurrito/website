@@ -24,7 +24,7 @@ if (!Astro.cookies.has('theme')) {
 	<link rel="shortcut icon" href="favicon.png" type="image/x-icon">
 	<title>{title}</title>
 </head>
-<body>
+<body class={(Astro.cookies.get('theme')?.value || 'dark')}>
 	<div class={"layout lang-" + lang}>
 		<aside>
 			<header>

@@ -20,6 +20,8 @@ export const ui = {
         'title.projects': 'Projects',
         'title.about': 'About',
         'button.seeAllPosts': 'See All Posts >',
+        'text.currentlyReading': 'Currently Reading',
+        'text.currentlyReadingDetails': 'Details',
     },
     th: {
         'nav.home': 'หน้าแรก',
@@ -31,6 +33,8 @@ export const ui = {
         'title.projects': 'โปรเจกต์',
         'title.about': 'เกี่ยวกับเรา',
         'button.seeAllPosts': 'บล็อกโพสต์ทั้งหมด >',
+        'text.currentlyReading': 'กำลังอ่าน',
+        'text.currentlyReadingDetails': 'รายละเอียด',
     }
 }
 

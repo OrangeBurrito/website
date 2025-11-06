@@ -4,6 +4,10 @@ import PostItem from '../components/PostItem.astro'
 import Button from '../components/Button.svelte'
 import CurrentlyReading from '../components/CurrentlyReading.svelte'
 import { getCollection } from 'astro:content';
+import { type Languages, useTranslations } from '../ts/i18n';
+
+const currentLang: Languages = (Astro.cookies.get('language')?.value ?? 'en') as Languages
+const t = useTranslations(currentLang)
 
 const posts = (await getCollection('posts')).sort(
 	(a, b) => new Date(b.data.publishedDate).valueOf() - new Date(a.data.publishedDate).valueOf()
@@ -12,15 +16,14 @@ const posts = (await getCollection('posts')).sort(
 
 <BaseLayout title="OrangeBurrito">
 <Fragment slot="corner">
-	<CurrentlyReading client:load />
-	<!-- <CurrentlyReading client:load/> -->
+	<CurrentlyReading lang={currentLang} client:load />
 </Fragment>
 
-<h1 class="page-header">Contemporary Texts</h1>
+<h1 class="page-header">{t('title.home')}</h1>
 	<div class="item-list">
 		{posts.map((post) => (
 			<PostItem {post} />
 		))}
 	</div>
-	<Button link="/posts">See All Posts ></Button>
+	<Button link="/posts">{t('button.seeAllPosts')}</Button>
 </BaseLayout>

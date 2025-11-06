@@ -7,8 +7,7 @@
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro build",
-    "preview": "astro preview",
-    "prebuild": "npx puppeteer browsers install chrome"
+    "preview": "astro preview"
   },
   "devDependencies": {
     "astro": "^5.13.4",

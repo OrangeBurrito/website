@@ -2,11 +2,15 @@
 import Icon from '../components/Icon.svelte'
 import BaseLayout from '../layouts/BaseLayout.astro'
 import CurrentlyReading from '../components/CurrentlyReading.svelte'
+import { useTranslations, type Languages } from '../ts/i18n.ts'
+
+const currentLang: Languages = (Astro.cookies.get('language')?.value ?? 'en') as Languages
+const t = useTranslations(currentLang)
 ---
 
 <BaseLayout title="About">
 	<Fragment slot="corner">
-		<CurrentlyReading client:load />
+		<CurrentlyReading lang={currentLang} client:load />
 	</Fragment>
 
 	<div class="about-strip">
@@ -42,7 +46,7 @@ import CurrentlyReading from '../components/CurrentlyReading.svelte'
 			</div>
 			<div class="metadata">
 				<p>Source code hosted on <a href="https://github.com/OrangeBurrito" target="_blank">GitHub</a></p>
-				<p>Deployed with <span style="color: #05bdba">Netlify <img class="img-icon" src="/icons/netlify.png" alt="Netlify Logo"></span></p>
+				<p>Deployed with <span style="color: var(--color-netlify)">Netlify <img class="img-icon" src="/icons/netlify.png" alt="Netlify Logo"></span></p>
 				<p class="copyright">Copyright © OrangeBurrito {new Date().getFullYear()}</p>
 			</div>
 		</div>
@@ -51,7 +55,7 @@ import CurrentlyReading from '../components/CurrentlyReading.svelte'
 
 <style>
 	.page-header {
-		margin-bottom: var(--space-sm);
+		margin-bottom: var(--space-xs);
 	}
 
 	.list {
@@ -94,7 +98,11 @@ import CurrentlyReading from '../components/CurrentlyReading.svelte'
 	
 				img {
 					width: 100%;
-					height: 128px;
+					height: 112px;
+				}
+
+				h2 {
+					margin-top: -2.5px;
 				}
 			}
 

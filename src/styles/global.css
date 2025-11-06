@@ -24,8 +24,10 @@
   --color-text-code: #b6b6ce;
   --color-text-subtle: #9a9ab3;
   --color-text-disabled: #7e7e92;
+  --color-text-inverted: var(--color-background-alt);
   --color-text-link: var(--color-primary);
   --color-text-link-hover: var(--color-primary-light);
+  --color-netlify: #05bdba;
 
   --space-unit: 14px;
   --space-xxs: calc(0.25 * var(--space-unit)); /* 4px */
@@ -310,11 +312,37 @@ article {
   margin-bottom: var(--space-lg);
 }
 
-/* language specific */
 .layout.lang-th {
   h1, h2, h3, h4, button, nav a {
     line-height: 1.05;
   }
+}
+
+body.contrast, body:has(#set-high-contrast) {
+  --color-primary: #00D4FF;
+  --color-primary-light: #66E5FF;
+  --color-secondary: #FF6BFF;
+  --color-secondary-dark: #E533E5;
+  --color-tertiary: #FF5555;
+
+  --color-background: #000;
+  --color-background-alt: #0a0a0a;
+  --color-surface: #111;
+  --color-surface-1: #171717;
+  --color-surface-2: #1d1d1d;
+  --color-surface-3: #242424;
+  --color-surface-4: #333;
+  --color-border-light: #555;
+  
+  --color-text-heading: #fff;
+  --color-text-body: #fff;
+  --color-text-code: #f0f0f0;
+  --color-text-subtle: #ccc;
+  --color-text-disabled: #999;
+  --color-text-inverted: var(--color-background-alt);
+  --color-text-link: var(--color-primary);
+  --color-text-link-hover: var(--color-primary-light);
+  --color-netlify: #22fffb;
 }
 
 @media screen and (max-width: 600px) {

@@ -34,7 +34,7 @@
         font-family: var(--font-family-header);
         --background-button: var(--color-primary);
         --background-hover-button: var(--color-secondary);
-        --color-button: var(--color-background-alt);
+        --color-button: var(--color-text-inverted);
         background-color: var(--background-button);
         color: var(--color-button);
         padding: var(--space-xs) var(--space-base);

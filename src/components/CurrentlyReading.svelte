@@ -1,36 +1,29 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import Link from "./Link.svelte";
+  import { type Languages, useTranslations } from "../ts/i18n";
 
   let book = { title: '', coverImage: '', authors: [] }
   let loading = true
   let error = false
-  let tempdata
-
+  
   onMount(async () => {
     loading = true
     const response = await fetch(`/.netlify/functions/currentlyReading`)
-    // const response = await getLatestStorygraphBook()
     book = await response.json()
-    // book = {}
     if (Object.keys(book).length === 0) {
       error = true
     }
     loading = false
-    // try {
-    //   tempdata = await response
-    // } catch (err) {
-    //   console.error('Failed to fetch book data:', err);
-    //   error = true
-    // } finally {
-    //   loading = false
-    // }
   })
+  
+  let { lang }: { lang: Languages } = $props()
+
+  const t = useTranslations(lang)
 </script>
 
-<p>{JSON.stringify(tempdata,null,2)}</p>
 <div class="currently-reading">
-  <h3>Currently Reading</h3>
+  <h3>{t('text.currentlyReading')}</h3>
   {#if loading}
     <p>Loading current book...</p>
   {:else if error}
@@ -45,7 +38,7 @@
             <div class="author">{author}</div>
           {/each}
         </div>
-        <Link href="https://app.thestorygraph.com/profile/orangeburrito" external={true}>Details</Link>
+        <Link href="https://app.thestorygraph.com/profile/orangeburrito" external={true}>{t('text.currentlyReadingDetails')}</Link>
       </div>
     </div>
   {/if}

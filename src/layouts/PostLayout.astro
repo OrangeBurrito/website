@@ -8,6 +8,11 @@ import Button from '../components/Button.svelte'
 const { frontmatter } = Astro.props
 ---
 
+<script>
+	const cookies = new URLSearchParams(document.cookie.replaceAll('&', '%26').replaceAll('; ', '&')) 
+	document.body.classList.add(cookies.get('theme')!)
+</script>
+
 <html>
 <head>
 	<meta charset="UTF-8">

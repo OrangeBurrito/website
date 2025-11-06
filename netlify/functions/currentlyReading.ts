@@ -33,15 +33,13 @@ export async function getLatestStorygraphBook() {
     const authorElements = await page.$$('.read-books-panes [id^="book"] .book-pane-content .book-title-author-and-series p a')
     const authors: string[] = []
     
-    if (authorElements.length > 0) {
-        const firstAuthor = await authorElements[0].evaluate(el => el.textContent)
-        if (firstAuthor) authors.push(firstAuthor)
+    for (const element of authorElements) {
+        const authorText = await element.evaluate(el => el.textContent)
+        if (authorText && !authors.includes(authorText)) {
+            authors.push(authorText)
+        }
     }
     
-    if (authorElements.length > 1) {
-        const secondAuthor = await authorElements[1].evaluate(el => el.textContent)
-        if (secondAuthor) authors.push(secondAuthor)
-    }
     await browser.close()
 
     return {
@@ -73,5 +71,5 @@ export default async (req: Request) => {
 }
 
 export const config: Config = {
-    // schedule: "@daily" // Temporarily commented out for testing
+    // schedule: "@daily"
 }

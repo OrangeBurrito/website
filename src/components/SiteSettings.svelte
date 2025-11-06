@@ -11,14 +11,14 @@
     let { dark, lang }: Props = $props()
 
     let currentLang = $state(lang)
-    let isDark = $state(dark)
+    let highContrast = $state(dark)
 
     function toggleTheme() {
-        if (isDark) {
-            isDark = false
-            document.cookie = 'theme=light; path=/; max-age=31536000'
+        if (highContrast) {
+            highContrast = false
+            document.cookie = 'theme=contrast; path=/; max-age=31536000'
         } else {
-            isDark = true
+            highContrast = true
             document.cookie = 'theme=dark; path=/; max-age=31536000'
         }
         window.location.reload()
@@ -40,8 +40,8 @@
 <div class="site-settings">
     <div class="title">Settings</div>
     <div class="settings">
-        <Button type="passthrough" onclick={toggleTheme} attr={isDark ? 'Toggle Light Mode' : 'Toggle Dark Mode'}>
-                <Icon icon={isDark ? "sun" : "moon"}/>
+        <Button type="passthrough" onclick={toggleTheme} attr={highContrast ? 'Toggle High-Contrast Mode' : 'Toggle Dark Mode'}>
+                <Icon icon={highContrast ? "moon" : "moon-star"}/>
         </Button>
         <Button type="passthrough" onclick={toggleLanguage} attr={currentLang === 'th' ? 'Change Language' : 'เปลี่ยนภาษา'}>
             <Image type="pixelated" src={currentLang === 'th' ? '/icons/lang-th.png' : '/icons/lang-en.png'} alt="Language Flag" width="32px" />
