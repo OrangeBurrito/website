@@ -21,16 +21,16 @@ export async function getLatestStorygraphBook() {
     await page.waitForSelector('.read-books-panes [id^="book"] .book-pane-content')
 
     const title = await page.$eval(
-        '.read-books-panes [id^="book"] .book-pane-content .book-title-author-and-series h3 a',
+        '.read-books-panes [id^="book"]:first-child .book-pane-content .book-title-author-and-series h3 a',
         el => el.textContent
     )
 
     const coverImage = await page.$eval(
-        '.read-books-panes [id^="book"] .book-pane-content .book-cover img',
+        '.read-books-panes [id^="book"]:first-child .book-pane-content .book-cover img',
         el => el.getAttribute('src')
     )
 
-    const authorElements = await page.$$('.read-books-panes [id^="book"] .book-pane-content .book-title-author-and-series p a')
+    const authorElements = await page.$$('.read-books-panes [id^="book"]:first-child .book-pane-content .book-title-author-and-series p a')
     const authors: string[] = []
     
     for (const element of authorElements) {

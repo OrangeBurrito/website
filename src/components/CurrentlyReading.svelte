@@ -8,13 +8,19 @@
   let error = false
   
   onMount(async () => {
-    loading = true
-    const response = await fetch(`/.netlify/functions/currentlyReading`)
-    book = await response.json()
-    if (Object.keys(book).length === 0) {
+    try {
+      loading = true
+      const response = await fetch(`/.netlify/functions/currentlyReading`)
+      if (!response.ok) {
+        error = true
+        return
+      }
+      book = await response.json()
+    } catch (err) {
       error = true
+    } finally {
+      loading = false
     }
-    loading = false
   })
   
   let { lang }: { lang: Languages } = $props()
