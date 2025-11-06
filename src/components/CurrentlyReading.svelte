@@ -1,7 +1,6 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import Link from "./Link.svelte";
-  import { type Languages, useTranslations } from "../ts/i18n";
 
   let book = { title: '', coverImage: '', authors: [] }
   let loading = true
@@ -9,7 +8,6 @@
   
   onMount(async () => {
     try {
-      loading = true
       const response = await fetch(`/.netlify/functions/currentlyReading`)
       if (!response.ok) {
         error = true
@@ -22,15 +20,10 @@
       loading = false
     }
   })
-  
-  let { lang }: { lang: Languages } = $props()
-
-  // const t = useTranslations(lang)
 </script>
 
 <div class="currently-reading">
   <h3>Currently Reading</h3>
-  <!-- <h3>{t('text.currentlyReading')}</h3> -->
   {#if loading}
     <p>Loading current book...</p>
   {:else if error}
@@ -46,7 +39,6 @@
           {/each}
         </div>
         <Link href="https://app.thestorygraph.com/profile/orangeburrito" external={true}>Details</Link>
-        <!-- <Link href="https://app.thestorygraph.com/profile/orangeburrito" external={true}>{t('text.currentlyReadingDetails')}</Link> -->
       </div>
     </div>
   {/if}

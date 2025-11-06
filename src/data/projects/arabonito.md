@@ -16,12 +16,12 @@ tags: ["dotnet", "blazor", "javascript", "figma" ]
 
 I designed and developed the frontend for Arajet's Gift Card Program [Arabonito](https://arabonito.arajet.com), while working as a subcontractor under [Huagati Systems](https://huagati.com).
 
-Using a custom-built component library, I reapplied Arajet's existing brand identity to the frontend of their new e-commerce site, while adhering to UI/UX best practices for performance and user retention.
+Using a custom-built component library, I reapplied Arajet's existing brand identity to the frontend of their new e-commerce site, with a heavy focus on user experience.
 
 ## Design
-After taking an overview of the existing (unstyled) application built by Huagati, I began work on the design, drafting out initial designs with pen and paper before creating the official Figma mock-up.
+After taking an overview of the existing bare-bones proof of concept built by Huagati, I began work on the design.
 
-As Arajet had no existing style guide at the time, their website was my main visual reference when building out Arabonito's component library from scratch, as well as wiring up the site flows.
+As Arajet had no existing style guide at the time, their website was my main visual reference when building out Arabonito's component library from scratch.
 
 <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://embed.figma.com/proto/QIoeOV2vw0gbdYuk7YEoZn/Arajet-Arabonito-Redesign?node-id=414-1607&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&embed-host=share" allowfullscreen></iframe>
 
@@ -30,24 +30,16 @@ As Arajet had no existing style guide at the time, their website was my main vis
 ## Implementation
 With the initial design approved by Arajet, implementation was under way, with continual adjustments based on feedback from the Arajet team.
 
-A separate component library was built for use with the Arabonito project, in the form of a Razor Class Library. The benefits of such an approach lie in its modularity and consistency, as visuals and functionality retain identical behavior across an entire application. 
+A separate component library was built for use with the Arabonito project, as a *Razor Class Library*. A separate library allowed for modularity and consistency across the whole application.
 
-It also allowed for the reuse of said library in future Arajet projects, namely the as of yet-unreleased [Arajet Referrals](/projects/referrals) site.
+It also allowed for reuse in future Arajet projects, especially in the unreleased [Arajet Referrals](/projects/referrals) site.
 
-### Quirks of Blazor
-One of Blazor's strengths is in its inherent integration with .NET, which allows for much simpler connection with existing backend services.
+### Performance
+As Arabonito is a front-facing e-commerce site, performance was of critical consideration during the development process, as it noticeably affects the user experience (which leads to higher bounce rates)
 
-As a developer working on the frontend side of Arabonito, when performance issues later became apparent, I addressed them as far as could be accomplished without modification to the preexisting backend system.
-
-This was especially important as Arabonito is a front facing e-commerce site, and thus performance was a critical consideration during the development process, notably in regards to loading times and bounce rates.
-
-To remedy said performance issues, tools such as Chrome DevTools' Lighthouse, Blazor's built-in telemetry and general payload minification strategies were applied, to improved results.
-
-> **Performance Limitations:** A server running a *Blazor Server* instance must maintain individual SignalR connections for each visiting user, thus requiring the hardware to scale horizontally to keep up with a growing user base.
+When performance issues arose, they were remeded with the assistance of tools like Chrome DevTools' Lighthouse, Blazor's built-in telemetry and general payload minification strategies.
 
 ## Pre-release
 During the beta-testing phase of the software, quirks, bugs and vulnerabilities were squashed as the Arajet QA team detected them.
 
-One particular vulnerability was related to the inherently sensitive nature of credit card input, and so the custom-made Input components were replace in favor of plain HTML and Javascript.
-
-## Postmortem
+One particular vulnerability was related to the inherently sensitive nature of credit card input, and so the custom-made Input components were replaced in favor of plain HTML and JavaScript.

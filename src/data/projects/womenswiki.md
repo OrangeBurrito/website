@@ -7,7 +7,3 @@ description: "Radical Feminist Wiki"
 shortDesc: "Radical Feminist Wiki"
 tags: ["dotnet", "svelte", "docker", "postgres", "javascript" ]
 ---
-
-## Original Ideas
-
-The problem space: lack of convenience.

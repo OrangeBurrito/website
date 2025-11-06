@@ -79,7 +79,3 @@ export default async (req: Request) => {
         headers: { 'Content-Type': 'application/json' }
     })
 }
-
-export const config: Config = {
-    // schedule: "@daily"
-}

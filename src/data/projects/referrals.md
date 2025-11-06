@@ -17,7 +17,7 @@ color: "#08240D"
 From my previous experience with building Arajet's [Arabonito](https://arabonito.arajet.com) site, I was able to apply many aspects of the previous design and development flow onto this project.
 
 ## Design
-Following the initial design process of exploration with pen-and-paper sketches, I moved onto building the Figma mock-ups, along with highly interactive prototypes (on both mobile and desktop) to meet the Referrals app's more complex feature requirements.
+During the initial design process, I began building the Figma mock-ups, with highly interactive prototypes (on both mobile and desktop) to meet the Referrals app's more complex feature requirements.
 
 <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://embed.figma.com/proto/GRCwb4Ibm522DnIb3FrmSW/Arajet-Design-System?page-id=367%3A12350&node-id=384-14189&viewport=663%2C392%2C0.22&scaling=scale-down&content-scaling=fixed&starting-point-node-id=384%3A14189&embed-host=share" allowfullscreen></iframe>
 

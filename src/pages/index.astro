@@ -16,7 +16,7 @@ const posts = (await getCollection('posts')).sort(
 
 <BaseLayout title="OrangeBurrito">
 <Fragment slot="corner">
-	<CurrentlyReading lang={currentLang} client:load />
+	<CurrentlyReading client:load />
 </Fragment>
 
 <h1 class="page-header">{t('title.home')}</h1>
