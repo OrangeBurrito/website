@@ -33,7 +33,7 @@
         font-size: var(--font-size-heading);
         font-family: var(--font-family-header);
         --background-button: var(--color-primary);
-        --background-hover-button: var(--color-primary-light);
+        --background-hover-button: var(--color-secondary);
         --color-button: var(--color-background-alt);
         background-color: var(--background-button);
         color: var(--color-button);

@@ -1,11 +1,12 @@
 import type { Config } from "@netlify/functions"
-import puppeteer from "puppeteer"
+import puppeteer from "puppeteer-core"
+import chromium from '@sparticuz/chromium'
 
 export async function getLatestStorygraphBook() {
     const browser = await puppeteer.launch({ 
+        args: [...chromium.args],
         headless: true,
-        executablePath: process.env.CHROME_PATH,
-        args: ['--no-sandbox`, `--headless`, `--disable-gpu`, `--disable-dev-shm-usage']
+        executablePath: await chromium.executablePath(),
     })
 
     const page = await browser.newPage()

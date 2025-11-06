@@ -6,13 +6,7 @@ import { getCollection } from 'astro:content'
 let currentLang = Astro.cookies.get('language')?.value || 'en';
 
 const allProjects = await getCollection('projects')
-const projects = allProjects.filter(({ id }) => {
-	if (currentLang === 'th') {
-		return id.startsWith('th/')
-	} else {
-		return !id.startsWith('th/')
-	}
-}).sort(
+const projects = allProjects.sort(
 	(a, b) => {
 		if (!!a.data.client !== !!b.data.client) {
 			return a.data.client ? -1 : 1;

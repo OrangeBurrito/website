@@ -2,23 +2,33 @@
   import { onMount } from "svelte";
   import Link from "./Link.svelte";
 
-  let book = { title: '', coverImage: '', authors: [] };
-  let loading = true;
-  let error = false;
+  let book = { title: '', coverImage: '', authors: [] }
+  let loading = true
+  let error = false
+  let tempdata
 
   onMount(async () => {
-    try {
-      const response = await fetch('/.netlify/functions/currentlyReading');
-      book = await response.json();
-    } catch (err) {
-      console.error('Failed to fetch book data:', err);
-      error = true;
-    } finally {
-      loading = false;
+    loading = true
+    const response = await fetch(`/.netlify/functions/currentlyReading`)
+    // const response = await getLatestStorygraphBook()
+    book = await response.json()
+    // book = {}
+    if (Object.keys(book).length === 0) {
+      error = true
     }
-  });
+    loading = false
+    // try {
+    //   tempdata = await response
+    // } catch (err) {
+    //   console.error('Failed to fetch book data:', err);
+    //   error = true
+    // } finally {
+    //   loading = false
+    // }
+  })
 </script>
 
+<p>{JSON.stringify(tempdata,null,2)}</p>
 <div class="currently-reading">
   <h3>Currently Reading</h3>
   {#if loading}
