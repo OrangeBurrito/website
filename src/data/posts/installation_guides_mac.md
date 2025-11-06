@@ -1,5 +1,5 @@
 ---
-title: 'Installation Guides (MacOS)'
+title: 'Installation Guides'
 publishedDate: 2022-12-30
 coverImage: "/images/upscaled_normandy.jpg"
 description: "An accumulation of installation guides of Mac apps from various personal app-related whims."

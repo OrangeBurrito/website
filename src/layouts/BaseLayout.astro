@@ -26,13 +26,11 @@ if (!Astro.cookies.has('theme')) {
 </head>
 <body class={(Astro.cookies.get('theme')?.value || 'dark')}>
 	<div class={"layout lang-" + lang}>
-		<aside>
-			<header>
+			<header id="site-header">
 				<LogoHeader/>
 				<NavBar currentPath={Astro.url.pathname} lang={lang} />
 				<SiteSettings lang={lang} dark={theme === 'dark'} client:load />
 			</header>
-		</aside>
 		<div class="corner">
 			<slot name="corner"/>
 		</div>
@@ -55,11 +53,11 @@ if (!Astro.cookies.has('theme')) {
 			"corner main";
 	}
 
-	aside, main {
+	#site-header, main {
 		padding: var(--space-lg);
 	}
 
-	aside {
+	#site-header {
 		flex-grow: 1;
 		display: flex;
 		flex-direction: column;
@@ -106,6 +104,7 @@ if (!Astro.cookies.has('theme')) {
 			order: 3;
 			margin-top: var(--space-lg);
 		}
+
 		main {
 			text-align: left;
 			align-items: flex-start;
@@ -121,13 +120,8 @@ if (!Astro.cookies.has('theme')) {
 	@media screen and (min-width: 601px) {
 		aside {
 			gap: var(--space-md);
-			flex-basis: 20%;
 		}
-
-		main {
-			flex-basis: 20%;
-		}
-
+		
 		.main-image {
 			left: 20%;
 		}

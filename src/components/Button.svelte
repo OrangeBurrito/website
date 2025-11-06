@@ -83,4 +83,8 @@
             padding: var(--space-xxs) var(--space-xs);
         }
     }
+
+    :global(button.passthrough:has(.icon)) {
+        height: var(--size-icon);
+    }
 </style>

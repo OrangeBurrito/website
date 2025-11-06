@@ -58,18 +58,10 @@
 		background-position: center;
 	}
 
-	a.deactivated {
-		color: var(--color-text-code);
-		text-decoration: line-through;
-		pointer-events: none;
-	}
-
 	@media screen and (max-width: 600px) {
 		.navbar {
 			display: grid;
 			grid-template-columns: 1fr 1fr;
-			margin-top: var(--space-base);
-			margin-bottom: calc(-1 *var(--space-lg));
 		}
 
 		.navbar a {

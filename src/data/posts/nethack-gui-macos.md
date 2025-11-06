@@ -2,7 +2,7 @@
 title: 'Compiling Nethack with Tiles (MacOS)'
 publishedDate: 2024-01-12
 coverImage: "/images/successful.png"
-description: "How to compile/install Nethack with tiles on newer versions of Mac"
+description: "How to install Nethack with tiles on Apple Silicon"
 ---
 
 Due to a lack of useful or up-to-date information on the subject, here's a short guide for how to compile the Qt Interface for Nethack on later versions of Mac, (Ventura and upwards, works on Apple Silicon)

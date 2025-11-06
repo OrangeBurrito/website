@@ -1,3 +1,7 @@
+.logo-header {
+	margin-bottom: 0 !important;
+}
+
 .post-header {
 	position: relative;
 	display: flex;
@@ -5,6 +9,10 @@
 	gap: var(--space-md);
 	padding: var(--space-md) 0;
 	margin-bottom: var(--space-md);
+
+	.img-icon {
+		margin-bottom: -4px;
+	}
 }
 
 .post-header .title {
@@ -25,17 +33,7 @@
 	background: linear-gradient(180deg, var(--color-background-alt) 50%, rgba(0,0,0,0) 100%);
 	opacity: 0.9;
 	padding-top: var(--space-lg);
-	padding-bottom: var(--space-base);
 	margin-top: 50%;
-	margin-bottom: var(--space-dlg);
-}
-
-.text-block::after {
-	position: absolute;
-	bottom: 0px;
-	content: '_________';
-	color: rgba(0,0,0,0);
-	border-top: 3.5px solid var(--color-primary);
 }
 
 .content p, .content li, .content a {
@@ -74,8 +72,17 @@ img + em {
 }
 
 .updated {
-	margin-top: var(--space-xs);
-	font-style: italic;
+	display: flex;
+	align-items: center;
+	gap: var(--space-sm);
+	line-height: 0;
+
+	p {
+		font-family: var(--font-family-header);
+		line-height: 0;
+		margin-top: var(--space-dlg);
+		font-size: var(--space-dlg);
+	}
 }
 
 .content > p {padding-bottom: var(--space-base);}
@@ -120,5 +127,10 @@ iframe + p:has(em) {
 @media screen and (max-width: 600px) {
 	.post-header {
 		padding: 0;
+		padding-bottom: var(--space-base);
+	}
+
+	.updated {
+		padding-bottom: var(--space-sm);
 	}
 }

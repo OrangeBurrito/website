@@ -19,4 +19,8 @@ Now, I can assume that since you're reading this you just need the straight-to-t
 
 ## Getting Started
 
-Extending syntax of any language necessitates understanding how a language is parsed in the first place. There's plenty of written material that describes lexing and parsing in great detail (like the excellent book [Crafting Interpreters](https://craftinginterpreters.com/)), but essentially it's the process of consuming the string of characters that is your code, splitting them up into 'tokens' that represent different parts of the language (operators, reserved keywords, values), constructing an abstract hierarchical tree based on those tokens
+Extending syntax of any language necessitates understanding how a language is parsed in the first place.
+
+> Looking for a deeper understanding of of lexing and parsing? Check out the excellent book [Crafting Interpreters](https://craftinginterpreters.com/).
+
+Essentially it's the process of consuming the string of characters that is your code, splitting them up into 'tokens' that represent different parts of the language (operators, reserved keywords, values), constructing an abstract hierarchical tree based on those tokens

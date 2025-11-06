@@ -1,6 +1,4 @@
-.project-article {
-    margin-top: -2rem;
-    
+.project-article {    
     p {
         font-size: var(--space-bsm);
     }

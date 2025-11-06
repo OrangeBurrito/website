@@ -264,8 +264,8 @@ article a:hover, a.link:hover {
     padding: 0 var(--space-base) var(--space-base) 0;
     margin-bottom: calc(var(--gap-item) - var(--space-md));
 
-    .title {
-      color: var(--color-secondary);
+    .title, time, strong {
+      color: var(--color-secondary) !important;
     }
   }
 }
@@ -288,7 +288,6 @@ article {
 	width: 60%;
 	display: flex;
 	flex-direction: column;
-	padding: var(--space-md);
 	margin: 0 auto;
 }
 
@@ -346,13 +345,26 @@ body.contrast, body:has(#set-high-contrast) {
 }
 
 @media screen and (max-width: 600px) {
+  header#site-header, header.logo-header {
+    padding-bottom: 0 !important;
+  }
+
   article {
 		width: 100%;
 		flex-wrap: wrap;
+    padding: var(--space-lg);
 	}
 
   .tags {
     flex-wrap: wrap;
+  }
+
+  .hover-slide {
+    &:hover {
+      border-right: none;
+      border-left: 4px solid var(--color-primary);
+      padding-left: var(--space-base);
+    }
   }
 }
 
