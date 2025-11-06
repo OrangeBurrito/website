@@ -1,27 +1,14 @@
 ---
-import '../styles/global.css'
 import '../styles/post.css'
 
-import LogoHeader from '../components/LogoHeader.astro'
+import RootLayout from './RootLayout.astro'
 import Date from '../components/Date.astro'
 import Button from '../components/Button.svelte'
+
 const { frontmatter } = Astro.props
 ---
 
-<script>
-	const cookies = new URLSearchParams(document.cookie.replaceAll('&', '%26').replaceAll('; ', '&')) 
-	document.body.classList.add(cookies.get('theme')!)
-</script>
-
-<html>
-<head>
-	<meta charset="UTF-8">
-	<meta content="width=device-width, initial-scale=1" name="viewport" />
-	<title>{frontmatter.title}</title>
-	<link rel="shortcut icon" href="/favicon.png" type="image/x-icon">
-</head>
-<body>
-	<LogoHeader/>
+<RootLayout title={frontmatter.title}>
 	<article>
 		<div class="back-button">
 			<Button type="secondary" link="/">&lt; Back</Button>
@@ -46,5 +33,4 @@ const { frontmatter } = Astro.props
 			<slot/>
 		</div>
 	</article>
-</body>
-</html>
+</RootLayout>

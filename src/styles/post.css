@@ -2,6 +2,10 @@
 	margin-bottom: 0 !important;
 }
 
+.site-settings {
+	position: absolute;
+}
+
 .post-header {
 	position: relative;
 	display: flex;
@@ -132,5 +136,9 @@ iframe + p:has(em) {
 
 	.updated {
 		padding-bottom: var(--space-sm);
+	}
+
+	iframe {
+		width: 100%;
 	}
 }

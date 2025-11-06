@@ -46,7 +46,7 @@
 
     &.expandable {
         cursor: pointer;
-        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        transition: transform var(--transition-smooth);
         position: relative;
     }
     &.expanded {

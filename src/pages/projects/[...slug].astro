@@ -1,19 +1,13 @@
 ---
-import { render } from "astro:content"
-import { getCollection } from "astro:content"
+import { getEntry, render } from "astro:content"
 import ProjectLayout from "../../layouts/ProjectLayout.astro"
 
-export const prerender = true
+export const prerender = false
 
-export async function getStaticPaths() {
-  const projects = await getCollection("projects")
-  return projects.map((project) => ({
-    params: { slug: project.id },
-    props: { project },
-  }))
-}
+const { slug } = Astro.params
 
-const { project } = Astro.props
+const project = await getEntry('projects', slug!)!
+
 const { Content } = await render(project)
 
 ---

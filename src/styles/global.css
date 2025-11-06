@@ -51,6 +51,21 @@
   
   --size-icon: 20px;
   --size-icon-small: 16px;
+
+  --transition-speed-fast: 0.08s;
+  --transition-speed-normal: 0.125s;
+  --transition-speed-slow: 0.2s;
+  --transition-speed-medium: 0.3s;
+  --transition-speed-slower: 0.4s;
+  --transition-ease-default: ease-in-out;
+  --transition-ease-in: ease-in;
+  --transition-ease-out: ease-out;
+  --transition-ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-fast: var(--transition-speed-fast) var(--transition-ease-default);
+  --transition-normal: var(--transition-speed-normal) var(--transition-ease-in);
+  --transition-slow: var(--transition-speed-slow) var(--transition-ease-out);
+  --transition-medium: var(--transition-speed-medium) var(--transition-ease-default);
+  --transition-smooth: var(--transition-speed-slower) var(--transition-ease-smooth);
   
   --font-family-body-serif: "Argent Pixel CF", serif;
   --font-family-body: Menlo, "SF Mono", Monaco, Consolas, "Liberation Mono", monospace, "Arundina Mono";
@@ -195,13 +210,22 @@ a.active {
   color: var(--color-text-link);
 }
 
+#site-header {
+  position: sticky;
+  top: 0;
+  z-index: 3;
+  background: inherit;
+  padding: var(--space-lg);
+  transition: height var(--transition-slow);
+}
+
 
 article a, a.link {
 	background: linear-gradient(to bottom, var(--color-primary) 0%, var(--color-primary) 100%);
 	background-position: 0 100%;
 	background-repeat: repeat-x;
 	background-size: 4px 2px;
-	transition: all 0.125s ease-in;
+	transition: all var(--transition-normal);
   padding-bottom: 2px;
 }
 
@@ -256,7 +280,7 @@ article a:hover, a.link:hover {
 
 .hover-slide {
   cursor: pointer;
-  transition: all 0.08s ease-in-out;
+  transition: all var(--transition-fast);
 
   &:hover {
     border-right: 4px solid var(--color-primary);
@@ -311,7 +335,7 @@ article {
   margin-bottom: var(--space-lg);
 }
 
-.layout.lang-th {
+body.lang-th {
   h1, h2, h3, h4, button, nav a {
     line-height: 1.05;
   }
@@ -345,14 +369,11 @@ body.contrast, body:has(#set-high-contrast) {
 }
 
 @media screen and (max-width: 600px) {
-  header#site-header, header.logo-header {
-    padding-bottom: 0 !important;
-  }
-
   article {
 		width: 100%;
 		flex-wrap: wrap;
     padding: var(--space-lg);
+    padding-top: 0;
 	}
 
   .tags {
@@ -371,6 +392,13 @@ body.contrast, body:has(#set-high-contrast) {
 @media screen and (min-width: 600px) {
   :root {
     --size-icon: 20px;
+  }
+
+  body.homepage {
+    #site-header {
+      position: absolute;
+      background: none;
+    }
   }
 
   .page-header {

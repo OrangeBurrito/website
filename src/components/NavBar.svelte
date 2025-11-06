@@ -26,7 +26,7 @@
 	a {
 		font-family: var(--font-family-header);
 		font-size: var(--space-mlg);
-		transition: all 0.08s ease-in-out;
+		transition: all var(--transition-fast);
 		position: relative;
 		width: fit-content;
 	}

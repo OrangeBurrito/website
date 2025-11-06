@@ -27,18 +27,19 @@
 
 <style>
     button {
+        --background-button: var(--color-primary);
+        --background-hover-button: var(--color-secondary);
+        --color-button: var(--color-text-inverted);
+        
         width: fit-content;
         border: none;
         outline: none;
         font-size: var(--font-size-heading);
         font-family: var(--font-family-header);
-        --background-button: var(--color-primary);
-        --background-hover-button: var(--color-secondary);
-        --color-button: var(--color-text-inverted);
         background-color: var(--background-button);
         color: var(--color-button);
         padding: var(--space-xs) var(--space-base);
-        transition: all 0.08s ease-in-out;
+        transition: all var(--transition-fast);
 
         a {
             color: inherit;

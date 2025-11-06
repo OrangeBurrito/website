@@ -53,6 +53,7 @@
     .site-settings { 
         padding-bottom: var(--space-xs);
         margin-top: var(--space-md);
+        transition: margin-top var(--transition-slow);
         
         .title {
             font-family: var(--font-family-header);

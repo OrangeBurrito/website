@@ -1,36 +1,16 @@
 ---
-import LogoHeader from '../components/LogoHeader.astro'
 import NavBar from '../components/NavBar.svelte'
-import SiteSettings from '../components/SiteSettings.svelte'
-import '../styles/global.css'
+import RootLayout from './RootLayout.astro'
 
-let {title} = Astro.props
-let lang = Astro.cookies.get('language')?.value || 'en';
-let theme = Astro.cookies.get('theme')?.value || 'dark';
-
-if (!Astro.cookies.has('language')) {
-	Astro.cookies.set('language', 'en', { path: '/' });
-}
-
-if (!Astro.cookies.has('theme')) {
-	Astro.cookies.set('theme', 'dark', { path: '/' });
-}
+const { title } = Astro.props
+const lang = Astro.cookies.get('language')?.value || 'en'
 ---
 
-<html>
-<head>
-	<meta charset="UTF-8">
-	<meta content="width=device-width, initial-scale=1" name="viewport" />
-	<link rel="shortcut icon" href="favicon.png" type="image/x-icon">
-	<title>{title}</title>
-</head>
-<body class={(Astro.cookies.get('theme')?.value || 'dark')}>
-	<div class={"layout lang-" + lang}>
-			<header id="site-header">
-				<LogoHeader/>
-				<NavBar currentPath={Astro.url.pathname} lang={lang} />
-				<SiteSettings lang={lang} dark={theme === 'dark'} client:load />
-			</header>
+<RootLayout title={title} homepage={true}>
+	<Fragment slot="nav">
+		<NavBar currentPath={Astro.url.pathname} lang={lang} />
+	</Fragment>
+	<div class="layout lang-{lang}">
 		<div class="corner">
 			<slot name="corner"/>
 		</div>
@@ -39,8 +19,7 @@ if (!Astro.cookies.has('theme')) {
 		</main>
 		<img class="main-image" src="/images/fruitstack2.png" alt="">
 	</div>
-</body>
-</html>
+</RootLayout>
 
 <style>
 	.layout {

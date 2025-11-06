@@ -1,0 +1,57 @@
+---
+import LogoHeader from '../components/LogoHeader.astro'
+import SiteSettings from '../components/SiteSettings.svelte'
+import '../styles/global.css'
+
+const { title, homepage } = Astro.props
+
+let lang = Astro.cookies.get('language')?.value || 'en'
+let theme = Astro.cookies.get('theme')?.value || 'dark'
+
+if (!Astro.cookies.has('language')) {
+	Astro.cookies.set('language', 'en', { path: '/' })
+}
+
+if (!Astro.cookies.has('theme')) {
+	Astro.cookies.set('theme', 'dark', { path: '/' })
+}
+---
+
+<html lang={lang}>
+<head>
+	<meta charset="UTF-8">
+	<meta content="width=device-width, initial-scale=1" name="viewport" />
+	<link rel="shortcut icon" href="/favicon.png" type="image/x-icon">
+	<title>{title}</title>
+</head>
+<body class=`${theme} ${homepage ? 'homepage': ''} lang-${lang}`>
+	<header id="site-header">
+		<LogoHeader/>
+        <slot name="nav" />
+		<SiteSettings lang={lang} dark={theme === 'dark'} client:load />
+	</header>
+	<slot/>
+</body>
+</html>
+
+<script>
+	const siteHeader = document.getElementById('site-header') as HTMLElement
+	const logoHeader = document.querySelector('.logo-header') as HTMLElement
+	const siteSettings = document.querySelector('.site-settings') as HTMLElement
+
+	function shrinkHeaderOnScroll() {
+		if (window.scrollY > 50 && window.matchMedia('(min-width: 600px)').matches) {
+			const scale = Math.max(0.7, 1 - (window.scrollY / 500))
+			siteHeader.style.height = '120px'
+			logoHeader.style.transform = `scale(${scale})`
+			logoHeader.style.transformOrigin = 'left top'
+			siteSettings.style.marginTop = '0'
+		} else {
+			siteHeader.style.height = ''
+			logoHeader.style.transform = 'scale(1)'
+			siteSettings.style.marginTop = ''
+		}
+	}
+
+  window.onscroll = shrinkHeaderOnScroll
+</script>

@@ -1,9 +1,8 @@
 ---
-import '../styles/global.css'
 import '../styles/project.css'
 import '../styles/post.css'
 
-import LogoHeader from '../components/LogoHeader.astro'
+import RootLayout from './RootLayout.astro'
 import Button from '../components/Button.svelte'
 import Tag from '../components/Tag.svelte'
 import Link from '../components/Link.svelte'
@@ -13,20 +12,7 @@ import { softwareTagColors } from '../ts/types'
 const { frontmatter, lang } = Astro.props
 ---
 
-<script>
-	const cookies = new URLSearchParams(document.cookie.replaceAll('&', '%26').replaceAll('; ', '&')) 
-	document.body.classList.add(cookies.get('theme')!)
-</script>
-
-<html>
-<head>
-	<meta charset="UTF-8">
-	<meta content="width=device-width, initial-scale=1" name="viewport" />
-	<title>{frontmatter.title}</title>
-	<link rel="shortcut icon" href="/favicon.png" type="image/x-icon">
-</head>
-<body>
-	<LogoHeader/>
+<RootLayout title={frontmatter.title}>
 	<article class="project-article">
         <header class="project-header" style={`${frontmatter.color ? `--project-gradient: ${frontmatter.color};`: ""}`}>
 			<div class="back-button">
@@ -74,8 +60,7 @@ const { frontmatter, lang } = Astro.props
 			<slot/>
 		</div>
 	</article>
-</body>
-</html>
+</RootLayout>
 
 <style>
 	.cover-icon {
@@ -88,17 +73,17 @@ const { frontmatter, lang } = Astro.props
 	.hero-image {
 		position: relative;
 
-		.hover-overlay {
-			position: absolute;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			width: 100%;
-			height: 100%;
-			opacity: 0;
-			transition: all 0.3s ease-in-out;
+	.hover-overlay {
+		position: absolute;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 100%;
+		height: 100%;
+		opacity: 0;
+		transition: all var(--transition-medium);
 
-			#overlay-link {
+		#overlay-link {
 				position: absolute;
 				top: 0;
 				left: 0;
