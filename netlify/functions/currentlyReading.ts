@@ -53,17 +53,27 @@ export default async (req: Request) => {
     const { getStore } = await import('@netlify/blobs')
     const store = getStore('currently-reading')
 
-    if (req.method === 'GET') {
-        const cachedData = await store.get('book-data', { type: 'json' })
-        if (cachedData) {
-            return new Response(JSON.stringify(cachedData), {
-                headers: { 'Content-Type': 'application/json' }
-            })
-        }
+    const today = new Date().toISOString().split('T')[0]
+    const cacheKey = `book-data-${today}`
+
+    const cachedData = await store.get(cacheKey, { type: 'json' })
+    if (cachedData) {
+        return new Response(JSON.stringify(cachedData), {
+            headers: { 'Content-Type': 'application/json' }
+        })
     }
 
     const data = await getLatestStorygraphBook()
-    await store.setJSON('book-data', data)
+    await store.setJSON(cacheKey, data)
+
+    const allBlobs = await store.list()
+    const oldBlobs = allBlobs.blobs.filter(blob => 
+        blob.key.startsWith('book-data-') && blob.key !== cacheKey
+    )
+    
+    for (const oldBlob of oldBlobs) {
+        await store.delete(oldBlob.key)
+    }
 
     return new Response(JSON.stringify(data), {
         headers: { 'Content-Type': 'application/json' }
