@@ -43,7 +43,7 @@
   --space-xxl: calc(3.25 * var(--space-unit)); /* 52px */
   --space-xxxl: calc(5.25 * var(--space-unit)); /* 84px */
 
-  --font-size-body: var(--space-base);
+  --font-size-body: var(--space-bsm);
   --font-size-subheading: var(--space-md);
   --font-size-heading: var(--space-dlg);
   --font-size-subtitle: var(--space-lg);
@@ -134,7 +134,6 @@
   font-style: italic;
   src: url("/fonts/Arundinamoit.ttf");
   size-adjust: 155%;
-  font-feature-settings: "c2sc", "smcp";
 }
 @font-face {
   font-family: "Arundina Mono";
@@ -341,7 +340,7 @@ body.lang-th {
   }
 }
 
-body.contrast, body:has(#set-high-contrast) {
+body.contrast {
   --color-primary: #00D4FF;
   --color-primary-light: #66E5FF;
   --color-secondary: #FF6BFF;
@@ -413,5 +412,6 @@ body.contrast, body:has(#set-high-contrast) {
 @media screen and (min-width: 900px) {
   :root {
     --space-unit: 16px;
+    --font-size-body: var(--space-base);
   }
 }

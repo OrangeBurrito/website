@@ -7,7 +7,7 @@ client: 'Arajet Airlines'
 clientUrl: 'https://arajet.com'
 contractor: 'Huagati Systems'
 contractorUrl: 'https://huagati.com/'
-startDate: 2023-12-01
+startDate: 2023-11-26
 endDate: 2024-01-31
 description: "Design and development of Arajet Airlines' Gift Card Program in Blazor Server"
 shortDesc: "Gift Card Program"

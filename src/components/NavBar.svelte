@@ -62,6 +62,7 @@
 		.navbar {
 			display: grid;
 			grid-template-columns: 1fr 1fr;
+			margin-bottom: calc(-1 * var(--space-lg));
 		}
 
 		.navbar a {

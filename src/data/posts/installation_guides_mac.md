@@ -2,7 +2,7 @@
 title: 'Installation Guides'
 publishedDate: 2022-12-30
 coverImage: "/images/upscaled_normandy.jpg"
-description: "An accumulation of installation guides of Mac apps from various personal app-related whims."
+description: "An accumulation of various installation guides for Mac apps"
 ---
 
 Here's a few quick guides to install random cracked/patched software on MacOS, to delegate my memory of these instructions to a markdown file instead of an unreliable hippocampus.

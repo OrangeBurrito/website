@@ -24,7 +24,7 @@ if (!Astro.cookies.has('theme')) {
 	<link rel="shortcut icon" href="/favicon.png" type="image/x-icon">
 	<title>{title}</title>
 </head>
-<body class=`${theme} ${homepage ? 'homepage': ''} lang-${lang}`>
+<body class=`${theme} lang-${lang} ${homepage ? 'homepage': ''} `>
 	<header id="site-header">
 		<LogoHeader/>
         <slot name="nav" />
