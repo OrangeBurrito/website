@@ -1,13 +1,13 @@
 <script lang="ts">
-    import Tag from "./Tag.svelte";
-    import Image from "./Image.svelte";
-    import { softwareTagColors } from '../ts/types'
+    import Tag from "../base/Tag.svelte";
+    import Image from "../base/Image.svelte";
+    import { softwareTagColors } from '../../ts/types'
     import { getRelativeLocaleUrl } from "astro:i18n";
 
     let { project } = $props()
 </script>
 
-<div class="project hover-slide">
+<div class="project">
 <a href={getRelativeLocaleUrl("en", "projects/" + project.id)}>
     {#if project.data.coverIcon}
     <div class="cover-icon">
@@ -15,7 +15,7 @@
     </div>
     {/if}
     <div class="info">
-        <h2 class="title">{project.data.title}</h2>
+        <h4 class="title">{project.data.title}</h4>
         <p class="description">{project.data.shortDesc}</p>
         <div class="for">
             {#if project.data.client}
@@ -37,28 +37,32 @@
     .project {
         width: fit-content;
         position: relative;
-        margin-bottom: var(--space-xl);
+        margin-bottom: var(--space-500);
     }
 
     .description {
         color: var(--color-text-heading);
-        margin-bottom: var(--space-xxs);
+        margin-bottom: var(--space-050);
     }
-    
+
     .for {
         font-style: italic;
-        margin-bottom: var(--space-sm);
+        margin-bottom: var(--space-150);
         color: var(--color-text-code);
-        
+
         strong {
             color: var(--color-text-link);
         }
     }
 
-    :global(.project .cover-icon) {
+    :global(body.retro .project .cover-icon) {
         height: auto;
         position: absolute;
         left: 0;
+    }
+
+    :global(body:not(.retro) .project .cover-icon) {
+        display: none;
     }
 
     @media screen and (max-width: 600px) {
@@ -66,7 +70,7 @@
             width: 100%;
         }
 
-        .project .cover-icon {
+        :global(body.retro .project .cover-icon) {
             width: 72px;
             left: auto;
             right: 0;

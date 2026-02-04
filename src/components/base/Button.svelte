@@ -34,11 +34,11 @@
         width: fit-content;
         border: none;
         outline: none;
-        font-size: var(--font-size-heading);
-        font-family: var(--font-family-header);
+        font-size: var(--font-size-subtitle);
+        font-family: var(--font-family-heading);
         background-color: var(--background-button);
         color: var(--color-button);
-        padding: var(--space-xs) var(--space-base);
+        padding: var(--space-100) var(--space-200);
         transition: all var(--transition-fast);
 
         a {
@@ -80,8 +80,8 @@
         }
 
         &.size-small {
-            font-size: var(--font-size-subheading);
-            padding: var(--space-xxs) var(--space-xs);
+            font-size: var(--font-size-body-large);
+            padding: var(--space-050) var(--space-100);
         }
     }
 

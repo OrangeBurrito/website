@@ -1,6 +1,6 @@
 .project-article {    
     p {
-        font-size: var(--space-bsm);
+        font-size: var(--font-size-body);
     }
 }
 
@@ -9,9 +9,9 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    margin-bottom: var(--space-md);
+    margin-bottom: var(--space-250);
 
-    .text-block {
+    .container-text {
         position: relative;
         width: 100%;
         background: linear-gradient(0deg, var(--project-gradient) 40%, rgba(0,0,0,0) 100%);
@@ -20,7 +20,7 @@
         margin: 0;
     }
 
-    .text-block::after {
+    .container-text::after {
        content: '';
     }
 
@@ -30,15 +30,15 @@
 
     .description {
         font-style: italic;
-        margin-bottom: var(--space-base);
+        margin-bottom: var(--space-200);
         max-width: 80%;
     }
 
     .dates {
         display: flex;
         align-items: center;
-        gap: var(--space-sm);
-        margin-bottom: var(--space-base);
+        gap: var(--space-150);
+        margin-bottom: var(--space-200);
 
         .date {
             margin-top: 0;
@@ -46,13 +46,13 @@
     }
 
     .tags {
-        margin-bottom: var(--space-lg);
+        margin-bottom: var(--space-400);
     }
 
     .hero-image a {
         color: var(--color-text-heading);
-        font-size: var(--font-size-subheading);
-        --size-icon: var(--font-size-subheading);
+        font-size: var(--font-size-body-large);
+        --size-icon: var(--font-size-body-large);
         z-index: 1;
     }
 

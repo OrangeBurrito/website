@@ -29,25 +29,38 @@
   --color-text-link-hover: var(--color-primary-light);
   --color-netlify: #05bdba;
 
-  --space-unit: 14px;
-  --space-xxs: calc(0.25 * var(--space-unit)); /* 4px */
-  --space-xs: calc(0.5 * var(--space-unit)); /* 8px */
-  --space-sm: calc(0.75 * var(--space-unit)); /* 12px */
-  --space-base: calc(1 * var(--space-unit)); /* 16px */
-  --space-bsm: calc(1.125 * var(--space-unit)); /* 18px */
-  --space-md: calc(1.25 * var(--space-unit)); /* 20px */
-  --space-dlg: calc(1.5 * var(--space-unit)); /* 24px */
-  --space-mlg: calc(1.75 * var(--space-unit)); /* 28px */
-  --space-lg: calc(2 * var(--space-unit)); /* 32px */
-  --space-xl: calc(2.5 * var(--space-unit)); /* 40px */
-  --space-xxl: calc(3.25 * var(--space-unit)); /* 52px */
-  --space-xxxl: calc(5.25 * var(--space-unit)); /* 84px */
 
-  --font-size-body: var(--space-bsm);
-  --font-size-subheading: var(--space-md);
-  --font-size-heading: var(--space-dlg);
-  --font-size-subtitle: var(--space-lg);
-  --font-size-title: var(--space-xl);
+  --space-unit: 7px;
+  --space-050: calc(0.5 * var(--space-unit)); /* 4px */
+  --space-100: var(--space-unit);             /* 8px */
+  --space-150: calc(1.5 * var(--space-unit)); /* 12px */
+  --space-175: calc(1.75 * var(--space-unit));/* 14px */
+  --space-200: calc(2 * var(--space-unit));   /* 16px */
+  --space-225: calc(2.25 * var(--space-unit)); /* 18px */
+  --space-250: calc(2.5 * var(--space-unit)); /* 20px */
+  --space-300: calc(3 * var(--space-unit));   /* 24px */
+  --space-400: calc(4 * var(--space-unit));   /* 32px */
+  --space-500: calc(5 * var(--space-unit));   /* 40px */
+  --space-600: calc(6 * var(--space-unit));   /* 48px */
+  --space-800: calc(8 * var(--space-unit));   /* 64px */
+  
+  /* Material M3 font size system */
+  /* --font-display: 48 */
+  /* --font-headline: 40 */
+  /* --font-title: 32 */
+  /* --font-subtitle: 24 */
+  /* --font-body-large: 20 */
+  /* --font-body: 18 */
+  /* --font-label: 14 (uppercase) */
+  /* --font-caption: 16 */
+
+  --font-size-headline: var(--space-500); /* 40px */
+  --font-size-title: var(--space-400); /* 32px */
+  --font-size-subtitle: var(--space-300); /* 24px - emphasized/uppercase */
+  --font-size-body-large: var(--space-250); /* 20px */
+  --font-size-body: var(--space-225); /* 18px */
+  --font-size-label: var(--space-175); /* 14px - uppercase */
+  --font-size-caption: var(--space-200); /* 16px */
   
   --size-icon: 20px;
   --size-icon-small: 16px;
@@ -66,103 +79,100 @@
   --transition-slow: var(--transition-speed-slow) var(--transition-ease-out);
   --transition-medium: var(--transition-speed-medium) var(--transition-ease-default);
   --transition-smooth: var(--transition-speed-slower) var(--transition-ease-smooth);
+
+}
+
+:root {
+  --color-primary: #B38EF4;
+  --color-secondary: #6189F6;
+  --color-secondary-light: #99A8FF;
+  --color-tertiary: #58C1A1;
+  --color-tertiary-subtle: #008775;
+  --color-tertiary-dark: #005B53; 
+
+  --color-background: #000920;
+  --color-background-alt: #101B33;
+  --color-surface: #172042;
+  --color-border: #2E4383;
+  --color-text-link: var(--color-primary);
+
   
-  --font-family-body-serif: "Argent Pixel CF", serif;
-  --font-family-body: Menlo, "SF Mono", Monaco, Consolas, "Liberation Mono", monospace, "Arundina Mono";
-  --font-family-header: OhSnap, Futura, "Century Gothic", AppleGothic, "B2 Sign April", sans-serif;
-  --font-family-code: var(--font-family-body);
-  --font-family-logo: EagleSpCGA;
-  --font-family-bold: ChiKareGo2;
+  --font-size-body: var(--space-200);
+  --font-size-label: var(--space-175);
+  --font-size-body-large: var(--space-250);
+  
+  --font-family-body: "Executive", system-ui, sans-serif;
+  --font-family-heading: "Bureau Grotesque", "DIN Alternate", "Helvetica Neue", Arial, sans-serif;
+  --font-family-code: Menlo, "SF Mono", Consolas, monospace;
+  --font-family-logo: var(--font-family-heading);
+  
+  --icon-size: var(--space-200);
 }
 
 @font-face {
-  font-family: "Menlo";
-  font-style: normal;
-  font-weight: 400;
-  src: local("Menlo Regular"), local("Menlo-Regular"),
-    url("Menlo.woff2") format("woff2");
+    font-family: 'Executive';
+    src: url('/fonts/Executive-55Reg.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
 }
 @font-face {
-  font-family: "Menlo";
-  font-style: normal;
-  font-weight: bold;
-  src: local("Menlo Bold"), local("Menlo-Bold"),
-    url("MenloBold.woff2") format("woff2");
+    font-family: 'Executive';
+    src: url('/fonts/Executive-56It.woff2') format('woff2');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
 }
 @font-face {
-  font-family: "Menlo";
-  font-style: italic;
-  font-weight: 400;
-  src: local("Menlo Italic"), local("Menlo-Italic"),
-    url("MenloItalic.woff2") format("woff2");
+    font-family: 'Executive';
+    src: url('/fonts/Executive-65Medium.woff2') format('woff2');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
 }
 @font-face {
-  font-family: "Menlo";
-  font-style: italic;
-  font-weight: bold;
-  src: local("Menlo Bold Italic"), local("Menlo-BoldItalic"),
-    url("MenloBoldItalic.woff2") format("woff2");
-}
-
-@font-face {
-  font-family: "OhSnap";
-  src: url("/fonts/Ohsnap.ttf");
+    font-family: 'Executive';
+    src: url('/fonts/Executive-66MediumIt.woff2') format('woff2');
+    font-weight: 500;
+    font-style: italic;
+    font-display: swap;
 }
 @font-face {
-  font-family: "OhSnap";
-  font-weight: bold;
-  src: url("/fonts/OhsnapBold.ttf");
-}
-
-@font-face {
-  font-family: "Argent Pixel CF";
-  src: url("/fonts/ArgentPixelCF-Regular.woff2") format("woff2");
-}
-
-@font-face {
-  font-family: "EagleSpCGA";
-  src: url("/fonts/EagleSpCGA_Alt2.ttf");
-}
-
-@font-face {
-  font-family: "Arundina Mono";
-  src: url("/fonts/Arundinamono.ttf");
-  size-adjust: 155%;
+    font-family: 'Executive';
+    src: url('/fonts/Executive-75Bold.woff2') format('woff2');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
 }
 @font-face {
-  font-family: "Arundina Mono";
-  font-style: italic;
-  src: url("/fonts/Arundinamoit.ttf");
-  size-adjust: 155%;
+    font-family: 'Executive';
+    src: url('/fonts/Executive-76BoldIt.woff2') format('woff2');
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
 }
 @font-face {
-  font-family: "Arundina Mono";
-  font-weight: bold;
-  src: url("/fonts/Arundinamobd.ttf");
-  size-adjust: 155%;
+    font-family: 'Bureau Grotesque';
+    src: url('/fonts/BureauGrotesque-FiveThree.woff2') format('woff2');
+    font-style: normal;
+    font-weight: normal;
+    font-display: swap;
 }
 @font-face {
-  font-family: "Arundina Mono";
-  font-style: italic;
-  font-weight: bold;
-  src: url("/fonts/Arundinamobi.ttf");
-  size-adjust: 155%;
-}
-
-@font-face {
-  font-family: "B2 Sign April";
-  src: url("/fonts/B2 SIGN April Thin.ttf");
-  size-adjust: 130%;
+    font-family: 'Bureau Grotesque';
+    src: url('/fonts/BureauGrotesque-ThreeFive.woff2') format('woff2');
+    font-style: normal;
+    font-weight: bold;
+    font-display: swap;
 }
 
 body {
   height: 100%;
-
-  font-size: var(--font-size-body);
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
   font-family: var(--font-family-body);
-
+  font-size: var(--font-size-body);
   color: var(--color-text-body);
-
   background: var(--color-background);
   background-image: linear-gradient(var(--color-background-alt), var(--color-background));
   background-repeat: no-repeat;
@@ -173,26 +183,34 @@ body:has(img.expanded) {
   overflow: hidden;
 }
 
-h1, h2, h3, h4 {
-  font-family: var(--font-family-header);
+h1, h2, h3 {
+  font-family: var(--font-family-heading);
+  color: var(--color-text-heading);
+}
+
+h2, h3 {
+  color: var(--color-secondary);
+}
+
+h4 {
   color: var(--color-text-heading);
 }
 
 h1 {
-  font-size: var(--font-size-title);
+  font-size: var(--font-size-headline);
 }
 
 h2 {
-  font-size: var(--font-size-subtitle);
-  margin-bottom: var(--space-xs);
+  font-size: var(--font-size-title);
+  margin-bottom: var(--space-100);
 }
 
 h3 {
-  font-size: var(--font-size-heading);
+  font-size: var(--font-size-subtitle);
 }
 
 h4 {
-  font-size: var(--font-size-subheading);
+  font-size: var(--font-size-body-large);
 }
 
 p, em {
@@ -209,12 +227,33 @@ a.active {
   color: var(--color-text-link);
 }
 
+.subtitle {
+  font-family: var(--font-family-heading);
+  font-size: var(--font-size-subtitle);
+  color: var(--color-secondary);
+  text-transform: uppercase;
+}
+
+.body-large {
+  font-size: var(--font-size-body-large);
+}
+
+.label {
+  font-size: var(--font-size-label);
+  text-transform: uppercase;
+}
+
+.container-text {
+  display: flex;
+  flex-direction: column;
+}
+
 #site-header {
   position: sticky;
   top: 0;
   z-index: 3;
   background: inherit;
-  padding: var(--space-lg);
+  padding: var(--space-400);
   transition: height var(--transition-slow);
 }
 
@@ -251,23 +290,23 @@ article a:hover, a.link:hover {
 }
 
 .title {
-  margin-bottom: var(--space-xs);
+  margin-bottom: var(--space-100);
 }
 
 .page-header {
   position: relative;
   display: inline-block;
   font-weight: normal;
-  font-size: var(--space-lg);
+  font-size: var(--font-size-title);
   color: var(--color-primary);
   text-decoration-line: underline;
   text-underline-offset: 6px;
-  margin-bottom: var(--space-mlg);
+  margin-bottom: var(--space-300);
 }
 
 .flex {
   display: flex;
-  gap: var(--space-sm);
+  gap: var(--space-150);
 }
 
 .item-list {
@@ -284,8 +323,8 @@ article a:hover, a.link:hover {
   &:hover {
     border-right: 4px solid var(--color-primary);
     border-bottom: 4px solid var(--color-primary);
-    padding: 0 var(--space-base) var(--space-base) 0;
-    margin-bottom: calc(var(--gap-item) - var(--space-md));
+    padding: 0 var(--space-200) var(--space-200) 0;
+    margin-bottom: calc(var(--gap-item) - var(--space-250));
 
     .title, time, strong {
       color: var(--color-secondary) !important;
@@ -296,15 +335,15 @@ article a:hover, a.link:hover {
 .tags {
   display: flex;
   align-items: center;
-  gap: var(--space-sm);
+  gap: var(--space-150);
 }
 
 .back-button {
-	margin-bottom: var(--space-base);
+	margin-bottom: var(--space-200);
 }
 
 body > .logo-header {
-	padding: var(--space-lg);
+	padding: var(--space-400);
 }
 
 article {
@@ -317,7 +356,7 @@ article {
 .icon-text {
   display: flex;
   align-items: center;
-  gap: var(--space-sm);
+  gap: var(--space-150);
 }
 
 .icon svg {
@@ -329,9 +368,9 @@ article {
 .dual-images {
   display: flex;
   flex-direction: row;
-  gap: var(--space-md);
+  gap: var(--space-250);
   overflow-x: auto;
-  margin-bottom: var(--space-lg);
+  margin-bottom: var(--space-400);
 }
 
 body.lang-th {
@@ -371,7 +410,7 @@ body.contrast {
   article {
 		width: 100%;
 		flex-wrap: wrap;
-    padding: var(--space-lg);
+    padding: var(--space-400);
     padding-top: 0;
 	}
 
@@ -383,7 +422,7 @@ body.contrast {
     &:hover {
       border-right: none;
       border-left: 4px solid var(--color-primary);
-      padding-left: var(--space-base);
+      padding-left: var(--space-200);
     }
   }
 }
@@ -401,7 +440,7 @@ body.contrast {
   }
 
   .page-header {
-    margin-bottom: var(--space-lg);
+    margin-bottom: var(--space-400);
   }
 
   .item-list {
@@ -411,7 +450,7 @@ body.contrast {
 
 @media screen and (min-width: 900px) {
   :root {
-    --space-unit: 16px;
-    --font-size-body: var(--space-base);
+    --space-unit: 8px;
+    --font-size-body: var(--space-200);
   }
 }

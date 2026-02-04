@@ -1,11 +1,12 @@
 ---
-import Icon from '../components/Icon.svelte'
+import Icon from '../components/base/Icon.svelte'
 import BaseLayout from '../layouts/BaseLayout.astro'
-import CurrentlyReading from '../components/CurrentlyReading.svelte'
+import CurrentlyReading from '../components/composite/CurrentlyReading.svelte'
 import { useTranslations, type Languages } from '../ts/i18n.ts'
 
 const currentLang: Languages = (Astro.cookies.get('language')?.value ?? 'en') as Languages
 const t = useTranslations(currentLang)
+const isRetro = Astro.cookies.get('retro')?.value === 'true'
 ---
 
 <BaseLayout title="About">
@@ -13,134 +14,144 @@ const t = useTranslations(currentLang)
 		<CurrentlyReading client:load />
 	</Fragment>
 
-	<div class="about-strip">
-		<div class="content">
-			<h1 class="page-header">About</h1>
-			<div class="profile">
-				<div class="text">
-					<h2>Orange<br>Burrito</h2>
-					<em>Typography enthusiast</em>
+	{isRetro ? (
+		<div class="about-strip">
+			<div class="content">
+				<h1 class="page-header">About</h1>
+				<div class="profile">
+					<div class="text">
+						<h2>Orange<br>Burrito</h2>
+						<em>Typography enthusiast</em>
+					</div>
+					<img class="profile" src="/images/pfp.jpg" alt="the mysterious visage of this website's proprietor">
 				</div>
-				<img class="profile" src="/images/pfp.jpg" alt="the mysterious visage of this website's proprietor">
-			</div>
-			<p>I'm a programmer, which, while unfortunate, is slightly abated by an enthusiasm for good visual design.</p>
-			<p>This site is my personal glob of hex-code-complaint paint on the internet. It serves as a blog, job portfolio and—in future—my digital mausoleum.</p>
-			<div class="list">
-				<h3>Correspondence</h3>
-				<div class="icon-text">
-					<Icon icon="mail" />
-					<a href="mailto:root@orangeburrito.com">root@orangeburrito.com</a>
+				<p>I'm a programmer, which, while unfortunate, is slightly abated by an enthusiasm for good visual design.</p>
+				<p>This site is my personal glob of hex-code-complaint paint on the internet. It serves as a blog, job portfolio and—in future—my digital mausoleum.</p>
+				<div class="list">
+					<h3>Correspondence</h3>
+					<div class="icon-text">
+						<Icon icon="mail" />
+						<a href="mailto:root@orangeburrito.com">root@orangeburrito.com</a>
+					</div>
+					<div class="icon-text">
+						<Icon icon="github" />
+						<a href="https://github.com/OrangeBurrito/website" target="_blank">GitHub <Icon icon="external-link"/></a>
+					</div>
+					<div class="icon-text">
+						<Icon icon="book" />
+						<a href="https://app.thestorygraph.com/profile/orangeburrito" target="_blank">StoryGraph <Icon icon="external-link"/></a>
+					</div>
+					<div class="icon-text">
+						<Icon icon="paint-bucket" />
+						<a href="https://userstyles.world/user/orangeburrito" target="_blank">Userstyles <Icon icon="external-link"/></a>
+					</div>
 				</div>
-				<div class="icon-text">
-					<Icon icon="github" />
-					<a href="https://github.com/OrangeBurrito/website" target="_blank">GitHub <Icon icon="external-link"/></a>
+				<div class="metadata">
+					<p>Source code hosted on <a href="https://github.com/OrangeBurrito/website" target="_blank">GitHub</a></p>
+					<p>Deployed with <span style="color: var(--color-netlify)">Netlify <img class="img-icon" src="/icons/netlify.png" alt="Netlify Logo"></span></p>
+					<p class="copyright">Copyright © OrangeBurrito {new Date().getFullYear()}</p>
 				</div>
-				<div class="icon-text">
-					<Icon icon="book" />
-					<a href="https://app.thestorygraph.com/profile/orangeburrito" target="_blank">StoryGraph <Icon icon="external-link"/></a>
-				</div>
-				<div class="icon-text">
-					<Icon icon="paint-bucket" />
-					<a href="https://userstyles.world/user/orangeburrito" target="_blank">Userstyles <Icon icon="external-link"/></a>
-				</div>
-			</div>
-			<div class="metadata">
-				<p>Source code hosted on <a href="https://github.com/OrangeBurrito/website" target="_blank">GitHub</a></p>
-				<p>Deployed with <span style="color: var(--color-netlify)">Netlify <img class="img-icon" src="/icons/netlify.png" alt="Netlify Logo"></span></p>
-				<p class="copyright">Copyright © OrangeBurrito {new Date().getFullYear()}</p>
 			</div>
 		</div>
-	</div>
+	) : (
+		<div class="default-about">
+			<h1>About</h1>
+			<!-- Add your new default about content here -->
+		</div>
+	)}
 </BaseLayout>
 
 <style>
+	.default-about {
+		/* Add your default layout styles here */
+	}
+
 	.page-header {
-		margin-bottom: var(--space-xs);
+		margin-bottom: var(--space-100);
 	}
 
 	.list {
 		display: flex;
 		flex-direction: column;
-		gap: var(--space-xs);
-		margin: var(--space-sm) 0;
+		gap: var(--space-100);
+		margin: var(--space-150) 0;
 	}
 
-	a {
+	.about-strip a {
 		border-bottom: 2px solid var(--color-text-link);
 	}
 
 	.about-strip {
 		width: fit-content;
-		height: calc(100% - var(--space-lg));
+		height: calc(100% - var(--space-400));
 		float: right;
 		text-align: left;
 		overflow-y: auto;
 		overflow-x: hidden;
 		background-color: var(--color-surface-2);
 		background-clip: padding-box;
-		padding: var(--space-base) var(--space-dlg);
+		padding: var(--space-200) var(--space-300);
 		border: 4px solid transparent;
 		outline: 16px solid var(--color-surface-2);
-		margin: var(--space-base);
+		margin: var(--space-200);
 
 		.content {
 			height: 100%;
 			display: flex;
 			flex-direction: column;
-			gap: var(--space-sm);
+			gap: var(--space-150);
 			width: 30ch;
-	
-			.profile {
-				display: grid;
-				grid-template-columns: 1fr auto;
-				gap: var(--space-base);
-				margin-bottom: var(--space-xxs);
-	
-				img {
-					width: 100%;
-					height: 112px;
-				}
+		}
 
-				h2 {
-					margin-top: -2.5px;
-				}
+		.profile {
+			display: grid;
+			grid-template-columns: 1fr auto;
+			gap: var(--space-200);
+			margin-bottom: var(--space-050);
+
+			img {
+				width: 100%;
+				height: 112px;
 			}
 
-			.metadata {
-				display: flex;
-				flex-direction: column;
-				justify-content: flex-end;
-				flex-grow: 1;
-
-				p {
-					color: var(--color-text-code);
-					margin-bottom: var(--space-xxs);
-				}
+			h2 {
+				margin-top: -2.5px;
 			}
+		}
 
-			.copyright {
-				margin-top: var(--space-xxs);
-				font-style: italic;
+		.metadata {
+			display: flex;
+			flex-direction: column;
+			justify-content: flex-end;
+			flex-grow: 1;
+
+			p {
+				color: var(--color-text-code);
+				margin-bottom: var(--space-050);
 			}
+		}
+
+		.copyright {
+			margin-top: var(--space-050);
+			font-style: italic;
 		}
 	}
 
-	
 	@media screen and (max-width: 600px) {
 		.about-strip {
 			height: fit-content;
-			width: calc(100% - var(--space-lg));
+			width: calc(100% - var(--space-400));
 			float: none;
-			
+
 			.content {
 				width: 100%;
 				align-items: flex-start;
 				margin-bottom: 0;
 			}
-			
-			.list {
-				align-items: flex-start;
-			}
+		}
+
+		.list {
+			align-items: flex-start;
 		}
 	}
 </style>

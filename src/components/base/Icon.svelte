@@ -4,7 +4,7 @@ export interface Props {
 }
 
 const { icon }: Props = $props()
-const { default: innerHTML } = await import(`../../public/icons/${icon}.svg?raw`)
+const { default: innerHTML } = await import(`../../../public/icons/${icon}.svg?raw`)
 </script>
 
 <div class="icon">{@html innerHTML}</div>

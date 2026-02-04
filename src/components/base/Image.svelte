@@ -16,7 +16,6 @@
   let expanded = $state(false);
 
   function toggleExpand() {
-    console.log("Toggling expand");
     expanded = !expanded;
   }
 </script>

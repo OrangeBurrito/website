@@ -22,11 +22,17 @@ let autoLocale = Astro.cookies.get('language')?.value == 'th' ? 'th-TH' : 'en-US
 
 <style>
     .date {
+        color: var(--color-primary-light);
+        text-transform: uppercase;
+    }
+    
+    :global(body.retro .date) {
         display: inline-block;
-        font-size: var(--space-dlg);
-        font-family: var(--font-family-header);
+        font-size: var(--font-size-subtitle);
+        font-family: var(--font-family-heading);
+        text-transform: none;
         line-height: 0;
         color: var(--color-primary);
-        margin-top: var(--space-dlg);
+        margin-top: var(--space-300);
     }
 </style>

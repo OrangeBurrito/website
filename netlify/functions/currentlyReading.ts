@@ -2,6 +2,18 @@ import type { Config } from "@netlify/functions"
 import puppeteer from "puppeteer-core"
 import chromium from '@sparticuz/chromium'
 
+async function getCurrentlyReadingBook() {
+    // rename  storygraph function
+}
+
+async function getRecentlyPlayedTrack() {
+    // stats.fm api
+}
+
+async function getGitHubContributions() {
+    // github api
+}
+
 export async function getLatestStorygraphBook() {
     const browser = await puppeteer.launch({ 
         args: [...chromium.args],

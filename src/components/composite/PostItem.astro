@@ -1,15 +1,17 @@
 ---
-import Date from '../components/Date.astro'
-const { post } = Astro.props
+import Date from '../base/Date.astro'
+const { post, image } = Astro.props
 ---
 
-<div class="post hover-slide">
+<div class="post">
 <a href={`/posts/${post.id}`}>
-	<div class="post-icon">
-		<img src={post.data.coverImage}/>
-	</div>
-		<div class="text-block">
-			<h3 class="title">{post.data.title}</h3>
+		{image === true && (
+		<div class="post-icon">
+			<img src={post.data.coverImage}/>
+		</div>
+		)}
+		<div class="container-text">
+			<h4 class="title">{post.data.title}</h4>
 			<p class="description">{post.data.description}</p>
 			<div class="date">
 				<div class="text">
@@ -23,28 +25,16 @@ const { post } = Astro.props
 
 <style>
 	.post {
-		--gap-item: var(--space-lg);
+		--gap-item: var(--space-400);
 		position: relative;
 		min-width: 400px;
 		width: fit-content;
 		margin-bottom: var(--gap-item);
-
-		&:hover {
-			.post-icon {
-				bottom: var(--space-base);
-			}
-		}
-	}
-
-	.text-block {
-		display: flex;
-		flex-direction: column;
-		align-items: flex-end;
 	}
 
 	.date {
 		display: flex;
-		gap: var(--space-sm);
+		gap: var(--space-150);
 	}
 
 	.title {
@@ -52,7 +42,19 @@ const { post } = Astro.props
 		transition: color var(--transition-fast);
 	}
 
-	.post-icon {
+	.description {
+		max-width: 40ch;
+	}
+
+	:global(body.retro .post) {
+		&:hover {
+			.post-icon {
+				bottom: var(--space-200);
+			}
+		}
+	}
+
+	:global(body.retro .post-icon) {
 		position: absolute;
 		width: 30%;
 		bottom: 0;
@@ -66,8 +68,13 @@ const { post } = Astro.props
 		}
 	}
 
-	.description {
-		max-width: 40ch;
+	:global(body.retro .img-icon) {
+		display: block;
+	}
+
+	:global(body:not(.retro) .post-icon),
+	:global(body:not(.retro) .img-icon) {
+		display: none;
 	}
 
 	@media (max-width: 600px) {
@@ -75,26 +82,26 @@ const { post } = Astro.props
 			min-width: 100%;
 		}
 
-		.text-block .description {
+		.container-text .description {
 			width: 60%;
 		}
 
-		.post-icon {
+		:global(body.retro .post-icon) {
 			width: 30%;
 			right: 0;
 			top: 50%;
 			transform: translateY(-50%);
 		}
 
-		.date .text {
+		:global(body.retro .date .text) {
 			order: 2;
 		}
 
-		.date-icon {
+		:global(body.retro .date-icon) {
 			order: 1;
 		}
 
-		.text-block {
+		.container-text {
 			align-items: flex-start;
 		}
 	}

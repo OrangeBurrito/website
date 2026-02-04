@@ -2,7 +2,7 @@
 import { type Languages, useTranslations } from '../../ts/i18n';
 import { getCollection } from "astro:content"
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import PostItem from '../../components/PostItem.astro';
+import PostItem from '../../components/composite/PostItem.astro';
 
 const lang = (Astro.cookies.get('language')?.value ?? 'en') as Languages
 const t = useTranslations(lang)

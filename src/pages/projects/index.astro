@@ -1,8 +1,8 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro'
-import ProjectItem from '../components/ProjectItem.svelte'
+import BaseLayout from '../../layouts/BaseLayout.astro'
+import ProjectItem from '../../components/composite/ProjectItem.svelte'
 import { getCollection } from 'astro:content'
-import { useTranslations, type Languages } from '../ts/i18n.ts'
+import { useTranslations, type Languages } from '../../ts/i18n.ts'
 
 const currentLang: Languages = (Astro.cookies.get('language')?.value ?? 'en') as Languages
 const t = useTranslations(currentLang)

@@ -3,11 +3,11 @@ import '../styles/project.css'
 import '../styles/post.css'
 
 import RootLayout from './RootLayout.astro'
-import Button from '../components/Button.svelte'
-import Tag from '../components/Tag.svelte'
-import Link from '../components/Link.svelte'
-import Image from '../components/Image.svelte'
-import Date from '../components/Date.astro'
+import Button from '../components/base/Button.svelte'
+import Tag from '../components/base/Tag.svelte'
+import Link from '../components/base/Link.svelte'
+import Image from '../components/base/Image.svelte'
+import Date from '../components/base/Date.astro'
 import { softwareTagColors } from '../ts/types'
 const { frontmatter, lang } = Astro.props
 ---
@@ -18,7 +18,7 @@ const { frontmatter, lang } = Astro.props
 			<div class="back-button">
 				<Button type="secondary" link="/projects">&lt; Back</Button>
 			</div>
-			<div class="text-block">
+			<div class="container-text">
 				{frontmatter.coverIcon && (
 					<div class="cover-icon">
 						<Image src={frontmatter.coverIcon} alt={frontmatter.title} type="pixelated" width="var(--size-cover-icon)" />
@@ -124,9 +124,9 @@ const { frontmatter, lang } = Astro.props
 	}
 
 	.date-ongoing {
-		font-family: var(--font-family-header);
+		font-family: var(--font-family-heading);
 		color: var(--color-text-link);
-		font-size: var(--space-dlg);
+		font-size: var(--font-size-subtitle);
 	}
 
 	@media (max-width: 600px) {

@@ -1,7 +1,7 @@
 <script lang="ts">
-    import Button from './Button.svelte'
-    import Icon from './Icon.svelte'
-    import Image from './Image.svelte'
+    import Button from '../base/Button.svelte'
+    import Icon from '../base/Icon.svelte'
+    import Image from '../base/Image.svelte'
 
     type Props = {
         dark: boolean
@@ -51,13 +51,13 @@
 
 <style>
     .site-settings { 
-        padding-bottom: var(--space-xs);
-        margin-top: var(--space-md);
+        padding-bottom: var(--space-100);
+        margin-top: var(--space-250);
         transition: margin-top var(--transition-slow);
         
         .title {
-            font-family: var(--font-family-header);
-            font-size: var(--font-size-subheading);
+            font-family: var(--font-family-heading);
+            font-size: var(--font-size-body-large);
             text-transform: uppercase;
             color: var(--color-text-code);
         }
@@ -66,13 +66,13 @@
             display: flex;
             justify-content: flex-start;
             align-items: center;
-            gap: var(--space-base);
+            gap: var(--space-200);
             
         }
     }
 
     :global(.site-settings button) {
-        --size-icon: var(--space-mlg);
+        --size-icon: var(--space-300);
     }
     
     :global(.site-settings button svg) {
@@ -85,15 +85,15 @@
 
     @media (max-width: 600px) {
         .site-settings {
-            width: calc(100% - var(--space-lg));
+            width: calc(100% - var(--space-400));
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: var(--space-lg);
+            gap: var(--space-400);
             width: fit-content;
             position: absolute;
-            top: var(--space-base);
-            right: var(--space-lg);
+            top: var(--space-200);
+            right: var(--space-400);
 
             .title {
                 display: none;

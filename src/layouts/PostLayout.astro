@@ -2,8 +2,8 @@
 import '../styles/post.css'
 
 import RootLayout from './RootLayout.astro'
-import Date from '../components/Date.astro'
-import Button from '../components/Button.svelte'
+import Date from '../components/base/Date.astro'
+import Button from '../components/base/Button.svelte'
 
 const { frontmatter } = Astro.props
 ---
@@ -16,7 +16,7 @@ const { frontmatter } = Astro.props
 
 		<header class="post-header">
 			<img class="hero-image" src={frontmatter.coverImage}/>
-			<div class="text-block">
+			<div class="container-text">
 				<h1 class="title">{frontmatter.title}</h1>
 				<p class="description">{frontmatter.description}</p>
 					<Date date={frontmatter.publishedDate} />

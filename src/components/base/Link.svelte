@@ -13,7 +13,9 @@
 
 <a class="link" {href} target={external ? "_blank" : "_self"}>
   {@render children()}
-  {#if external}<Icon icon="external-link" />{/if}
+  {#if external}
+    <Icon icon="external-link" />
+  {/if}
 </a>
 
 <style>
@@ -21,12 +23,12 @@
     width: fit-content;
     display: flex;
     align-items: center;
-    gap: var(--space-xs);
+    gap: var(--space-100);
     font-size: var(--font-size-body);
   }
 
   :global(a.link svg) {
-    width: var(--space-base);
-    height: var(--space-base);
+    width: var(--space-200);
+    height: var(--space-200);
   }
 </style>

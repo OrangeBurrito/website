@@ -1,8 +1,9 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'
-import PostItem from '../components/PostItem.astro'
-import Button from '../components/Button.svelte'
-import CurrentlyReading from '../components/CurrentlyReading.svelte'
+import PostItem from '../components/composite/PostItem.astro'
+import ProjectItem from '../components/composite/ProjectItem.svelte'
+import Button from '../components/base/Button.svelte'
+import CurrentlyReading from '../components/composite/CurrentlyReading.svelte'
 import { getCollection } from 'astro:content';
 import { type Languages, useTranslations } from '../ts/i18n';
 
@@ -12,6 +13,10 @@ const t = useTranslations(currentLang)
 const posts = (await getCollection('posts')).sort(
 	(a, b) => new Date(b.data.publishedDate).valueOf() - new Date(a.data.publishedDate).valueOf()
 ).slice(0, 4)
+
+const projects = (await getCollection('projects')).sort(
+	(a, b) => new Date(b.data.startDate).valueOf() - new Date(a.data.startDate).valueOf()
+).slice(0, 4)
 ---
 
 <BaseLayout title="OrangeBurrito">
@@ -19,11 +24,29 @@ const posts = (await getCollection('posts')).sort(
 	<CurrentlyReading client:load />
 </Fragment>
 
-<h1 class="page-header">{t('title.home')}</h1>
-	<div class="item-list">
+<!-- <h1 class="page-header">{t('title.home')}</h1> -->
+<div class="posts">
+	<h2>Latest Posts</h2>
+	<div class="grid-list">
 		{posts.map((post) => (
 			<PostItem {post} />
 		))}
 	</div>
+</div>
+	<div class="projects">
+		<h2>Selected Projects</h2>
+		<div class="grid-list">
+			{projects.map((project) => (
+				<ProjectItem {project} />
+			))}
+		</div>
+	</div>
 	<Button link="/posts">{t('button.seeAllPosts')}</Button>
 </BaseLayout>
+
+<style>
+	.grid-list {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+	}
+</style>

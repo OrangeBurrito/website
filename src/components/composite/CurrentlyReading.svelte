@@ -1,6 +1,6 @@
 <script lang="ts">
   import { onMount } from "svelte";
-  import Link from "./Link.svelte";
+  import Link from "../base/Link.svelte";
 
   let book = { title: '', coverImage: '', authors: [] }
   let loading = true
@@ -46,29 +46,29 @@
 
 <style>
   h3 {
-    margin-bottom: var(--space-sm);
+    margin-bottom: var(--space-150);
   }
 
   .book {
     display: flex;
-    gap: var(--space-base);
+    gap: var(--space-200);
 
     .cover {
       height: 144px;
-      padding: var(--space-xs);
+      padding: var(--space-100);
       border: 4px solid var(--color-border-light);
     }
 
     .text {
       display: flex;
       flex-direction: column;
-      gap: var(--space-xs);
+      gap: var(--space-100);
     }
 
     .title {
       max-width: 10ch;
       font-family: var(--font-family-body-serif);
-      font-size: var(--font-size-heading);
+      font-size: var(--font-size-subtitle);
       margin-bottom: 0;
     }
 

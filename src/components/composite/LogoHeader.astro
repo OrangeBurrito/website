@@ -1,31 +1,32 @@
 <header class="logo-header">
   <a href="/">
     <h1 class="title">OrangeBurrito</h1>
-    <h2 class="slogan">the <span id="spice">spice</span> must flow</h2>
+    <p class="slogan">the <span id="spice">spice</span> must flow</p>
   </a>
 </header>
 
 <style>
   .logo-header {
-    margin-bottom: var(--space-dlg);
+    margin-bottom: var(--space-300);
     transition: transform var(--transition-slow);
 
     .title {
       font-family: var(--font-family-logo);
-      font-size: var(--space-xl);
+      font-size: var(--font-size-headline);
       text-transform: uppercase;
 	    margin-bottom: 0;
     }
 
     .slogan {
-      color: var(--color-text-link);
-      font-size: var(--space-lg);
+      color: var(--color-secondary);
+      font-size: var(--font-size-body-large);
+      font-weight: 500;
       transition: color var(--transition-slow);
     }
 
     &:hover {
       .slogan {
-        color: var(--color-secondary);
+        color: var(--color-text-lik);
       }
     }
   }
@@ -33,11 +34,11 @@
   @media screen and (max-width: 600px) {
     .logo-header {
       .title {
-        font-size: var(--space-dlg);
+        font-size: var(--font-size-subtitle);
       }
 
       .slogan {
-        font-size: var(--space-dlg);
+        font-size: var(--font-size-subtitle);
       }
     }
   }
