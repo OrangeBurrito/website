@@ -1,9 +1,11 @@
-.logo-header {
-	margin-bottom: 0 !important;
+#site-header .logo-header {
+	margin-bottom: 0;
 }
 
-.site-settings {
+#site-header .site-settings {
 	position: absolute;
+	top: var(--space-400);
+	right: var(--space-400);
 }
 
 .post-header {

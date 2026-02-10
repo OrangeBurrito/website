@@ -19,20 +19,20 @@ const projects = (await getCollection('projects')).sort(
 ).slice(0, 4)
 ---
 
-<BaseLayout title="OrangeBurrito">
+<BaseLayout title="OrangeBurrito" homepage>
 <Fragment slot="corner">
 	<CurrentlyReading client:load />
 </Fragment>
 
-<!-- <h1 class="page-header">{t('title.home')}</h1> -->
-<div class="posts">
-	<h2>Latest Posts</h2>
-	<div class="grid-list">
-		{posts.map((post) => (
-			<PostItem {post} />
-		))}
+<div class="container-y fill">
+	<div class="posts">
+		<h2>Latest Posts</h2>
+		<div class="grid-list">
+			{posts.map((post) => (
+				<PostItem {post} />
+			))}
+		</div>
 	</div>
-</div>
 	<div class="projects">
 		<h2>Selected Projects</h2>
 		<div class="grid-list">
@@ -42,6 +42,7 @@ const projects = (await getCollection('projects')).sort(
 		</div>
 	</div>
 	<Button link="/posts">{t('button.seeAllPosts')}</Button>
+</div>
 </BaseLayout>
 
 <style>

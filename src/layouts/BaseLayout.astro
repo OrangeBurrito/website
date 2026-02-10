@@ -1,109 +1,168 @@
 ---
 import NavBar from '../components/composite/NavBar.svelte'
-import RootLayout from './RootLayout.astro'
+import LogoHeader from '../components/composite/LogoHeader.astro'
+import SiteSettings from '../components/composite/SiteSettings.svelte'
+import '../styles/global.css'
 
-const { title } = Astro.props
-const lang = Astro.cookies.get('language')?.value || 'en'
+const { title, homepage = false } = Astro.props
+
+let lang = Astro.cookies.get('language')?.value || 'en'
+let theme = Astro.cookies.get('theme')?.value || 'dark'
+
+if (!Astro.cookies.has('language')) {
+	Astro.cookies.set('language', 'en', { path: '/' })
+}
+
+if (!Astro.cookies.has('theme')) {
+	Astro.cookies.set('theme', 'dark', { path: '/' })
+}
 ---
 
-<RootLayout title={title} homepage={true}>
-	<Fragment slot="nav">
-		<NavBar currentPath={Astro.url.pathname} lang={lang} />
-	</Fragment>
-	<div class="layout lang-{lang}">
-		<div class="corner">
-			<slot name="corner"/>
-		</div>
+<html lang={lang}>
+<head>
+	<meta charset="UTF-8">
+	<meta content="width=device-width, initial-scale=1" name="viewport" />
+	<link rel="shortcut icon" href="/favicon.png" type="image/x-icon">
+	<title>{title}</title>
+</head>
+<body class={`${theme} lang-${lang}${homepage ? ' homepage' : ''}`}>
+	<div class="grid-layout">
+		<header class="site-header">
+			<LogoHeader/>
+			<NavBar currentPath={Astro.url.pathname} lang={lang} />
+			<SiteSettings lang={lang} dark={theme === 'dark'} client:load />
+		</header>
 		<main>
 			<slot/>
 		</main>
+		<aside>
+			<slot name="corner"/>
+		</aside>
 		<!-- <img class="main-image" src="/images/fruitstack2.png" alt=""> -->
 	</div>
-</RootLayout>
+</body>
+</html>
+
+<script>
+	const siteHeader = document.querySelector('.site-header') as HTMLElement
+	const logoHeader = document.querySelector('.logo-header') as HTMLElement
+	const siteSettings = document.querySelector('.site-settings') as HTMLElement
+
+	function shrinkHeaderOnScroll() {
+		if (window.scrollY > 50 && window.matchMedia('(min-width: 600px)').matches) {
+			const scale = Math.max(0.7, 1 - (window.scrollY / 500))
+			siteHeader.style.height = '120px'
+			logoHeader.style.transform = `scale(${scale})`
+			logoHeader.style.transformOrigin = 'left top'
+			siteSettings.style.marginTop = '0'
+		} else {
+			siteHeader.style.height = ''
+			logoHeader.style.transform = 'scale(1)'
+			siteSettings.style.marginTop = ''
+		}
+	}
+
+	window.onscroll = shrinkHeaderOnScroll
+</script>
 
 <style>
-	.layout {
-		position: relative;
-		display: grid;
-		width: 100%;
-		height: 100vh;
-		grid-template-columns: 3fr 5fr;
-		grid-template-areas: 
-			"aside main"
-			"corner main";
+	@media screen and (min-width: 601px) {
+		.grid-layout {
+			position: relative;
+			display: grid;
+			width: 100%;
+			height: 100vh;
+			padding: var(--space-400);
+
+			--grid-cols: 8;
+			--grid-rows: 8;
+			--grid-cols-a: 5;
+			--grid-cols-b: calc(var(--grid-cols) - var(--grid-cols-a));
+			--grid-rows-a: 5;
+			--grid-rows-b: calc(var(--grid-rows) - var(--grid-rows-a));
+
+			grid-template-columns: repeat(var(--grid-cols), 1fr);
+			grid-template-rows: repeat(var(--grid-rows), 1fr);
+			grid-gap: var(--space-400);
+			
+			> header, > main, > aside {
+				display: grid;
+				grid-template-columns: subgrid;
+				grid-template-rows: subgrid;
+				grid-column: span var(--local-cols);
+				grid-row: span var(--local-rows);
+				grid-gap: var(--space-400);
+			}
+
+			> header {
+				--local-cols: var(--grid-cols-b);
+				--local-rows: var(--grid-rows-b);
+			}
+
+			> main {
+				--local-cols: var(--grid-cols-a);
+				--local-rows: var(--grid-rows);
+				overflow-y: auto;
+			}
+
+			> aside {
+				--local-cols: var(--grid-cols-b);
+				--local-rows: var(--grid-rows-b);
+			}
+
+			.container-y {
+				grid-column: span var(--local-cols);
+
+				&.header {
+					grid-row: span 1;
+				}
+
+				&.fill {
+					grid-row: span calc(var(--local-rows) - 1);
+				}
+			}
+		}
+
+		.main-image {
+			position: absolute;
+			image-rendering: pixelated;
+			image-rendering: crisp-edges;
+			z-index: -3;
+			bottom: 10%;
+			left: 20%;
+			width: 400px;
+		}
 	}
 
-	#site-header, main {
-		padding: var(--space-400);
-	}
-
-	#site-header {
-		flex-grow: 1;
-		display: flex;
-		flex-direction: column;
-		justify-content: space-between;
-		grid-area: aside;
-	}
-
-	main {
-		display: flex;
-		flex-direction: column;
-		flex-grow: 2;
-		/* align-items: flex-end; */
-		/* text-align: right; */
-		overflow-y: auto;
-		grid-area: main;
-	}
-
-	.main-image {
-		position: absolute;
-		image-rendering: pixelated;
-		image-rendering: crisp-edges;
-		z-index: -3;
-		bottom: 10%;
-		width: 400px;
-	}
-
-	.corner {
-		position: absolute;
-		bottom: var(--space-400);
-		left: var(--space-400);
-		grid-area: corner;
-	}
-
-		
 	@media screen and (max-width: 600px) {
-		.layout {
+		.grid-layout {
 			display: flex;
 			flex-wrap: wrap;
 			height: auto;
 		}
 
-		.corner {
-			position: relative;
+		.grid-layout aside {
 			order: 3;
 			margin-top: var(--space-400);
 		}
 
-		main {
-			text-align: left;
-			align-items: flex-start;
+		.grid-layout main {
+			padding: var(--space-400);
 		}
-		
+
+		.site-header {
+			padding: var(--space-400);
+		}
+
 		.main-image {
+			position: absolute;
+			image-rendering: pixelated;
+			image-rendering: crisp-edges;
+			z-index: -3;
 			width: 200px;
 			opacity: 0.5;
 			right: 10%;
-		}
-	}
-
-	@media screen and (min-width: 601px) {
-		aside {
-			gap: var(--space-250);
-		}
-		
-		.main-image {
-			left: 20%;
+			bottom: 10%;
 		}
 	}
 </style>

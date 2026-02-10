@@ -243,10 +243,6 @@ a.active {
   text-transform: uppercase;
 }
 
-.container-text {
-  display: flex;
-  flex-direction: column;
-}
 
 #site-header {
   position: sticky;
@@ -272,14 +268,60 @@ article a:hover, a.link:hover {
 	background-size: 4px 50px;
 }
 
-.flex-container > * {
-  flex-grow: 1;
+/* Flex utilities */
+.flex {
+  display: flex;
 }
 
-.flex-vertical {
+.flex-col {
   display: flex;
   flex-direction: column;
 }
+
+.flex-x-l {
+  justify-content: flex-start;
+}
+
+.flex-x-m {
+  justify-content: center;
+}
+
+.flex-x-r {
+  justify-content: flex-end;
+}
+
+.flex-x-bt {
+  justify-content: space-between;
+}
+
+.flex-y-t {
+  align-items: flex-start;
+}
+
+.flex-y-m {
+  align-items: center;
+}
+
+.flex-y-b {
+  align-items: flex-end;
+}
+
+.gap-100 {
+  gap: var(--space-100);
+}
+
+.gap-150 {
+  gap: var(--space-150);
+}
+
+.gap-200 {
+  gap: var(--space-200);
+}
+
+.gap-400 {
+  gap: var(--space-400);
+}
+
 
 .img-icon {
   width: var(--size-icon);
@@ -294,25 +336,13 @@ article a:hover, a.link:hover {
 }
 
 .page-header {
-  position: relative;
   display: inline-block;
   font-weight: normal;
   font-size: var(--font-size-title);
-  color: var(--color-primary);
-  text-decoration-line: underline;
-  text-underline-offset: 6px;
-  margin-bottom: var(--space-300);
-}
-
-.flex {
-  display: flex;
-  gap: var(--space-150);
+  color: var(--color-secondary);
 }
 
 .item-list {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
   flex-grow: 1;
 }
 
@@ -332,11 +362,6 @@ article a:hover, a.link:hover {
   }
 }
 
-.tags {
-  display: flex;
-  align-items: center;
-  gap: var(--space-150);
-}
 
 .back-button {
 	margin-bottom: var(--space-200);
@@ -348,16 +373,9 @@ body > .logo-header {
 
 article {
 	width: 60%;
-	display: flex;
-	flex-direction: column;
 	margin: 0 auto;
 }
 
-.icon-text {
-  display: flex;
-  align-items: center;
-  gap: var(--space-150);
-}
 
 .icon svg {
   width: var(--size-icon);
@@ -366,9 +384,6 @@ article {
 }
 
 .dual-images {
-  display: flex;
-  flex-direction: row;
-  gap: var(--space-250);
   overflow-x: auto;
   margin-bottom: var(--space-400);
 }
@@ -440,7 +455,7 @@ body.contrast {
   }
 
   .page-header {
-    margin-bottom: var(--space-400);
+    /* margin-bottom: var(--space-400); */
   }
 
   .item-list {
