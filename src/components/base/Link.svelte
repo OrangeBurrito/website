@@ -11,7 +11,7 @@
   let { href, children, external = false }: Props = $props()
 </script>
 
-<a class="link" {href} target={external ? "_blank" : "_self"}>
+<a class="link flex gap-100 flex-y-m" {href} target={external ? "_blank" : "_self"}>
   {@render children()}
   {#if external}
     <Icon icon="external-link" />
@@ -21,9 +21,6 @@
 <style>
   a {
     width: fit-content;
-    display: flex;
-    align-items: center;
-    gap: var(--space-100);
     font-size: var(--font-size-body);
   }
 

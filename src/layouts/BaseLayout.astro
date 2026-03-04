@@ -30,7 +30,7 @@ if (!Astro.cookies.has('theme')) {
 		<header class="site-header">
 			<LogoHeader/>
 			<NavBar currentPath={Astro.url.pathname} lang={lang} />
-			<SiteSettings lang={lang} dark={theme === 'dark'} client:load />
+			<!-- <SiteSettings lang={lang} dark={theme === 'dark'} client:load /> -->
 		</header>
 		<main>
 			<slot/>
@@ -80,10 +80,11 @@ if (!Astro.cookies.has('theme')) {
 			--grid-cols-b: calc(var(--grid-cols) - var(--grid-cols-a));
 			--grid-rows-a: 5;
 			--grid-rows-b: calc(var(--grid-rows) - var(--grid-rows-a));
+			--grid-gap: var(--space-300);
 
 			grid-template-columns: repeat(var(--grid-cols), 1fr);
 			grid-template-rows: repeat(var(--grid-rows), 1fr);
-			grid-gap: var(--space-400);
+			grid-gap: var(--grid-gap);
 			
 			> header, > main, > aside {
 				display: grid;
@@ -91,7 +92,7 @@ if (!Astro.cookies.has('theme')) {
 				grid-template-rows: subgrid;
 				grid-column: span var(--local-cols);
 				grid-row: span var(--local-rows);
-				grid-gap: var(--space-400);
+				grid-gap: var(--grid-gap);
 			}
 
 			> header {
@@ -102,25 +103,16 @@ if (!Astro.cookies.has('theme')) {
 			> main {
 				--local-cols: var(--grid-cols-a);
 				--local-rows: var(--grid-rows);
+				--parent-cols: var(--local-cols);
+				--parent-rows: var(--local-rows);
 				overflow-y: auto;
 			}
 
 			> aside {
 				--local-cols: var(--grid-cols-b);
-				--local-rows: var(--grid-rows-b);
+				--local-rows: var(--grid-rows-a);
 			}
 
-			.container-y {
-				grid-column: span var(--local-cols);
-
-				&.header {
-					grid-row: span 1;
-				}
-
-				&.fill {
-					grid-row: span calc(var(--local-rows) - 1);
-				}
-			}
 		}
 
 		.main-image {

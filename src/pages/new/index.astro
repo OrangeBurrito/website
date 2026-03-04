@@ -1,0 +1,36 @@
+---
+import { getCollection } from 'astro:content'
+import BaseLayout2 from "../../layouts/BaseLayout2.astro"
+import PostItem from '../../components/composite/PostItem.astro'
+import ProjectItem from '../../components/composite/ProjectItem.astro'
+
+const posts = (await getCollection('posts')).sort(
+	(a, b) => b.data.publishedDate.valueOf() - a.data.publishedDate.valueOf()
+).slice(0, 4)
+
+const projects = (await getCollection('projects')).sort(
+	(a, b) => b.data.startDate.valueOf() - a.data.startDate.valueOf()
+).slice(0, 4)
+---
+
+<BaseLayout2 title="Home">
+  <div class="posts subgrid row-4">
+    <div class="col-fill row-1 align-end"><h2>Latest Posts</h2></div>
+    <div class="grid-list col-fill row-fill">
+      {posts.map((post) => (
+        <PostItem {post} />
+      ))}
+    </div>
+  </div>
+  <div class="projects subgrid row-4">
+    <div class="col-fill row-1 align-end"><h2>Selected Projects</h2></div>
+    <div class="grid-list col-fill row-fill">
+      {projects.map((project) => (
+        <ProjectItem {project} />
+      ))}
+    </div>
+  </div>
+  <Fragment slot="sidebar">
+    <h2>Sidebar item</h2>
+  </Fragment>
+</BaseLayout2>

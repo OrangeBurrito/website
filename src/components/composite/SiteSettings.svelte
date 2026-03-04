@@ -37,9 +37,9 @@
     }
 </script>
 
-<div class="site-settings">
+<div class="site-settings flex gap-400 flex-y-m flex-x-bt">
     <div class="title">Settings</div>
-    <div class="settings">
+    <div class="settings flex gap-200 flex-y-m">
         <Button type="passthrough" onclick={toggleTheme} attr={highContrast ? 'Toggle High-Contrast Mode' : 'Toggle Dark Mode'}>
                 <Icon icon={highContrast ? "moon" : "moon-star"}/>
         </Button>
@@ -62,12 +62,7 @@
             color: var(--color-text-code);
         }
         
-        .settings {      
-            display: flex;
-            justify-content: flex-start;
-            align-items: center;
-            gap: var(--space-200);
-            
+        .settings {
         }
     }
 
@@ -85,11 +80,6 @@
 
     @media (max-width: 600px) {
         .site-settings {
-            width: calc(100% - var(--space-400));
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: var(--space-400);
             width: fit-content;
             position: absolute;
             top: var(--space-200);

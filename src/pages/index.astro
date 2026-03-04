@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'
 import PostItem from '../components/composite/PostItem.astro'
-import ProjectItem from '../components/composite/ProjectItem.svelte'
+import ProjectItem from '../components/composite/ProjectItem.astro'
 import Button from '../components/base/Button.svelte'
 import CurrentlyReading from '../components/composite/CurrentlyReading.svelte'
 import { getCollection } from 'astro:content';
@@ -11,11 +11,11 @@ const currentLang: Languages = (Astro.cookies.get('language')?.value ?? 'en') as
 const t = useTranslations(currentLang)
 
 const posts = (await getCollection('posts')).sort(
-	(a, b) => new Date(b.data.publishedDate).valueOf() - new Date(a.data.publishedDate).valueOf()
+	(a, b) => b.data.publishedDate.valueOf() - a.data.publishedDate.valueOf()
 ).slice(0, 4)
 
 const projects = (await getCollection('projects')).sort(
-	(a, b) => new Date(b.data.startDate).valueOf() - new Date(a.data.startDate).valueOf()
+	(a, b) => b.data.startDate.valueOf() - a.data.startDate.valueOf()
 ).slice(0, 4)
 ---
 
@@ -24,30 +24,20 @@ const projects = (await getCollection('projects')).sort(
 	<CurrentlyReading client:load />
 </Fragment>
 
-<div class="container-y fill">
-	<div class="posts">
-		<h2>Latest Posts</h2>
-		<div class="grid-list">
-			{posts.map((post) => (
-				<PostItem {post} />
-			))}
-		</div>
+<div class="posts subgrid auto-fill rows-half">
+	<h2 class="page-header">Latest Posts</h2>
+	<div class="grid-list">
+		{posts.map((post) => (
+			<PostItem {post} />
+		))}
 	</div>
-	<div class="projects">
-		<h2>Selected Projects</h2>
-		<div class="grid-list">
-			{projects.map((project) => (
-				<ProjectItem {project} />
-			))}
-		</div>
+</div>
+<div class="projects subgrid auto-fill rows-half">
+	<h2 class="page-header">Selected Projects</h2>
+	<div class="grid-list">
+		{projects.map((project) => (
+			<ProjectItem {project} />
+		))}
 	</div>
-	<Button link="/posts">{t('button.seeAllPosts')}</Button>
 </div>
 </BaseLayout>
-
-<style>
-	.grid-list {
-		display: grid;
-		grid-template-columns: 1fr 1fr;
-	}
-</style>

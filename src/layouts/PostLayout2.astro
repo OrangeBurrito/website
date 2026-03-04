@@ -1,0 +1,13 @@
+---
+import RootLayout from "./RootLayout.astro"
+
+type Props = {
+  title: string
+}
+
+const { title } = Astro.props
+---
+
+<RootLayout title={title}>
+  <slot />
+</RootLayout>

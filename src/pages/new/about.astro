@@ -1,0 +1,80 @@
+---
+import Image from "../../components/base/Image.svelte"
+import StatusItem from "../../components/composite/StatusItem.svelte"
+import BaseLayout2 from "../../layouts/BaseLayout2.astro"
+---
+
+<BaseLayout2 title="About">
+  <div class="col-fill row-1 flex between">
+    <h2>About</h2>
+    <nav class="flex baseline">
+      <a href="">NavItem</a>
+      <a href="">NavItem</a>
+      <a href="">NavItem</a>
+      <a href="">NavItem</a>
+    </nav>
+  </div>
+  <div class="subgrid row-6">
+    <div class="subgrid row-3">
+      <div class="col-3 row-fill">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates, et. Temporibus corrupti sint quos itaque dolor? Unde aliquid laborum culpa neque alias pariatur magnam iure animi, ut excepturi ducimus accusamus? Distinctio, autem nobis quaerat recusandae iusto reprehenderit hic aperiam vitae rem molestias adipisci eveniet delectus tempore praesentium sapiente. In, a?</p>
+      </div>
+      <div class="col-2 row-fill">
+        <Image src="" alt="" />
+      </div>
+    </div>
+    <div class="subgrid row-3">
+      <div class="col-2 row-fill">
+        <Image src="" alt="" />
+      </div>
+      <div class="col-3 row-fill">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates, et. Temporibus corrupti sint quos itaque dolor? Unde aliquid laborum culpa neque alias pariatur magnam iure animi, ut excepturi ducimus accusamus? Distinctio, autem nobis quaerat recusandae iusto reprehenderit hic aperiam vitae rem molestias adipisci eveniet delectus tempore praesentium sapiente. In, a?</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-fill row-1">
+    Blockquote container
+  </div>
+
+  <Fragment slot="sidebar">
+    <div class="container">
+      <StatusItem
+        label="Currently Reading"
+        title="title"
+        subtitle="authors"
+        client:load
+      >
+          <Fragment slot="side">
+            <Image src="" alt="" />
+          </Fragment>
+      </StatusItem>
+      <!-- <StatusItem
+        label="Top Track"
+        title="title"
+        subtitle="band"
+      >
+          <Fragment slot="side">
+            <Image src="" alt="" />
+          </Fragment>
+      </StatusItem>
+      <StatusItem
+        label="GitHub Activity"
+      >
+          <Fragment slot="side">
+            <div class="label">Commits</div>
+            <h3>15</h3>
+          </Fragment>
+          <p>github stuff</p>
+      </StatusItem> -->
+    </div>
+  </Fragment>
+</BaseLayout2>
+
+<style>
+  img {
+    width: 100%;
+    min-height: 50px;
+    height: auto;
+    border: 1px solid gray;
+  }
+</style>

@@ -1,29 +1,35 @@
 ---
 type Props = {
-    date: string
+    date: Date | string
     short?: boolean
     locale?: string
 }
 
 const { date, short, locale } = Astro.props as Props
 
-const options = short 
-  ? { year: 'numeric', month: 'short' }
-  : { year: 'numeric', month: 'long', day: 'numeric' }
+const options: Intl.DateTimeFormatOptions = short 
+    ? { year: 'numeric', month: 'short' }
+    : { year: 'numeric', month: 'long', day: 'numeric' }
 
-const localDate = new Date(date)
+const localDate = date instanceof Date
+    ? date
+    : new globalThis.Date(date)
 
-let autoLocale = Astro.cookies.get('language')?.value == 'th' ? 'th-TH' : 'en-US'
+let autoLocale = Astro.cookies.get('language')?.value == 'th'
+    ? 'th-TH'
+    : 'en-US'
 ---
 
 <div class="date">
-    <time datetime={date}>{localDate.toLocaleDateString(locale ?? autoLocale, options)}</time>
+    <time datetime={date as string}>{localDate.toLocaleDateString(locale ?? autoLocale, options)}</time>
 </div>
 
 <style>
     .date {
-        color: var(--color-primary-light);
+        font-size: var(--font-size-label);
+        font-weight: 500;
         text-transform: uppercase;
+        color: var(--color-secondary-light);
     }
     
     :global(body.retro .date) {

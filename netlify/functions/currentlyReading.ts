@@ -3,15 +3,38 @@ import puppeteer from "puppeteer-core"
 import chromium from '@sparticuz/chromium'
 
 async function getCurrentlyReadingBook() {
+    const browser = await setupPuppeteer()
     // rename  storygraph function
+    const page = await browser.newPage()
 }
 
-async function getRecentlyPlayedTrack() {
-    // stats.fm api
-}
+await fetchSiteData(async (page) => {
+    // page
+})
 
 async function getGitHubContributions() {
     // github api
+}
+
+async function fetchSiteData(func: Function) {
+    // execute function
+    const browser = await puppeteer.launch({ 
+        args: [...chromium.args],
+        headless: true,
+        executablePath: await chromium.executablePath(),
+    })
+    const page = await browser.newPage()
+
+    await func(page)
+    await browser.close()
+}
+
+async function setupPuppeteer() {
+    return await puppeteer.launch({ 
+        args: [...chromium.args],
+        headless: true,
+        executablePath: await chromium.executablePath(),
+    })
 }
 
 export async function getLatestStorygraphBook() {
@@ -57,7 +80,7 @@ export async function getLatestStorygraphBook() {
     return {
         title,
         coverImage,
-        authors
+        authors: authors.join(', ')
     }
 }
 

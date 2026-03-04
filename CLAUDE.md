@@ -3,6 +3,8 @@
 This project is a personal site/portfolio with a locally hosted blog and projects page.
 It is an Astro 5 Typescript site, using Svelte 5 for components, deployed to Netlify with SSR.
 
+Always use `bd` for task tracking. Run `bd ready` to see tasks that have yet to be worked on.
+
 ## Conventions
 - Svelte 5 runes over stores
 - CSS nesting everywhere

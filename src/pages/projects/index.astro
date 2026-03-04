@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro'
-import ProjectItem from '../../components/composite/ProjectItem.svelte'
+import ProjectItem from '../../components/composite/ProjectItem.astro'
 import { getCollection } from 'astro:content'
 import { useTranslations, type Languages } from '../../ts/i18n.ts'
 
@@ -21,8 +21,8 @@ const projects = allProjects.sort(
 ---
 
 <BaseLayout title="Projects">
-    <h1 class="page-header container-y header">{t('title.projects')}</h1>
-    <div class="projects item-list flex-col flex-y-t container-y fill">
+    <h1 class="page-header">{t('title.projects')}</h1>
+    <div class="projects grid-list col-fill row-full">
         {projects.map((project) => (
             <ProjectItem {project} />
         ))}

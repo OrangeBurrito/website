@@ -9,14 +9,14 @@ const { frontmatter } = Astro.props
 ---
 
 <RootLayout title={frontmatter.title}>
-	<article>
+	<article class="flex-col">
 		<div class="back-button">
 			<Button type="secondary" link="/">&lt; Back</Button>
 		</div>
 
 		<header class="post-header">
 			<img class="hero-image" src={frontmatter.coverImage}/>
-			<div class="container-text">
+			<div class="container-text flex-col">
 				<h1 class="title">{frontmatter.title}</h1>
 				<p class="description">{frontmatter.description}</p>
 					<Date date={frontmatter.publishedDate} />

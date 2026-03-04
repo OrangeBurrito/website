@@ -10,12 +10,12 @@
     "preview": "astro preview"
   },
   "devDependencies": {
-    "astro": "^5.13.4",
+    "astro": "^5.17.3",
     "remark-breaks": "^3.0.2"
   },
   "dependencies": {
-    "@astrojs/netlify": "^6.5.9",
-    "@astrojs/svelte": "^7.1.0",
+    "@astrojs/netlify": "^6.6.4",
+    "@astrojs/svelte": "^7.2.5",
     "@netlify/blobs": "^10.2.0",
     "@netlify/functions": "^5.0.0",
     "@sparticuz/chromium": "^141.0.0",

@@ -22,16 +22,16 @@
   })
 </script>
 
-<div class="currently-reading">
+<div class="currently-reading col-fill row-full">
   <h3>Currently Reading</h3>
   {#if loading}
     <p>Loading current book...</p>
   {:else if error}
     <p>Book not found</p>
   {:else}
-    <div class="book">
+    <div class="book flex gap-200">
       <img class="cover" src={book.coverImage} alt="" />
-      <div class="text">
+      <div class="text flex-col gap-100">
         <h2 class="title">{book.title}</h2>
         <div class="authors">
           {#each book.authors as author}
@@ -50,8 +50,6 @@
   }
 
   .book {
-    display: flex;
-    gap: var(--space-200);
 
     .cover {
       height: 144px;
@@ -60,9 +58,6 @@
     }
 
     .text {
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-100);
     }
 
     .title {

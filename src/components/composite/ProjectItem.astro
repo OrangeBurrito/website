@@ -1,0 +1,103 @@
+---
+    import Tag from "../base/Tag.svelte";
+    import Tag2 from "../base/Tag2.svelte";
+    import Image from "../base/Image.svelte";
+    import Date from "../base/Date.astro";
+    import { softwareTagColors } from '../../ts/types'
+    import { getRelativeLocaleUrl } from "astro:i18n";
+    import type { Project } from '../../content.config';
+
+    interface Props {
+        project: Project
+        large?: boolean
+    }
+
+    const { project, large } = Astro.props
+---
+
+<div class={`${`project${large ? ' large' : ''}`}`}>
+<a href={getRelativeLocaleUrl("en", "projects/" + project.id)}>
+    {project.data.coverIcon && (
+    <div class="icon">
+        <Image src={project.data.coverIcon} alt={`${project.data.title} Thumbnail`} type="pixelated" width="72px" />
+    </div>
+    )}
+    <div class="info">
+        <h4 class="title">{project.data.title}</h4>
+        <p class="description">{project.data.shortDesc}</p>
+        <!-- <div class="for">
+            {#if project.data.client}
+                <div class="client">For <strong>{project.data.client}</strong></div>
+            {:else}
+                <div class="side-project">Side Project</div>
+            {/if}
+        </div> -->
+        <div class="dates">
+             <Date date={project.data.startDate} short />
+             <div>—</div>
+             {project.data.endDate && (
+                 <Date date={project.data.endDate} short />
+             ) || <div>Present</div>
+             }
+        </div>
+
+        <div class="tags flex">
+             <!-- project.data.tags as tag
+             <Tag2 color={softwareTagColors[tag]}/> -->
+        </div>
+        {project.data.coverImage && large && (
+            <div class="image">
+                <Image src={project.data.coverImage} alt={`${project.data.title} Thumbnail`} />
+            </div>
+        )}
+    </a>
+</div>
+
+<style>
+    .project {
+        position: relative;
+
+        .description {
+            color: var(--color-text-heading);
+            margin-bottom: var(--space-050);
+        }
+    
+        .for {
+            font-style: italic;
+            margin-bottom: var(--space-150);
+            color: var(--color-text-code);
+    
+            strong {
+                color: var(--color-text-link);
+            }
+        }
+
+        .icon {
+            position: absolute;
+            top: 0;
+            left: var(--space-200);
+        }
+
+        &.large {
+        }
+    }
+
+    
+    :global(body.retro .project .icon) {
+        height: auto;
+        position: absolute;
+        left: 0;
+    }
+
+    @media screen and (max-width: 600px) {
+        .project {
+            width: 100%;
+        }
+
+        :global(body.retro .project .icon) {
+            width: 72px;
+            left: auto;
+            right: 0;
+        }
+    }
+</style>

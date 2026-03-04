@@ -13,8 +13,8 @@ posts = posts.sort((a, b) => b.data.publishedDate.getTime() - a.data.publishedDa
 
 
 <BaseLayout title="Blogposts">
-    <h1 class="page-header">{t('title.posts')}</h1>
-    <div class="posts">
+    <h1 class="page-header col-fill row-1">{t('title.posts')}</h1>
+    <div class="posts col-fill row-full grid-list">
         {posts.map((post) => (
             <PostItem {post}/>
         ))}
@@ -23,8 +23,6 @@ posts = posts.sort((a, b) => b.data.publishedDate.getTime() - a.data.publishedDa
 
 <style>
     .posts {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-end;
+        overflow-y: auto;
     }
 </style>

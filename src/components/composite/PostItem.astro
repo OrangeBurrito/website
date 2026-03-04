@@ -1,22 +1,24 @@
 ---
 import Date from '../base/Date.astro'
+import Tag2 from '../base/Tag2.svelte'
 const { post, image } = Astro.props
+
 ---
 
 <div class="post">
-<a href={`/posts/${post.id}`}>
+<a class="flex" href={`/posts/${post.id}`}>
 		{image === true && (
 		<div class="post-icon">
 			<img src={post.data.coverImage}/>
 		</div>
 		)}
-		<div class="container-text">
+		<div class="image">
+			<Tag2 color='gray' vertical />
+		</div>
+		<div class="container-text flex-y-t">
 			<h4 class="title">{post.data.title}</h4>
 			<p class="description">{post.data.description}</p>
-			<div class="date">
-				<div class="text">
-					<Date date={post.data.publishedDate} />
-				</div>
+			<Date date={post.data.publishedDate} />
 			<img class="img-icon" src="/images/clock_icon.png" alt="">
 		</div>
 	</div>
@@ -25,25 +27,18 @@ const { post, image } = Astro.props
 
 <style>
 	.post {
-		--gap-item: var(--space-400);
-		position: relative;
-		min-width: 400px;
-		width: fit-content;
-		margin-bottom: var(--gap-item);
-	}
-
-	.date {
-		display: flex;
-		gap: var(--space-150);
-	}
-
-	.title {
-		display: inline-block;
-		transition: color var(--transition-fast);
-	}
-
-	.description {
-		max-width: 40ch;
+		.title {
+			display: inline-block;
+			transition: color var(--transition-fast);
+		}
+		
+		.description {
+			max-width: 40ch;
+		}
+		
+		.image {
+			padding-right: var(--space-200);
+		}
 	}
 
 	:global(body.retro .post) {
@@ -102,7 +97,6 @@ const { post, image } = Astro.props
 		}
 
 		.container-text {
-			align-items: flex-start;
 		}
 	}
 </style>

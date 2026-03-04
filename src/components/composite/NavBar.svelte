@@ -10,7 +10,7 @@
 	const t = useTranslations(lang)
 </script>
 
-<nav class="navbar">
+<nav class="navbar row-2">
 	<a id="index" href="/" class:active={currentPath === '/'}>{t('nav.home')}</a>
 	<a id="posts" href="/posts" class:active={currentPath === '/posts'}>{t('nav.posts')}</a>
 	<a id="projects" href="/projects" class:active={currentPath === '/projects'}>{t('nav.projects')}</a>
@@ -19,9 +19,6 @@
 
 <style>
 	.navbar {
-		display: flex;
-		flex-direction: column;
-		gap: var(--space-100);
 
 		a {
 			position: relative;

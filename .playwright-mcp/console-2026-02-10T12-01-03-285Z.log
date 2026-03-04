@@ -1,0 +1,14 @@
+[    3420ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:4323/.netlify/functions/currentlyReading:0
+[   26321ms] TypeError: Cannot read properties of null (reading 'style')
+    at shrinkHeaderOnScroll (http://localhost:4323/src/layouts/BaseLayout.astro?astro&type=script&index=0&lang.ts:14:18)
+[   26353ms] TypeError: Cannot read properties of null (reading 'style')
+    at shrinkHeaderOnScroll (http://localhost:4323/src/layouts/BaseLayout.astro?astro&type=script&index=0&lang.ts:14:18)
+[   26364ms] TypeError: Cannot read properties of null (reading 'style')
+    at shrinkHeaderOnScroll (http://localhost:4323/src/layouts/BaseLayout.astro?astro&type=script&index=0&lang.ts:10:18)
+[   26693ms] TypeError: Cannot read properties of null (reading 'style')
+    at shrinkHeaderOnScroll (http://localhost:4323/src/layouts/BaseLayout.astro?astro&type=script&index=0&lang.ts:10:18)
+[   26694ms] TypeError: Cannot read properties of null (reading 'style')
+    at shrinkHeaderOnScroll (http://localhost:4323/src/layouts/BaseLayout.astro?astro&type=script&index=0&lang.ts:10:18)
+[   26732ms] TypeError: Cannot read properties of null (reading 'style')
+    at shrinkHeaderOnScroll (http://localhost:4323/src/layouts/BaseLayout.astro?astro&type=script&index=0&lang.ts:14:18)
+[   42176ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:4323/.netlify/functions/currentlyReading:0

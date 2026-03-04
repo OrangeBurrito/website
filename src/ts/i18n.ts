@@ -16,7 +16,7 @@ export const ui = {
         'nav.projects': 'Projects',
         'nav.about': 'About',
         'title.home': 'Contemporary Texts',
-        'title.posts': 'Bibliography (Posts)',
+        'title.posts': 'Blogposts',
         'title.projects': 'Projects',
         'title.about': 'About',
         'button.seeAllPosts': 'See All Posts >',

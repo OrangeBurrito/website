@@ -1,0 +1,2 @@
+[    5102ms] [WARNING] Statsig is not ready to log exposures, will retry in 1 seconds @ https://www.figma.com/webpack-artifacts/assets/vendor-core-50ff07eecf3352f9.min.js.br:53
+[    5763ms] [ERROR] Error fetching plan user: [Object] @ https://www.figma.com/webpack-artifacts/assets/vendor-core-50ff07eecf3352f9.min.js.br:53
