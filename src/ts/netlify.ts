@@ -6,9 +6,9 @@ export async function fetchSiteData(func: Function) {
     const browser = await puppeteer.launch({ 
         args: [...chromium.args],
         headless: true,
-        executablePath: "/opt/homebrew/bin/chromium",
+        executablePath: await chromium.executablePath(),
+        // ?? "/opt/homebrew/bin/chromium"
     })
-    // await chromium.executablePath() ?? 
     const page = await browser.newPage()
     await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123 Safari/537.36')
     await page.setViewport({ width: 1280, height: 900 })
