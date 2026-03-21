@@ -1,0 +1,61 @@
+---
+import { getCollection } from "astro:content"
+import BaseLayout from "../../layouts/BaseLayout.astro"
+import PostItem from "../../components/composite/PostItem.svelte"
+import Legend from "../../components/base/Legend.svelte"
+import Icon from "../../components/base/Icon.svelte"
+import type { Page } from "astro"
+
+export const prerender = true
+
+type Props = {
+  page: Page<any>;
+};
+
+export async function getStaticPaths({ paginate }) {
+  const posts = (await getCollection("posts")).sort((a, b) => b.data.publishedDate.getTime() - a.data.publishedDate.getTime());
+  return paginate(posts, { pageSize: 8 });
+}
+
+const { page } = Astro.props;
+---
+
+<BaseLayout title="Posts">
+  <div class="col-full row-1 flex baseline">
+    <h1 class="baseline">Blogposts</h1>
+    <!-- <p class="baseline">{posts.length} posts</p>  // {posts.map((post) => ( -->
+  </div>
+  <div class="col-full row-fill flex vertical gap-large">
+    <div class="posts fill-y grid-cols-half grid-rows-4">
+      <!-- <pre>{JSON.stringify(page, null, 2)}</pre> -->
+      {((page as any).data || []).map((post: any) => (
+        <PostItem {post} image vertical />
+      ))}
+    </div>
+    <div class="flex baseline">
+      <!-- <pre>{JSON.stringify(page.url, null, 2)}</pre> -->
+      <a class={`button-link baseline ${page.url.prev ? '' : 'disabled'}`} href={page.url.prev}>&lt; Previous</a>
+      <div class="heading-divider"></div>
+      <a class={`button-link baseline ${page.url.next ? '' : 'disabled'}`} href={page.url.next}>Next ></a>
+    </div>
+  </div>
+  <Fragment slot="sidebar">
+    <div class="row-full flex vertical end-y">
+      <h3 class="subtle flex">
+          <Icon icon="map" />
+          Post Legend
+        </h3>
+      <div class="container sidebar">
+        <div class="container flex vertical gap-small">
+          <h5>Post Type</h5>
+          <Legend color="var(--color-secondary)">Programming</Legend>
+          <Legend color="gray">Terminal</Legend>
+          <Legend color="gray">MacOS</Legend>
+          <Legend color="gray">Art & Design</Legend>
+          <Legend color="gray">History</Legend>
+          <Legend color="gray">Miscellaneous</Legend>
+        </div>
+      </div>
+    </div>
+  </Fragment>
+</BaseLayout>

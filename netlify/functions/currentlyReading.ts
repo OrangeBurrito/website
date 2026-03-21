@@ -1,114 +1,41 @@
-import type { Config } from "@netlify/functions"
-import puppeteer from "puppeteer-core"
-import chromium from '@sparticuz/chromium'
+import { getStore } from "@netlify/blobs";
+import { getCachedData, fetchSiteData, updateNetlifyBlob, currentKey } from "../../src/ts/netlify";
+import type { Page } from "puppeteer-core"
 
-async function getCurrentlyReadingBook() {
-    const browser = await setupPuppeteer()
-    // rename  storygraph function
-    const page = await browser.newPage()
-}
-
-await fetchSiteData(async (page) => {
-    // page
-})
-
-async function getGitHubContributions() {
-    // github api
-}
-
-async function fetchSiteData(func: Function) {
-    // execute function
-    const browser = await puppeteer.launch({ 
-        args: [...chromium.args],
-        headless: true,
-        executablePath: await chromium.executablePath(),
-    })
-    const page = await browser.newPage()
-
-    await func(page)
-    await browser.close()
-}
-
-async function setupPuppeteer() {
-    return await puppeteer.launch({ 
-        args: [...chromium.args],
-        headless: true,
-        executablePath: await chromium.executablePath(),
-    })
-}
-
-export async function getLatestStorygraphBook() {
-    const browser = await puppeteer.launch({ 
-        args: [...chromium.args],
-        headless: true,
-        executablePath: await chromium.executablePath(),
-    })
-
-    const page = await browser.newPage()
-    
-    await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123 Safari/537.36')
-    await page.setViewport({ width: 1280, height: 900 })
-
+export async function getLatestStorygraphBook(page: Page) {
     await page.goto('https://app.thestorygraph.com/currently-reading/orangeburrito', {
         waitUntil: 'domcontentloaded',
         timeout: 60_000,
     })
     await page.waitForSelector('.read-books-panes [id^="book"] .book-pane-content')
 
-    const title = await page.$eval(
-        '.read-books-panes [id^="book"]:first-child .book-pane-content .book-title-author-and-series h3 a',
-        el => el.textContent
-    )
-
+    const title = await page.$('.read-books-panes [id^="book"]:first-child .book-pane-content .book-title-author-and-series h3 a');
+    const titleText = await page.evaluate(el => el!.textContent, title)
+    const author = await page.evaluate(el => el!.nextElementSibling?.querySelector('a')?.innerText, title)
     const coverImage = await page.$eval(
         '.read-books-panes [id^="book"]:first-child .book-pane-content .book-cover img',
         el => el.getAttribute('src')
     )
 
-    const authorElements = await page.$$('.read-books-panes [id^="book"]:first-child .book-pane-content .book-title-author-and-series p a')
-    const authors: string[] = []
-    
-    for (const element of authorElements) {
-        const authorText = await element.evaluate(el => el.textContent)
-        if (authorText && !authors.includes(authorText)) {
-            authors.push(authorText)
-        }
-    }
-    
-    await browser.close()
-
     return {
-        title,
+        title: titleText,
         coverImage,
-        authors: authors.join(', ')
+        author
     }
 }
 
 export default async (req: Request) => {
-    const { getStore } = await import('@netlify/blobs')
     const store = getStore('currently-reading')
+    const key = 'book-data'
+    const cachedKey = currentKey(key)
 
-    const today = new Date().toISOString().split('T')[0]
-    const cacheKey = `book-data-${today}`
-
-    const cachedData = await store.get(cacheKey, { type: 'json' })
-    if (cachedData) {
-        return new Response(JSON.stringify(cachedData), {
-            headers: { 'Content-Type': 'application/json' }
-        })
+    const cachedResponse = await getCachedData(store, cachedKey)
+    if (cachedResponse) {
+        return cachedResponse
     }
 
-    const data = await getLatestStorygraphBook()
-    await store.setJSON(cacheKey, data)
-
-    const allBlobs = await store.list()
-    const oldBlobs = allBlobs.blobs.filter(blob => 
-        blob.key.startsWith('book-data-') && blob.key !== cacheKey
-    )
-    
-    for (const oldBlob of oldBlobs) {
-        await store.delete(oldBlob.key)
-    }
+    const data = await fetchSiteData(getLatestStorygraphBook)
+    await updateNetlifyBlob(store, key, cachedKey, data)
 
     return new Response(JSON.stringify(data), {
         headers: { 'Content-Type': 'application/json' }

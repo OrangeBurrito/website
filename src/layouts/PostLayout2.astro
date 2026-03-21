@@ -1,5 +1,6 @@
----
-import RootLayout from "./RootLayout.astro"
+<!-- ---
+import LogoHeader from '../components/composite/LogoHeader.svelte'
+import NavBar from '../components/composite/NavBar.svelte'
 
 type Props = {
   title: string
@@ -8,6 +9,25 @@ type Props = {
 const { title } = Astro.props
 ---
 
-<RootLayout title={title}>
-  <slot />
-</RootLayout>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <link rel="shortcut icon" href="/favicon.png" type="image/x-icon" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <div id="root" class="root-grid">
+      <header class="subgrid col-3 row-3">
+        <LogoHeader/>
+        <NavBar currentPath={Astro.url.pathname} lang="en" />
+      </header>
+      <main class="subgrid col-5 row-full">
+        <slot />
+      </main>
+      <aside class="subgrid col-3 row-5">
+        <slot name="sidebar" />
+      </aside>
+    </div>
+  </body>
+</html> -->

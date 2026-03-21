@@ -4,6 +4,7 @@ publishedDate: 2021-10-20
 updatedDate: 2025-09-01
 coverImage: "/images/nuc_craft.png"
 description: "How to setup an Intel NUC to run a Minecraft Server"
+tags: ['terminal', 'misc']
 ---
 
 <!-- ## Table of Contents

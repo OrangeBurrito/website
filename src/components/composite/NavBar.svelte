@@ -10,32 +10,39 @@
 	const t = useTranslations(lang)
 </script>
 
-<nav class="navbar row-2">
-	<a id="index" href="/" class:active={currentPath === '/'}>{t('nav.home')}</a>
-	<a id="posts" href="/posts" class:active={currentPath === '/posts'}>{t('nav.posts')}</a>
-	<a id="projects" href="/projects" class:active={currentPath === '/projects'}>{t('nav.projects')}</a>
-	<a id="about" href="/about" class:active={currentPath === '/about'}>{t('nav.about')}</a>
+<nav id="navbar" class="row-2">
+	<a id="index" class="button-link" href="/" class:active={currentPath === '/new'}>{t('nav.home')}</a>
+	<a id="posts" class="button-link" href="/posts" class:active={currentPath === '/posts'}>{t('nav.posts')}</a>
+	<a id="projects" class="button-link" href="/projects" class:active={currentPath === '/projects'}>{t('nav.projects')}</a>
+	<a id="about" class="button-link" href="/about" class:active={currentPath === '/about'}>{t('nav.about')}</a>
 </nav>
 
 <style>
-	.navbar {
-
+	#navbar {
+		z-index: 3;
 		a {
+			display: block;
 			position: relative;
 			width: fit-content;
+			margin-bottom: var(--space-075);
 			font-family: var(--font-family-heading);
-			font-size: var(--font-size-body-large);
 			transition: all var(--transition-fast);
 			color: var(--color-primary);
 
 			&.active, &.active:hover {
 				color: var(--color-text-heading);
 				border-color: var(--color-text-link-hover);
+
+				&::before {
+					content: "> ";
+					font-weight: bold;
+					font-size: var(--font-size-subheading);
+				}
 			}
 		}
 	}
 
-	:global(body.retro .navbar a) {
+	:global(body.retro #navbar a) {
 		font-size: var(--font-size-subtitle);
 		font-weight: 400;
 
@@ -63,13 +70,39 @@
 	}
 
 	@media screen and (max-width: 600px) {
-		.navbar {
-			display: grid;
-			grid-template-columns: 1fr 1fr;
-			margin-bottom: calc(-1 * var(--space-400));
+		#navbar {
+			height: 100dvh;
+			display: none;
+			flex-direction: column;
+			align-items: flex-end;
+			overflow: hidden;
+			
+			a {
+				font-size: var(--font-size-body-large);
+				padding: var(--space-100) var(--space-300);
+				margin-right: calc(-1 * var(--padding-container));
+				margin-bottom: 0;
+
+				&.active, &.active:hover {
+					display: flex;
+					align-items: center;
+					gap: var(--space-100);
+
+					&::before { content: ""; }
+					&::after {
+						content: " <";
+						font-weight: bold;
+						font-size: var(--font-size-subheading);
+				}
+				}
+			}
+		}
+		
+		:global(#navbar.open) {
+			display: flex;
 		}
 
-		:global(body.retro .navbar a.active::after) {
+		:global(body.retro #navbar a.active::after) {
 			right: calc(-1 * var(--space-500));
 
 		}

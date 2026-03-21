@@ -3,6 +3,7 @@ title: 'Cronjobs (quickly)'
 publishedDate: 2022-03-17
 coverImage: "/images/cronjob.png"
 description: "cronjobs, speedily"
+tags: ['terminal']
 ---
 
 Cron is a cmdline utility used for scheduling commands or shell scripts to run periodically at fixed intervals.

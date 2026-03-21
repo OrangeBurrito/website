@@ -1,192 +1,138 @@
 ---
-import Icon from "../components/base/Icon.svelte";
-import BaseLayout from "../layouts/BaseLayout.astro";
-import CurrentlyReading from "../components/composite/CurrentlyReading.svelte";
-import { useTranslations, type Languages } from "../ts/i18n.ts";
+import Icon from "../components/base/Icon.svelte"
+import Image from "../components/base/Image.svelte"
+import NavItem from "../components/base/NavItem.svelte"
+import CurrentlyReading from "../components/composite/CurrentlyReading.svelte"
+import GitContributions from "../components/composite/GitContributions.svelte"
+import StatusItem from "../components/composite/StatusItem.svelte"
+import TopTrack from "../components/composite/TopTrack.svelte"
+import { pages } from "../data/site/pages"
+import BaseLayout from "../layouts/BaseLayout.astro"
 
-const currentLang: Languages = (Astro.cookies.get("language")?.value ??
-  "en") as Languages;
-const t = useTranslations(currentLang);
-const isRetro = Astro.cookies.get("retro")?.value === "true";
+let theme = Astro.cookies.get('theme')?.value || 'default'
 ---
 
 <BaseLayout title="About">
-  <Fragment slot="corner">
-    <CurrentlyReading client:load />
-  </Fragment>
-
-  {
-    isRetro ? (
-      <div class="about-strip col-fill row-full">
-        <div class="content flex-col gap-150 flex-y-t">
-          <h1 class="page-header">About</h1>
-          <div class="profile">
-            <div class="text">
-              <h2>
-                Orange
-                <br />
-                Burrito
-              </h2>
-              <em>Typography enthusiast</em>
-            </div>
-            <img
-              class="profile"
-              src="/images/pfp.jpg"
-              alt="the mysterious visage of this website's proprietor"
-            />
-          </div>
-          <p>
-            I'm a programmer, which, while unfortunate, is slightly abated by an
-            enthusiasm for good visual design.
-          </p>
-          <p>
-            This site is my personal glob of hex-code-complaint paint on the
-            internet. It serves as a blog, job portfolio and—in future—my
-            digital mausoleum.
-          </p>
-          <div class="list flex-col gap-100 flex-y-t">
-            <h3>Correspondence</h3>
-            <div class="icon-text flex gap-150 flex-y-m">
-              <Icon icon="mail" />
-              <a href="mailto:root@orangeburrito.com">root@orangeburrito.com</a>
-            </div>
-            <div class="icon-text flex gap-150 flex-y-m">
-              <Icon icon="github" />
-              <a
-                href="https://github.com/OrangeBurrito/website"
-                target="_blank"
-              >
-                GitHub <Icon icon="external-link" />
-              </a>
-            </div>
-            <div class="icon-text flex gap-150 flex-y-m">
-              <Icon icon="book" />
-              <a
-                href="https://app.thestorygraph.com/profile/orangeburrito"
-                target="_blank"
-              >
-                StoryGraph <Icon icon="external-link" />
-              </a>
-            </div>
-            <div class="icon-text flex gap-150 flex-y-m">
-              <Icon icon="paint-bucket" />
-              <a
-                href="https://userstyles.world/user/orangeburrito"
-                target="_blank"
-              >
-                Userstyles <Icon icon="external-link" />
-              </a>
-            </div>
-          </div>
-          <div class="metadata flex-col flex-x-b">
-            <p>
-              Source code hosted on{" "}
-              <a
-                href="https://github.com/OrangeBurrito/website"
-                target="_blank"
-              >
-                GitHub
-              </a>
-            </p>
-            <p>
-              Deployed with{" "}
-              <span style="color: var(--color-netlify)">
-                Netlify{" "}
-                <img
-                  class="img-icon"
-                  src="/icons/netlify.png"
-                  alt="Netlify Logo"
-                />
-              </span>
-            </p>
-            <p class="copyright">
-              Copyright © OrangeBurrito {new Date().getFullYear()}
-            </p>
-          </div>
-        </div>
+  <div class="about-heading col-full row-1 align-end flex between baseline">
+    <div class="title">
+      <div class="flourishes flex">
+        <div class="flourish1">~</div>
+        <div class="flourish2">»</div>
       </div>
-    ) : (
-      <h1 class="page-header">About</h1>
-    )
-  }
+      <h1>whoami</h1>
+    </div>
+    <nav class="user-links flex baseline gap-large">
+      <NavItem icon="github" href="https://github.com/orangeburrito">GitHub</NavItem>
+      <NavItem icon="external-link" href="https://www.linkedin.com/in/orangeburrito/">LinkedIn</NavItem>
+      <NavItem icon="book" href="https://github.com/orangeburrito">StoryGraph</NavItem>
+      <NavItem icon="paint" href="https://github.com/orangeburrito">UserStyles</NavItem>
+    </nav>
+  </div>
+  <div class="subgrid row-6">
+    <div class="subgrid row-3">
+      <div class="col-fill row-full">
+        <h4>{pages.about.heading}</h4>
+        <p>{pages.about.description}</p>
+      </div>
+      <div class="col-2  row-full">
+        <Image src="https://i.pinimg.com/550x/e2/81/67/e28167e16afbcc885b2499bb9e490878.jpg" alt="" caption={pages.about.caption} />
+      </div>
+    </div>
+    <div class="subgrid row-3">
+      <div class="col-2 row-full">
+        <Image src="https://quoguegallery.com/wp-content/uploads/2020/06/Blue-Florence.jpg" alt="" caption={pages.about.caption2} />
+      </div>
+      <div class="col-fill row-full">
+        <p>{pages.about.description2}</p>
+      </div>
+    </div>
+  </div>
+  <div class="spacer"></div>
+  <div class="blockquote col-3 row-1 offset-col-half offset-row-gap-none">
+    <p>{pages.about.quote}</p>
+    <p class="subtle">— {pages.about.quoteAuthor}</p>
+  </div>
+
+  <Fragment slot="sidebar">
+    <div class="subgrid col-2 row-full">
+      <div class="col-full row-1 flex between baseline gap-none">
+        <h3 class="subtle flex">
+          <Icon icon="live" />
+          User Status
+        </h3>
+        <p class="small">Updated Weekly</p>
+      </div>
+      <div class="container sidebar col-full row-fill">
+        <StatusItem>
+          <CurrentlyReading client:load />
+        </StatusItem>
+        <StatusItem background="var(--color-background-alt)">
+          <TopTrack client:load />
+        </StatusItem>
+        <StatusItem
+          background="transparent"
+        >
+          <GitContributions client:load />
+        </StatusItem>
+      </div>
+    </div>
+  </Fragment>
 </BaseLayout>
 
 <style>
-  .about-strip {
-    width: fit-content;
-    height: calc(100% - var(--space-400));
-    justify-self: end;
-    text-align: left;
-    overflow-y: auto;
-    overflow-x: hidden;
-    background-color: var(--color-surface-2);
-    background-clip: padding-box;
-    padding: var(--space-200) var(--space-300);
-    border: 4px solid transparent;
-    outline: 16px solid var(--color-surface-2);
-    margin: var(--space-200);
+  img {
+    width: 100%;
+    min-height: 50px;
+    height: auto;
+    border: 1px solid gray;
+  }
 
-    .page-header {
-      margin-bottom: var(--space-100);
+  .title {
+    anchor-name: --page-title;
+    h1 {
+      color: var(--color-tertiary);
     }
 
-    .list {
-      margin: var(--space-150) 0;
-    }
+    .flourishes {
+      position: absolute;
+      position-anchor: --page-title;
+      position-area: center left;
+      margin-top: var(--space-150);
+      margin-right: var(--space-200);
+      font-size: var(--font-size-heading-large);
+      font-weight: 500;
 
-    a {
-      border-bottom: 2px solid var(--color-text-link);
-    }
-
-    .content {
-      height: 100%;
-      width: 30ch;
-    }
-
-    .profile {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: var(--space-200);
-      margin-bottom: var(--space-050);
-
-      img {
-        width: 100%;
-        height: 112px;
+      .flourish1 {
+        color: var(--color-secondary);
       }
-
-      h2 {
-        margin-top: -2.5px;
-      }
-
-      .metadata {
-        flex-grow: 1;
-
-        p {
-          color: var(--color-text-code);
-          margin-bottom: var(--space-050);
-        }
-      }
-
-      .copyright {
-        margin-top: var(--space-050);
-        font-style: italic;
+      .flourish2 {
+        color: var(--color-primary);
       }
     }
   }
 
+  .user-links {
+    box-shadow: inset 0 -6px 0 var(--color-border-alt);
+  }
+
   @media screen and (max-width: 600px) {
-    .about-strip {
-      height: fit-content;
-      width: calc(100% - var(--space-400));
-      justify-self: auto;
+    .about-heading {
+      flex-direction: column;
+      align-items: flex-start;
 
-      .content {
-        width: 100%;
-        margin-bottom: 0;
+      .title {
+        display: flex;
+        align-items: center;
+
+        .flourishes {
+          position: relative;
+          margin-top: 0;
+
+          .flourish1, .flourish2 {
+            height: var(--space-400);
+          }
+        }
       }
-    }
-
-    .list {
     }
   }
 </style>

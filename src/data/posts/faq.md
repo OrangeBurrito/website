@@ -3,6 +3,7 @@ title: "F.A.Q"
 publishedDate: 2021-07-01
 coverImage: "/images/notoriousfaq.jpg"
 description: "The Official OrangeBurrito FAQ page™"
+tags: ['misc']
 ---
 
 Do you have any burning questions that need answering? no? that's okay, here are the answers anyway!

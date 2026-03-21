@@ -2,83 +2,101 @@
   import { onMount } from "svelte";
   import Link from "../base/Link.svelte";
 
-  let book = { title: '', coverImage: '', authors: [] }
-  let loading = true
-  let error = false
-  
+  type Book = {
+    title: string;
+    coverImage: string;
+    author: string;
+  };
+
+  let book = $state<Book | null>(null);
+  let loading = $state(true);
+  let error = $state(false);
+  // book = {"title":"The Black Dahlia","coverImage":"https://cdn.thestorygraph.com/lezw5wpt2p8zct9keglrheumcbx3","author":"James Ellroy"}
+
   onMount(async () => {
     try {
-      const response = await fetch(`/.netlify/functions/currentlyReading`)
+      const response = await fetch(`/.netlify/functions/currentlyReading`);
+      console.log(response);
       if (!response.ok) {
-        error = true
-        return
+        error = true;
+        return;
       }
-      book = await response.json()
+      book = await response.json();
+      console.log(book);
     } catch (err) {
-      error = true
+      error = true;
     } finally {
-      loading = false
+      loading = false;
     }
-  })
+  });
+
+  type Props = {
+    large?: boolean;
+  };
+
+  let { large = false } = $props();
 </script>
 
-<div class="currently-reading col-fill row-full">
-  <h3>Currently Reading</h3>
+<div class="currently-reading status-item-data col-fill row-full">
   {#if loading}
     <p>Loading current book...</p>
   {:else if error}
     <p>Book not found</p>
-  {:else}
-    <div class="book flex gap-200">
+  {:else if book}
+    <div class="book flex gap-200 {large ? 'large' : ''}">
       <img class="cover" src={book.coverImage} alt="" />
       <div class="text flex-col gap-100">
-        <h2 class="title">{book.title}</h2>
-        <div class="authors">
-          {#each book.authors as author}
-            <div class="author">{author}</div>
-          {/each}
-        </div>
-        <Link href="https://app.thestorygraph.com/profile/orangeburrito" external={true}>Details</Link>
+        <div class="label">Currently Reading</div>
+        <h3 class="title">{book.title}</h3>
+        <div class="author">{book.author}</div>
+        {#if large}
+        <Link
+          href="https://app.thestorygraph.com/profile/orangeburrito"
+          external={true}>Details</Link
+        >
+        {/if}
       </div>
     </div>
   {/if}
 </div>
 
 <style>
-  h3 {
-    margin-bottom: var(--space-150);
-  }
-
   .book {
+    &:not(.large) {
+      flex-direction: row-reverse;
+      justify-content: space-between;
 
-    .cover {
-      height: 144px;
-      padding: var(--space-100);
-      border: 4px solid var(--color-border-light);
-    }
+      .cover {
+        height: 64px;
+        width: 64px;
+        object-fit: cover;
+        object-position: top center;
+      }
 
-    .text {
+      .author {
+        color: var(--color-secondary-light);
+      }
     }
 
     .title {
-      max-width: 10ch;
-      font-family: var(--font-family-body-serif);
-      font-size: var(--font-size-subtitle);
-      margin-bottom: 0;
+      color: var(--color-text-heading);
     }
 
-    .authors {
-      flex-grow: 1;
-    }
+    &.large {
+      .label {
+        display: none;
+      }
 
-    .author {
-      color: var(--color-text-code);
-      font-style: italic;
-      font-size: var(--font-size-body);
-    }
+      .title {
+        font-size: var(--font-size-subheading);
+        max-width: 10ch;
+      }
 
-    .author:not(:last-child)::after {
-      content: ', ';
+      .cover {
+        height: 144px;
+        padding: var(--space-100);
+        border: 4px solid var(--color-border);
+      }
     }
   }
 </style>

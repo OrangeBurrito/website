@@ -1,57 +1,30 @@
-<script lang="ts">
-  import { onMount, type Snippet } from "svelte"
-
-  type Props = {
-    label: string
-    title: string
-    subtitle: string
-    side?: Snippet
-    children?: Snippet
-  }
-
-  let data: any = $state(null)
-  let loading = $state(true)
-  let error = $state(false)
-
-  let { label, title, subtitle, children, side }: Props = $props()
-
-  onMount(async () => {
-    data = {
-        title: 'The Cuckoos Call',
-        authors: 'JK Rowling'
-    }
-    loading = false
-    // try {
-    //   const response = await fetch(`/.netlify/functions/currentlyReading`)
-    //   if (!response.ok) {
-    //     error = true
-    //     return
-    //   }
-    //   data = await response.json()
-    // } catch (err) {
-    //   error = true
-    // }
-  })
+<script lang="ts" context="module">
+  export type StatusItemData = {
+  title: string
+  subtitle: string
+  image: string | null
+} 
 </script>
 
-<div class="status-item flex between">
-    <div class="data">
-        <div class="label">{label}</div>
-        {#if loading}
-        <p>Loading</p>
-        {:else}
-        <div class="text">
-            <h3 class="title">{data[title]}</h3>
-            <p class="subtitle">{data[subtitle]}</p>
-        </div>
-        {/if}
-    {#if children}
-      {@render children()}
-    {/if}
-  </div>
-  <div class="side">
-    {#if side}
-      {@render side()}
-    {/if}
-  </div>
+<script lang="ts">
+ import { type Snippet } from "svelte"
+  import Image from "../base/Image.svelte";
+
+  type Props = {
+    children: Snippet
+    background?: string
+  }
+
+  let { background, children }: Props = $props()
+</script>
+
+<div class="status-item" style={background ? `background-color: ${background};` : ''}>
+    {@render children()}
 </div>
+
+<style>
+  .status-item {
+    background-color: var(--color-surface);
+    padding: var(--space-200);
+  }
+</style>

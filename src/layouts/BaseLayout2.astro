@@ -1,11 +1,11 @@
 ---
 import "../styles/global2.css"
 import NavBar from '../components/composite/NavBar.svelte'
-import LogoHeader from '../components/composite/LogoHeader.astro'
+import SiteHeader from '../components/composite/SiteHeader.svelte'
 
 type Props = {
   title: string;
-};
+}
 
 const { title } = Astro.props;
 ---
@@ -20,10 +20,10 @@ const { title } = Astro.props;
   <body>
     <div id="root" class="root-grid">
       <header class="subgrid col-3 row-3">
-        <LogoHeader/>
-        <NavBar currentPath={Astro.url.pathname} lang="en" />
+        <SiteHeader client:load />
+        <NavBar currentPath={Astro.url.pathname} lang="en" client:load />
       </header>
-      <main class="subgrid col-5 row-8">
+      <main class="subgrid col-5 row-full">
         <slot />
       </main>
       <aside class="subgrid col-3 row-5">
@@ -34,34 +34,11 @@ const { title } = Astro.props;
 </html>
 
 <style>
-  #root {
-    --grid-cols: 8;
-    --grid-rows: 8;
-
-    width: 100%;
-    height: 100vh;
-    padding: var(--padding-container);
-
-    /* --cols-a: 5;
-    --cols-b: calc(var(--grid-cols) - var(--cols-a));
-    --rows-a: 5;
-    --rows-b: calc(var(--grid-rows) - var(--rows-a));
-
-    > header {
-      --local-cols: var(--cols-b);
-      --local-rows: var(--rows-b);
+  @media screen and (max-width: 600px) {
+    aside {
+      height: 100%;
+      display: flex;
+      justify-content: flex-end;
     }
-
-    > main {
-      --local-cols: var(--cols-a);
-      --local-rows: var(--grid-rows);
-      --parent-cols: var(--local-cols);
-      --parent-rows: var(--local-rows);
-    }
-
-    > aside {
-      --local-cols: var(--cols-b);
-      --local-rows: var(--rows-a);
-    } */
   }
 </style>

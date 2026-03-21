@@ -6,13 +6,14 @@
   interface Props {
     src: string;
     alt: string;
+    caption?: string;
     type?: ImageType
     width?: string;
     height?: string;
     expand?: boolean;
   }
 
-  let { src, alt, type = 'default', width, height, expand = false }: Props = $props();
+  let { src, alt, caption, type = 'default', width, height, expand = false }: Props = $props();
   let expanded = $state(false);
 
   function toggleExpand() {
@@ -31,13 +32,18 @@
   {/if}
 {:else}
   <img class={type} style={`${width ? `width: ${width};` : ''}${height ? `height: ${height};` : ''}`} {src} {alt} />
+  {#if caption}
+    <p class="label">{caption}</p>
+  {/if}
 {/if}
 
 <style>
   img {
     display: block;
-    max-width: 100%;
-    height: auto;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
 
     &.pixelated {
       image-rendering: pixelated;
@@ -52,8 +58,17 @@
         transform: scale(1.2);
         z-index: 11;
     }
-  }
 
+    &:has(+ .label) {
+      height: calc(100% - var(--gap-grid) * 2);
+    }
+
+  }
+  
+  .label {
+    height: var(--gap-grid);
+    padding-top: var(--space-150);
+  }
 
   .overlay {
     position: fixed;

@@ -3,6 +3,7 @@ title: 'Sideloading Music on Spotify'
 publishedDate: 2026-02-25
 coverImage: '/images/mp3tag_ui.png'
 description: "specific"
+tags: ['terminal', 'mac']
 ---
 
 In your Spotify Library, there's a folder called Local Files. It displays and lets you play, as you've probably guessed, local audio files.

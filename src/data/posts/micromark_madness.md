@@ -3,6 +3,7 @@ title: 'Micromark Madness'
 publishedDate: 2025-09-29
 coverImage: "https://www.jsdelivr.com/open-graph/image/npm/micromark"
 description: "Or, a comprehensive explanation of how to extend markdown syntax"
+tags: ['programming']
 ---
 
 ![Contents of post under construction](/images/contentsunderconstruction.gif)

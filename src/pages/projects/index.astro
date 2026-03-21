@@ -1,11 +1,11 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro'
-import ProjectItem from '../../components/composite/ProjectItem.astro'
-import { getCollection } from 'astro:content'
-import { useTranslations, type Languages } from '../../ts/i18n.ts'
-
-const currentLang: Languages = (Astro.cookies.get('language')?.value ?? 'en') as Languages
-const t = useTranslations(currentLang)
+import { getCollection } from "astro:content"
+import BaseLayout2 from "../../layouts/BaseLayout2.astro"
+import ProjectItem from "../../components/composite/ProjectItem.svelte"
+import Icon from "../../components/base/Icon.svelte"
+import Legend from "../../components/base/Legend.svelte"
+import { softwareTagColors } from "../../ts/types"
+import BaseLayout from "../../layouts/BaseLayout.astro"
 
 const allProjects = await getCollection('projects')
 const projects = allProjects.sort(
@@ -21,10 +21,45 @@ const projects = allProjects.sort(
 ---
 
 <BaseLayout title="Projects">
-    <h1 class="page-header">{t('title.projects')}</h1>
-    <div class="projects grid-list col-fill row-full">
-        {projects.map((project) => (
-            <ProjectItem {project} />
-        ))}
+  <div class="col-full row-1 flex between baseline">
+    <h1 class="baseline">Projects</h1>
+    <div class="heading-divider"></div>
+    <a class="button-link baseline" href="/new/posts">All Projects ></a>
+  </div>
+  <div class="projects grid-cols-half col-full row-fill">
+    {projects.map((project) => (
+      <ProjectItem {project} large />
+    ))}
+  </div>
+   <Fragment slot="sidebar">
+    <div class="col-2 row-full flex vertical end-y">
+      <h3 class="subtle flex">
+          <Icon icon="map" />
+          Project Legend
+        </h3>
+      <div class="container sidebar">
+        <div class="container flex vertical gap-small">
+          <h5>Software Used</h5>
+          <Legend color={softwareTagColors["dotnet"]}>C# (.NET)</Legend>
+          <Legend color={softwareTagColors["blazor"]}>Blazor</Legend>
+          <Legend color={softwareTagColors["svelte"]}>SvelteKit</Legend>
+          <Legend color={softwareTagColors["javascript"]}>JavaScript</Legend>
+          <Legend color={softwareTagColors["figma"]}>Figma</Legend>
+          <Legend color={softwareTagColors["docker"]}>Docker</Legend>
+        </div>
+      </div>
     </div>
-</BaseLayout>
+  </Fragment>
+</BaseLayout2>
+
+<style>
+  .projects {
+    gap: var(--space-300) 72px;
+  }
+
+  @media screen and (max-width: 600px) {
+    .projects {
+      gap: var(--space-300);
+    }
+  }
+</style>

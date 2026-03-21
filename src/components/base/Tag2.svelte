@@ -18,8 +18,8 @@
         width: 100%;
 
         &.vertical {
-            height: 100%;
             width: var(--size-tag);
+            flex-grow: 1;
         }
     }
 </style>

@@ -9,7 +9,7 @@ contractorUrl: 'https://huagati.com/'
 startDate: 2024-04-01
 endDate: 2024-07-05
 description: "Design and development of Arajet Airlines' unreleased User Referrals Program in Blazor Server"
-shortDesc: "User Referral Program"
+shortDesc: "User Referrals Program"
 tags: ["dotnet", "blazor", "javascript", "figma" ]
 color: "#08240D"
 ---
