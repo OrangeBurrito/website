@@ -33,6 +33,7 @@ let theme = Astro.cookies.get('theme')?.value || 'default'
       <div class="col-fill row-full">
         <h4>{pages.about.heading}</h4>
         <p>{pages.about.description}</p>
+        <p>{pages.about.description2}</p>
       </div>
       <div class="col-2  row-full">
         <Image src="https://i.pinimg.com/550x/e2/81/67/e28167e16afbcc885b2499bb9e490878.jpg" alt="" caption={pages.about.caption} />
@@ -43,7 +44,7 @@ let theme = Astro.cookies.get('theme')?.value || 'default'
         <Image src="https://quoguegallery.com/wp-content/uploads/2020/06/Blue-Florence.jpg" alt="" caption={pages.about.caption2} />
       </div>
       <div class="col-fill row-full">
-        <p>{pages.about.description2}</p>
+        <p>{pages.about.description3}</p>
       </div>
     </div>
   </div>
@@ -60,7 +61,7 @@ let theme = Astro.cookies.get('theme')?.value || 'default'
           <Icon icon="live" />
           User Status
         </h3>
-        <p class="small">Updated Weekly</p>
+        <p class="small">Updated Daily</p>
       </div>
       <div class="container sidebar col-full row-fill">
         <StatusItem>
@@ -119,6 +120,13 @@ let theme = Astro.cookies.get('theme')?.value || 'default'
     .about-heading {
       flex-direction: column;
       align-items: flex-start;
+
+      .user-links {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var(--space-100);
+      box-shadow: inset 6px 0 0 var(--color-border-alt);
+      }
 
       .title {
         display: flex;

@@ -78,8 +78,8 @@
 			overflow: hidden;
 			
 			a {
-				font-size: var(--font-size-body-large);
-				padding: var(--space-100) var(--space-300);
+				font-size: var(--font-size-subheading);
+				padding: var(--space-075) var(--space-300);
 				margin-right: calc(-1 * var(--padding-container));
 				margin-bottom: 0;
 

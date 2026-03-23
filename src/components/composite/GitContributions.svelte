@@ -19,19 +19,19 @@
         return tempDate
     }
 
-    let contributions: GitContributionData[] = []
-    let loading = true
-    let error = false
+    let contributions: GitContributionData[] = $state([])
+    let loading = $state(true)
+    let error = $state(false)
 
     onMount(async () => {
         try {
-            // const response = await fetch(`/.netlify/functions/gitContributions`)
-            // if (!response.ok) {
-            //     error = true
-            //     return
-            // }
-            // contributions = await response.json()
-            contributions = [{"commits":0,"date":new Date("2026-03-15")},{"commits":2,"date":new Date("2026-03-16")},{"commits":5,"date":new Date("2026-03-17")},{"commits":0,"date":new Date("2026-03-18")},{"commits":10,"date":new Date("2026-03-19")},{"commits":3,"date":new Date("2026-03-20")}]
+            const response = await fetch(`/.netlify/functions/gitContributions`)
+            if (!response.ok) {
+                error = true
+                return
+            }
+            contributions = await response.json()
+            // contributions = [{"commits":0,"date":new Date("2026-03-15")},{"commits":2,"date":new Date("2026-03-16")},{"commits":5,"date":new Date("2026-03-17")},{"commits":0,"date":new Date("2026-03-18")},{"commits":10,"date":new Date("2026-03-19")},{"commits":3,"date":new Date("2026-03-20")}]
         } catch (err) {
             error = true
         } finally {
@@ -41,6 +41,11 @@
 </script>
 
 <div class="git-contributions">
+{#if loading}
+    <p>Loading...</p>
+{:else if error}
+    <p>Error loading GitHub contributions.</p>
+{:else}
     <div class="label">GitHub Activity</div>
     <div class="flex gap-small">
         {#each contributions as contribution}
@@ -55,4 +60,5 @@
         {/each}
         {/if}
     </div>
+{/if}
 </div>
