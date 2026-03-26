@@ -31,7 +31,7 @@
             <h3 class="title">{track.title}</h3>
             <p class="subtitle">{track.artist}</p>
         </div>
-        <a class="image-url" href={track.url}>
+        <a class="image-link" href={track.url} target="_blank">
           <div class="image">
             <Image src={track.cover} alt={track.title} />
           </div>

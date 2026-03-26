@@ -6,6 +6,7 @@ import ProjectItem from '../components/composite/ProjectItem.svelte'
 import Date from '../components/base/Date.svelte'
 import CurrentlyReading from '../components/composite/CurrentlyReading.svelte'
 import Icon from '../components/base/Icon.svelte'
+import Image from '../components/base/Image.svelte'
 
 const posts = (await getCollection('posts')).sort(
 	(a, b) => b.data.publishedDate.valueOf() - a.data.publishedDate.valueOf()
@@ -17,6 +18,9 @@ const projects = (await getCollection('projects')).sort(
 ---
 
 <BaseLayout title="Home">
+  <div class="page-motif">
+    <Image src="/images/motifs/home.png" alt="" />
+  </div>
   <div class="posts subgrid col-4 row-4">
     <div class="col-4 row-1 flex between baseline offset-col-half-right">
       <h2 class="baseline">Latest Posts</h2>
@@ -24,7 +28,6 @@ const projects = (await getCollection('projects')).sort(
       <a class="button-link baseline" href="/new/posts">All Posts ></a>
     </div>
     <div class="grid-cols-half col-full row-fill">
-      <!-- {JSON.stringify(posts,null,2)} -->
       {posts.map((post) => (
         <PostItem {post} />
       ))}
@@ -74,6 +77,10 @@ const projects = (await getCollection('projects')).sort(
 </BaseLayout>
 
 <style>
+  .page-motif {
+    top: 20%;
+    left: 14%;
+  }
   @media (max-width: 600px) {
     .metadata {
       display: none;

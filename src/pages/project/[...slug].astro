@@ -1,0 +1,71 @@
+---
+import { getEntry, render } from "astro:content"
+import BaseLayout from "../../layouts/BaseLayout.astro"
+import Image from "../../components/base/Image.svelte"
+import Date from "../../components/base/Date.svelte"
+import Tag from "../../components/base/Tag.svelte"
+import { softwareTagColors } from "../../ts/types"
+
+export const prerender = false
+
+const { slug } = Astro.params
+
+const project = await getEntry('projects', slug!)!
+
+const { Content } = await render(project)
+
+---
+
+<BaseLayout title={project.data.title} sidebarCols={2}>
+  <article class="project subgrid col-4 row-full">
+    <div class="spacer col-full row-1"></div>
+    <header class="subgrid col-full row-2">
+      <div class="cover-image col-1 row-full">
+        <Image src={project.data.coverIcon!} alt={project.data.title + " thumbnail icon"} contain />
+      </div>
+      <div class="text col-fill row-full flex vertical gap-none">
+        <h1 class="title">{project.data.title}</h1>
+        <p class="description">{project.data.description}</p>
+        <div class="dates flex grow gap-xsmall">
+          <Date date={project.data.startDate} length='monthonly' />
+          <p class="label">—</p>
+          {project.data.endDate && (
+            <Date date={project.data.endDate} length='monthonly' />
+          )}
+          {!project.data.endDate && (
+            <p class="label">Present</p>
+          )}
+        </div>
+        <div class="tags flex gap-none">
+        {project.data.tags!.map((tag) => (
+          <Tag color={softwareTagColors[tag]} />
+          ))}
+        </div>
+      </div>
+    </header>
+    <div class="content col-full row-fill">
+      <Content />
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .cover-image {
+    padding: var(--space-100) 0;
+  }
+  .dates {
+    margin-bottom: var(--space-150);
+  }
+
+  @media screen and (max-width: 600px) {
+    .title, .description {
+      max-width: 70%;
+    }
+
+    .cover-image {
+      position: absolute;
+      width: calc(30% - var(--space-200));
+      right: var(--space-200);
+    }
+  }
+</style>

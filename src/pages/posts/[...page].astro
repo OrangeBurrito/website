@@ -5,6 +5,7 @@ import PostItem from "../../components/composite/PostItem.svelte"
 import Legend from "../../components/base/Legend.svelte"
 import Icon from "../../components/base/Icon.svelte"
 import type { Page } from "astro"
+import { postTagColors } from "../../ts/types"
 
 export const prerender = true
 
@@ -21,19 +22,17 @@ const { page } = Astro.props;
 ---
 
 <BaseLayout title="Posts">
-  <div class="col-full row-1 flex baseline">
+  <div class="col-full row-1 flex baseline gap-small">
     <h1 class="baseline">Blogposts</h1>
-    <!-- <p class="baseline">{posts.length} posts</p>  // {posts.map((post) => ( -->
+    <p class="large baseline"><strong>{page.total}</strong> posts</p>
   </div>
   <div class="col-full row-fill flex vertical gap-large">
     <div class="posts fill-y grid-cols-half grid-rows-4">
-      <!-- <pre>{JSON.stringify(page, null, 2)}</pre> -->
       {((page as any).data || []).map((post: any) => (
         <PostItem {post} image vertical />
       ))}
     </div>
     <div class="flex baseline">
-      <!-- <pre>{JSON.stringify(page.url, null, 2)}</pre> -->
       <a class={`button-link baseline ${page.url.prev ? '' : 'disabled'}`} href={page.url.prev}>&lt; Previous</a>
       <div class="heading-divider"></div>
       <a class={`button-link baseline ${page.url.next ? '' : 'disabled'}`} href={page.url.next}>Next ></a>
@@ -48,12 +47,11 @@ const { page } = Astro.props;
       <div class="container sidebar">
         <div class="container flex vertical gap-small">
           <h5>Post Type</h5>
-          <Legend color="var(--color-secondary)">Programming</Legend>
-          <Legend color="gray">Terminal</Legend>
-          <Legend color="gray">MacOS</Legend>
-          <Legend color="gray">Art & Design</Legend>
-          <Legend color="gray">History</Legend>
-          <Legend color="gray">Miscellaneous</Legend>
+          <Legend color={postTagColors.programming}>Programming</Legend>
+          <Legend color={postTagColors.terminal}>Terminal</Legend>
+          <Legend color={postTagColors.mac}>MacOS</Legend>
+          <Legend color={postTagColors.history}>History</Legend>
+          <Legend color={postTagColors.misc}>Miscellaneous</Legend>
         </div>
       </div>
     </div>

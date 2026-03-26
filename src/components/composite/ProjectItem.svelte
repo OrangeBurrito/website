@@ -3,7 +3,7 @@
     import Date from "../base/Date.svelte";
     import { softwareTagColors } from '../../ts/types'
     import type { Project } from '../../content.config';
-    import Tag2 from "../base/Tag2.svelte";
+    import Tag from "../base/Tag.svelte";
 
     interface Props {
         project: Project
@@ -14,17 +14,17 @@
 </script>
 
 <div class={`${`project${large ? ' large' : ''}`}`}>
-<a class="flex gap-large" href={`/projects/${project.id}`}>
+<a class="flex gap-large hover" href={`/project/${project.id}`}>
     {#if project.data.coverIcon}
     <div class="icon">
-        <Image src={project.data.coverIcon} alt={`${project.data.title} Thumbnail`} type="pixelated" width="72px" />
+        <Image src={project.data.coverIcon} alt={`${project.data.title} Thumbnail`} width="72px" contain />
     </div>
     {/if}
     <div class="info flex vertical gap-none">
     {#if large}
-        <h2 class="title small">{project.data.title}</h2>
+        <h2 class="title small text-hover">{project.data.title}</h2>
     {:else}
-        <h4 class="title">{project.data.title}</h4>
+        <h4 class="title text-hover">{project.data.title}</h4>
     {/if}
     <div class="metadata flex vertical gap-none">
         <div class="dates flex gap-xsmall">
@@ -45,7 +45,7 @@
         {/if}
         <div class="tags flex gap-none">
         {#each project.data.tags as tag}
-            <Tag2 color={softwareTagColors[tag]}/>
+            <Tag color={softwareTagColors[tag]}/>
         {/each}
         </div>
     </a>
@@ -63,28 +63,10 @@
             width: 100%;
         }
 
-        .title {
-            color: var(--color-text-heading);
-            margin-bottom: var(--space-050);
-        }
-
-        .description {
-            margin-bottom: var(--space-150);
-        }
-
-        .dates {
-            margin-bottom: var(--space-050);
-            p {
-                color: var(--color-secondary-light);
-                text-transform: uppercase;
-                font-weight: 500;
-            }
-        }
-
         .icon {
             position: absolute;
             top: 0;
-            left: calc((72px + var(--space-300)) * -1);
+            left: calc((72px + var(--space-200)) * -1);
         }
 
         .cover-image {
@@ -133,6 +115,14 @@
 
             .cover-image {
                 max-height: 200px;
+            }
+
+            &:not(.large) {
+                width: 100%;
+            }
+
+            :global(.project:not(.large) .icon img) {
+                width: 64px;
             }
 
             &.large {

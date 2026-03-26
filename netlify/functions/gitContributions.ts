@@ -1,5 +1,7 @@
 import { getStore } from "@netlify/blobs"
 import { currentKey, getCachedData, updateNetlifyBlob } from "../../src/ts/netlify"
+import * as dotenv from 'dotenv'
+dotenv.config()
 
 export type GitActivityLevel = 0 | 1 | 2 | 3 | 4
 export type GitContributionData = {
@@ -11,7 +13,7 @@ async function getGitContributions() {
     const response = await fetch('https://api.github.com/graphql', {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json',
+        'Content-Type': 'application/json',
             'Authorization': `Bearer ${process.env.GITHUB_TOKEN}`,
         },
         body: JSON.stringify({
@@ -39,7 +41,7 @@ async function getGitContributions() {
     }
 
     const allContributions = resp.data.user.contributionsCollection.contributionCalendar.weeks
-    const contributions = allContributions[allContributions.length - 1].contributionDays.map((c) => ({"date": new Date(c.date), "commits": c.contributionCount}))
+    const contributions = allContributions[allContributions.length - 1].contributionDays.map((c) => ({"date": c.date, "commits": c.contributionCount}))
 
     return contributions
 }

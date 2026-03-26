@@ -11,7 +11,7 @@
 </script>
 
 <nav id="navbar" class="row-2">
-	<a id="index" class="button-link" href="/" class:active={currentPath === '/new'}>{t('nav.home')}</a>
+	<a id="index" class="button-link" href="/" class:active={currentPath === '/'}>{t('nav.home')}</a>
 	<a id="posts" class="button-link" href="/posts" class:active={currentPath === '/posts'}>{t('nav.posts')}</a>
 	<a id="projects" class="button-link" href="/projects" class:active={currentPath === '/projects'}>{t('nav.projects')}</a>
 	<a id="about" class="button-link" href="/about" class:active={currentPath === '/about'}>{t('nav.about')}</a>

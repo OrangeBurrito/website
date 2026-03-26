@@ -6,7 +6,7 @@ import BaseLayout2 from "../../../layouts/BaseLayout2.astro";
 import PostLayout2 from "../../../layouts/PostLayout2.astro";
 import { getCollection, render } from "astro:content";
 import Date from "../../../components/base/Date.svelte";
-import Tag2 from "../../../components/base/Tag2.svelte";
+import Tag from "../../../components/base/Tag.svelte";
 import { postTagColors } from "../../../ts/types";
 import SiteHeader from "../../../components/composite/SiteHeader.svelte";
 
@@ -53,7 +53,7 @@ const { Content } = await render(post);
               </div>
               <div class="tags flex gap-none">
                 {post.data.tags.map((tag) => (
-                    <Tag2 color={postTagColors[tag]} />
+                    <Tag color={postTagColors[tag]} />
                   ))}
               </div>
             </div>

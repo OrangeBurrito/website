@@ -20,6 +20,7 @@
     "@netlify/functions": "^5.0.0",
     "@sparticuz/chromium": "^141.0.0",
     "astro-analytics": "^1.0.1",
+    "dotenv": "^17.3.1",
     "puppeteer-core": "^24.29.0",
     "svelte": "^5.38.6",
     "typescript": "^5.9.2"

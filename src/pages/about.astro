@@ -14,7 +14,7 @@ let theme = Astro.cookies.get('theme')?.value || 'default'
 
 <BaseLayout title="About">
   <div class="about-heading col-full row-1 align-end flex between baseline">
-    <div class="title">
+    <div class="about-title">
       <div class="flourishes flex">
         <div class="flourish1">~</div>
         <div class="flourish2">»</div>
@@ -39,7 +39,7 @@ let theme = Astro.cookies.get('theme')?.value || 'default'
         <Image src="https://i.pinimg.com/550x/e2/81/67/e28167e16afbcc885b2499bb9e490878.jpg" alt="" caption={pages.about.caption} />
       </div>
     </div>
-    <div class="subgrid row-3">
+    <div class="second-section subgrid row-3">
       <div class="col-2 row-full">
         <Image src="https://quoguegallery.com/wp-content/uploads/2020/06/Blue-Florence.jpg" alt="" caption={pages.about.caption2} />
       </div>
@@ -55,7 +55,7 @@ let theme = Astro.cookies.get('theme')?.value || 'default'
   </div>
 
   <Fragment slot="sidebar">
-    <div class="subgrid col-2 row-full">
+    <div class="subgrid col-2 row-full flex vertical end-y">
       <div class="col-full row-1 flex between baseline gap-none">
         <h3 class="subtle flex">
           <Icon icon="live" />
@@ -88,10 +88,11 @@ let theme = Astro.cookies.get('theme')?.value || 'default'
     border: 1px solid gray;
   }
 
-  .title {
+  .about-title {
     anchor-name: --page-title;
     h1 {
       color: var(--color-tertiary);
+      height: var(--font-size-heading-large);
     }
 
     .flourishes {
@@ -128,7 +129,7 @@ let theme = Astro.cookies.get('theme')?.value || 'default'
       box-shadow: inset 6px 0 0 var(--color-border-alt);
       }
 
-      .title {
+      .about-title {
         display: flex;
         align-items: center;
 
@@ -141,6 +142,11 @@ let theme = Astro.cookies.get('theme')?.value || 'default'
           }
         }
       }
+    }
+
+    .second-section {
+      display: flex;
+      flex-direction: column-reverse;
     }
   }
 </style>

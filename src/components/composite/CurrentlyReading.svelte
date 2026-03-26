@@ -1,28 +1,28 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import Link from "../base/Link.svelte";
+  import Image from "../base/Image.svelte";
 
   type Book = {
     title: string;
     coverImage: string;
     author: string;
+    percentage: string;
   };
 
   let book = $state<Book | null>(null);
   let loading = $state(true);
   let error = $state(false);
-  // book = {"title":"The Black Dahlia","coverImage":"https://cdn.thestorygraph.com/lezw5wpt2p8zct9keglrheumcbx3","author":"James Ellroy"}
 
   onMount(async () => {
     try {
       const response = await fetch(`/.netlify/functions/currentlyReading`);
-      console.log(response);
       if (!response.ok) {
         error = true;
         return;
       }
       book = await response.json();
-      console.log(book);
+      book!.percentage ="22%";
     } catch (err) {
       error = true;
     } finally {
@@ -43,17 +43,26 @@
   {:else if error}
     <p>Book not found</p>
   {:else if book}
-    <div class="book flex gap-200 {large ? 'large' : ''}">
-      <img class="cover" src={book.coverImage} alt="" />
-      <div class="text flex-col gap-100">
+    <div class="book flex {large ? 'large' : ''}">
+    <a class="image-link" href="https://app.thestorygraph.com/profile/orangeburrito" target="_blank">
+    <div class="image">
+      <Image src={book.coverImage} alt={book.title} />
+    </div>
+  </a>
+      <div class="text flex vertical gap-xsmall">
         <div class="label">Currently Reading</div>
         <h3 class="title">{book.title}</h3>
         <div class="author">{book.author}</div>
         {#if large}
-        <Link
-          href="https://app.thestorygraph.com/profile/orangeburrito"
-          external={true}>Details</Link
-        >
+        <div class="percentage">
+          <div class="bar" style="width: {book.percentage};">{book.percentage}</div>
+        </div>
+        <div class="link grow flex vertical end-y gap-xsmall">
+          <Link
+            href="https://app.thestorygraph.com/profile/orangeburrito"
+            external={true}>Details</Link
+          >
+        </div>
         {/if}
       </div>
     </div>
@@ -66,13 +75,6 @@
       flex-direction: row-reverse;
       justify-content: space-between;
 
-      .cover {
-        height: 64px;
-        width: 64px;
-        object-fit: cover;
-        object-position: top center;
-      }
-
       .author {
         color: var(--color-secondary-light);
       }
@@ -80,6 +82,10 @@
 
     .title {
       color: var(--color-text-heading);
+    }
+
+    .author {
+      margin-bottom: var(--space-050);
     }
 
     &.large {
@@ -90,12 +96,36 @@
       .title {
         font-size: var(--font-size-subheading);
         max-width: 10ch;
+        margin-bottom: 0;
       }
 
-      .cover {
+      .image-link {
+        padding: 0;
+        &::after {
+          display: none;
+        }
+      }
+
+      .image {
         height: 144px;
+        width: auto;
         padding: var(--space-100);
         border: 4px solid var(--color-border);
+      }
+
+      .percentage {
+        width: 100%;
+        background-color: var(--color-surface);
+
+        .bar {
+          min-width: fit-content;
+          font-family: var(--font-family-heading);
+          font-size: var(--font-size-body);
+          font-weight: 700;
+          padding: var(--space-050);
+          background-color: var(--color-secondary);
+          color: var(--color-background);
+        }
       }
     }
   }

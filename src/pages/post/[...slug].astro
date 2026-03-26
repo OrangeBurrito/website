@@ -1,12 +1,11 @@
 ---
 import "../../styles/global.css";
-import Image from "../../components/base/Image.svelte";
-import NavBar from "../../components/composite/NavBar.svelte";
 import { getCollection, render } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
 import Date from "../../components/base/Date.svelte";
-import Tag2 from "../../components/base/Tag2.svelte";
+import Tag from "../../components/base/Tag.svelte";
 import { postTagColors } from "../../ts/types";
-import SiteHeader from "../../components/composite/SiteHeader.svelte";
+import Image from "../../components/base/Image.svelte";
 
 export const prerender = true;
 
@@ -22,58 +21,33 @@ const { post } = Astro.props;
 const { Content } = await render(post);
 ---
 
-<html>
-  <head>
-    <meta charset="UTF-8" />
-    <meta content="width=device-width, initial-scale=1" name="viewport" />
-    <link rel="shortcut icon" href="/favicon.png" type="image/x-icon" />
-    <title>{post.data.title}</title>
-  </head>
-  <body>
-    <div id="root" class="root-grid">
-      <header class="subgrid col-2 row-3">
-        <SiteHeader client:load />
-        <NavBar currentPath={Astro.url.pathname} lang="en" />
-      </header>
-      <main class="subgrid col-6 row-full">
-        <article class="post subgrid col-4 row-full">
-          <div class="spacer col-full row-1"></div>
-          <header class="subgrid col-full row-2">
-            <div class="col-fill row-full flex vertical between">
-              <div class="text">
-                <h1 class="title">{post.data.title}</h1>
-                <p class="description">{post.data.description}</p>
-                <Date
-                  class="large"
-                  date={post.data.publishedDate}
-                  length="long"
-                />
-              </div>
-              <div class="tags flex gap-none">
-                {post.data.tags.map((tag) => (
-                    <Tag2 color={postTagColors[tag]} />
-                  ))}
-              </div>
-            </div>
-            <div class="cover-image col-1 row-full">
-              <Image src={post.data.coverImage} alt="" />
-            </div>
-          </header>
-          <div class="content col-full row-fill">
-            <Content />
-          </div>
-        </article>
-      </main>
-      <aside class="subgrid col-2 row-5">
-        <slot name="sidebar" />
-      </aside>
-    </div>
-  </body>
-</html>
 
-<!-- <BaseLayout2 title={post.data.title}> -->
+<BaseLayout title={post.data.title} sidebarCols={2}>
+	<article class="post subgrid col-4 row-full">
+		<div class="spacer col-full row-1"></div>
+		<header class="subgrid col-full row-2">
+		<div class="col-fill row-full flex vertical between">
+			<div class="text">
+			<h1 class="title">{post.data.title}</h1>
+			<p class="description">{post.data.description}</p>
+			<Date class="large" date={post.data.publishedDate} length="long" />
+			</div>
+			<div class="tags flex gap-none">
+			{post.data.tags.map((tag) => (
+				<Tag color={postTagColors[tag]} />
+				))}
+			</div>
+		</div>
+		<div class="cover-image col-1 row-full">
+			<Image src={post.data.coverImage} alt="" />
+		</div>
+		</header>
+		<div class="content col-full row-fill">
+		<Content />
+		</div>
+	</article>
+</BaseLayout>
 
-<!-- </PostLayout2> -->
 
 <style>
   article {
@@ -83,70 +57,9 @@ const { Content } = await render(post);
         margin-bottom: var(--space-050);
       }
 
-      .description {
-        margin-bottom: var(--space-100);
-      }
-
       .tags {
         width: 25%;
       }
     }
-
-    p, em,  li, .date {
-      --font-size-element: var(--font-size-button);
-    }
-
-    .content {
-      h2, h3, h4, h5 {
-        color: var(--color-text-heading);
-        margin-top: var(--space-250);
-        margin-bottom: var(--space-150)
-      }
-
-      p {padding-bottom: var(--space-200);}
-      li { padding-bottom: var(--space-100); }
-      li p { padding-bottom: var(--space-050);}
-
-      img {
-        display: block;
-        max-width: 100%;
-        padding: var(--space-250);
-        margin: 0 auto;
-      }
-  
-      img + em {
-        display: block;
-        text-align: center;
-        font-size: var(--font-size-body);
-        color: var(--color-text-code);
-        padding-bottom: var(--space-300);
-        margin-top: -0.5rem;
-      }
-
-      pre {
-	      padding: var(--space-200);
-        margin: var(--space-200) 0 var(--space-400) 0;
-        overflow-x: scroll;
-        font-family: var(--font-family-code);
-      }
-
-      code {
-        font-size: var(--font-size-caption);
-        letter-spacing: -0.3px;
-        line-height: 1.5;
-        padding: var(--space-050) var(--space-100);
-      }
-
-      blockquote {
-        background: var(--color-surface-2);
-        padding: var(--space-200);
-        border-left: var(--space-100) solid var(--color-border-light);
-        margin-bottom: var(--space-300);
-      }
-      blockquote p {
-        padding: 0;
-      }
-    }
-
   }
 </style>

@@ -1,23 +1,25 @@
 <script lang="ts">
-  import type { Snippet } from "svelte";
-
     type Props = {
-        children: Snippet
         color: string
+        vertical?: boolean
     }
 
-    let { children, color = 'gray' }: Props = $props()
+    let { color = 'gray', vertical = false }: Props = $props()
 </script>
 
-<div class="tag" style="--color-background-tag: {color}">{@render children()}</div>
+<div class="tag{vertical ? ' vertical' : ''}" style="--color-tag: {color}"></div>
 
 <style>
     .tag {
-        --color-background-tag: gray;
-        --color-text-tag: var(--color-text-heading);
-        padding: var(--space-050) var(--space-100);
-        background-color: var(--color-background-tag);
-        color: var(--color-text-tag);
-        font-weight: bold;
+        --color-tag: gray;
+        --size-tag: var(--space-075);
+        background-color: var(--color-tag);
+        height: var(--size-tag);
+        width: 100%;
+
+        &.vertical {
+            width: var(--size-tag);
+            flex-grow: 1;
+        }
     }
 </style>

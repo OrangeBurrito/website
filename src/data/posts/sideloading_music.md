@@ -2,7 +2,7 @@
 title: 'Sideloading Music on Spotify'
 publishedDate: 2026-02-25
 coverImage: '/images/mp3tag_ui.png'
-description: "specific"
+description: "...onto your Android device, via the terminal"
 tags: ['terminal', 'mac']
 ---
 

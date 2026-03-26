@@ -1,6 +1,6 @@
 <script lang="ts">
     
-type DateLength = 'short' | 'default' |'long'
+type DateLength = 'short' | 'default' | 'long' | 'monthonly'
 
 type Props = {
     date: Date | string
@@ -15,7 +15,8 @@ const { date, length = 'default', class: className, locale }: Props = $props()
 const options: Record<DateLength, Intl.DateTimeFormatOptions> = {
     short: { year: 'numeric', month: 'short' },
     default: { year: 'numeric', month: 'short', day: 'numeric' },
-    long: { year: 'numeric', month: 'long', day: 'numeric' }
+    long: { year: 'numeric', month: 'long', day: 'numeric' },
+    monthonly: { month: 'long', year: 'numeric' }
 }
 
 const localDate = date instanceof Date

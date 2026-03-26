@@ -163,6 +163,10 @@ a {
         color: var(--color-border);
         pointer-events: none;
     }
+
+    > .icon svg {
+        stroke: var(--color-primary);
+    }
 }
 
 h1, h2, h3 {
@@ -221,7 +225,7 @@ p, em, li, .date {
     &.baseline { line-height: calc(var(--font-size-element) - var(--space-050)); }
 }
 
-&.right { text-align: right; }
+.right { text-align: right; }
 
 .label {
     font-size: var(--font-size-label);
@@ -241,7 +245,39 @@ p, em, li, .date {
     p {
         font-size: var(--font-size-body-small);
     }
+}
 
+.title {
+    color: var(--color-text-heading);
+    margin-bottom: var(--space-050);
+}
+
+.description {
+    --font-size-element: var(--font-size-body);
+    margin-bottom: var(--space-100);
+}
+
+.dates {
+    margin-bottom: var(--space-050);
+    p {
+        color: var(--color-secondary-light);
+        text-transform: uppercase;
+        font-weight: 500;
+    }
+}
+
+.text-hover {
+    transition: color ease-out 0.15s;
+}
+
+a.hover:hover {
+    .text-hover {
+        color: var(--color-text-link);
+    }
+}
+
+.page-motif {
+    position: absolute;
 }
 
 .heading-divider {
@@ -285,8 +321,28 @@ p, em, li, .date {
       height: 64px;
     }
 
-    .image-url::after {
+    .image-link {
+        position: relative;
+        width: fit-content;
+        height: fit-content;
+        padding-right: 4px;
+        padding-top: 4px;
 
+        &::after {
+            content: '';
+            position: absolute;
+            top: -4px;
+            right: -4px;
+            width: 12px;
+            height: 12px;
+            border-right: 2px solid var(--color-text-link);
+            border-top: 2px solid var(--color-text-link);
+            transition: all 0.15s ease-out;
+        }
+        &:hover::after {
+            width: 100%;
+            height: 100%;
+        }
     }
 }
 
@@ -394,6 +450,10 @@ p, em, li, .date {
     &.gap-xsmall { gap: var(--space-050); }
     &.gap-none { gap: 0; }
 
+    .grow {
+        flex-grow: 1;
+    }
+
 }
 
 .fill-y {
@@ -406,6 +466,10 @@ div[class*="grid-"] {
 
     &.grid-cols-half {
         grid-template-columns: repeat(2, 1fr);
+    }
+
+    &.grid-rows-half {
+        grid-template-rows: repeat(2, 1fr);
     }
     
     &.grid-rows-4 {
@@ -439,6 +503,73 @@ div[class*="grid-"] {
     display: none;
 }
 
+article {
+     p, em,  li, .date {
+      --font-size-element: var(--font-size-button);
+    }
+
+    .content {
+      h2, h3, h4, h5 {
+        color: var(--color-text-heading);
+        margin-top: var(--space-250);
+        margin-bottom: var(--space-150)
+      }
+
+      p {padding-bottom: var(--space-200);}
+      li { padding-bottom: var(--space-100); }
+      li p { padding-bottom: var(--space-050);}
+
+      img {
+        display: block;
+        max-width: 100%;
+        padding-bottom: var(--space-250);
+        margin: 0 auto;
+      }
+  
+      img + em {
+        display: block;
+        text-align: center;
+        font-size: var(--font-size-body);
+        color: var(--color-text-code);
+        padding-bottom: var(--space-300);
+        margin-top: -0.5rem;
+      }
+
+      pre {
+	      padding: var(--space-200);
+        margin: var(--space-200) 0 var(--space-400) 0;
+        overflow-x: scroll;
+        font-family: var(--font-family-code);
+      }
+
+      code {
+        font-size: var(--font-size-caption);
+        letter-spacing: -0.3px;
+        line-height: 1.5;
+        padding: var(--space-050) var(--space-100);
+      }
+
+      blockquote {
+        background: var(--color-surface);
+        padding: var(--space-200);
+        border-left: var(--space-100) solid var(--color-border);
+        margin-bottom: var(--space-300);
+      }
+      blockquote p {
+        padding: 0;
+      }
+
+      iframe {
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        display: block;
+        margin: 0 calc(50% - 50vw);
+            margin-bottom: 0px;
+        transform: translateX(calc(50vw - 50%));
+        margin-bottom: var(--space-200);
+      }
+    }
+}
+
 @media screen and (max-width: 600px) {
     :root {
         --font-size-label: var(--space-200);
@@ -451,7 +582,6 @@ div[class*="grid-"] {
 
     body {
         background-image: linear-gradient(#0c162b, var(--color-background));
-        
     }
 
     .root-grid, .subgrid, div[class*="grid-cols-"] {
@@ -465,6 +595,13 @@ div[class*="grid-"] {
 
     .spacer {
         display: none;
+    }
+
+    .page-motif {
+        position: relative;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
     }
 
     *[class*="offset-"] {

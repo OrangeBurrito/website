@@ -14,7 +14,7 @@
 <a class="link flex gap-xsmall" href={href} target={external ? "_blank" : "_self"}>
   {@render children()}
   {#if external}
-    <Icon icon="external-link" />
+    <Icon icon="external-link" size="small" />
   {/if}
 </a>
 
@@ -22,6 +22,7 @@
   a {
     width: fit-content;
     font-size: var(--font-size-body);
+    text-decoration: underline;
   }
 
   :global(a.link svg) {

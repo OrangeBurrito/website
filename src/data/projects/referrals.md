@@ -2,6 +2,7 @@
 title: 'Arajet Referrals'
 url: ''
 coverImage: '/images/arajetreferrals.png'
+coverIcon: "/images/projects/referrals-icon.png"
 client: 'Arajet Airlines'
 clientUrl: 'https://arajet.com'
 contractor: 'Huagati Systems'

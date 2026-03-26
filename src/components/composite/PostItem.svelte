@@ -1,24 +1,22 @@
 <script lang="ts">
 	import Image from '../base/Image.svelte'
 	import Date from '../base/Date.svelte'
-	import Tag2 from '../base/Tag2.svelte'
+	import Tag from '../base/Tag.svelte'
 	import { postTagColors } from '../../ts/types'
-  import { MediaQuery } from 'svelte/reactivity';
 
 	type Props = {
 		post: any
-		vertical?: boolean
 		image?: boolean
 	}
 
-	const { post, vertical, image }: Props = $props()
+	const { post, image }: Props = $props()
 </script>
 
 <div class="post">
-<a class="flex fill-y gap-none" href={`/post/${post.id}`}>
+<a class="flex fill-y gap-none hover" href={`/post/${post.id}`}>
 	<div class="tags-vertical tags flex vertical gap-none">
 		{#each post.data.tags as tag}
-			<Tag2 color={postTagColors[tag]} vertical={true} />
+			<Tag color={postTagColors[tag]} vertical={true} />
 		{/each}
 	</div>
 	{#if image === true}
@@ -28,7 +26,7 @@
 	{/if}
 	<div class="info flex vertical between gap-small">
 		<div class="container-text flex-y-t">
-			<h4 class="title">{post.data.title}</h4>
+			<h4 class="title text-hover">{post.data.title}</h4>
 			<Date date={post.data.publishedDate} length='long' />
 			<p class="description">{post.data.description}</p>
 			<img class="img-icon" src="/images/clock_icon.png" alt="">
@@ -36,7 +34,7 @@
 		{#if image !== true}
 		<div class="tags-horizontal tags flex gap-none">
 		{#each post.data.tags as tag}
-				<Tag2 color={postTagColors[tag]} />
+				<Tag color={postTagColors[tag]} />
 			{/each}
 		</div>
 	{/if}
@@ -48,14 +46,13 @@
 		position: relative;
 
 		.title {
-			display: inline-block;
-			transition: color var(--transition-fast);
 			margin-bottom: var(--space-050);
 		}
 		
 		.description {
 			max-width: 40ch;
 			margin-top: var(--space-075);
+			margin-bottom: 0;
 		}
 		
 		.image {

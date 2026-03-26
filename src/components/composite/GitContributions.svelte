@@ -31,7 +31,7 @@
                 return
             }
             contributions = await response.json()
-            // contributions = [{"commits":0,"date":new Date("2026-03-15")},{"commits":2,"date":new Date("2026-03-16")},{"commits":5,"date":new Date("2026-03-17")},{"commits":0,"date":new Date("2026-03-18")},{"commits":10,"date":new Date("2026-03-19")},{"commits":3,"date":new Date("2026-03-20")}]
+            contributions = contributions.map(c => ({ ...c, date: new Date(c.date) }))
         } catch (err) {
             error = true
         } finally {

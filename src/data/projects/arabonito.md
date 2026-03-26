@@ -2,7 +2,7 @@
 title: 'Arabonito'
 url: 'https://arabonito.arajet.com'
 coverImage: "/images/arabonito.png"
-coverIcon: "/images/arabonito-thumb.png"
+coverIcon: "/images/projects/arabonito-icon.png"
 client: 'Arajet Airlines'
 clientUrl: 'https://arajet.com'
 contractor: 'Huagati Systems'
@@ -13,6 +13,11 @@ description: "Design and development of Arajet Airlines' Gift Card Program in Bl
 shortDesc: "Gift Card Program"
 tags: ["dotnet", "blazor", "javascript", "figma" ]
 ---
+
+<div class="grid-cols-half">
+    <img src="/images/arabonito.png">
+    <img src="/images/arabonito.png">
+</div>
 
 I designed and developed the frontend for Arajet's Gift Card Program [Arabonito](https://arabonito.arajet.com), while working as a subcontractor under [Huagati Systems](https://huagati.com).
 

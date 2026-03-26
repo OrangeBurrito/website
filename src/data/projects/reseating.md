@@ -1,6 +1,7 @@
 ---
 title: "Reseating UI"
 coverImage: '/images/reseatingui.png'
+coverIcon: "/images/projects/reseating-icon.png"
 client: 'Hong Kong Express'
 clientUrl: 'https://hkexpress.com'
 contractor: 'Huagati Systems'
