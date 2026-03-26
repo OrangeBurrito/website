@@ -45,6 +45,12 @@
   
   .label {
     height: var(--gap-grid);
-    padding-top: var(--space-150);
+    padding-top: var(--space-100);
+  }
+
+  @media screen and (max-width: 600px) {
+    .label {
+      text-align: center;
+    }
   }
 </style>

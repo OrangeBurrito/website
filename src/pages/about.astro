@@ -30,21 +30,21 @@ let theme = Astro.cookies.get('theme')?.value || 'default'
   </div>
   <div class="subgrid row-6">
     <div class="subgrid row-3">
-      <div class="col-fill row-full">
+      <div class="section first col-fill row-full">
         <h4>{pages.about.heading}</h4>
-        <p>{pages.about.description}</p>
-        <p>{pages.about.description2}</p>
+        <p set:html={pages.about.description}></p>
       </div>
       <div class="col-2  row-full">
-        <Image src="https://i.pinimg.com/550x/e2/81/67/e28167e16afbcc885b2499bb9e490878.jpg" alt="" caption={pages.about.caption} />
+        <Image src="/images/mysterious_visage2.png" alt="" caption={pages.about.caption} />
       </div>
     </div>
-    <div class="second-section subgrid row-3">
+    <div class="section second subgrid row-3">
       <div class="col-2 row-full">
-        <Image src="https://quoguegallery.com/wp-content/uploads/2020/06/Blue-Florence.jpg" alt="" caption={pages.about.caption2} />
+        <Image src="/images/hotcocoa.png" alt="" caption={pages.about.caption2} />
       </div>
       <div class="col-fill row-full">
-        <p>{pages.about.description3}</p>
+        <h5>{pages.about.heading2}</h5>
+        <p set:html={pages.about.description2}></p>
       </div>
     </div>
   </div>
@@ -117,6 +117,20 @@ let theme = Astro.cookies.get('theme')?.value || 'default'
     box-shadow: inset 0 -6px 0 var(--color-border-alt);
   }
 
+  .section {
+    &.first {
+      padding-right: var(--space-100);
+    }
+
+    h4, h5 {
+      margin-bottom: var(--space-050);
+    }
+
+    p, ul {
+      margin-bottom: var(--space-100);
+    }
+  }
+
   @media screen and (max-width: 600px) {
     .about-heading {
       flex-direction: column;
@@ -144,7 +158,11 @@ let theme = Astro.cookies.get('theme')?.value || 'default'
       }
     }
 
-    .second-section {
+    .section.first {
+      padding-right: 0;
+    }
+
+    .section.second {
       display: flex;
       flex-direction: column-reverse;
     }

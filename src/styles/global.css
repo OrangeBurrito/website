@@ -225,6 +225,25 @@ p, em, li, .date {
     &.baseline { line-height: calc(var(--font-size-element) - var(--space-050)); }
 }
 
+li {
+    position: relative;
+    list-style-type: none;
+    padding-left: var(--space-200);
+    
+    &::before {
+        position: absolute;
+        left: 0;
+        content: '-';
+        display: inline-block;
+        color: var(--color-secondary);
+        font-weight: bold;
+    }
+}
+
+ul {
+    padding: 0;
+}
+
 .right { text-align: right; }
 
 .label {
