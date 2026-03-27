@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { useTranslations, type Languages } from '../../ts/i18n.ts'
+  import Image from '../base/Image.svelte';
 	type Props = {
 		currentPath: string;
 		lang: Languages;
@@ -12,22 +13,24 @@
 
 <nav id="navbar" class="row-2">
 	<a id="index" class="button-link" href="/" class:active={currentPath === '/'}>{t('nav.home')}</a>
-	<a id="posts" class="button-link" href="/posts" class:active={currentPath === '/posts'}>{t('nav.posts')}</a>
-	<a id="projects" class="button-link" href="/projects" class:active={currentPath === '/projects'}>{t('nav.projects')}</a>
+	<a id="posts" class="button-link" href="/posts" class:active={currentPath.startsWith('/post')}>{t('nav.posts')}</a>
+	<a id="projects" class="button-link" href="/projects" class:active={currentPath.startsWith('/project')}>{t('nav.projects')}</a>
 	<a id="about" class="button-link" href="/about" class:active={currentPath === '/about'}>{t('nav.about')}</a>
+	<div class="motif">
+		<Image src="/images/motifs/home.png" alt="Navbar decorative image" />
+	</div>
 </nav>
 
 <style>
 	#navbar {
 		z-index: 3;
+
 		a {
 			display: block;
 			position: relative;
 			width: fit-content;
 			margin-bottom: var(--space-075);
 			font-family: var(--font-family-heading);
-			transition: all var(--transition-fast);
-			color: var(--color-primary);
 
 			&.active, &.active:hover {
 				color: var(--color-text-heading);
@@ -39,6 +42,15 @@
 					font-size: var(--font-size-subheading);
 				}
 			}
+		}
+
+		.motif {
+			display: none;
+			position: absolute;
+			bottom: 10%;
+			left: 10%;
+			width: 50%;
+			transform: scaleX(-1);
 		}
 	}
 
@@ -71,12 +83,22 @@
 
 	@media screen and (max-width: 600px) {
 		#navbar {
+			z-index: -1;
+			background-image: linear-gradient(#0c162b, var(--color-background));
+			position: absolute;
+			width: 100%;
 			height: 100dvh;
-			display: none;
+			top: 0;
+			left: 0;
+			opacity: 0;
+			display: flex;
 			flex-direction: column;
 			align-items: flex-end;
+			padding: var(--space-300);
+			padding-top: calc(85px + var(--space-300));
+			transition: var(--transition-medium);
 			overflow: hidden;
-			
+
 			a {
 				font-size: var(--font-size-subheading);
 				padding: var(--space-075) var(--space-300);
@@ -92,14 +114,21 @@
 					&::after {
 						content: " <";
 						font-weight: bold;
-						font-size: var(--font-size-subheading);
+						font-size: var(--font-size-heading);
+						height: var(--font-size-heading);
+						margin-top: -6px;
 				}
 				}
 			}
+
+			.motif {
+				display: block;
+			}
 		}
-		
+
 		:global(#navbar.open) {
-			display: flex;
+			z-index: 2;
+			opacity: 1;
 		}
 
 		:global(body.retro #navbar a.active::after) {

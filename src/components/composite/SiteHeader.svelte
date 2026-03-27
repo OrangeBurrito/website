@@ -3,7 +3,7 @@
   import Menu from '../base/Menu.svelte'
 </script>
 
-<header class="logo-header col-full">
+<header class="site-header col-full">
   <a href="/">
     <h1 class="title">OrangeBurrito</h1>
     <p class="slogan large">the <span id="spice">spice</span> must flow</p>
@@ -14,9 +14,10 @@
 </header>
 
 <style>
-  .logo-header {
+  .site-header {
     position: relative;
     transition: transform var(--transition-slow);
+    z-index: 4;
 
     .title {
       /* font-family: var(--font-family-logo); */
@@ -30,7 +31,7 @@
     .slogan {
       color: var(--color-secondary);
       font-weight: 500;
-      transition: color var(--transition-slow);
+      transition: var(--transition-fast);
     }
 
     a:hover {
@@ -45,7 +46,7 @@
   }
 
   @media screen and (max-width: 600px) {
-    .logo-header {
+    .site-header {
       display: flex;
       justify-content: space-between;
       background: var(--color-background-alt);
@@ -58,17 +59,17 @@
       }
     }
 
-    .logo-header #menu {
+    .site-header #menu {
       display: flex;
     }
   }
 
-  :global(body.retro .logo-header) {
+  :global(body.retro .site-header) {
     font-family: var(--font-family-retro);
   } 
 
   /* @media screen and (max-width: 600px) {
-    .logo-header {
+    .site-header {
       .title {
         font-size: var(--font-size-subtitle);
       }

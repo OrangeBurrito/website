@@ -1,8 +1,9 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import Image from "../base/Image.svelte";
+  import type { TrackData } from "../../../netlify/functions/topTrack";
 
-  let track = $state(null)
+  let track: TrackData | null = $state(null)
   let loading = $state(true)
   let error = $state(false)
 
@@ -22,9 +23,9 @@
   })
 </script>
 
-<div class="top-track status-item-data flex between">
+<div class="top-track status-item flex between {loading ? 'loading' : ''}">
     {#if loading}
-        <p>Loading...</p>
+        <div class="loading">Loading top track...</div>
     {:else if track}
         <div class="text">
             <div class="label">Top Track</div>
@@ -38,3 +39,9 @@
         </a>
     {/if}
 </div>
+
+<style>
+    .top-track {
+        --color-surface-status: var(--color-background-alt);
+    }
+</style>

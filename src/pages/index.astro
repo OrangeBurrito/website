@@ -25,7 +25,7 @@ const projects = (await getCollection('projects')).sort(
     <div class="col-4 row-1 flex between baseline offset-col-half-right">
       <h2 class="baseline">Latest Posts</h2>
       <div class="heading-divider"></div>
-      <a class="button-link baseline" href="/new/posts">All Posts ></a>
+      <a class="button-link baseline" href="/posts">All Posts ></a>
     </div>
     <div class="grid-cols-half col-full row-fill">
       {posts.map((post) => (
@@ -55,7 +55,7 @@ const projects = (await getCollection('projects')).sort(
     <div class="col-4 row-1 flex between baseline">
       <h2 class="baseline">Selected Projects</h2>
       <div class="heading-divider"></div>
-      <a class="button-link baseline" href="/new/projects">All Projects ></a>
+      <a class="button-link baseline" href="/projects">All Projects ></a>
     </div>
     <div class="grid-cols-half col-4 row-fill">
       {projects.map((project) => (
@@ -81,6 +81,11 @@ const projects = (await getCollection('projects')).sort(
     top: 20%;
     left: 14%;
   }
+
+  .projects .grid-cols-half {
+    gap: var(--gap-grid-y) 40px;
+  }
+
   @media (max-width: 600px) {
     .metadata {
       display: none;

@@ -55,7 +55,7 @@ Grid children must use `container-y` class with `header` or `fill` modifiers to 
 
 | Line | Style | Issue |
 |------|-------|-------|
-| 1-3 | `.logo-header { margin-bottom: 0 !important; }` | !important override |
+| 1-3 | `.site-header { margin-bottom: 0 !important; }` | !important override |
 | 5-7 | `.site-settings { position: absolute; }` | Absolute positioning |
 
 ### 3. BaseLayout.astro
@@ -153,7 +153,7 @@ Or better, move these styles to `post.css` / `project.css` where they're actuall
 
 Remove or scope these rules that only apply to single post/project pages:
 ```diff
-- .logo-header {
+- .site-header {
 -   margin-bottom: 0 !important;
 - }
 -

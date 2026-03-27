@@ -40,9 +40,9 @@
   })
 </script>
 
-<div class="git-contributions">
+<div class="git-contributions status-item flex vertical {loading ? 'loading' : ''}">
 {#if loading}
-    <p>Loading...</p>
+    <div class="loading">Loading Git Commits...</div>
 {:else if error}
     <p>Error loading GitHub contributions.</p>
 {:else}
@@ -62,3 +62,14 @@
     </div>
 {/if}
 </div>
+
+<style>
+    .git-contributions {
+        min-height: 70px;
+
+        &.loading {
+            --color-surface-status: color-mix(in srgb, var(--color-background-alt) 50%, transparent);
+            /* --color-surface-status:  */
+        }
+    }
+</style>

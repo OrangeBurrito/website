@@ -23,7 +23,7 @@ let theme = Astro.cookies.get('theme')?.value || 'default'
     </div>
     <nav class="user-links flex baseline gap-large">
       <NavItem icon="github" href="https://github.com/orangeburrito">GitHub</NavItem>
-      <NavItem icon="external-link" href="https://www.linkedin.com/in/orangeburrito/">LinkedIn</NavItem>
+      <NavItem icon="linkedin" href="https://www.linkedin.com/in/orangeburrito/">LinkedIn</NavItem>
       <NavItem icon="book" href="https://github.com/orangeburrito">StoryGraph</NavItem>
       <NavItem icon="paint" href="https://github.com/orangeburrito">UserStyles</NavItem>
     </nav>
@@ -31,10 +31,9 @@ let theme = Astro.cookies.get('theme')?.value || 'default'
   <div class="subgrid row-6">
     <div class="subgrid row-3">
       <div class="section first col-fill row-full">
-        <h4>{pages.about.heading}</h4>
         <p set:html={pages.about.description}></p>
       </div>
-      <div class="col-2  row-full">
+      <div class="col-2 row-full">
         <Image src="/images/mysterious_visage2.png" alt="" caption={pages.about.caption} />
       </div>
     </div>
@@ -43,7 +42,6 @@ let theme = Astro.cookies.get('theme')?.value || 'default'
         <Image src="/images/hotcocoa.png" alt="" caption={pages.about.caption2} />
       </div>
       <div class="col-fill row-full">
-        <h5>{pages.about.heading2}</h5>
         <p set:html={pages.about.description2}></p>
       </div>
     </div>
@@ -63,18 +61,10 @@ let theme = Astro.cookies.get('theme')?.value || 'default'
         </h3>
         <p class="small">Updated Daily</p>
       </div>
-      <div class="container sidebar col-full row-fill">
-        <StatusItem>
-          <CurrentlyReading client:load />
-        </StatusItem>
-        <StatusItem background="var(--color-background-alt)">
-          <TopTrack client:load />
-        </StatusItem>
-        <StatusItem
-          background="transparent"
-        >
-          <GitContributions client:load />
-        </StatusItem>
+      <div class="container sidebar col-full row-fill fill-x">
+        <CurrentlyReading client:load />
+        <TopTrack client:load />
+        <GitContributions client:load />
       </div>
     </div>
   </Fragment>

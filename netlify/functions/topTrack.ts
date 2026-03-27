@@ -6,7 +6,7 @@ type TrackTitle = {
     title: string,
     id: number
 }
-type TrackData = {
+export type TrackData = {
     title: string,
     cover: string,
     artist: string,

@@ -85,7 +85,7 @@
     --color-text-disabled: #7e7e92;
     --color-text-inverted: var(--color-background);
     --color-text-link: var(--color-primary);
-    --color-text-link-hover: var(--color-primary-light);
+    --color-text-link-hover: var(--color-text-heading);
     --color-icon: var(--color-text-code);
 
     --space-unit: 7px;
@@ -107,12 +107,13 @@
 
     --font-family-body: "Executive", system-ui, sans-serif;
     --font-family-heading: "Bureau Grotesque", "DIN Alternate", "Helvetica Neue", Arial, sans-serif;
+    --font-family-code: Menlo, monospace;
 
     --font-size-label: var(--space-175);
     --font-size-body-small: var(--space-200);
     --font-size-body: var(--space-200);
-    --font-size-button: var(--space-225);
-    --font-size-body-large: var(--space-250);
+    --font-size-body-large: var(--space-225);
+    --font-size-subsubheading: var(--space-250);
     --font-size-subheading: var(--space-300);
     --font-size-heading-small: var(--space-350);
     --font-size-heading: var(--space-400);
@@ -128,6 +129,9 @@
     --padding-container-small : var(--space-200);
 
     --border-subtle: 4px solid var(--color-border-alt);
+
+    --transition-fast: all 0.075s ease-out;
+    --transition-medium: all 0.15s ease-out;
 }
 
 body {
@@ -150,22 +154,27 @@ body {
 a {
     color: var(--color-text-link);
     text-decoration: none;
+    transition: var(--transition-fast);
+
+    &:hover {
+        color: var(--color-text-link-hover);
+    }
 
     &.button-link {
         font-weight: 500;
-        font-size: var(--font-size-button);
+        font-size: var(--font-size-body-large);
     }
 
     &.baseline {
-        line-height: calc(var(--font-size-button) - var(--space-100));
+        line-height: calc(var(--font-size-body-large) - var(--space-100));
     }
     &.disabled {
         color: var(--color-border);
         pointer-events: none;
     }
 
-    > .icon svg {
-        stroke: var(--color-primary);
+    > .icon {
+        --color-icon: var(--color-primary);
     }
 }
 
@@ -204,7 +213,7 @@ h3 {
     --font-size-element: var(--font-size-subheading);
 }
 h4 {
-    font-size: var(--font-size-button);
+    font-size: var(--font-size-body-large);
     color: var(--color-text-heading);
 }
 h5 {
@@ -286,13 +295,18 @@ ul {
 }
 
 .text-hover {
-    transition: color ease-out 0.15s;
+    transition: var(--transition-medium);
 }
 
 a.hover:hover {
     .text-hover {
         color: var(--color-text-link);
     }
+}
+
+.loading {
+    font-family: var(--font-family-heading);
+    color: var(--color-text-code);
 }
 
 .page-motif {
@@ -304,12 +318,6 @@ a.hover:hover {
     height: var(--space-050);
     flex-grow: 1;
     background-color: var(--color-border);
-}
-
-.icon svg {
-    width: var(--icon-size);
-    height: var(--icon-size);
-    stroke: var(--color-icon);
 }
 
 .container {
@@ -325,7 +333,11 @@ a.hover:hover {
     }
 }
 
-.status-item-data {
+.status-item {
+    background-color: var(--color-surface-status);
+    padding: var(--space-200);
+    min-height: 80px;
+
     .title {
       color: var(--color-text-heading);
       font-size: var(--font-size-body-large);
@@ -336,8 +348,8 @@ a.hover:hover {
     }
     
     .image {
-      width: 64px;
-      height: 64px;
+      width: 48px;
+      height: 48px;
     }
 
     .image-link {
@@ -356,13 +368,41 @@ a.hover:hover {
             height: 12px;
             border-right: 2px solid var(--color-text-link);
             border-top: 2px solid var(--color-text-link);
-            transition: all 0.15s ease-out;
+            transition: var(--transition-medium);
         }
         &:hover::after {
             width: 100%;
             height: 100%;
         }
     }
+
+    &.loading {
+      --c: var(--color-surface-status);
+      background: repeating-linear-gradient(
+        to right,
+        transparent 0% 8%,
+        color-mix(in srgb, var(--c) 17%, transparent) 8% 16%,
+        color-mix(in srgb, var(--c) 33%, transparent) 16% 24%,
+        color-mix(in srgb, var(--c) 50%, transparent) 24% 32%,
+        color-mix(in srgb, var(--c) 67%, transparent) 32% 40%,
+        color-mix(in srgb, var(--c) 83%, transparent) 40% 48%,
+        var(--c) 48% 56%,
+        color-mix(in srgb, var(--c) 83%, transparent) 56% 64%,
+        color-mix(in srgb, var(--c) 67%, transparent) 64% 72%,
+        color-mix(in srgb, var(--c) 50%, transparent) 72% 80%,
+        color-mix(in srgb, var(--c) 33%, transparent) 80% 88%,
+        color-mix(in srgb, var(--c) 17%, transparent) 88% 96%,
+        transparent 96% 100%
+      );
+      background-size: 200% auto;
+      background-position: 0 100%;
+      animation: loading-gradient 3s infinite linear;
+    }
+}
+
+@keyframes loading-gradient { 
+  0%   { background-position: 0 0; }
+  100% { background-position: -200% 0; }
 }
 
 .root-grid {
@@ -475,6 +515,10 @@ a.hover:hover {
 
 }
 
+.fill-x {
+    width: 100%;
+}
+
 .fill-y {
     height: 100%;
 }
@@ -524,7 +568,7 @@ div[class*="grid-"] {
 
 article {
      p, em,  li, .date {
-      --font-size-element: var(--font-size-button);
+      --font-size-element: var(--font-size-body-large);
     }
 
     .content {
@@ -556,9 +600,9 @@ article {
 
       pre {
 	      padding: var(--space-200);
-        margin: var(--space-200) 0 var(--space-400) 0;
-        overflow-x: scroll;
-        font-family: var(--font-family-code);
+            margin: var(--space-200) 0 var(--space-400) 0;
+            overflow-x: scroll;
+            font-family: var(--font-family-code);
       }
 
       code {
@@ -594,13 +638,22 @@ article {
         --font-size-label: var(--space-200);
         --font-size-body-small: var(--space-225);
         --font-size-body: var(--space-225);
-        --font-size-button: var(--space-250);
         --font-size-heading-huge: var(--space-500);
         --padding-container: var(--space-250);
     }
 
     body {
         background-image: linear-gradient(#0c162b, var(--color-background));
+    }
+
+    h4 {
+        font-size: var(--font-size-subsubheading);
+    }
+
+    a {
+        &.button-link {
+            font-size: var(--font-size-subsubheading);
+        }
     }
 
     .root-grid, .subgrid, div[class*="grid-cols-"] {

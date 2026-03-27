@@ -2,6 +2,13 @@ import { getStore } from "@netlify/blobs";
 import { getCachedData, fetchSiteData, updateNetlifyBlob, currentKey } from "../../src/ts/netlify";
 import type { Page } from "puppeteer-core"
 
+export type BookData = {
+    title: string;
+    coverImage: string;
+    author: string;
+    percentage: string;
+  };
+
 export async function getLatestStorygraphBook(page: Page) {
     await page.goto('https://app.thestorygraph.com/currently-reading/orangeburrito', {
         waitUntil: 'domcontentloaded',

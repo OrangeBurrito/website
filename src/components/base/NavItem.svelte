@@ -12,16 +12,17 @@
     let { icon, href, children }: Props = $props()
 </script>
 
-<a class="nav-item flex" href={href}>
-    <Icon size="small" {icon} />
+<a class="nav-item flex" href={href} target="_blank">
+    <Icon size="small" color="var(--color-text-code)" {icon} />
     <span>{@render children()}</span>
 </a>
 
 <style>
     .nav-item {
-        gap: var(--space-100);
+        gap: var(--space-075);
 
         span {
+            font-size: var(--font-size-body-large);
            margin-top: 2px;
         }
     }

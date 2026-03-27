@@ -24,7 +24,6 @@
 
 <style>
   .status-item {
-    background-color: var(--color-surface);
-    padding: var(--space-200);
+
   }
 </style>

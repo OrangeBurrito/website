@@ -17,7 +17,7 @@
 <a class="flex gap-large hover" href={`/project/${project.id}`}>
     {#if project.data.coverIcon}
     <div class="icon">
-        <Image src={project.data.coverIcon} alt={`${project.data.title} Thumbnail`} width="72px" contain />
+        <Image src={project.data.coverIcon} alt={`${project.data.title} Thumbnail`} width="64px" contain />
     </div>
     {/if}
     <div class="info flex vertical gap-none">
@@ -66,7 +66,7 @@
         .icon {
             position: absolute;
             top: 0;
-            left: calc((72px + var(--space-200)) * -1);
+            left: calc((64px + var(--space-200)) * -1);
         }
 
         .cover-image {
@@ -77,7 +77,7 @@
         }
 
         &:not(.large) {
-            width: 75%;
+            width: 80%;
         }
 
         &.large {
@@ -122,7 +122,7 @@
             }
 
             :global(.project:not(.large) .icon img) {
-                width: 64px;
+                width: 48px;
             }
 
             &.large {
@@ -138,7 +138,7 @@
         }
 
         :global(body.retro .project .icon) {
-            width: 72px;
+            width: 64px;
             left: auto;
             right: 0;
         }

@@ -1,6 +1,4 @@
 <script lang="ts">
-  import { fade } from 'svelte/transition';
-
   type ImageType = 'default' | 'pixelated';
 
   interface Props {
@@ -16,12 +14,19 @@
   let { src, alt, caption, type = 'default', width, height, contain = false }: Props = $props();
 </script>
 
-<img class={`${type}${contain ? ' contain' : ''}`} style={`${width ? `width: ${width};` : ''}${height ? `height: ${height};` : ''}`} {src} {alt} />
-{#if caption}
-  <p class="label">{caption}</p>
-{/if}
+<div class="image" style={`${width ? `width: ${width};` : ''}${height ? `height: ${height};` : ''}`}>
+  <img class={`${type}${contain ? ' contain' : ''}`} {src} {alt} />
+  {#if caption}
+    <p class="label">{caption}</p>
+  {/if}
+</div>
 
 <style>
+  .image {
+    width: 100%;
+    height: 100%;
+  }
+  
   img {
     display: block;
     width: 100%;
@@ -36,11 +41,10 @@
     &.contain {
       object-fit: contain;
     }
-
+    
     &:has(+ .label) {
-      height: calc(100% - var(--gap-grid) * 2);
+      height: calc(100% - var(--space-300));
     }
-
   }
   
   .label {
