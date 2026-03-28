@@ -143,4 +143,8 @@
     padding: var(--space-100);
     border: 4px solid var(--color-border);
   }
+  :global(.currently-reading:not(.large) .image-link .image) {
+    width: 64px;
+    height: 64px;
+  }
 </style>
