@@ -91,7 +91,7 @@
                     margin-bottom: var(--space-050);
                 }
                 .dates {
-                    margin-bottom: var(--space-150);
+                    margin-bottom: var(--space-200);
                 }
             }
         }

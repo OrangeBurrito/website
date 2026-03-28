@@ -16,7 +16,7 @@ tags: ["dotnet", "blazor", "javascript", "figma" ]
 
 <div class="grid-cols-half">
     <img src="/images/arabonito.png">
-    <img src="/images/arabonito.png">
+    <img src="/images/arabonito-figma-view.png">
 </div>
 
 I designed and developed the frontend for Arajet's Gift Card Program [Arabonito](https://arabonito.arajet.com), while working as a subcontractor under [Huagati Systems](https://huagati.com).

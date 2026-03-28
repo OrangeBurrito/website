@@ -2,7 +2,7 @@ import { getStore } from "@netlify/blobs";
 import { getCachedData, fetchSiteData, updateNetlifyBlob, currentKey } from "../../src/ts/netlify";
 import type { Page } from "puppeteer-core"
 
-export type BookData = {
+export  type BookData = {
     title: string;
     coverImage: string;
     author: string;
@@ -23,14 +23,11 @@ export async function getLatestStorygraphBook(page: Page) {
         '.read-books-panes [id^="book"]:first-child .book-pane-content .book-cover img',
         el => el.getAttribute('src')
     )
-    await page.waitForSelector('.read-books-panes [id^="book"]:first-child .track-progress-button')
-    const percentage = await page.$eval('.read-books-panes [id^="book"]:first-child .book-pane-content .track-progress-button', el => el.textContent?.trim())
     
     return {
         title: titleText,
         coverImage,
-        author,
-        percentage
+        author
     }
 }
 

@@ -16,7 +16,6 @@
         return;
       }
       book = await response.json();
-      book!.percentage ="22%";
     } catch (err) {
       error = true;
     } finally {
@@ -46,9 +45,9 @@
         <h3 class="title">{book.title}</h3>
         <div class="author">{book.author}</div>
         {#if large}
-        <div class="percentage">
+        <!-- <div class="percentage">
           <div class="bar" style="width: {book.percentage};">{book.percentage}</div>
-        </div>
+        </div> -->
         <div class="link grow flex vertical end-y gap-xsmall">
           <Link
             href="https://app.thestorygraph.com/profile/orangeburrito"
@@ -67,6 +66,8 @@
 
     &.large {
       --color-surface-status: transparent;
+      padding: 0;
+
       .label {
         display: none;
       }
@@ -77,6 +78,10 @@
         margin-bottom: 0;
       }
 
+      .author {
+        font-size: var(--font-size-body-large);
+      }
+
       .image-link {
         padding: 0;
         &::after {
@@ -84,7 +89,7 @@
         }
       }
 
-      .percentage {
+      /* .percentage {
         width: 100%;
         background-color: var(--color-surface);
 
@@ -97,7 +102,7 @@
           background-color: var(--color-secondary);
           color: var(--color-background);
         }
-      }
+      } */
     }
 
     &:not(.large) {
@@ -122,6 +127,14 @@
       margin-bottom: var(--space-050);
     }
 
+  }
+
+  @media screen and (max-width: 600px) {
+    .currently-reading.large .title {
+      max-width: 100%;
+      font-size: var(--space-350);
+      margin-bottom: var(--space-050);
+    }
   }
 
   :global(.currently-reading.large .image-link img) {

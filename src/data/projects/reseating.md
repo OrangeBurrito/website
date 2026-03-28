@@ -7,8 +7,9 @@ clientUrl: 'https://hkexpress.com'
 contractor: 'Huagati Systems'
 contractorUrl: 'https://huagati.com/'
 startDate: 2025-06-01
-description: ""
-shortDesc: "Internal Flight Reseating UI"
+endDate: 2025-08-02
+description: "Full-stack design and implementation of HK Express's unreleased internal Flight Reseating dashboard"
+shortDesc: "Flight Reseating Dashboard"
 tags: ["dotnet", "blazor", "javascript", "figma" ]
 color: "#011b47"
 ---

@@ -3,12 +3,13 @@ import chromium from '@sparticuz/chromium'
 import { Store } from "@netlify/blobs"
 
 export async function fetchSiteData(func: Function) {
+    console.log(process.env.NODE_ENV, "tset")
     const browser = await puppeteer.launch({ 
         args: [...chromium.args],
         headless: true,
-        executablePath: process.env.NODE_ENV === 'development'
-            ? "/opt/homebrew/bin/chromium"
-            : await chromium.executablePath()
+        executablePath: process.env.NODE_ENV === 'production'
+            ? await chromium.executablePath()
+            : "/opt/homebrew/bin/chromium"
     })
     const page = await browser.newPage()
     await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123 Safari/537.36')

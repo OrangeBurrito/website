@@ -21,7 +21,7 @@ export async function getStaticPaths({ paginate }) {
     }
     if (!a.data.endDate) return 1
     if (!b.data.endDate) return -1
-    return new Date(a.data.endDate).valueOf() - new Date(b.data.endDate).valueOf()
+    return new Date(b.data.startDate).valueOf() - new Date(a.data.startDate).valueOf()
   })
 
   return paginate(projects, { pageSize: 4 })
@@ -85,13 +85,13 @@ const { page } = Astro.props
 
   @media screen and (max-width: 600px) {
     .projects {
-      gap: var(--space-300);
+      gap: var(--space-500);
+      margin-bottom: var(--space-100);
     }
 
     .page-motif {
       transform: none;
       margin-top: var(--space-200);
-      margin-bottom: var(--space-100);
     }
   }
 </style>

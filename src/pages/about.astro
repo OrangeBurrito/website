@@ -4,7 +4,6 @@ import Image from "../components/base/Image.svelte"
 import NavItem from "../components/base/NavItem.svelte"
 import CurrentlyReading from "../components/composite/CurrentlyReading.svelte"
 import GitContributions from "../components/composite/GitContributions.svelte"
-import StatusItem from "../components/composite/StatusItem.svelte"
 import TopTrack from "../components/composite/TopTrack.svelte"
 import { pages } from "../data/site/pages"
 import BaseLayout from "../layouts/BaseLayout.astro"
@@ -30,8 +29,8 @@ let theme = Astro.cookies.get('theme')?.value || 'default'
   </div>
   <div class="subgrid row-6">
     <div class="subgrid row-3">
-      <div class="section first col-fill row-full">
-        <p set:html={pages.about.description}></p>
+      <div class="section first col-fill row-full"
+        set:html={pages.about.description}>
       </div>
       <div class="col-2 row-full">
         <Image src="/images/mysterious_visage2.png" alt="" caption={pages.about.caption} />
@@ -41,8 +40,8 @@ let theme = Astro.cookies.get('theme')?.value || 'default'
       <div class="col-2 row-full">
         <Image src="/images/hotcocoa.png" alt="" caption={pages.about.caption2} />
       </div>
-      <div class="col-fill row-full">
-        <p set:html={pages.about.description2}></p>
+      <div class="col-fill row-full"
+        set:html={pages.about.description2}>
       </div>
     </div>
   </div>
@@ -59,7 +58,7 @@ let theme = Astro.cookies.get('theme')?.value || 'default'
           <Icon icon="live" />
           User Status
         </h3>
-        <p class="small">Updated Daily</p>
+        <em class="small">Updated Daily</em>
       </div>
       <div class="container sidebar col-full row-fill fill-x">
         <CurrentlyReading client:load />
@@ -122,15 +121,21 @@ let theme = Astro.cookies.get('theme')?.value || 'default'
   }
 
   @media screen and (max-width: 600px) {
-    .about-heading {
+    .about-heading.align-end {
       flex-direction: column;
-      align-items: flex-start;
+      align-items: flex-start !important;
 
       .user-links {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: var(--space-100);
-      box-shadow: inset 6px 0 0 var(--color-border-alt);
+        position: absolute;
+        flex-direction: column;
+        right: var(--padding-container);
+        gap: var(--space-100);
+        box-shadow: inset -6px 0 0 var(--color-border-alt);
+        margin-top: var(--space-100);
+
+        .nav-item {
+          flex-direction: row-reverse;
+        }
       }
 
       .about-title {
