@@ -74,7 +74,7 @@
 
       .title {
         font-size: var(--font-size-subheading);
-        max-width: 10ch;
+        max-width: 12ch;
         margin-bottom: 0;
       }
 

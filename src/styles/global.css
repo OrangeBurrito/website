@@ -211,7 +211,7 @@ h1, h2, h3 {
     font-family: var(--font-family-heading);
     font-size: var(--font-size-element);
     color: var(--color-secondary);
-    line-height: calc(var(--font-size-element) + var(--space-050));
+    line-height: var(--font-size-element);
 
     &.subtle {
         text-transform: uppercase;
@@ -377,7 +377,7 @@ a.hover:hover {
       font-size: var(--font-size-subsubheading);
     }
 
-    .title, .label {
+    .title {
         margin-bottom: var(--space-050);
     }
     
