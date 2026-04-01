@@ -54,6 +54,34 @@
     font-weight: bold;
     font-display: swap;
 }
+@font-face {
+    font-family: 'Menlo';
+    src: url('/fonts/Menlo.woff2') format('woff2');
+    font-style: normal;
+    font-weight: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Menlo';
+    src: url('/fonts/MenloItalic.woff2') format('woff2');
+    font-style: italic;
+    font-weight: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Menlo';
+    src: url('/fonts/MenloBold.woff2') format('woff2');
+    font-style: normal;
+    font-weight: bold;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Menlo';
+    src: url('/fonts/MenloBoldItalic.woff2') format('woff2');
+    font-style: italic;
+    font-weight: bold;
+    font-display: swap;
+}
 
 * {
     box-sizing: border-box;

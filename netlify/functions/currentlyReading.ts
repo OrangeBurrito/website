@@ -25,7 +25,7 @@ export async function getLatestStorygraphBook(page: Page) {
     )
     
     return {
-        title: titleText,
+        title: titleText.split(":")[0],
         coverImage,
         author
     }
