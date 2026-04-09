@@ -20,10 +20,13 @@ export async function getTopTrack(page: Page): Promise<TrackData> {
 
     await page.goto('https://stats.fm/orangetunes', {
         waitUntil: 'domcontentloaded',
-        timeout: 60_000,
+        timeout: 120_000,
     })
 
-    await page.waitForSelector('main > .mx-auto.max-w-md section:nth-child(5) > main > ul > :first-child > li > ul > li > a > .flex > .flex h4')
+    await page.waitForSelector('main > .mx-auto.max-w-md section:nth-child(5) > main > ul > :first-child > li > ul > li:last-child > a > .flex > .flex', {
+        visible: true,
+        timeout: 60_000,
+    })
 
     const trackTitles = await page.$$('main > .mx-auto.max-w-md section:nth-child(5) > main > ul > :first-child > li > ul > li > a > .flex > .flex h4')
 
@@ -55,7 +58,7 @@ export async function getTopTrack(page: Page): Promise<TrackData> {
 
     await page.goto('https://stats.fm' + href, {
         waitUntil: 'networkidle2',
-        timeout: 60_000,
+        timeout: 120_000,
     })
     await page.waitForSelector('main > .bg-foreground > .mx-auto.max-w-md section')
 
