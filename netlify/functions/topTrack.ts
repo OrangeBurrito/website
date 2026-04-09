@@ -10,23 +10,27 @@ export type TrackData = {
     title: string,
     cover: string,
     artist: string,
-    url: string
+    url: string,
+    titles: TrackTitle[],
+    appears: { title: string, count: number }[]
 }
 
 export async function getTopTrack(page: Page): Promise<TrackData> {
+    const normalizeTitle = (value: string) => value.replace(/\s+/g, ' ').trim().toLowerCase()
+
     await page.goto('https://stats.fm/orangetunes', {
         waitUntil: 'domcontentloaded',
         timeout: 60_000,
     })
 
-    await page.waitForSelector('main > .mx-auto.max-w-md section:nth-child(5) > main > ul > :nth-child(2) > li')
+    await page.waitForSelector('main > .mx-auto.max-w-md section:nth-child(5) > main > ul > :first-child > li > ul > li > a > .flex > .flex h4')
 
     const trackTitles = await page.$$('main > .mx-auto.max-w-md section:nth-child(5) > main > ul > :first-child > li > ul > li > a > .flex > .flex h4')
 
     let titles: TrackTitle[] = []
     for (const [i, element] of trackTitles.entries()) {
         const name = await element.evaluate(el => el.textContent)
-        titles.push({title: name ?? '', id: i+1})
+        titles.push({title: normalizeTitle(name ?? ''), id: i + 1})
     }
 
     let titleCounts: { [key: string]: number } = {}
@@ -61,11 +65,16 @@ export async function getTopTrack(page: Page): Promise<TrackData> {
     const artist = await trackDetails?.evaluateHandle(el => el.querySelector('.flex > span > span > a')?.textContent)
     const songUrl = await trackDetails?.evaluateHandle(el => el.querySelector('.flex > .mt-2 > a:first-child')?.getAttribute('href'))
 
+    // log out all the titles and their counts for debugging
+    console.log('Title Counts:', titleCounts, topTitleCount)
+    console.log(titles.map(t => `${t.title}: ${titleCounts[t.title]}`).join('\n'))
     return {
         title: await topTrackTitle?.jsonValue() ?? 'Untitled Track',
         cover: 'https://stats.fm' + (await cover?.jsonValue() ?? '66911211'),
         artist: await artist?.jsonValue() ?? 'Who Knows',
-        url: await songUrl?.jsonValue() ?? ''
+        url: await songUrl?.jsonValue() ?? '',
+        titles,
+        appears: Object.entries(titleCounts).map(([title, count]) => ({ title, count })),
     }
 }
 

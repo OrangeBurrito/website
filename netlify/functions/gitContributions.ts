@@ -41,7 +41,7 @@ async function getGitContributions() {
     }
 
     const allContributions = resp.data.user.contributionsCollection.contributionCalendar.weeks
-    const contributions = allContributions[allContributions.length - 1].contributionDays.map((c) => ({"date": c.date, "commits": c.contributionCount}))
+    const contributions = allContributions[allContributions.length - 1].contributionDays.map((c: any) => ({"date": c.date, "commits": c.contributionCount}))
 
     return contributions
 }

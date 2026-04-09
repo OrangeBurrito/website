@@ -3,7 +3,6 @@ import chromium from '@sparticuz/chromium'
 import { Store } from "@netlify/blobs"
 
 export async function fetchSiteData(func: Function) {
-    console.log(process.env.NODE_ENV, "tset")
     const browser = await puppeteer.launch({ 
         args: [...chromium.args],
         headless: true,
