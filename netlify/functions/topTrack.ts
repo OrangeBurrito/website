@@ -11,29 +11,25 @@ export type TrackData = {
     cover: string,
     artist: string,
     url: string,
-    titles: TrackTitle[],
     appears: { title: string, count: number }[]
 }
 
 export async function getTopTrack(page: Page): Promise<TrackData> {
-    const normalizeTitle = (value: string) => value.replace(/\s+/g, ' ').trim().toLowerCase()
-
     await page.goto('https://stats.fm/orangetunes', {
         waitUntil: 'domcontentloaded',
-        timeout: 120_000,
-    })
-
-    await page.waitForSelector('main > .mx-auto.max-w-md section:nth-child(5) > main > ul > :first-child > li > ul > li:last-child > a > .flex > .flex', {
-        visible: true,
         timeout: 60_000,
     })
 
+    await page.waitForSelector('main > .mx-auto.max-w-md section:nth-child(5) > main > ul > :first-child > li > ul > li:last-child > a > .flex > .flex', {
+        timeout: 30_000,
+    })
+    
     const trackTitles = await page.$$('main > .mx-auto.max-w-md section:nth-child(5) > main > ul > :first-child > li > ul > li > a > .flex > .flex h4')
 
     let titles: TrackTitle[] = []
     for (const [i, element] of trackTitles.entries()) {
         const name = await element.evaluate(el => el.textContent)
-        titles.push({title: normalizeTitle(name ?? ''), id: i + 1})
+        titles.push({ title: name ?? '', id: i + 1 })
     }
 
     let titleCounts: { [key: string]: number } = {}
@@ -58,7 +54,7 @@ export async function getTopTrack(page: Page): Promise<TrackData> {
 
     await page.goto('https://stats.fm' + href, {
         waitUntil: 'networkidle2',
-        timeout: 120_000,
+        timeout: 60_000,
     })
     await page.waitForSelector('main > .bg-foreground > .mx-auto.max-w-md section')
 
@@ -76,7 +72,6 @@ export async function getTopTrack(page: Page): Promise<TrackData> {
         cover: 'https://stats.fm' + (await cover?.jsonValue() ?? '66911211'),
         artist: await artist?.jsonValue() ?? 'Who Knows',
         url: await songUrl?.jsonValue() ?? '',
-        titles,
         appears: Object.entries(titleCounts).map(([title, count]) => ({ title, count })),
     }
 }
