@@ -563,6 +563,7 @@ div[class*="grid-"] {
 
     &.grid-cols-half {
         grid-template-columns: repeat(2, 1fr);
+        margin-bottom: var(--space-200);
 
         img:first-child {
             padding-bottom: 0;
@@ -640,11 +641,15 @@ article {
         margin-top: -0.5rem;
       }
 
+      p:has(em) {
+        padding-bottom: 0;
+      }
+
       pre {
-	      padding: var(--space-200);
-            margin: var(--space-200) 0 var(--space-400) 0;
-            overflow-x: scroll;
-            font-family: var(--font-family-code);
+        padding: var(--space-200);
+        margin: var(--space-200) 0 var(--space-400) 0;
+        overflow-x: scroll;
+        font-family: var(--font-family-code);
       }
 
       code {
@@ -671,6 +676,10 @@ article {
             margin-bottom: 0px;
         transform: translateX(calc(50vw - 50%));
         margin-bottom: var(--space-200);
+      }
+
+      > :last-child {
+        padding-bottom: var(--space-400);
       }
     }
 }

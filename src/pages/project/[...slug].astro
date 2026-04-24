@@ -5,6 +5,8 @@ import Image from "../../components/base/Image.svelte"
 import Date from "../../components/base/Date.svelte"
 import Tag from "../../components/base/Tag.svelte"
 import { softwareTagColors } from "../../ts/types"
+import Link from "../../components/base/Link.svelte"
+import Icon from "../../components/base/Icon.svelte"
 
 export const prerender = false
 
@@ -24,7 +26,21 @@ const { Content } = await render(project)
         <Image src={project.data.coverIcon!} alt={project.data.title + " thumbnail icon"} contain />
       </div>
       <div class="text col-fill row-full flex vertical gap-none">
-        <h1 class="title">{project.data.title}</h1>
+        <h1 class="title">
+          {project.data.url ? (
+            <a href={project.data.url} target="_blank" rel="noopener noreferrer">
+              {project.data.title}
+            </a>
+            <div class="icon-wrapper">
+              <Icon icon="external-link" size="medium" color="var(--color-text-link)"/>
+            </div>
+          ) : (
+            <span>{project.data.title}</span>
+            <div class="icon-wrapper">
+              <Icon icon="no-link" size="medium" color="var(--color-text-subtle)"/>
+            </div>
+          )}
+        </h1>
         <p class="description">{project.data.description}</p>
         <div class="dates flex grow gap-xsmall">
           <Date date={project.data.startDate} length='monthonly' />
@@ -50,6 +66,29 @@ const { Content } = await render(project)
 </BaseLayout>
 
 <style>
+  .title {
+    position: relative;
+    margin-bottom: var(--space-100);
+
+    a {
+     color: var(--color-text-heading);
+     font-size: inherit;
+     transition: var(--transition-medium);
+
+     &:hover {
+        color: var(--color-text-link);
+     }
+   }
+
+  .icon-wrapper {
+    position: absolute;
+    display: inline-block;
+    
+    top: var(--space-100);
+    margin-left: var(--space-100);
+    }
+  }
+  
   .cover-image {
     padding: var(--space-100) 0;
   }

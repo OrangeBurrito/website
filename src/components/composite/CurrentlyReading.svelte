@@ -40,7 +40,7 @@
     <a class="image-link" href="https://app.thestorygraph.com/profile/orangeburrito" target="_blank">
       <Image src={book.coverImage} alt={book.title} />
     </a>
-      <div class="text flex vertical gap-xsmall">
+      <div class="text">
         <div class="label">Currently Reading</div>
         <h3 class="title">{book.title}</h3>
         <div class="author">{book.author}</div>
@@ -75,7 +75,7 @@
       .title {
         font-size: var(--font-size-subheading);
         max-width: 12ch;
-        margin-bottom: 0;
+        margin-bottom: var(--space-100);
       }
 
       .author {

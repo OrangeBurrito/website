@@ -7,6 +7,7 @@ import Date from '../components/base/Date.svelte'
 import CurrentlyReading from '../components/composite/CurrentlyReading.svelte'
 import Icon from '../components/base/Icon.svelte'
 import Image from '../components/base/Image.svelte'
+import SiteMetadata from '../components/composite/SiteMetadata.svelte'
 
 const posts = (await getCollection('posts')).sort(
 	(a, b) => b.data.publishedDate.valueOf() - a.data.publishedDate.valueOf()
@@ -34,21 +35,7 @@ const projects = (await getCollection('projects')).sort(
     </div>
   </div>
   <div class="metadata subgrid col-1 row-4">
-    <div class="row-1 flex end baseline"><h3 class="subtle right">Site Metadata</h3></div>
-    <div class="data row-fill flex vertical end">
-      <div class="flex vertical end gap-xsmall">
-        <p class="label">Last Updated</p>
-        <Date class="emphasis right"  date="2025-01-01" />
-      </div>
-      <div class="flex vertical end gap-xsmall">
-        <p class="label">Created At</p>
-        <Date class="emphasis right" date="2024-12-14" />
-      </div>
-      <div class="flex vertical end gap-xsmall">
-        <p class="label">Copyright ©</p>
-        <p class="emphasis right">OrangeBurrito 2026</p>
-      </div>
-    </div>
+    <SiteMetadata client:load />
   </div>
   <div class="projects subgrid row-4">
     <div class="spacer col-1 row-full"></div>

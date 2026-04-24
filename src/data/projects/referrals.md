@@ -15,6 +15,9 @@ tags: ["dotnet", "blazor", "javascript", "figma" ]
 color: "#08240D"
 ---
 
+![Screenshot of Arajet Referrals homepage](/images/arajetreferrals.png)
+*Arajet Referrals landing page*
+
 Following my last project working on the frontend of Arajet's [Arabonito](https://arabonito.arajet.com) site, I was able to make good use of the same design principles and visual language when taking on the task of building the Referrals program.
 
 ## Design

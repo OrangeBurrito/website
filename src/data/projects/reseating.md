@@ -14,6 +14,9 @@ tags: ["dotnet", "blazor", "javascript", "figma" ]
 color: "#011b47"
 ---
 
+![Screenshot of Flight Reseating dashboard](/images/reseatingui.png)
+*Flight Reseating dashboard with filtering options shown*
+
 ## Overview
 
 I designed and built the frontend for Hong Kong Express's internal flight reseating management system (unreleased as of now) for my third collaboration with the airline software solutions company [Huagati Systems](https://huagati.com).

@@ -33,9 +33,14 @@ const { default: retroSvg } = await import(`../../../public/icons/retro/${icon}.
   }
 
   :global(.icon svg) {
+    display: block;
     width: var(--icon-size);
     height: var(--icon-size);
     stroke: var(--color-icon);
+  }
+
+  :global(.icon-wrapper .icon) {
+    display: block;
   }
 
   .icon.retro {

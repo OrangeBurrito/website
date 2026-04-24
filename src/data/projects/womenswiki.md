@@ -11,3 +11,6 @@ tags: ["dotnet", "svelte", "javascript", "docker" ]
 
 ![Screenshot of womenswiki homepage](/images/womenswiki.png)
 *Work-in-progress homepage of WomensWiki*
+
+## Elevator Pitch
+WomensWiki is my personal project.
