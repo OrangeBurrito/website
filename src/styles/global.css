@@ -721,6 +721,10 @@ article {
         font-size: var(--font-size-subheading);
     }
 
+    .root-grid {
+        height: 100%;
+    }
+
     .root-grid, .subgrid, div[class*="grid-cols-"] {
         display: flex;
         flex-direction: column;

@@ -11,10 +11,12 @@ export  type BookData = {
 
 export async function getLatestStorygraphBook(page: Page) {
     await page.goto('https://app.thestorygraph.com/currently-reading/orangeburrito', {
-        waitUntil: 'domcontentloaded',
+        waitUntil: 'networkidle2',
         timeout: 60_000,
     })
-    await page.waitForSelector('.read-books-panes [id^="book"] .book-pane-content')
+    await page.waitForSelector('.read-books-panes [id^="book"] .book-pane-content', {
+        timeout: 60_000,
+    })
 
     const title = await page.$('.read-books-panes [id^="book"]:first-child .book-pane-content .book-title-author-and-series h3 a');
     const titleText = await page.evaluate(el => el!.textContent, title)
