@@ -3,9 +3,8 @@ import chromium from '@sparticuz/chromium'
 import { Store } from "@netlify/blobs"
 
 export async function fetchSiteData(func: Function) {
-
     const browser = await puppeteer.launch({ 
-        args: [...chromium.args],
+        args: [...chromium.args, '--disable-features=site-per-process'],
         headless: true,
         executablePath: process.env.NODE_ENV === 'production'
             ? await chromium.executablePath()
