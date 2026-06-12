@@ -4,12 +4,11 @@ import type { Page } from "puppeteer-core"
 
 export  type BookData = {
     title: string;
-    coverImage: string;
     author: string;
-    percentage: string;
-  };
+    coverImage: string;
+};
 
-export async function getLatestStorygraphBook(page: Page) {
+export async function getLatestStorygraphBook(page: Page): Promise<BookData> {
     const navigationPromise = page.waitForNavigation({waitUntil: "domcontentloaded"})
 
     await page.goto('https://app.thestorygraph.com/currently-reading/orangeburrito', {
@@ -30,8 +29,21 @@ export async function getLatestStorygraphBook(page: Page) {
     
     return {
         title: titleText.split(":")[0],
-        coverImage,
-        author
+        author: author ?? '',
+        coverImage: coverImage ?? ''
+    }
+}
+
+export async function getLatestGoodreadsBook(): Promise<BookData> {
+    const response = await fetch('https://api.piratereads.com/54291128-orangeburrito/currently-reading')
+   //  if (!response.ok) { // todo proper error handling}
+    const data = await response.json()
+    const book = data.books[0]
+
+    return {
+        title: book.book_title.split(/[(:]/)[0].trim(),
+        author: book.book_author,
+        coverImage: book.book_cover_large,
     }
 }
 
@@ -45,7 +57,7 @@ export default async (req: Request) => {
         return cachedResponse
     }
 
-    const data = await fetchSiteData(getLatestStorygraphBook)
+    const data = await fetchSiteData(getLatestGoodreadsBook)
     await updateNetlifyBlob(store, key, cachedKey, data)
 
     return new Response(JSON.stringify(data), {
