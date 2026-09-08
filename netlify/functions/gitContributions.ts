@@ -9,7 +9,7 @@ export type GitContributionData = {
     commits: number
 }
 
-async function getGitContributions() {
+export async function getGitContributions() {
     const response = await fetch('https://api.github.com/graphql', {
         method: 'POST',
         headers: {

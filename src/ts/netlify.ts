@@ -10,13 +10,14 @@ export async function fetchSiteData(func: Function) {
             ? await chromium.executablePath()
             : "/opt/homebrew/bin/chromium"
     })
-    const page = await browser.newPage()
-    await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123 Safari/537.36')
-    await page.setViewport({ width: 1280, height: 900 })
-
-    let data = await func(page)
-    await browser.close()
-    return data
+    try {
+        const page = await browser.newPage()
+        await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123 Safari/537.36')
+        await page.setViewport({ width: 1280, height: 900 })
+        return await func(page)
+    } finally {
+        await browser.close()
+    }
 }
 
 export async function getCachedData(store: Store, cachedKey: string) {

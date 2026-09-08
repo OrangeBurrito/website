@@ -33,6 +33,7 @@ Live user status data is fetched from netlify blob storage (updated with netlify
 
 ## Commands
 
+Start development server
 ```bash
-pnpm dev      # Start development server
+pnpm dev
 ```

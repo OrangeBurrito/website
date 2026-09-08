@@ -1,5 +1,5 @@
 import { getStore } from "@netlify/blobs";
-import { getCachedData, fetchSiteData, updateNetlifyBlob, currentKey } from "../../src/ts/netlify";
+import { getCachedData, updateNetlifyBlob, currentKey } from "../../src/ts/netlify";
 import type { Page } from "puppeteer-core"
 
 export  type BookData = {
@@ -57,7 +57,7 @@ export default async (req: Request) => {
         return cachedResponse
     }
 
-    const data = await fetchSiteData(getLatestGoodreadsBook)
+    const data = await getLatestGoodreadsBook()
     await updateNetlifyBlob(store, key, cachedKey, data)
 
     return new Response(JSON.stringify(data), {
