@@ -1,15 +1,15 @@
 ---
 title: 'Arajet Referrals'
-url: ''
+url: 'https://refer.arajet.com'
 coverImage: '/images/arajetreferrals.png'
 coverIcon: "/images/projects/referrals-icon.png"
 client: 'Arajet Airlines'
 clientUrl: 'https://arajet.com'
 contractor: 'Huagati Systems'
-contractorUrl: 'https://huagati.com/'
+contractorUrl: 'https://refer.huagati.com/'
 startDate: 2024-04-01
 endDate: 2024-07-05
-description: "Design and development of Arajet Airlines' unreleased User Referrals Program in Blazor Server"
+description: "Design and development of Arajet Airlines' User Referrals Program in Blazor Server"
 shortDesc: "User Referrals Program"
 tags: ["dotnet", "blazor", "javascript", "figma" ]
 color: "#08240D"

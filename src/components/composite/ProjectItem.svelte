@@ -27,7 +27,7 @@
         <h4 class="title text-hover">{project.data.title}</h4>
     {/if}
     <div class="metadata flex vertical gap-none">
-        <div class="dates flex gap-xsmall">
+        <div class="dates flex gap-xxsmall">
             <Date date={project.data.startDate} length='short' />
             <p class="label">—</p>
             {#if project.data.endDate}

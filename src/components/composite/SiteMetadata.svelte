@@ -24,7 +24,7 @@
 
 <div class="row-1 flex end baseline"><h3 class="subtle right">Site Metadata</h3></div>
 <div class="data row-fill flex vertical end">
-    <div class="flex vertical end gap-xsmall">
+    <div class="flex vertical end gap-xxsmall">
     <p class="label">Last Updated</p>
     {#if loading}
         <p class="emphasis right">Loading...</p>
@@ -32,11 +32,11 @@
         <Date class="emphasis right" date={metadata.updatedAt} />
     {/if}
     </div>
-    <div class="flex vertical end gap-xsmall">
+    <div class="flex vertical end gap-xxsmall">
     <p class="label">Created At</p>
     <Date class="emphasis right" date="2024-12-14" />
     </div>
-    <div class="flex vertical end gap-xsmall">
+    <div class="flex vertical end gap-xxsmall">
     <p class="label">Copyright ©</p>
     <p class="emphasis right">OrangeBurrito 2026</p>
     </div>

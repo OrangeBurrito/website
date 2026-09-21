@@ -12,6 +12,7 @@ description: "Redesign and imlementation of Thai Cooking course booking site as 
 shortDesc: "Thai Cooking Course Static Site"
 tags: ["svelte", "javascript", "figma" ]
 color: "#011b47"
+sourceCode: "https://github.com/OrangeBurrito/thaihomecooking"
 ---
 
 ![Screenshot of thaihomecooking homepage](/images/thaihomecooking.png)

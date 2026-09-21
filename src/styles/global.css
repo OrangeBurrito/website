@@ -540,7 +540,8 @@ a.hover:hover {
     &.baseline { align-items: flex-end; }
     &.gap-large { gap: var(--space-300); }
     &.gap-small { gap: var(--space-150); }
-    &.gap-xsmall { gap: var(--space-050); }
+    &.gap-xsmall { gap: var(--space-100); }
+    &.gap-xxsmall { gap: var(--space-050); }
     &.gap-none { gap: 0; }
 
     .grow {

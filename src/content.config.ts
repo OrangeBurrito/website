@@ -30,7 +30,8 @@ const projects = defineCollection({
         startDate: z.date(),
         endDate: z.date().optional(),
         tags: z.array(z.string()).optional(),
-        color: z.string().optional()
+        color: z.string().optional(),
+        sourceCode: z.string().optional(),
     })
 })
 

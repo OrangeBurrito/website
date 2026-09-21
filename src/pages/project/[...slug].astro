@@ -42,14 +42,24 @@ const { Content } = await render(project)
           )}
         </h1>
         <p class="description">{project.data.description}</p>
-        <div class="dates flex grow gap-xsmall">
-          <Date date={project.data.startDate} length='monthonly' />
-          <p class="label">—</p>
-          {project.data.endDate && (
-            <Date date={project.data.endDate} length='monthonly' />
-          )}
-          {!project.data.endDate && (
-            <p class="label">Present</p>
+        <div class="bottom-text flex between gap-small">
+          <div class="dates flex grow gap-xxsmall">
+            <Date date={project.data.startDate} length='monthonly' />
+            <p class="label">—</p>
+            {project.data.endDate && (
+              <Date date={project.data.endDate} length='monthonly' />
+            )}
+            {!project.data.endDate && (
+              <p class="label">Present</p>
+            )}
+          </div>
+          {project.data.sourceCode && (
+            <div class="source-code flex gap-xsmall">
+              <a href={project.data.sourceCode} target="_blank" rel="noopener noreferrer">View Source Code</a>
+              <div class="icon-wrapper">
+                <Icon icon="code" size="small" />
+              </div>
+            </div>
           )}
         </div>
         <div class="tags flex gap-none">
@@ -66,6 +76,10 @@ const { Content } = await render(project)
 </BaseLayout>
 
 <style>
+  .text {
+    position: relative;
+  }
+
   .title {
     position: relative;
     margin-bottom: var(--space-100);
@@ -92,8 +106,15 @@ const { Content } = await render(project)
   .cover-image {
     padding: var(--space-100) 0;
   }
-  .dates {
-    margin-bottom: var(--space-150);
+
+  .bottom-text  {
+    margin-bottom: var(--space-250);
+  }
+
+  .tags {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
   }
 
   @media screen and (max-width: 600px) {
@@ -105,6 +126,20 @@ const { Content } = await render(project)
       position: absolute;
       width: calc(30% - var(--space-200));
       right: var(--space-200);
+    }
+
+    .dates {
+      margin-bottom: 0;
+    }
+
+    .bottom-text {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .source-code {
+      flex-direction: row-reverse;
+      font-size: var(--font-size-body-small);
     }
   }
 </style>

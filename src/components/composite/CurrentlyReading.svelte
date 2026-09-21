@@ -48,7 +48,7 @@
         <!-- <div class="percentage">
           <div class="bar" style="width: {book.percentage};">{book.percentage}</div>
         </div> -->
-        <div class="link grow flex vertical end-y gap-xsmall">
+        <div class="link grow flex vertical end-y gap-xxsmall">
           <Link
             href="https://app.thestorygraph.com/profile/orangeburrito"
             external={true}>Details</Link
